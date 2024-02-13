@@ -1,0 +1,511 @@
+/**
+ * Eric Meyer's Reset CSS v2.0 (http://meyerweb.com/eric/tools/css/reset/)
+ * http://cssreset.com
+ */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-weight: normal;
+    vertical-align: baseline;
+	/* 清除input在ios中圆角问题 */
+	-webkit-appearance:none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+    display: block;
+}
+
+*{box-sizing: border-box;}
+i{ font-style:normal;}
+input{
+	outline: none;
+}
+body {
+    line-height: 1;
+    box-sizing: border-box;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* custom */
+a {
+    color: #7e8c8d;
+    text-decoration: none;
+    -webkit-backface-visibility: hidden;
+}
+
+li {
+    list-style: none;
+}
+/* 滚动条初始化样式 */
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+html, body {
+    width: 100%;
+}
+
+/* 全局添加鼠标样式 */
+*{ cursor:url('https://img.imgdb.cn/item/60697b638322e6675c5e7e25.png'),auto;}
+a:hover {  cursor: url('https://img.imgdb.cn/item/6065fb418322e6675c282194.png'), pointer !important;
+}
+
+/*春节模式 */
+#switchspring {
+    background: #e7510a;
+    width: 38px;
+    height: 2px;
+    display: block;
+    position: fixed;
+    border-radius: 50%;
+    right: 23px;
+    bottom: 60px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 998;
+    cursor: pointer;
+}
+.chunjiepic {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 7px;
+}
+/*春节主题 挂件吊线*/
+.caishenxianleft {
+	left: 16%!important;
+	position: absolute;
+	top: 0px;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03;
+	transform-origin: 50% -100px;
+	animation: swing 3.5s infinite ease-in-out;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3.5s infinite ease-in-out;
+}
+
+.guguxian {
+	position: absolute;
+	top: 0px;
+	left: 20%;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03;
+	transform-origin: 50% -100px;
+	animation: swing 3.5s infinite ease-in-out;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3.5s infinite ease-in-out;
+}
+.wenzhangxian {
+	left: 50%!important;
+	z-index: 998;
+}
+/*春节主题 挂件*/
+.caishenxian {
+	position: absolute;
+	top: 0px;
+	right: 10%;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03;
+	transform-origin: 50% -100px;
+	animation: swing 3.5s infinite ease-in-out;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3.5s infinite ease-in-out;
+}
+
+.caishenpic {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	position: absolute;
+	top: 12px;
+	right: -22px;
+	z-index: 9;
+	/* transform-origin: 50% -100px; */
+	animation: swing 3.5s infinite ease-in-out;
+	/* -webkit-transform-origin: 50% -100px; */
+	-webkit-animation: swing 3.5s infinite ease-in-out;
+}
+/* 圣诞老人 */
+.lala {
+	width: 48px!important;
+	height: 48px!important;
+	opacity: 1!important;
+	left: -4px!important;
+	top: 14px!important;
+}
+
+/* 福袋仙 */
+.fudaixian {
+    left: 30%!important;
+}
+
+.fudai {
+	top: 14px!important;
+	left: -22px!important;
+}
+
+/* 财神仙 */
+.caishenye {
+    left: 70%!important;
+}
+
+/* 福到了 */
+.fudaole {
+    left: 10%!important;
+}
+
+.chunp {
+	width: 216px!important;
+	height: 96px!important;
+	left: -80px!important;
+	top: 6px!important;
+}
+.fudao {
+	width: 38px;
+	height: 38px;
+	top: 18px!important;
+	left: -19px!important;
+}
+/* 点击显示或者隐藏总样式开始 */
+.caishendeng,
+.xiaomaozitx,
+.labelmz,
+.friendmz
+{
+	display: none;
+}
+body.themespring .caishendeng,
+body.themespring .xiaomaozitx,
+body.themespring .labelmz,
+body.themespring .friendmz
+{
+	display: block;
+}
+/* 点击显示或者隐藏总样式结束 */
+.toupic {
+	position: relative;
+}
+.xiaomaozitx {
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: -127px;
+	right: 25%;
+	transform: rotate(40deg);
+	position: absolute;
+	z-index: 99;
+	-webkit-animation: mzanimate 1.2s infinite ease-in-out;
+}
+.labelmz {
+	width: 34px;
+	height: 34px;
+	position: absolute;
+	top: 7px;
+	right: -84px;
+	transform: rotate(40deg);
+	position: absolute;
+	z-index: 99;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: mzanimate 1.8s infinite ease-in-out;
+}
+.weilemz {
+	position: relative;
+}
+.friendmz {
+	width: 50px!important;
+	height: 50px!important;
+	position: absolute;
+	top: 8px;
+	right: -90px;
+	transform: rotate(44deg);
+	position: absolute;
+	z-index: 99;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: mzanimate 1.8s infinite ease-in-out;
+}
+.lions {
+	width: 32px!important;
+	height: 32px!important;
+	opacity: 1!important;
+	left: -15px!important;
+	top: 14px!important;
+}
+.fenleiss {
+	position: absolute;
+	top: -64px;
+	left: 20%;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03;
+	transform-origin: 50% -100px;
+	animation: swing 3.5s infinite ease-in-out;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3.5s infinite ease-in-out;
+}
+.gugus {
+	width: 32px!important;
+	height: 32px!important;
+	opacity: 1!important;
+	left: -15px!important;
+	top: 9px!important;
+}
+.huadengpic {
+	width: 40px!important;
+	height: 40px!important;
+	opacity: 1!important;
+	left: -18px!important;
+	top: 9px!important;
+}
+.shanzipic {
+	width: 40px!important;
+	height: 40px!important;
+	opacity: 1!important;
+	left: -18px!important;
+	top: 18px!important;
+}
+
+.denglong {
+	display: none;
+}
+body.themespring .denglong {
+	display: block;
+}
+@media only screen and (min-width: 1124px) {
+	.nav-menu {
+		padding-right: 0px;
+	}
+	body.themespring .nav-menu {
+		padding-right: 96px;
+	}
+}
+@media only screen and (max-width: 760px) {
+	.deng-box, .deng-box1 {
+		width: 40%;
+	}
+	body.themespring .right {
+		float: left!important;
+	}
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	.right {
+		float: left!important;
+	}
+}
+.deng-box {
+	position: fixed;
+	top: -40px;
+	right: -20px;
+	z-index: 999;
+}
+.deng-box1 {
+	position: fixed;
+	top: -30px;
+	right: 10px;
+	z-index: 999;
+}
+.deng-box1 .deng {
+	position: relative;
+	width: 120px;
+	height: 90px;
+	margin: 50px;
+	background: #d8000f;
+	background: rgba(216, 0, 15, 0.8);
+	border-radius: 50% 50%;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 5s infinite ease-in-out;
+	box-shadow: -5px 5px 30px 4px rgba(252, 144, 61, 1);
+}
+.deng {
+	position: relative;
+	width: 120px;
+	height: 90px;
+	margin: 50px;
+	background: #d8000f;
+	background: rgba(216, 0, 15, 0.8);
+	border-radius: 50% 50%;
+	-webkit-transform-origin: 50% -100px;
+	-webkit-animation: swing 3s infinite ease-in-out;
+	box-shadow: -5px 5px 50px 4px rgba(250, 108, 0, 1);
+}
+.deng-a {
+	width: 100px;
+	height: 90px;
+	background: #d8000f;
+	background: rgba(216, 0, 15, 0.1);
+	margin: 12px 8px 8px 10px;
+	border-radius: 50% 50%;
+	border: 2px solid #dc8f03;
+}
+.deng-b {
+	width: 45px;
+	height: 90px;
+	background: #d8000f;
+	background: rgba(216, 0, 15, 0.1);
+	margin: -4px 8px 8px 26px;
+	border-radius: 50% 50%;
+	border: 2px solid #dc8f03;
+}
+.xian {
+	position: absolute;
+	top: -20px;
+	left: 60px;
+	width: 2px;
+	height: 20px;
+	background: #dc8f03;
+}
+.shui-a {
+	position: relative;
+	width: 5px;
+	height: 20px;
+	margin: -5px 0 0 59px;
+	-webkit-animation: swing 4s infinite ease-in-out;
+	-webkit-transform-origin: 50% -45px;
+	background: #ffa500;
+	border-radius: 0 0 5px 5px;
+}
+.shui-b {
+	position: absolute;
+	top: 14px;
+	left: -2px;
+	width: 10px;
+	height: 10px;
+	background: #dc8f03;
+	border-radius: 50%;
+}
+.shui-c {
+	position: absolute;
+	top: 18px;
+	left: -2px;
+	width: 10px;
+	height: 35px;
+	background: #ffa500;
+	border-radius: 0 0 0 5px;
+}
+.deng:before {
+	position: absolute;
+	top: -7px;
+	left: 29px;
+	height: 12px;
+	width: 60px;
+	content: " ";
+	display: block;
+	z-index: 999;
+	border-radius: 5px 5px 0 0;
+	border: solid 1px #dc8f03;
+	background: #ffa500;
+	background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);
+}
+.deng:after {
+	position: absolute;
+	bottom: -7px;
+	left: 10px;
+	height: 12px;
+	width: 60px;
+	content: " ";
+	display: block;
+	margin-left: 20px;
+	border-radius: 0 0 5px 5px;
+	border: solid 1px #dc8f03;
+	background: #ffa500;
+	background: linear-gradient(to right, #dc8f03, #ffa500, #dc8f03, #ffa500, #dc8f03);
+}
+.deng-t {
+	font-family: 华文行楷;
+	font-size: 26px;
+	color: #dc8f03;
+	font-weight: bold;
+	line-height: 44px;
+	text-align: center;
+}
+.night .deng-t,
+.night .deng-box,
+.night .deng-box1 {
+	background: transparent !important;
+}
+@-moz-keyframes swing {
+	0% {
+			-moz-transform: rotate(-10deg)
+	}
+	50% {
+		-moz-transform: rotate(10deg)
+	}
+	100% {
+			-moz-transform: rotate(-10deg)
+	}
+}
+@-webkit-keyframes swing {
+	0% {
+			-webkit-transform: rotate(-10deg)
+	}
+	50% {
+			-webkit-transform: rotate(10deg)
+	}
+	100% {
+			-webkit-transform: rotate(-10deg)
+	}
+}
