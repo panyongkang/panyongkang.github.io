@@ -125,7 +125,7 @@ body section .imgList .imgList_cent>div>div .imgList-top {
 
 body section .imgList .imgList_cent>div>div .imgList-top:hover {
 	box-shadow: inset 0 0 100px #000;
-    transition: box-shadow .2s;
+	transition: box-shadow .2s;
 }
 
 body section .imgList .imgList_cent>div>div .imgList-top img {
@@ -180,9 +180,11 @@ body section .my_drame .my_drame_bot>div>div {
 body section .my_drame .my_drame_bot>div .my_drame_right {
 	height: 300px;
 	width: 50%;
-	display: block;
+	display: flex;
 	overflow: hidden;
-	background-color: #ededed;
+	box-shadow: 0 0 10px #999999;
+	justify-content: center;
+	align-items: center;
 }
 
 body section .my_drame .my_drame_bot>div .my_drame_right img {
@@ -276,7 +278,7 @@ body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot
 	width: calc((100% - 20px) / 2);
 	text-align: justify;
 	display: flex;
-	padding-right: 40px;
+	padding-right: 30px;
 	flex-direction: row-reverse;
 	align-items: center;
 }
@@ -293,22 +295,23 @@ body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot
 
 body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left>div:last-child {
 	width: calc(100% - 120px);
-	color: #999999;
+	color: #444343;
 	font-size: 16px;
 	line-height: 2;
+	font: 18px/1.5 Tahoma, Helvetica, Arial, '华文行楷', sans-serif;
 }
 
 body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right {
 	width: calc((100% - 20px) / 2);
 	display: flex;
-	padding-left: 40px;
+	padding-left: 30px;
 	align-items: center;
 	text-align: justify;
 }
 
-body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right>div .work_font {
+/* body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right>div .work_font {
 	font-size: 16px;
-}
+} */
 
 body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right>div {
 	float: left;
@@ -322,9 +325,10 @@ body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot
 
 body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right>div:last-child {
 	width: calc(100% - 120px);
-	color: #999999;
-	font-size: 13px;
+	color: #444343;
+	font-size: 16px;
 	line-height: 2;
+	font: 18px/1.5 Tahoma, Helvetica, Arial, '华文行楷', sans-serif;
 }
 
 body section .work_time>div .work_time_bot .work_time_botCent>div:nth-child(even) {
@@ -392,148 +396,188 @@ body #toTop {
 
 
 @media only screen and (max-width: 768px) {
+
 	body section .aboutBright,
 	body section .imgList .imgList_cent,
 	body section .my_drame,
 	body section .work_time>div {
 		width: 100%;
 	}
+
 	body section .work_time {
 		padding: 20px 0;
 	}
-	body section .my_drame{
+
+	body section .my_drame {
 		padding: 20px;
 	}
-	body section .my_drame .my_drame_bot>div .my_drame_right{
+
+	body section .my_drame .my_drame_bot>div .my_drame_right {
 		height: 200px;
 		width: 100%;
 		display: block;
 	}
+
 	body section .imgList .imgList_cent>div {
 		width: calc((100% - 20px) / 2);
 		margin-right: 10px;
 		margin-bottom: 10px;
 	}
-	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left>div:last-child{
+
+	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left>div:last-child {
 		font-size: 14px;
 	}
+
 	body section .work_time>div .work_time_top>div:last-child {
 		margin-bottom: 0;
 	}
-	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left{
+
+	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left {
 		margin-right: 5px;
 	}
-	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right{
+
+	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right {
 		padding-left: 5px;
 	}
-	body section .work_time>div .work_time_bot{
+
+	body section .work_time>div .work_time_bot {
 		padding: 0 10px;
 	}
-	body section .work_time>div{
+
+	body section .work_time>div {
 		padding-bottom: 40px;
 	}
-	body header .header_nav div{
+
+	body header .header_nav div {
 		width: 120px;
 	}
 }
+
 @media only screen and (min-width: 320px) and (max-width: 414px) {
 	body header {
 		height: auto;
 	}
+
 	body header .title {
 		font-size: 20px;
 		line-height: 40px;
 	}
+
 	body header .header_nav div {
 		width: 100px;
 	}
+
 	body section .aboutBright {
 		width: 100%;
 		padding: 10px;
 	}
+
 	body section .aboutBright div:first-child {
 		font-size: 20px;
 	}
+
 	body section .imgList {
 		padding: 20px 0 !important;
 	}
+
 	body section .imgList .imgList_cent {
 		width: 100%;
 	}
+
 	body section .imgList .imgList_cent>div {
 		width: 100%;
 		margin-right: 0;
 		margin-bottom: 10px;
 	}
+
 	body section .my_drame {
 		width: 100%;
 		margin: 0 auto;
 		padding: 20px 0;
 	}
+
 	body section .my_drame .my_drame_top {
 		font-size: 20px;
 		padding: 0 0 10px 0;
 	}
+
 	body section .my_drame .my_drame_bot>div>div {
 		width: 100%;
 	}
+
 	body section .my_drame .my_drame_bot>div {
 		display: flex;
 		display: -webkit-flex;
 		flex-wrap: wrap;
 		margin-bottom: 10px;
 	}
+
 	body section .my_drame .my_drame_bot>div .my_drame_right {
 		height: 185px;
 		width: 100%;
 		display: block;
 		max-height: 300px;
 	}
+
 	body section .my_drame .my_drame_bot>div .my_drame_left a {
 		display: none;
 	}
+
 	body section .my_drame .my_drame_bot>div .my_drame_left {
 		padding: 0 10px;
 		margin-bottom: 10px;
 	}
+
 	body section .work_time {
 		padding: 20px 0;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_bot_center {
 		display: none;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left {
 		width: 100%;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right {
 		width: 100%;
 	}
-	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left>div:last-child{
+
+	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left>div:last-child {
 		font-size: 13px;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_left {
 		padding-right: 0;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_botCent>div .work_time_bot_right {
 		padding-left: 0;
 	}
+
 	body section .work_time>div .work_time_bot .work_time_botCent>div {
 		margin-bottom: 10px;
 	}
+
 	body section .work_time>div {
 		width: 100%;
 	}
+
 	body footer .nameRight {
 		font-size: 20px;
 	}
+
 	body footer {
 		padding: 20px 5px;
 	}
+
 	body footer a {
 		display: block;
 		width: 100%;
 		overflow: hidden;
 	}
+
 	body section .work_time>div .work_time_top>div:last-child {
 		margin-bottom: 0;
 		font-size: 20px;
@@ -541,6 +585,7 @@ body #toTop {
 		font-style: normal;
 		color: #000000;
 	}
+
 	body section .work_time>div .work_time_bot {
 		padding-bottom: 0;
 	}
