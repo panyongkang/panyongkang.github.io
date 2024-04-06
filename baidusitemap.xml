@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2020/04/01/Java%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
+    <lastmod>2024-04-06</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2020/04/01/Java%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/</loc>
+    <lastmod>2024-03-24</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2021/03/04/ES6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2024-03-17</lastmod>
   </url>
@@ -47,10 +55,6 @@
   <url>
     <loc>http://example.com/2020/04/15/Git%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</loc>
     <lastmod>2024-01-07</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/04/01/Java%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/</loc>
-    <lastmod>2023-08-13</lastmod>
   </url>
   <url>
     <loc>http://example.com/2020/06/01/Xshell/</loc>
