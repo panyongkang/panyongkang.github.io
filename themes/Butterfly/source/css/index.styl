@@ -1,0 +1,25 @@
+@import 'nib'
+@import '_third-party/normalize.min.css'
+// project
+@import 'var'
+@import '_global'
+@import '_highlight/highlight'
+@import '_layout/*'
+@import '_mode/*'
+
+// search
+if hexo-config('algolia_search.enable')
+  @import '_search/index'
+  @import '_search/algolia'
+
+if hexo-config('local_search') && hexo-config('local_search.enable')
+  @import '_search/index'
+  @import '_search/local-search'
+
+/**普通指针样式**/
+body 
+  cursor url('https://s3.ax1x.com/2020/12/17/r8TF0g.png'),default
+/**链接指针样式**/
+a 
+  &:hover 
+    cursor url('https://s3.ax1x.com/2020/12/17/r8TEkj.png'),pointer

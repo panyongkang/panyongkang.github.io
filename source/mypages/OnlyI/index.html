@@ -1,0 +1,88 @@
+
+<!-- saved from url=(0042)http://i.tianqi.com/index.php?c=code&id=12 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>天气预报代码调用</title>
+    <link href="./mobile.css" rel="stylesheet" type="text/css">
+    <!--[if IE 6]>
+    <script type="text/javascript" mce_src="DD_belatedPNG.js" src="https://static.tianqistatic.com/static/js/DD_belatedPNG.js"></script>
+    <script type="text/javascript">DD_belatedPNG.fix(".pngtqico");</script>
+    <![endif]-->
+    <script src="./hm.js"></script><script type="text/javascript" src="./jquery.min.js"></script>
+    <script type="text/javascript">
+        var color = bgcolor = bdcolor = site = icon = "";
+        var num = 0;
+        $(document).ready(function(){
+            init();
+
+            if (typeof(bgcolor) != 'undefined' && bgcolor != '') {
+                $("#mobile4").css('background-color', bgcolor);
+            }
+            if (typeof(bdcolor) != 'undefined' && bdcolor != '') {
+                $("#mobile4").css('border', '1px solid ' + bdcolor);
+            }
+            if (typeof(color) != 'undefined' && color != '') {
+                $("#mobile4 a").css('color', color);
+            }
+        });
+
+        function init(){
+            if(num==0) num=1;
+
+            for (var i=5; i > num; i--) {
+                $("#day_"+i).remove();
+            }
+
+            if (typeof(icon) != 'undefined' && icon != '') {
+                $("img.pngtqico").each(function(i){
+                    this.src = this.src.replace("tianqibig", icon);
+                });
+            }
+        }
+    </script>
+</head>
+
+<body marginwidth="0" marginheight="0" style="background-color:transparent;font-size: 12px">
+<div id="mobile4">
+    <div class="wtleft">
+        <div class="wtname"><a href="http://www.tianqi.com/data/html/code_city.php" title="修改城市"><strong style="line-height:18px; font-family:'微软雅黑';">贵阳</strong></a></div>
+        <div class="order"><a title="贵阳最近七天天气详情" href="https://www.tianqi.com/guiyang1/?tq" target="_blank" style=" font-family:'微软雅黑';">七日天气</a></div>
+    </div>
+
+    <a target="_blank" href="https://www.tianqi.com/guiyang1/?tq" title="晴">
+        <div class="wt" id="day_1">
+            <div class="wtpic"><img class="pngtqico" align="absmiddle" src="../img/tq.png" style="border:0;width:46px;height:46px"></div>
+            <div class="wt1">
+                <div class="wtline"><strong style="font-family:'微软雅黑';">今天</strong></div>
+                <div class="wtline" style="font-family:'微软雅黑';">-8～4℃</div>
+            </div>
+        </div>
+    </a>
+    <a target="_blank" href="http://lanzhou.tianqi.com/?tq" title="晴">
+        
+    </a>
+    <a target="_blank" href="http://lanzhou.tianqi.com/?tq" title="晴">
+        
+    </a>
+    <a target="_blank" href="http://lanzhou.tianqi.com/?tq" title="晴">
+        
+    </a>
+    <a target="_blank" href="http://lanzhou.tianqi.com/?tq" title="晴">
+        
+
+
+    </a>
+</div>
+<div style="display: none;">
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?86f43783acc56b0c8abb5bb039edc763";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script type="text/javascript" src="./z_stat.php"></script><script src="./core.php" charset="utf-8" type="text/javascript"></script><a href="https://www.cnzz.com/stat/website.php?web_id=1277635480" target="_blank" title="站长统计">站长统计</a>
+</div>
+<script type="text/javascript">num=0;temp=0;</script></body></html>

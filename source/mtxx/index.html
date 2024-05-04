@@ -1,0 +1,89 @@
+<!-- AOW_1.0_beta3 -->
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+    <meta name="format-detection" content="telephone=no" />
+    <title>美图秀秀</title>
+    <link rel="stylesheet" type="text/css" href="skin/style.css">
+    <!-- photoswipe样式库 -->
+    <link rel="stylesheet" type="text/css" href="js/lib/photoswipe/photoswipe.css"> 
+    <link rel="stylesheet" type="text/css" href="js/lib/photoswipe/default-skin/default-skin.css"> 
+    <!-- 收藏夹图标 -->
+    <link rel="shortcut icon" href="skin/fav_icon.ico" type="image/x-icon">
+    <link rel="icon" sizes="any" mask="" href="skin/fav_icon.svg">
+</head>
+<body>
+<!-- 我的信息, 请不要修改此标签 -->
+<div id="profile"></div>
+<!-- 我的作品, 请不要修改此标签 -->
+<div id="content">
+    <div class="decoration"></div>
+    <div id="gallery"></div>
+</div>
+<div id="log">
+    <h1>log</h1>
+</div>
+<!-- AOW项目地址, 请不要修改此标签 -->
+<div id="logo">
+    <a href="http://www.xyym.cf/" title="点击返回首页">
+        <div class="logo-QR">
+            <p class="text-body"><b>👏您的打赏是对我的肯定哦👏</b></p>
+            <p class="caption">支持微信、支付宝、QQ支付！</p>
+            <img src="https://img.imgdb.cn/item/6082e893d1a9ae528fe898c0.jpg"/>
+        </div>
+        <p class="logo-name subtitle">巴巴用钱打我</p>
+    </a>
+</div>
+<!-- 大图浮层, 使用photoswipe插件, 需要预置下方页面结构 -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 网站访问量统计 -->
+<script type="text/javascript" src="https://js.users.51.la/19899499.js"></script>
+<!-- 作品数据类 -->
+<script type="text/javascript" charset="UTF-8" src="myworks/data.js"></script>
+<!-- 引用库 -->
+<script type="text/javascript" charset="UTF-8" src="js/lib/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="js/lib/masonry.pkgd.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="js/lib/photoswipe/photoswipe.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="js/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+<script type="text/javascript" charset="UTF-8" src="js/lib/recommend.min.js"></script>
+<!-- 核心逻辑 -->
+<script type="text/javascript" charset="UTF-8" src="js/script.js"></script>
+</body>
+</html>

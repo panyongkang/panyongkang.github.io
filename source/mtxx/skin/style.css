@@ -1,0 +1,271 @@
+
+/*样式库定义开始*/
+/*CSS变量定义, root必须始终置于第一位*/
+:root {
+    /*文字样式*/
+    --font-family-base: "Helvetica Neue", Helvetica, Tahoma, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; 
+    --line-height-base: 1.2;
+    --letter-spacing-base: 0.04rem;
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+    --font-extra-bold: 800;
+
+    /*颜色板*/
+    /*一级颜色*/
+    --color-primary: #1E2025;
+    --color-gray-100: #F5F5F5;
+    --color-gray-300: #E0E0E0;
+    /*二级颜色*/
+    --color-primary-foreground: WHITE;
+    --color-primary-background: var(--color-primary);
+    /*三级颜色*/
+    --color-text-profile: var(--color-primary-foreground);
+    --color-text-logo: WHITE;
+    --color-page-background: var(--color-gray-100);
+}
+
+/*字体样式定义*/
+.title {
+    font-family: var(--font-family-base);
+    font-size: 2.4rem;
+    line-height: var(--line-height-base);
+    font-weight: var(--font-extra-bold);
+    letter-spacing: var(--letter-spacing-base);
+}
+
+.subtitle {
+    font-family: var(--font-family-base);
+    font-size: 1.2rem;
+    line-height: 1;
+    font-weight: var(--font-medium);
+    letter-spacing: var(--letter-spacing-base);
+}
+
+.text-body {
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: var(--line-height-base);
+    font-weight: var(--font-light);
+    letter-spacing: var(--letter-spacing-base);
+}
+
+.caption {
+    font-family: var(--font-family-base);
+    font-size: 0.8rem;
+    line-height: var(--line-height-base);
+    font-weight: var(--font-light);
+    letter-spacing: var(--letter-spacing-base);
+}
+
+/*动画样式定义, 从元素样式中分离以便复用*/
+/*作品加载动画, 向上浮动效果
+ *动画有延时, 所以需要在样式表中放置初始化状态，而不能在执行开始的时候
+ *forwards: 元素样式会停留在动画结束状态, 这会导致元素hover态无法改变transform属性
+ */
+.animate-up {
+    opacity: 0;
+    transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    animation: moveUp 0.65s ease forwards;
+    -webkit-animation: moveUp 0.65s ease forwards;
+}
+@keyframes moveUp {
+    0% {}
+    100% { transform: translateY(0); opacity: 1; }
+}
+@-webkit-keyframes moveUp {
+    0% {}
+    100% { -webkit-transform: translateY(0); opacity: 1; }
+}
+
+.animate-delay-1 {
+    animation-delay: 0.1s;
+}
+.animate-delay-2 {
+    animation-delay: 0.2s;
+}
+.animate-delay-3 {
+    animation-delay: 0.3s;
+}
+.animate-delay-4 {
+    animation-delay: 0.4s;
+}
+/*样式库定义结束*/
+
+/*全局属性*/
+*{
+    /*去除边距*/
+    margin: 0 ;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-size: 100%;
+    background-color: var(--color-page-background);
+}
+
+/*日志*/
+#log {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: WHITE;
+    display: none;
+}
+
+/*设计师资料*/
+#profile {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: var(--color-primary-background);
+}
+
+#my-name {
+    color: var(--color-text-profile);
+    margin-bottom: 0.8rem;
+}
+
+#my-tag span{
+    color: var(--color-text-profile);
+    margin: 0.2rem 0.4rem;
+    display: inline-block;
+}
+
+#my-phone {
+    display: inline-block;
+    color: var(--color-text-profile);
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: opacity .15s;
+}
+
+#my-phone:hover {
+    opacity: 0.5;
+}
+
+#my-phone:active {
+    opacity: 0.2;
+}
+
+#my-phone svg {
+    width: 0.8rem;
+    height: 0.8rem;
+    vertical-align: baseline;
+    margin-right: 0.1rem;
+    fill: currentColor;
+}
+
+/*作品展示*/
+#content {
+    position: relative;
+    padding: 0.6rem;
+    background-color: var(--color-page-background);
+}
+
+#content .decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12rem;
+    background-color: var(--color-primary-background);
+}
+
+#gallery {}
+
+.gallery-item {
+    /*width: calc(33.33% - 1.2rem);*/
+    width: 33.33%;
+    padding: 0.6rem;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.gallery-item .img-wrapper{
+    width: 100%;
+    border-radius: 0.625rem;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--color-gray-300);
+
+    /*元素状态变化动画*/
+    transition: transform .15s, box-shadow .3s, filter .15s;
+    -webkit-transition: -webkit-transform .15s, box-shadow .3s, filter .15s;
+}
+
+.gallery-item .img-wrapper:hover {
+    transform: translateY(-0.4rem);
+    -webkit-transform: translateY(-0.4rem);
+    box-shadow: 0 0.6rem 1rem rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.gallery-item .img-wrapper:active {
+    filter: contrast(130%) brightness(0.5);
+}
+
+.gallery-item img {
+    /*消除inline造成的4px下边距*/
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*适配小窗口*/
+@media screen and (max-width: 900px) {
+    .gallery-item {
+        width: 50%;
+    }
+}
+
+/*适配移动端*/
+@media screen and (max-width: 400px) {
+    .gallery-item {
+        width: 100%;
+    }
+}
+
+/*底部logo*/
+#logo {
+    position: fixed;
+    bottom: 0.8rem;
+    right: 1.6rem;
+    text-align: right;
+}
+
+#logo a {
+    text-decoration: none;
+}
+
+.logo-QR {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 0.625rem;
+    margin-bottom: 0.8rem;
+}
+
+.logo-QR p{
+    color: var(--color-text-logo);
+    padding-bottom: 0.4rem;
+}
+
+.logo-QR img {
+    width: 11rem;
+    height: 11rem;
+}
+
+.logo-name {
+    color: var(--color-text-logo);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    -webkit-text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    cursor: help;
+}
