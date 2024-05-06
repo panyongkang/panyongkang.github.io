@@ -1,8 +1,7 @@
 title: Hexo博客恢复笔记
 author: PanXiaoKang
-top: true
-cover: >-
-  https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&fm=26&gp=0.jpg
+top: false
+cover: https://pic.imgdb.cn/item/6638eeca0ea9cb14035bbfe7.gif
 tags:
 
   - hexo恢复
