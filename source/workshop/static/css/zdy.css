@@ -1,0 +1,63 @@
+.flame-text {
+    color: #ffcc00;
+    /* 基本文字颜色 */
+    font-size: 48px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+    /* 平滑过渡效果 */
+}
+
+.flame-text:hover {
+    -webkit-animation: flameAnimation 1s infinite alternate;
+    animation: flameAnimation 1s infinite alternate;
+}
+
+.flame-text:hover:before,
+.flame-text:hover:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ff7000;
+    /* 蓝色阴影颜色 */
+    -webkit-text-stroke: 2px #ff7000;
+    /* 描边颜色，增加火焰的立体感 */
+}
+
+.flame-text:hover:before {
+    -webkit-filter: blur(0.1em);
+    filter: blur(0.1em);
+    z-index: -1;
+}
+
+.flame-text:hover:after {
+    -webkit-filter: blur(0.2em);
+    filter: blur(0.2em);
+    z-index: -2;
+}
+
+@-webkit-keyframes flameAnimation {
+    50% {
+        text-shadow:
+            0 0 2px #ff9900,
+            0 -2px 2px #ff8000,
+            1px -5px 3px #ff7000,
+            -1px -10px 6px #ee1f06,
+            1px -15px 10px #ee1f06,
+            0 -20px 15px #ee1f06;
+    }
+}
+
+@keyframes flameAnimation {
+    50% {
+        text-shadow:
+            0 0 2px #ff9900,
+            0 -2px 2px #ff8000,
+            1px -5px 3px #ff7000,
+            -1px -10px 6px #ee1f06,
+            1px -15px 10px #ee1f06,
+            0 -20px 15px #ee1f06;
+    }
+}
