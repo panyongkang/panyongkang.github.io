@@ -1,0 +1,226 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BootStrap框架 | 向阳榆木</title><meta name="description" content="BootStrap框架"><meta name="keywords" content="BootStrap"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="BootStrap框架"><meta name="twitter:description" content="BootStrap框架"><meta name="twitter:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3148263595,2673588162&amp;fm=26&amp;gp=0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="BootStrap框架"><meta property="og:url" content="http://example.com/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="BootStrap框架"><meta property="og:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3148263595,2673588162&amp;fm=26&amp;gp=0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/"><link rel="prev" title="前后端分离项目" href="http://example.com/2020/04/17/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/"><link rel="next" title="百脑科技商城项目" href="http://example.com/2020/04/16/%E7%99%BE%E8%84%91%E7%A7%91%E6%8A%80%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">84</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">160</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/SimpleNav/SimpleNav.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 简单导航</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://liuxiangyang.space/game2/" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 相册集</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D照片屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 生活相册</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bootstrap笔记"><span class="toc-number">1.</span> <span class="toc-text">Bootstrap笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrap表格"><span class="toc-number">1.1.</span> <span class="toc-text">Bootstrap表格</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrap表单"><span class="toc-number">1.2.</span> <span class="toc-text">Bootstrap表单</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表单布局有下列三种"><span class="toc-number">1.2.1.</span> <span class="toc-text">表单布局有下列三种</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#垂直或基本表单"><span class="toc-number">1.2.2.</span> <span class="toc-text">垂直或基本表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内联表单"><span class="toc-number">1.2.3.</span> <span class="toc-text">内联表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#水平表单"><span class="toc-number">1.2.4.</span> <span class="toc-text">水平表单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BootStrap表单控件"><span class="toc-number">1.2.5.</span> <span class="toc-text">BootStrap表单控件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrap信息提示框"><span class="toc-number">1.3.</span> <span class="toc-text">Bootstrap信息提示框</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrap按钮"><span class="toc-number">1.4.</span> <span class="toc-text">Bootstrap按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootsrap辅助类"><span class="toc-number">1.5.</span> <span class="toc-text">Bootsrap辅助类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BootStrap字体图标"><span class="toc-number">1.6.</span> <span class="toc-text">BootStrap字体图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BootStrap分页"><span class="toc-number">1.7.</span> <span class="toc-text">BootStrap分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bootstrap-模态框（Modal）"><span class="toc-number">1.8.</span> <span class="toc-text">Bootstrap 模态框（Modal）</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3148263595,2673588162&amp;fm=26&amp;gp=0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/SimpleNav/SimpleNav.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 简单导航</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://liuxiangyang.space/game2/" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 相册集</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D照片屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 生活相册</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">BootStrap框架</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-04-17 14:59:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-04-17</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-11-22 15:42:53"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-11-22</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="Bootstrap笔记"><a href="#Bootstrap笔记" class="headerlink" title="Bootstrap笔记"></a>Bootstrap笔记</h2><h3 id="Bootstrap表格"><a href="#Bootstrap表格" class="headerlink" title="Bootstrap表格"></a>Bootstrap表格</h3><p>表格&lt; table &gt;类：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.table</td>
+<td>添加基本样式，只有横向分隔线</td>
+</tr>
+<tr>
+<td>.table-striped</td>
+<td>添加斑马条纹</td>
+</tr>
+<tr>
+<td>.table-bordered</td>
+<td>为所有单元格添加边框</td>
+</tr>
+<tr>
+<td>.table-hover</td>
+<td>启用鼠标悬停状态</td>
+</tr>
+<tr>
+<td>.table-condensed</td>
+<td>让表格更加紧凑</td>
+</tr>
+</tbody></table>
+<p>上下文&lt; tr &gt; , &lt; th &gt; 和 &lt; td &gt; 类：</p>
+<p>下表中的类可用于表格的行或单元格：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.active</td>
+<td>将悬停的颜色应用在行或单元格上</td>
+</tr>
+<tr>
+<td>.success</td>
+<td>表示成功的操作</td>
+</tr>
+<tr>
+<td>.info</td>
+<td>表示信息变化的操作</td>
+</tr>
+<tr>
+<td>.warning</td>
+<td>表示警告操作</td>
+</tr>
+<tr>
+<td>.danger</td>
+<td>表示危险操作</td>
+</tr>
+</tbody></table>
+<p>使用上下文类可以为表格的行或列添加背景颜色：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="hexo_post_1.png"  alt=""></p>
+<h3 id="Bootstrap表单"><a href="#Bootstrap表单" class="headerlink" title="Bootstrap表单"></a>Bootstrap表单</h3><h4 id="表单布局有下列三种"><a href="#表单布局有下列三种" class="headerlink" title="表单布局有下列三种"></a>表单布局有下列三种</h4><ol>
+<li>垂直表单（默认）</li>
+<li>内联表单</li>
+<li>水平表单</li>
+</ol>
+<h4 id="垂直或基本表单"><a href="#垂直或基本表单" class="headerlink" title="垂直或基本表单"></a>垂直或基本表单</h4><p>​    基本的表单结构是 Bootstrap 自带的，个别的表单控件自动接收一些全局样式。</p>
+<ol>
+<li><p>向父 &lt; form&gt; 元素添加 role=”form”。</p>
+</li>
+<li><p>form-group类，用于获取最佳间距的。</p>
+</li>
+<li><p>向所有的文本元素 &lt; input&gt;、&lt; textarea&gt; 和 &lt; select&gt; 添加 class =”form-control”用于统一格式化 。</p>
+</li>
+</ol>
+<h4 id="内联表单"><a href="#内联表单" class="headerlink" title="内联表单"></a>内联表单</h4><p>​    所有内联表单中的元素都是左对齐的。内联表单需要在 &lt; form&gt; 元素上添加 .form-inline类。</p>
+<p>注意：在屏幕宽度小于 576px 时为垂直堆叠，如果屏幕宽度大于等于576px时表单元素才会显示在同一个水平线上。</p>
+<p>​    class=”sr-only”:隐藏内联表单的标签</p>
+<h4 id="水平表单"><a href="#水平表单" class="headerlink" title="水平表单"></a>水平表单</h4><p>​    水平表单与其他表单不仅标记的数量上不同，而且表单的呈现形式也不同。如需创建一个水平布局的表单，请按下面的几个步骤进行：</p>
+<ol>
+<li><p>向父 &lt; form&gt; 元素添加 class .form-horizontal。</p>
+</li>
+<li><p>把标签和控件放在一个带有 class .form-group 的 &lt; div&gt; 中。</p>
+</li>
+<li><p>向标签添加 class .control-label，用于向右边输入框右对齐。</p>
+</li>
+</ol>
+<h4 id="BootStrap表单控件"><a href="#BootStrap表单控件" class="headerlink" title="BootStrap表单控件"></a>BootStrap表单控件</h4><p>Bootstrap 支持最常见的表单控件，主要是 input、textarea、checkbox、radio 和 select。</p>
+<p>Textarea：当您需要进行多行输入的时，可以使用。rows 属性可以改变行数</p>
+<p>Select: 使用 multiple=”multiple” 允许用户选择多个选项。</p>
+<p>静态控件：当您需要在一个水平表单内的表单标签后放置纯文本时，请在 &lt; p&gt; 上使用 class .form-control-static。</p>
+<p>验证状态:</p>
+<p>Bootstrap 包含了错误、警告和成功消息的验证样式。只需要对父元素简单地添加适当的 class（.has-warning、 .has-error 或 .has-success）即可使用验证状态。</p>
+<h3 id="Bootstrap信息提示框"><a href="#Bootstrap信息提示框" class="headerlink" title="Bootstrap信息提示框"></a>Bootstrap信息提示框</h3><p>提示框可以使用.alert类，后面加上：</p>
+<p>.alert-success, .alert-info, .alert-warning, .alert-danger, .alert-primary, .alert-secondary, .alert-light 或 .alert-dark 类来实现:</p>
+<p>方法：</p>
+<p>​    .alert:方法让所有的警告框都带有关闭功能</p>
+<p>​    .close:关闭警告框的样式</p>
+<p>​    .alert(‘close’):js中使用它可以关闭所有警告框</p>
+<h3 id="Bootstrap按钮"><a href="#Bootstrap按钮" class="headerlink" title="Bootstrap按钮"></a>Bootstrap按钮</h3><p>按钮标签：</p>
+<p>您可以在 &lt; a&gt;、&lt; button&gt; 或 &lt; input&gt; 元素上使用按钮 class。但是建议您在 &lt; button&gt; 元素上使用按钮 class，避免跨浏览器的不一致性问题。</p>
+<p>按钮组</p>
+<p>在 div 中直接使用 .btn-group 可以创建按钮组</p>
+<p>自适应大小的按钮组</p>
+<p>可以通过 .btn-group-justified 类来设置自适应大小的按钮组。</p>
+<p>data-toggle=”dropdown”：按钮组内嵌的按钮可以设置下拉菜单</p>
+<h3 id="Bootsrap辅助类"><a href="#Bootsrap辅助类" class="headerlink" title="Bootsrap辅助类"></a>Bootsrap辅助类</h3><p>aria-hidden=”true” 主要是帮助残障人士（如失明）使用识读设备（自动读取内容并自动播放出来），播放到带此属性的内容时会自动跳过，以免残障人士混淆！</p>
+<h3 id="BootStrap字体图标"><a href="#BootStrap字体图标" class="headerlink" title="BootStrap字体图标"></a>BootStrap字体图标</h3><p>在新增按钮中：class=”glyphicon glyphicon-plus”：glyphicon使之变粗大，glyphicon-plus：字体图标“+”</p>
+<h3 id="BootStrap分页"><a href="#BootStrap分页" class="headerlink" title="BootStrap分页"></a>BootStrap分页</h3><p>.pagination:添加该类来在页面上显示分页</p>
+<p>.disabled:不可点击链接</p>
+<p>.active:指示当前页面</p>
+<p>.pagination-lg:分页放大</p>
+<p>.pagination-sm：分页缩小</p>
+<p>Html的转义字符：</p>
+<p>​    &amp;laquo:代表“&lt;&lt;”符号</p>
+<p>​    &amp;raquo:代表”&gt;&gt;”符号</p>
+<p>​    人民币/日元：&yen;</p>
+<p>​    版权： &amp; copy;</p>
+<h3 id="Bootstrap-模态框（Modal）"><a href="#Bootstrap-模态框（Modal）" class="headerlink" title="Bootstrap 模态框（Modal）"></a>Bootstrap 模态框（Modal）</h3><p>模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/">http://example.com/2020/04/17/BootStrap%E6%A1%86%E6%9E%B6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/BootStrap/">BootStrap</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/6666f0815e6d1bfa054db658.png" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/17/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE/"><img class="prev_cover lazyload" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2533269724,3550129297&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前后端分离项目</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/16/%E7%99%BE%E8%84%91%E7%A7%91%E6%8A%80%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E7%A8%8B%E5%BA%8F%E5%91%98.gif" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">百脑科技商城项目</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/15/部门信息管理系统项目/" title="员工信息管理系统项目"><img class="relatedPosts_cover lazyload"data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3283711681,1736793186&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-15</div><div class="relatedPosts_title">员工信息管理系统项目</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>
