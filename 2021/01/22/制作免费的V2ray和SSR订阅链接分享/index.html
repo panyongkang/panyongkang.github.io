@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>制作免费的V2ray和SSR订阅链接分享 | 向阳榆木</title><meta name="description" content="制作免费的V2ray和SSR订阅链接分享"><meta name="keywords" content="SSR,订阅地址,v2ray"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="制作免费的V2ray和SSR订阅链接分享"><meta name="twitter:description" content="制作免费的V2ray和SSR订阅链接分享"><meta name="twitter:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1926508069,3948585021&amp;fm=26&amp;gp=0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="制作免费的V2ray和SSR订阅链接分享"><meta property="og:url" content="http://example.com/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="制作免费的V2ray和SSR订阅链接分享"><meta property="og:image" content="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1926508069,3948585021&amp;fm=26&amp;gp=0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/"><link rel="prev" title="给博客添加豆瓣插件" href="http://example.com/2021/02/03/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%B1%86%E7%93%A3%E6%8F%92%E4%BB%B6/"><link rel="next" title="Butterfly主题配置Valine评论及邮件提醒" href="http://example.com/2021/01/21/Butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEValine%E8%AF%84%E8%AE%BA%E5%8F%8A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">84</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">160</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/SimpleNav/SimpleNav.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 简单导航</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://liuxiangyang.space/game2/" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 相册集</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D照片屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 生活相册</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简介"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用OneDrive网盘制作订阅链接"><span class="toc-number">2.</span> <span class="toc-text">利用OneDrive网盘制作订阅链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GitHub托管V2ray订阅方法"><span class="toc-number">3.</span> <span class="toc-text">GitHub托管V2ray订阅方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSR的订阅制作方法"><span class="toc-number">4.</span> <span class="toc-text">SSR的订阅制作方法</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1926508069,3948585021&amp;fm=26&amp;gp=0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/SimpleNav/SimpleNav.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 简单导航</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://liuxiangyang.space/game2/" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 相册集</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D照片屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 生活相册</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">制作免费的V2ray和SSR订阅链接分享</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-01-22 20:23:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-01-22</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2024-07-01 21:32:35"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2024-07-01</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E9%BB%91%E6%8A%80%E8%83%BD/">黑技能</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>制作免费的订阅链接的目的是为了筛选一些延迟速度比较低的服务器地址，这里选择延迟在30ms以下的用来制作订阅链接分享。制作完成后就可以分享给其他小伙伴使用了，也是为了给自己备份，以防万一。</p>
+<h2 id="利用OneDrive网盘制作订阅链接"><a href="#利用OneDrive网盘制作订阅链接" class="headerlink" title="利用OneDrive网盘制作订阅链接"></a>利用OneDrive网盘制作订阅链接</h2><ul>
+<li>首先打开V2rayN.exe软件，选择几个网络比较好的节点，右键“批量导出订阅内容至剪贴板”，如图：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E6%89%B9%E9%87%8F%E5%AF%BC%E5%87%BA%E8%AE%A2%E9%98%85.png"  alt="img" title="批量导出订阅.png"></p>
+<ul>
+<li><p>桌面新建一个“订阅分享.txt”文件，将导出的订阅内容复制过去进行保存。</p>
+</li>
+<li><p>打开<a href="https://onedrive.live.com/" target="_blank" rel="noopener">OneDrive</a>,上传“订阅分享.txt”文件到自己的OneDrive空间。</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6.png"  alt="" title="上传文件.png"></p>
+</li>
+<li><p>上传后右键点击该文件，选择“共享”，弹出如下图：</p>
+</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E5%8F%B3%E9%94%AE%E5%85%B1%E4%BA%AB.png"  alt="" title="右键共享.png"></p>
+<ul>
+<li>点击“拥有链接的人员都可查看”，进入如下页面：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E5%8F%96%E6%B6%88%E5%85%81%E8%AE%B8%E7%BC%96%E8%BE%91.png"  alt="" title="取消允许编辑.png"></p>
+<ul>
+<li>点击取消允许编辑，然后点击应用，返回下图：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E7%82%B9%E5%87%BB%E5%A4%8D%E5%88%B6%E9%93%BE%E6%8E%A5.png"  alt="" title="点击复制链接.png"></p>
+<ul>
+<li>点击“复制链接”，复制URL，然后再打开<a href="https://onedrive.gimhoy.com/" target="_blank" rel="noopener">OneDrive直链获取工具</a>,因为OneDrive生成的URL无法直接加入订阅使用，因此需要进行转换。</li>
+<li>将复制的URL粘贴进去，文件的拓展名选择mp3格式，点击”获取”按钮，即可生成永久链接，如图：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E7%94%9F%E6%88%90%E5%A4%96%E9%93%BE.png"  alt="" title="生成外链.png"></p>
+<ul>
+<li>将永久链接生成的链接URL的后缀名.mp3删除，就能得到一个完整的订阅链接了,URL如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;onedrive.gimhoy.com&#x2F;1drv&#x2F;aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ204d3BjSVhDanNnNHRuV2VyWDNxWk9BM0JBcUE&#x3D;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接下来打开V2ray.exe程序，点击“订阅设置”，将其粘贴进去再点击“确定”按钮，然后点击“更新订阅”就能刷新出刚才制作的订阅链接的节点了，如图所示：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E8%AE%A2%E9%98%85%E8%AE%BE%E7%BD%AE.png"  alt="" title="订阅设置.png"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E6%9B%B4%E6%96%B0%E8%AE%A2%E9%98%85.png"  alt="" title="更新订阅.png"></p>
+<h2 id="GitHub托管V2ray订阅方法"><a href="#GitHub托管V2ray订阅方法" class="headerlink" title="GitHub托管V2ray订阅方法"></a>GitHub托管V2ray订阅方法</h2><ul>
+<li>首先登录<a href="https://github.com/" target="_blank" rel="noopener">GitHub官网</a>,小白没有注册，只需要一个邮箱就能注册使用。</li>
+<li>新建一个仓库：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93.png"  alt="" title="新建仓库.png"></p>
+<ul>
+<li>仓库名称和说明可随意，公开或私人的都行，然后点击“创建仓库”按钮。</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93.png"  alt="" title="创建仓库.png"></p>
+<ul>
+<li>进入如下界面，再点击“创建新文件”。</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E5%88%9B%E5%BB%BA%E6%96%B0%E6%96%87%E4%BB%B6.png"  alt="" title="创建新文件.png"></p>
+<ul>
+<li>文件名随意，最好都是在英文状态下进行，防止出错，粘贴的内容就是在V2ray.exe程序中右键“批量导出订阅内容至剪贴板”的内容。</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E6%96%87%E4%BB%B6%E5%90%8D.png"  alt="" title="文件名.png"></p>
+<ul>
+<li>最后点击“Commit new file”,生成该文件,再点击“Go to file”,再进入该文件找到“Raw”按钮。</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="Go.png"  alt="" title="Go.png"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="Raw.png"  alt="" title="Raw.png"></p>
+<ul>
+<li>点击“Raw”按钮，进入到该界面，上面的URL链接就是可直接使用的订阅地址链接了，不需要再进行转换：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E8%AE%A2%E9%98%85%E7%BD%91%E5%9D%80.png"  alt="" title="订阅网址.png"></p>
+<h2 id="SSR的订阅制作方法"><a href="#SSR的订阅制作方法" class="headerlink" title="SSR的订阅制作方法"></a>SSR的订阅制作方法</h2><ul>
+<li>方法与上面类似，先打开SSR.exe程序，右键选择“服务器连接统计”：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E7%BB%9F%E8%AE%A1.png"  alt="" title="服务器连接统计.png"></p>
+<ul>
+<li>选择“导出”，点击“复制所有节点链接”:</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E5%A4%8D%E5%88%B6%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9%E9%93%BE%E6%8E%A5.png"  alt="" title="复制所有节点链接.png"></p>
+<ul>
+<li>将复制的SSR节点链接进行<a href="https://tool.oschina.net/encrypt?type=3" target="_blank" rel="noopener">BASE64编码转换</a>：</li>
+</ul>
+<p><img src="/img/loading.gif" class="lazyload" data-src="%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86.png"  alt="" title="编码加密.png"></p>
+<ul>
+<li>加密转换后的编码就是订阅源（内容），和右键“批量导出订阅内容至剪贴板”的是一样的编码，后面的步骤与上面的一模一样，将编码存放在OneDrive或Github都行。</li>
+</ul>
+<p>以上笔记均为实践后进行整理，不用每个节点挨个输入，既方便分享又能进行备份，有不懂的可以访问<a href="https://www.youtube.com/watch?v=4SpbyqkBRVQ" target="_blank" rel="noopener">工具大师视频教程</a>或评论留言给我哦！</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/">http://example.com/2021/01/22/%E5%88%B6%E4%BD%9C%E5%85%8D%E8%B4%B9%E7%9A%84V2ray%E5%92%8CSSR%E8%AE%A2%E9%98%85%E9%93%BE%E6%8E%A5%E5%88%86%E4%BA%AB/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SSR/">SSR</a><a class="post-meta__tags" href="/tags/%E8%AE%A2%E9%98%85%E5%9C%B0%E5%9D%80/">订阅地址</a><a class="post-meta__tags" href="/tags/v2ray/">v2ray</a></div><div class="post_share"><div class="social-share" data-image="https://pic.imgdb.cn/item/6666f0815e6d1bfa054db658.png" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/02/03/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%B1%86%E7%93%A3%E6%8F%92%E4%BB%B6/"><img class="prev_cover lazyload" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2577387793,2408896756&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">给博客添加豆瓣插件</div></div></a></div><div class="next-post pull_right"><a href="/2021/01/21/Butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEValine%E8%AF%84%E8%AE%BA%E5%8F%8A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92/"><img class="next_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Butterfly主题配置Valine评论及邮件提醒</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

@@ -1,0 +1,20 @@
+*{ cursor:url('https://img.imgdb.cn/item/60697b638322e6675c5e7e25.png'),auto;}
+a:hover {  cursor: url('https://img.imgdb.cn/item/6065fb418322e6675c282194.png'), pointer !important;
+}
+
+.h2_center{
+	text-align:center;
+	font-size: 25px;
+    color: #05c81d;
+}
+
+#main{  
+text-align: center;  
+font-size:1.5em;  
+padding-top: 15px;  
+}  
+
+.h3_styl{
+	margin-top: 20px;
+    color: #f60808;
+}
