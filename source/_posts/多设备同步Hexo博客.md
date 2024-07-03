@@ -131,9 +131,45 @@ hexo s
 
 执行以上指令后，便可以在浏览器通过http://localhost:4000/访问博客
 
-3.另一台电脑发布文章
+**问题记录：**
 
-写好文章后,执行Hexo命令：
+错误：npm ERR! reason: certificate has expired（淘宝镜像过期）
+
+执行 npm i 报错是因为淘宝证书过期的原因，以下是两种解决方案。
+
+一、执行下面两个命令再进行npm install
+
+```
+npm cache clean --force
+npm config set strict-ssl false
+```
+
+npm cache clean --force
+
+这个命令用于清除 npm 的缓存。npm 在安装包时会将下载的包缓存到本地，以便下次使用时可以直接从缓存中获取，加快安装速度。使用 npm cache clean 可以清除缓存，而 --force 参数表示强制清除缓存，即使有其他进程正在使用缓存。
+
+npm config set strict-ssl false
+
+用于配置 npm 的 SSL 严格模式。默认情况下，npm 在下载包时会验证 SSL 证书的有效性，以确保安全性。通过设置 strict-ssl 为 false，可以禁用 SSL 严格模式，允许使用自签名或无效的 SSL 证书进行下载，此方法就会忽略淘宝证书过期
+
+二、直接更换镜像源
+
+```
+npm config set registry https://registry.npmmirror.com // 设置镜像源
+npm config get registry // 查看镜像源
+```
+
+也可以选择其他镜像源
+
+腾讯：http://mirrors.cloud.tencent.com/npm/
+
+华为：https://mirrors.huaweicloud.com/repository/npm/
+
+中科大：https://registry.npmjs.org/
+
+阿里：https://npm.aliyun.com/
+
+3.写好文章后,执行Hexo命令进行发布：
 
 ```
 hexo clean
