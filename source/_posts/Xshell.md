@@ -4,10 +4,12 @@ author: PanXiaoKang
 cover: https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3085989673,336141428&fm=115&gp=0.jpg
 
 tags:
+
   - Xshell
 categories:
   - Linux
 date: 2020-06-01 16:30:00
+
 ---
 
 ## Xshell常用命令整理
@@ -208,8 +210,8 @@ sed -n ‘/2019-10-22 10:44/,/2019-10-22 10:47/p’ common.log
 * .gz压缩包解压命令：gunzip -d filename
 * .gz压缩包压缩命令：gzip filename
 * :q：强制退出
-* ：wq:保存退出（一般不用）
-* ：w:保存
+* :wq:保存退出
+* :w:保存
 * 定位查询：？+查询的信息
 * shift+G:到最后一行
 * ctrl+B:向上
