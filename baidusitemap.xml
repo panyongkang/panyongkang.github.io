@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2020/04/23/%E6%AF%8F%E5%A4%A9%E4%B8%80%E4%B8%AA%E8%84%B1%E5%8F%91%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2024-08-04</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2024/07/30/UI%E7%BB%84%E4%BB%B6%E5%B0%81%E8%A3%85/</loc>
+    <lastmod>2024-08-04</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2020/06/25/%E7%90%86%E8%B4%A2%E6%8A%95%E8%B5%84%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2024-08-01</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2024/04/20/TypeScript%E5%85%A5%E9%97%A8%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2024-08-01</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2024/07/26/Web%E7%BD%91%E9%A1%B5%E4%BC%98%E5%8C%96%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-07-28</lastmod>
   </url>
@@ -11,10 +27,6 @@
   <url>
     <loc>http://example.com/2020/09/12/%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E8%B4%AD%E4%B9%B0%E6%94%BB%E7%95%A5/</loc>
     <lastmod>2024-07-21</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/06/25/%E7%90%86%E8%B4%A2%E6%8A%95%E8%B5%84%E5%AE%9E%E8%B7%B5%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-07-20</lastmod>
   </url>
   <url>
     <loc>http://example.com/2020/06/01/Xshell/</loc>
@@ -98,10 +110,6 @@
   </url>
   <url>
     <loc>http://example.com/2020/06/25/%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%B8%B8%E8%AF%86/</loc>
-    <lastmod>2024-07-01</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/04/23/%E6%AF%8F%E5%A4%A9%E4%B8%80%E4%B8%AA%E8%84%B1%E5%8F%91%E5%B0%8F%E6%8A%80%E5%B7%A7/</loc>
     <lastmod>2024-07-01</lastmod>
   </url>
   <url>
@@ -202,10 +210,6 @@
   </url>
   <url>
     <loc>http://example.com/2020/04/21/Typora-MarkDown%E5%B8%B8%E7%94%A8%E8%AF%AD%E6%B3%95/</loc>
-    <lastmod>2024-07-01</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2024/04/20/TypeScript%E5%85%A5%E9%97%A8%E6%95%B4%E7%90%86/</loc>
     <lastmod>2024-07-01</lastmod>
   </url>
   <url>

@@ -233,3 +233,99 @@ function set_scroll() {
     sleft = 0;
   }
 }
+
+// 调皮的小球人
+document.addEventListener('DOMContentLoaded', () => {
+  // 获取球和重置按钮的 DOM 元素
+  const ball = document.getElementById('ball');
+  const resetButton = document.getElementById('resetButton');
+  
+  // 获取球的直径，并初始化球的位置、速度和其他动画相关参数
+  const ballDiameter = ball.clientWidth;
+  // let posX = window.innerWidth - ballDiameter; // 初始横坐标位置（球靠右）
+  let posX = 0; // 初始横坐标位置（球靠左）
+  let posY = 0; // 初始纵坐标位置（球在顶部）
+  let velocityX = 0; // 初始横向速度
+  let velocityY = 2; // 初始纵向速度
+  let rotation = 0; // 初始旋转角度
+  const rotationSpeed = 5; // 每帧旋转的角度
+  let gravity = 0.5; // 重力加速度
+  let bounceFactor = 0.7; // 弹跳因子（决定反弹后的速度）
+  const maxHeight = window.innerHeight / 3; // 最大高度限制（球的反弹区域）
+  let isFreeMoving = false; // 标记球是否自由移动
+
+  function bounce() {
+    if (isFreeMoving) {
+      // 如果球是自由移动状态，更新球的位置
+      posX += velocityX;
+      posY += velocityY;
+
+      // 检测球是否碰到左右墙壁，如果碰到，则反向速度
+      if (posX <= 0 || posX + ballDiameter >= window.innerWidth) {
+        velocityX = -velocityX;
+      }
+
+      // 检测球是否碰到上下墙壁，如果碰到，则反向速度
+      if (posY <= 0 || posY + ballDiameter >= window.innerHeight) {
+        velocityY = -velocityY;
+      }
+    } else {
+      // 如果球不是自由移动状态，模拟重力效果
+      velocityY += gravity;
+      posY += velocityY;
+
+      // 如果球达到最大高度限制，则反弹并减小速度
+      if (posY >= maxHeight) {
+        posY = maxHeight;
+        velocityY = -velocityY * bounceFactor;
+      }
+      
+      // 如果球在顶部以上，则限制位置和速度
+      if (posY < 0) {
+        posY = 0;
+        velocityY = 0;
+      }
+    }
+
+    // 更新球的位置
+    ball.style.left = `${posX}px`;
+    ball.style.top = `${posY}px`;
+
+    // 旋转球
+    rotation += rotationSpeed;
+    ball.style.transform = `rotate(${rotation}deg)`;
+
+    // 请求下一帧动画
+    requestAnimationFrame(bounce);
+  }
+
+  function resetPosition() {
+    // 重置球的位置、速度和状态
+    posX = 0;
+    posY = 0;
+    velocityX = 0;
+    velocityY = 2;
+    isFreeMoving = false;
+    resetButton.style.display = 'none'; // 隐藏重置按钮
+  }
+
+  // 给球添加点击事件，点击后使球自由移动并显示重置按钮
+  ball.addEventListener('click', () => {
+    if (!isFreeMoving) {
+      velocityX = (Math.random() - 0.5) * 20; // 随机生成横向速度
+      velocityY = (Math.random() - 0.5) * 20; // 随机生成纵向速度
+      isFreeMoving = true;
+      resetButton.style.display = 'block'; // 显示重置按钮
+    }
+  });
+
+  // 给重置按钮添加点击事件，点击后重置球的位置
+  resetButton.addEventListener('click', resetPosition);
+
+  // 初始化球的位置
+  ball.style.left = `${posX}px`;
+  ball.style.top = `${posY}px`;
+
+  // 开始动画循环
+  bounce();
+});
