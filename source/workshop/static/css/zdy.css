@@ -127,3 +127,29 @@
       text-shadow: -0.1rem 0.1rem #FFFF8D, -0.2rem 0.2rem #CCFF90, -0.3rem 0.3rem #A7FFEB, -0.4rem 0.4rem #82B1FF, -0.5rem 0.5rem #B388FF, -0.6rem 0.6rem #EA80FC, -0.7rem 0.7rem #FF80AB, -0.8rem 0.8rem #FFD180;
     }
   }
+
+  /* 调皮的小球人 */
+  #ball {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-image: url('https://pic.imgdb.cn/item/604821d75aedab222c04f000.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+  #resetButton {
+    position: fixed;
+    bottom: 110px;
+    right: 5px;
+    padding: 10px 20px;
+    background-color: #09d3bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+  }
