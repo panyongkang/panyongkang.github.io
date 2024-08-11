@@ -17,6 +17,8 @@ date: 2024-04-20 12:16:08
 
 [TS/JS从书系列](https://youjia.sx.cn/you-dont-know-ts/)
 
+[网道/TypeScript 教程](https://wangdoc.com/typescript/)
+
 ---
 
 ## Typescript介绍
@@ -244,9 +246,9 @@ static #intersect(arg1: string, arg2: string, splitLength: number) {
 
 ```
 
-## any和unknown的区别
+## 基础类型
 
-### `any`
+### `any类型`
 
 1. **通用类型**：`any` 类型表示任意类型。赋值为 `any` 类型的变量可以持有任何类型的值。
 2. **灵活但不安全**：使用 `any` 类型会跳过类型检查，使得代码在编译时不会出现类型错误。虽然这提供了很大的灵活性，但也降低了类型安全性，可能导致运行时错误。
@@ -258,7 +260,7 @@ static #intersect(arg1: string, arg2: string, splitLength: number) {
    value = true; // 也可以是布尔值
    ```
 
-### `unknown`
+### `unknown类型`
 
 1. **未知类型**：`unknown` 类型也表示任意类型，但比 `any` 更严格。它是一个安全的替代品，用于表示未知类型的值。
 2. **需要类型检查**：在将 `unknown` 类型的值赋值给其他类型之前，必须进行类型检查。这有助于在编译时发现潜在的错误，增强类型安全性。
@@ -275,9 +277,29 @@ static #intersect(arg1: string, arg2: string, splitLength: number) {
    }
    ```
 
-### 主要区别
+#### 主要区别
 
 - **类型安全**：`any` 跳过了所有类型检查，而 `unknown` 强制要求进行类型检查，提供更高的类型安全性。
 - **使用场景**：`any` 适用于需要最大灵活性的情况，而 `unknown` 适用于需要灵活性但又希望保持一定类型安全性的情况。
 
 总的来说，尽量使用 `unknown` 而不是 `any`，以便在编写代码时保持类型安全性，并减少潜在的运行时错误。
+
+### Tuple 类型
+
+数组一般由同种类型的值组成，但有时我们需要在单个变量中存储不同类型的值，这时候我们就可以使用元组。在 JavaScript 中是没有元组的，元组是 TypeScript 中特有的类型，其工作方式类似于数组。
+
+元组可用于定义具有有限数量的未命名属性的类型。每个属性都有一个关联的类型。使用元组时，必须提供每个属性的值。为了更直观地理解元组的概念，我们来看一个具体的例子：
+
+```typescript
+let tupleType: [string, boolean];
+tupleType = ["semlinker", true];
+```
+
+在上面代码中，我们定义了一个名为 tupleType 的变量，它的类型是一个类型数组 [string, boolean]，然后我们按照正确的类型依次初始化 tupleType 变量。与数组一样，我们可以通过下标来访问元组中的元素：
+
+```
+console.log(tupleType[0]); // semlinker
+console.log(tupleType[1]); // true
+```
+
+注意：在元组初始化的时候，如果出现类型或属性数量不匹配的话，编译器会提示报错信息。
