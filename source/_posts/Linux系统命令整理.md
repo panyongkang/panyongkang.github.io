@@ -88,6 +88,16 @@ sz中的s意为send(发送)，输入sz时，意为服务器要发送文件，既
 
 注意：不论是send还是received，动作都是在服务器上发起的。
 
+#### 如何下载文件夹
+
+sz默认只能下载单个文件，如果需要下载某个目录文件夹下的所有内容，可以先将其打包为压缩包，再进行下载到本地。
+
+```
+tar -czvf folder.tar.gz /服务器路径/xxxx/yyyy/folder // 将服务器路径下的文件夹进行打包压缩
+sz /服务器路径/xxxx/yyyy/folder.tar.gz // 下载生成的压缩包
+rm folder.tar.gz //删除压缩包
+```
+
 ## 虚拟机安装linux系统CentOS 7的学习整理
 
     Wind+R：在linux系统中是锁屏

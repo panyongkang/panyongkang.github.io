@@ -303,3 +303,194 @@ console.log(tupleType[1]); // true
 ```
 
 注意：在元组初始化的时候，如果出现类型或属性数量不匹配的话，编译器会提示报错信息。
+
+## typescript 数组
+
+### 数组解构
+
+```typescript
+let x: number;
+let y: number;
+let z: number;
+let five_array = [0, 1, 2, 3, 4];
+[x, y, z] = five_array;
+```
+
+这段代码的作用是：
+
+声明三个变量 `x`,`y`,`z` 用来存储数字，由于 `five_array` 有五个元素，而我们只解构了前三个，所以 `x` 会被赋值为 0，`y` 会被赋值为 1，`z` 会被赋值为 2。剩余的元素会被忽略。
+
+### 数组展开运算符
+
+```typescript
+let twoArray = [1,2];
+let fiveArray = [...twoArray,3,4,5]
+```
+
+### 数组遍历
+
+```typescript
+let colors:fiveArry[]=["red","blue","yellow","black"];
+for (let i of colors){
+   console.log(i)
+}
+```
+
+## typescript 对象
+
+### 对象解构
+
+```typescript
+let person = {
+  name: "Semlinker",
+  gender: "Male",
+};
+
+let { name, gender } = person;
+```
+
+### 对象展开运算符
+
+```typescript
+let person = {
+  name: "Semlinker",
+  gender: "Male",
+  address: "Xiamen",
+};
+
+// 组装对象
+let personWithAge = { ...person, age: 33 };
+
+// 获取除了某些项外的其它项
+let { name, ...rest } = person;
+```
+
+## typescript接口
+
+TypeScript 接口（interface）是一种用来定义对象结构的类型。它规定了对象所具有的属性和方法，以及这些属性和方法的类型。接口就像是一个合同，规定了对象必须遵守的规则。
+
+### 对象的形状
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+}
+
+let semlinker: Person = {
+  name: "semlinker",
+  age: 33,
+};
+
+```
+
+### 可选 | 只读属性
+
+```typescript
+interface Person {
+  readonly name: string;
+  age?: number;
+}
+
+```
+
+只读属性用于限制只能在对象刚刚创建的时候修改其值。此外 TypeScript 还提供了 ReadonlyArray`<T>` 类型，它与 Array`<T>` 相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改。
+
+```typescript
+let a: number[] = [1, 2, 3, 4];
+let ro: ReadonlyArray<number> = a;
+ro[0] = 12; // error!
+ro.push(5); // error!
+ro.length = 100; // error!
+a = ro; // error!
+
+```
+
+### 任意属性
+
+有时候我们希望一个接口中除了包含必选和可选属性之外，还允许有其他的任意属性，这时我们可以使用 索引签名 的形式来满足上述要求。
+
+```typescript
+interface Person {
+  name: string;
+  age: number;
+  [propName: string]: any; // 任意属性
+}
+
+let person: Person = {
+  name: 'Alice',
+  age: 30,
+  address: 'Beijing', // 动态添加属性
+  favoriteColor: 'blue', // 动态添加属性
+};
+
+```
+
+**解释： `[propName: string]: any;`** 这种写法表示：一个对象可以有任意数量的属性，这些属性的名称是字符串类型，而属性的值可以是任意类型。
+
+### 接口与类型别名区别
+
+在 TypeScript 中，接口（interface）和类型别名（type alias）都是用来定义类型的工具，但它们在概念和应用场景上有一些细微的差别。
+
+#### 接口（interface）
+
+* **定义对象结构:** 接口主要用于定义对象的结构，即对象应该具有哪些属性和方法。
+* **实现和继承:** 类可以实现接口，保证类的实例符合接口定义。接口之间也可以继承。
+* **声明合并:** 多个相同名称的接口会自动合并成一个接口。
+* **主要用于:** 定义对象的形状，描述类的契约。
+
+#### 类型别名（type alias）
+
+* **给类型起别名:** 类型别名是对现有类型的引用，给一个类型起一个新的名字。
+* **任何类型:** 类型别名可以作用于任何类型，包括原始类型、联合类型、元组、函数类型等。
+* **不能实现和继承:** 类型别名不能实现接口，也不能被其他类型继承。
+* **主要用于:** 简化复杂类型、为类型起一个更具描述性的名字。
+
+#### 总结表格
+
+| 特征     | 接口                 | 类型别名         |
+| -------- | -------------------- | ---------------- |
+| 定义     | 对象结构             | 任何类型         |
+| 实现     | 类可以实现           | 不能实现         |
+| 继承     | 接口可以继承其他接口 | 不能继承         |
+| 声明合并 | 支持                 | 不支持           |
+| 主要用途 | 定义对象的形状       | 简化类型、起别名 |
+
+示例代码：
+
+```typescript
+// 接口
+interface Person {
+  name: string;
+  age: number;
+}
+
+// 类型别名
+type MyString = string;
+type Name = string;
+type Age = number;
+type PersonAlias = {
+  name: Name;
+  age: Age;
+};
+```
+
+### Other Types
+
+与接口类型不一样，类型别名可以用于一些其他类型，比如原始类型、联合类型和元组：
+
+```typescript
+// primitive
+type Name = string;
+
+// object
+type PartialPointX = { x: number };
+type PartialPointY = { y: number };
+
+// union
+type PartialPoint = PartialPointX | PartialPointY;
+
+// tuple
+type Data = [number, string];
+
+```

@@ -17,7 +17,7 @@ menu:
     - 主页导航 || https://xyyum.icu/mypages/OnlyI.html || fa fa-send
     - 综合导航 || https://xyyum.icu/mypages/xkzhdh/Integrated.html || fa fa-paper-plane-o
     - 软件分享 || https://xyyum.icu/mypages/software/index.html || fa fa-send
-    - 简单导航 || https://xyyum.icu/mypages/SimpleNav/SimpleNav.html || fa fa-paper-plane-o
+    - 向阳书架 || /sunshineBookshelf/ || fa fa-university
   列表||fa fa-list:
     - 书籍 || /books/ || fa fa-book
     - 电影 || /movies/ || fa fa-film
