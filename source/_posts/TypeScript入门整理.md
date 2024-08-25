@@ -304,6 +304,110 @@ console.log(tupleType[1]); // true
 
 注意：在元组初始化的时候，如果出现类型或属性数量不匹配的话，编译器会提示报错信息。
 
+## 索引签名
+
+    索引签名（Index Signatures）是TypeScript中的一种特性，允许你定义对象的属性类型，但不需要事先声明每个具体的属性名。通过索引签名，你可以确保对象中所有属性都遵循某种特定的类型规则。
+
+    索引签名的典型应用场景是当你不知道对象中会有哪些具体的属性名，但你可以确定属性值的类型。
+
+基本语法：
+
+```typescript
+interface MyObject {
+  [key: string]: string;
+}
+
+```
+
+在这个例子中，`MyObject`接口表示一个对象，该对象的所有属性名必须是字符串类型，且对应的属性值也必须是字符串类型。
+
+示例：
+
+```typescript
+interface User {
+  [propName: string]: number;
+}
+
+let userAges: User = {
+  "Alice": 25,
+  "Bob": 30
+};
+
+```
+
+在这个例子中，`User`接口要求所有属性名为字符串，属性值为数字。因此，`userAges`对象中的属性名和属性值都满足该接口定义。
+
+**注意事项：**
+
+1. **类型限制** ：索引签名限制了对象中的所有属性的类型，因此，如果你想在对象中添加某些属性，且这些属性的类型与索引签名定义的类型不同，则会引发编译错误。
+2. **组合类型** ：索引签名可以与其他属性类型定义一起使用，以允许特定的属性有不同的类型。
+
+```typescript
+interface User {
+  name: string;
+  age: number;
+  [propName: string]: string | number;
+}
+
+```
+
+在这个例子中，`User`接口允许 `name`和 `age`属性具有特定的类型，而其他属性可以是字符串或数字。索引签名非常有用，尤其是在处理动态键名的对象时，可以确保对象的类型安全性。
+
+## 联合类型和交叉类型
+
+### 联合类型 (Union Types)
+
+联合类型表示一个值可以是几种类型中的一种。使用 `|` 符号来定义联合类型。例如：
+
+```
+let value: string | number;
+value = "hello"; // 合法
+value = 42;      // 合法
+value = true;    // 非法，类型错误
+
+```
+
+在上面的例子中，`value` 可以是 `string` 或 `number` 类型，但不能是其他类型。
+
+**应用场景：**
+
+* 当一个变量或参数可以是多种类型之一时。
+* 比如处理不同类型的输入，或者根据条件返回不同类型的值。
+
+### 交叉类型 (Intersection Types)
+
+交叉类型表示一个值将同时具备多个类型的所有特性。使用 `&` 符号来定义交叉类型。例如：
+
+```
+interface Person {
+  name: string;
+}
+
+interface Employee {
+  employeeId: number;
+}
+
+type EmployeePerson = Person & Employee;
+
+let employee: EmployeePerson = {
+  name: "John",
+  employeeId: 1234
+};
+
+```
+
+在上面的例子中，`EmployeePerson` 是 `Person` 和 `Employee` 的交叉类型，所以 `employee` 对象需要同时满足 `Person` 和 `Employee` 接口的所有属性。
+
+**应用场景：**
+
+* 当你希望一个对象同时具有多个类型的属性或行为时。
+* 在构建复杂对象类型时，合并多个接口或类型。
+
+### 总结
+
+* **联合类型** 适用于一个变量可能是多种类型中的一种的情况，解决了类型不确定性的问题。
+* **交叉类型** 适用于需要同时具备多个类型的特性或行为的情况，常用于合并对象的类型。
+
 ## typescript 数组
 
 ### 数组解构
@@ -365,6 +469,145 @@ let personWithAge = { ...person, age: 33 };
 let { name, ...rest } = person;
 ```
 
+## 函数类型
+
+TS 定义函数类型需要定义输入参数类型和输出类型。输出类型也可以忽略，因为 TS 能够根据返回语句自动推断出返回值类型。
+
+```typescript
+function add(x:number, y:number):number {
+    return x + y
+}
+add(1,2)
+
+```
+
+### 函数表达式
+
+```typescript
+let add2 = (x: number, y: number): number => {
+    return x + y
+}
+
+```
+
+### 可选参数
+
+参数后加个问号，代表这个参数是可选的，但注意可选参数要放在函数入参的最后面，不然会导致编译错误。
+
+```typescript
+function add(x:number, y:number, z?:number):number {
+    return x + y
+}
+
+add(1,2,3)
+add(1,2)
+
+```
+
+### 默认参数
+
+```typescript
+function add(x:number, y:number = 100):number {
+    return x + y
+}
+
+add(100)  // 200
+
+```
+
+和可选参数不同的是，默认参数可以不放在函数入参的最后面。
+
+```typescript
+function add(x:number = 100, y:number):number {
+    return x + y
+}
+
+add(100) 
+
+```
+
+看上面的代码，add 函数只传了一个参数，如果理所当然地觉得 x 有默认值，只传一个就传的是 y 的话，就会报错。
+
+编译器会判定你只传了 x，没传 y。
+
+如果带默认值的参数不是最后一个参数，用户必须明确的传入 `undefined`值来获得默认值。
+
+```typescript
+add(undefined,100) // 200
+```
+
+### 函数赋值
+
+TS由于定义了类型，函数就不能随便赋值。可以用下面这种方式定义一个函数 add3，把 add2 赋值给 add3。
+
+```typescript
+let add2 = (x: number, y: number): number => {
+    return x + y
+}
+
+// 赋值方式一
+const add3:(x: number, y: number) => number = add2
+// 赋值方式二
+const add3 = add2 //不用定义 add3 类型直接赋值也可以，TS 会在变量赋值的过程中，自动推断类型
+
+```
+
+### 函数重载
+
+函数重载是指两个函数名称相同，但是参数个数或参数类型不同，他的好处显而易见，不需要把相似功能的函数拆分成多个函数名称不同的函数。
+
+#### 不同参数类型
+
+比如我们实现一个 add 函数，如果传入参数都是数字，就返回数字相加，如果传入参数都是字符串，就返回字符串拼接。
+
+```typescript
+function add(x: number[]): number
+function add(x: string[]): string
+function add(x: any[]): any {
+  if (typeof x[0] === 'string') {
+    return x.join()
+  }
+  if (typeof x[0] === 'number') {
+      return x.reduce((acc, cur) => acc + cur)
+  }
+}
+
+```
+
+#### 不同参数个数
+
+假设这个 add 函数接受更多的参数个数，比如还可以传入一个参数 y，如果传了y，就把 y 也加上或拼接上，就可以这么写。
+
+```typescript
+function add(x: number[]): number
+function add(x: string[]): string
+function add(x: number[], y: number[]): number
+function add(x: string[], y: string[]): string
+function add(x: any[], y?: any[]): any {
+  if (Array.isArray(y) && typeof y[0] === 'number') {
+      return x.reduce((acc, cur) => acc + cur) + y.reduce((acc, cur) => acc + cur)
+  }
+  if (Array.isArray(y) && typeof y[0] === 'string') {
+      return x.join() + ',' + y.join()
+  }
+  if (typeof x[0] === 'string') {
+    return x.join()
+  }
+  if (typeof x[0] === 'number') {
+      return x.reduce((acc, cur) => acc + cur)
+  }
+}
+
+
+console.log(add([1,2,3]))      // 6
+console.log(add(['lin', '18']))  // 'lin,18'
+console.log(add([1,2,3], [1,2,3])) // 12
+console.log(add(['lin', '18'], ['man', 'handsome'])) // 'lin,18,man,handsome'
+
+```
+
+其实写起来挺麻烦的，后面了解泛型之后写起来会简洁一些，不必太纠结函数重载，知道有这个概念即可，平时一般用泛型来解决类似问题。
+
 ## typescript接口
 
 TypeScript 接口（interface）是一种用来定义对象结构的类型。它规定了对象所具有的属性和方法，以及这些属性和方法的类型。接口就像是一个合同，规定了对象必须遵守的规则。
@@ -394,7 +637,7 @@ interface Person {
 
 ```
 
-只读属性用于限制只能在对象刚刚创建的时候修改其值。此外 TypeScript 还提供了 ReadonlyArray`<T>` 类型，它与 Array`<T>` 相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改。
+只读属性用于限制只能在对象刚刚创建的时候修改其值。此外 TypeScript 还提供了 ReadonlyArray `<T>` 类型，它与 Array `<T>` 相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改。
 
 ```typescript
 let a: number[] = [1, 2, 3, 4];
@@ -494,3 +737,48 @@ type PartialPoint = PartialPointX | PartialPointY;
 type Data = [number, string];
 
 ```
+
+## typescript类
+
+TypeScript 中的类是一种面向对象编程的重要概念，它提供了一种创建自定义对象的方式。类定义了对象的属性和方法，这些属性和方法将被类的所有实例共享。
+
+在 TypeScript 中，我们可以通过 Class 关键字来定义一个类：
+
+```typescript
+class Greeter {
+  // 静态属性
+  static cname: string = "Greeter";
+  // 成员属性
+  greeting: string;
+
+  // 构造函数 - 执行初始化操作
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  // 静态方法
+  static getClassName() {
+    return "Class name is Greeter";
+  }
+
+  // 成员方法
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+let greeter = new Greeter("world");
+
+```
+
+## typescript泛型
+
+TypeScript中的泛型（Generics）是一种允许你在定义函数、接口或类时，预留一个或多个类型参数，而不是具体指定类型的方式。泛型使得代码能够更加通用和可复用，同时仍然保持类型安全。
+
+### 为什么使用泛型？
+
+在有些情况下，函数、接口或类的逻辑并不依赖于特定的类型，而是可以适用于多种类型。泛型可以让我们编写一次逻辑，然后在使用时根据具体情况传入不同的类型，从而实现类型参数化。
+
+### 泛型的语法
+
+泛型的常见用法是在函数、接口或类的定义中引入一个或多个类型参数，用 `<>` 包裹。最常用的类型参数符号是 `T`（代表Type），但你可以使用任何符号或名称来表示类型参数。

@@ -87,6 +87,7 @@ date: 2020-06-01 16:30:00
 * tail -100 /var/log/apache/access.log | grep 404 在WEB服务器日志文件access.log的后100行中查找包含“404”的行
 * tail -100 /var/log/apache/access.log | grep -v googlebot 在WEB服务器日志文件access.log的后100行中，查找没有被google访问的行
 * grep -v ^# /etc/apache2/httpd.conf 在主apache配置文件中，查找所有非注释行
+* grep -r '关键词' .   //搜索当前目录下所有有关键词的文件（可直接展示关键词位置)
 
 **在xshell上查看某个时间段的日志 ，记两种方式**
 
