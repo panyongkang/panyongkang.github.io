@@ -109,3 +109,85 @@ justify-content: flex-start | flex-end| center | space-between | space-around
 	margin-left: 16px !important; // 相对于input框间距16px
 }
 ```
+
+## transform
+
+transform 属性允许你对元素进行二维或三维的转换。它可以实现元素的旋转、缩放、移动、倾斜等效果，从而创造出丰富多样的视觉效果。
+
+### transform 常用函数
+
+#### 1. 旋转 rotate
+
+* `rotate(angle)`：围绕原点旋转一个角度。
+
+  ```css
+  div {
+      transform: rotate(45deg);
+  }
+  ```
+
+#### 2. 缩放 scale
+
+* `scale(x, y)`：在 X 和 Y 轴上缩放元素。
+
+  ```css
+  div {
+      transform: scale(2, 0.5);
+  }
+  ```
+
+#### 3. 平移 translate
+
+* `translate(x, y)`：在 X 和 Y 轴上移动元素。
+
+  ```css
+  div {
+      transform: translate(50px, 30px);
+  }
+  ```
+
+#### 4. 倾斜 skew
+
+* `skew(x-angle, y-angle)`：沿 X 和 Y 轴倾斜元素。
+
+  ```css
+  div {
+      transform: skew(30deg, 20deg);
+  }
+  ```
+
+### 代码小样本
+
+#### 水平和垂直居中元素
+
+```css
+.centeed {
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+#### 用省略号截断文本
+
+防止长文本溢出其容器，用省略号……替换多余的文本以获取干净的外观。
+
+```css
+.ellipsis {
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+```
+
+#### 响应式图像
+
+确保图像在其容器内按比例缩放，无缝适应不同屏幕尺寸。
+
+```css
+img {
+ max-width: 100%;
+ height: auto;
+}
+```

@@ -8,6 +8,10 @@
 		outline: 0;
 		border: 0;
 	}
+
+	#content {
+		display: none;
+	}
 </style>
 
 <head>
@@ -73,12 +77,14 @@
 					top: 430px;
 					right: 40px;
 				}
+
 				.gp5 {
 					top: 360px;
 					right: 130px;
 				}
 			</style>
-			<a musicdesk class="gp1" title="记事本@陈慧琳" cover="https://mpimg.cn/view.php/0fd12d411c024a395abc6135aafdbfe2.jpg"
+			<a musicdesk class="gp1" title="记事本@陈慧琳"
+				cover="https://mpimg.cn/view.php/0fd12d411c024a395abc6135aafdbfe2.jpg"
 				url="https://cccimg.com/view.php/9d232fcb70159f8bbdc16eb4e8d5854e.mp3">
 			</a>
 			<a musicdesk class="gp2" title="사랑하게 되는 날 (爱上你的那一天)@朴信惠"
@@ -91,7 +97,8 @@
 			<a musicdesk class="gp4" title="小酒窝@林俊杰" cover="https://pic.imgdb.cn/item/6638eb130ea9cb14034f1cd9.jpg"
 				url="https://freetyst.nf.migu.cn/public/product10th/productB36/2022/05/0916/%E9%A2%84%E7%94%9F%E6%95%88%E5%A5%A5%E8%BF%90%E7%AC%AC12%E6%89%B9600586/%E6%A0%87%E6%B8%85%E9%AB%98%E6%B8%85/MP3_320_16_Stero/60058621103161803.mp3">
 			</a>
-			<a musicdesk class="gp5" title="321对不起@徐良&小凌" cover="https://mpimg.cn/view.php/f88877309b3c1705a605e8c581585c3a.jpg"
+			<a musicdesk class="gp5" title="321对不起@徐良&小凌"
+				cover="https://mpimg.cn/view.php/f88877309b3c1705a605e8c581585c3a.jpg"
 				url="https://mpimg.cn/view.php/5faae1e4b7ef78880e6619d4c9059f49.mp3">
 			</a>
 		</div>
@@ -2305,14 +2312,21 @@
 								</ul>
 
 								<div class="post-content" itemprop="articleBody">
-									<p><img src="https://pic.imgdb.cn/item/6638f2040ea9cb140366ee7d.png" alt="结婚"
-											title="结婚"></p>
-
-									<p>记忆碎片整理中。。。</p>
+									<p><img src="https://pic.imgdb.cn/item/6638f2040ea9cb140366ee7d.png" alt="求学"
+											title="求学"></p>
+									<div id="password-form">
+										<h2>请输入访问密码</h2>
+										<input type="password" id="password" placeholder="此内容受保护">
+										<button id="submit-button" onclick="decryptContent()">提交</button>
+										<div id="error-message" style="color: red; display: none;float: right;"></div>
+									</div>
+									<div id="content">
+										<!-- 加密内容将被解密后显示在这里 -->
+									</div>
 								</div>
 
 								<p itemprop="keywords" class="tags">
-									标签: 大学 校园 怀念 青春 </p>
+									标签: 求学 送别 坐火车 异乡 </p>
 							</article>
 
 
@@ -2402,6 +2416,53 @@
 	<script src="https://myhkw.cn/api/player/164096596862" id="myhk" key="164096596862" m="1"></script>
 
 	<script type="text/javascript" src="static/js/zdy.js"></script>
+	<!-- 引入加解密库 -->
+	<script src="static/js/crypto-js.min.js"></script>
+	<script>
+		const encryptedContent = 'U2FsdGVkX19Tx9hbEDIkM69gvFooFkwV7aW34fD2iVj1gEpkg6IuGJptFzCuv5lyJ6Yk6gGZfFszTEYj9ikBUv5Cz1/VIDLt8GOHjN8AHqX0lnPD9HrfpUMV5G+yzjKINQkfO/NdvEPH06H/UMiWPvxzNot/uBEpKcBlwLjtEC1Rp7EolpjAO6t2QW4C0wGJZTXmXcG7x4K6P6SyDN39SkRInRjxlOcYFzyM83ndVm4DBXXDs5fg5RQQytC9axsp' // 粘贴加密的内容
+		// 监听输入框的回车键事件
+        document.getElementById('password').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); // 阻止默认的表单提交行为
+				document.getElementById('submit-button').focus(); // 将焦点移至提交按钮
+            }
+        });
+
+		function decryptContent() {
+			const password = document.getElementById('password').value;
+			const errMessageElement = document.getElementById('error-message');
+			if (!password) {
+				errMessageElement.style.display = 'block';
+				errMessageElement.innerText = '密码不能为空';
+				setTimeout(() => {
+					errMessageElement.style.display = 'none';
+				}, 3000);
+				return;
+			}
+			try {
+				const bytes = CryptoJS.AES.decrypt(encryptedContent, password);
+				const decryptedContent = bytes.toString(CryptoJS.enc.Utf8);
+
+				if (decryptedContent) {
+					document.getElementById('password-form').style.display = 'none';
+					document.getElementById('content').innerHTML = decryptedContent;
+					document.getElementById('content').style.display = 'block';
+				} else {
+					errMessageElement.style.display = 'block';
+					errMessageElement.innerText = '密码错误';
+					setTimeout(() => {
+						errMessageElement.style.display = 'none';
+					}, 3000);
+				}
+			} catch (e) {
+				errMessageElement.style.display = 'block';
+				errMessageElement.innerText = '密码错误';
+				setTimeout(() => {
+					errMessageElement.style.display = 'none';
+				}, 3000);
+			}
+		}
+	</script>
 </body>
 
 </html>

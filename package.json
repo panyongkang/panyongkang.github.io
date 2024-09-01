@@ -14,6 +14,7 @@
   "dependencies": {
     "ajv": "^6.12.0",
     "bulma-stylus": "^0.8.0",
+    "crypto-js": "^4.2.0",
     "hexo": "^4.2.1",
     "hexo-admin": "^2.3.0",
     "hexo-bilibili-bangumi": "^1.5.1",
