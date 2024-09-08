@@ -3,8 +3,11 @@ author: PanYuKang
 tags:
 
   - linux
+
 categories:
+
   - Linux
+
 date: 2020-04-12 17:24:00
 
 cover: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3143865248,1602619424&fm=26&gp=0.jpg'
@@ -24,7 +27,7 @@ cover: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3143865248,160
   * `-z`: 使用gzip进行压缩
   * `-j`: 使用bzip2进行压缩
 
-### 上线时常用的命令
+### 常见的命令
 
     备份：tar -cvf 20190923.tar ROOT
 	解压：tar -xvf 20170630.tar ROOT
@@ -41,36 +44,37 @@ cover: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3143865248,160
 		3.结束占用端口的进程:kill -9 进程pid
 		4.查看是否结束占用情况：netstat -anp |grep 80
 
-### 常用Linux命令整理
+## Linux命令整理
 
-    1.	查找文件：find / -name filename.txt
-	2.	查看tomcat程序是否运行：ps -ef|grep tomcat
-	3.	查看端口8080的使用情况：netstat -tln | grep 8080
-	4.	查看进程：ps -fu [用户名]
-	5.	终止进程：kill -9 [线程号]
-	6.	查看文件，包含隐藏文件：ls -al
-	7.	当前工作目录：pwd
-	8.	复制文件：cp source dest
-	9.	递归复制整个文件夹到自定义目录：cp -r sourceFolder targetFolder
-	10.	创建目录：mkdir newfolder
-	11.	删除目录：rmdir deleteEmptyFolder
-	12.	删除文件包括其子文件:rm -rf deleteFile
-	13.	使用超级管理员执行删除命令：sudo rm a.text
-	14.	移动文件：mv temp/movefile/targetFolder
-	15.	切换用户：su -username
-	16.	修改文件权限：chmod 777 file.java
-	17.	压缩文件：tar -czf test.tar.gz/test1/test2
-	18.	列出压缩文件列表：tar -tzf test.tar.gz
-	19.	解压文件：tar -xvzf test.tar.gz
-	20.	查看文件头10行：head -n 10 example.txt
-	21.	查看文件尾10行：tail -n 10 example.txt
-	22.	查看日志文件：tail -f example.log
-	23.	启动Vi编辑器：vi
-	24.	远程登录：ssh username@ip
-	25.	远程拷贝：cp sourecFile romoteUserName@remoteIp:remoteAddr
-    	26.	以兆为单位显示磁盘利用率：df -m
-	27.	以G 为单位显示磁盘利用率:df -H
-	28.	用来查看AIX 系统的，以G为单位显示磁盘使用情况:df -g
+* 查找文件：find / -name filename.txt
+* 递归查找特定前缀的文件：find ./ -name 文件名*
+* 查看tomcat程序是否运行：ps -ef|grep tomcat
+* 查看端口8080的使用情况：netstat -tln | grep 8080
+* 查看进程：ps -fu [用户名]
+* 终止进程：kill -9 [线程号]
+* 查看文件，包含隐藏文件：ls -al
+* 当前工作目录：pwd
+* 复制文件：cp source dest
+* 递归复制整个文件夹到自定义目录：cp -r sourceFolder targetFolder
+* 创建目录：mkdir newfolder
+* 删除目录：rmdir deleteEmptyFolder
+* 删除文件包括其子文件:rm -rf deleteFile
+* 使用超级管理员执行删除命令：sudo rm a.text
+* 移动文件：mv temp/movefile/targetFolder
+* 切换用户：su -username
+* 修改文件权限：chmod 777 file.java
+* 压缩文件：tar -czf test.tar.gz/test1/test2
+* 列出压缩文件列表：tar -tzf test.tar.gz
+* 解压文件：tar -xvzf test.tar.gz
+* 查看文件头10行：head -n 10 example.txt
+* 查看文件尾10行：tail -n 10 example.txt
+* 查看日志文件：tail -f example.log
+* 启动Vi编辑器：vi
+* 远程登录：ssh username@ip
+* 远程拷贝：cp sourecFile romoteUserName@remoteIp:remoteAddr
+* 以兆为单位显示磁盘利用率：df -m
+* 以G 为单位显示磁盘利用率:df -H
+* 用来查看AIX 系统的，以G为单位显示磁盘使用情况:df -g
 
 ### linux上传和下载命令
 
@@ -98,7 +102,148 @@ sz /服务器路径/xxxx/yyyy/folder.tar.gz // 下载生成的压缩包
 rm folder.tar.gz //删除压缩包
 ```
 
-## 虚拟机安装linux系统CentOS 7的学习整理
+## alias命令
+
+**alias** 是shell中一个非常有用的功能，可以将一长串的命令缩写成一个简短的别名，方便用户快速执行。以下步骤仅针对XShell或Finalshell工具进行操作配置。
+
+### 临时设置
+
+例如，设置一个短命令 `ll` 来代替 `ls -al`：
+
+```
+alias ll='ls -al'
+```
+
+执行后立即生效,但重启终端后仍然会失效。
+
+### 永久设置
+
+要永久设置 `alias`，可以将别名写入到配置文件中。在大多数情况下，这个文件是 `~/.bashrc` 或 `~/.bash_profile`。
+
+1.找到.bashrc配置文件位置
+
+```
+cd ~ 切换到当前用户的home目录
+ls -a 显示所有文件，包括隐藏文件
+```
+
+2.打开编辑 `.bashrc`或 `.bash_profile`文件：
+
+```
+vi ~/.bashrc
+vi ~/.bash_profile
+```
+
+3.在文件末尾增加想设置的短命令，例如：
+
+.bashrc文件内容：
+
+```bash
+#.bashrc
+
+# Source global definitions
+if [-f /etc/bashrc ]; then
+		./etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+#User specific aliases and functions
+
+export CURDATE=`date +%Y%m%d`
+alias tlog='cd /home/ctbsabs/abs/log/teller/${CURDATE}/$1'
+alias abs='cd /home/ctbsabs/'
+alias conf='cd /home/ctbsabs/abs/configuration/ && ls'
+alias trade='cd /home/ctbsabs/abs/workspace/FCBank/trade/Trade/'
+~
+~
+```
+
+.bash_profile文件内容：
+
+```bash
+# .bash profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+		.~/.bashrc
+fi
+
+#User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export AFA_HOME=/home/ctbsafa/afa
+еxport PATH=$PATH:$AFA_HOME
+export LANG=zh_CN.UTF-8
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+cur_date=`date +%Y%m%d`
+alias tlog='cd /home/ctbsafa/afa/log/app/${cur_date}'
+alias jlog='cd /home/ctbsafa/afa/log/app/${cur_date)/PUBLIC/JSONPKG'
+alias elog='cd /home/ctbsafa/afa/log/app/${cur_date}/PUBLIC/EsbComm'
+alias clog'cd /home/ctbsafa/afa/log/app/${cur_date}/PUBLIC/CoreComm'
+export PATH
+~
+~
+```
+
+4.保存并退出编辑器:
+
+```
+:wq
+```
+
+4.使文件立即生效：
+
+```
+source ~/.bashrc
+```
+
+5.关闭当前终端，重新打开即可。
+
+### 删除别名
+
+```
+unalias ll
+```
+
+### 一次执行多条命令
+
+工作中如果经常需要进入某个目录并列出文件，可以这样设置：
+
+```
+alias goTrade='cd /path/to/home/workspace/Trade; ls -la'
+```
+
+使用 `&&`（只有当 `cd` 成功时才执行 `ls`）：
+
+```
+alias myalias='cd /path/to/dir && ls -l'
+```
+
+使用 `;`（无论 `cd` 成功与否，都会执行 `ls`）：
+
+```
+alias myalias='cd /path/to/dir; ls -l'
+```
+
+## 查看服务器空间
+
+du-h 文件名 //查看当前文件大小
+
+df-h //查看当前服务的空间大小
+
+### 常见场景示例
+
+当前目录空间日志满了，可以删除前一个月以上的日志记录；
+
+比如当前是6月，可以把5月份之前的都删了：
+
+```
+rm -rf 202205*
+```
+
+## 虚拟机安装linux系统CentOS 7
 
     Wind+R：在linux系统中是锁屏
 

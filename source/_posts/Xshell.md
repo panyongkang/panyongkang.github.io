@@ -6,8 +6,11 @@ cover: https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3085989673,336
 tags:
 
   - Xshell
+
 categories:
+
   - Linux
+
 date: 2020-06-01 16:30:00
 
 ---
@@ -29,6 +32,10 @@ date: 2020-06-01 16:30:00
 * ls -la 给出当前目录下所有文件的一个长列表，包括以句点开头的“隐藏”文件
 * ls a* 列出当前目录下以字母a开头的所有文件
 * ls -l *.doc 给出当前目录下以.doc结尾的所有文件
+* ls -lrt 会以详细列表形式显示文件和目录，按修改时间排序，并将最旧的文件显示在前，最新的显示在最后
+* ls -lt 查看最近修改的文件列表
+* ls -ls 快速找出占用空间较大的文件
+* ls --color=auto 为不同类型的文件添加颜色，以便区分
 
 ### 命令cp——复制文件
 
@@ -88,6 +95,8 @@ date: 2020-06-01 16:30:00
 * tail -100 /var/log/apache/access.log | grep -v googlebot 在WEB服务器日志文件access.log的后100行中，查找没有被google访问的行
 * grep -v ^# /etc/apache2/httpd.conf 在主apache配置文件中，查找所有非注释行
 * grep -r '关键词' .   //搜索当前目录下所有有关键词的文件（可直接展示关键词位置)
+* grep -r --exclude-dir={dir1,dir2} '关键字' .  使用 `--exclude` 排除不需要搜索的目录或文件
+* grep -r --include="*.txt" '关键字' .  使用 `--include` 只搜索特定类型的文件
 
 **在xshell上查看某个时间段的日志 ，记两种方式**
 
@@ -97,9 +106,18 @@ grep -E ‘2019-10-22 09:00:05|2019-10-22 10:50:15’ common.log
     (2) 用sed命令，格式为：sed -n ‘/起始时间/,/结束时间/p’ 日志文件
 sed -n ‘/2019-10-22 10:44/,/2019-10-22 10:47/p’ common.log
 
+**使用 `ag` 或 `ripgrep` 替代 `grep`**
+
+`ag`（The Silver Searcher）和 `ripgrep` 是两个比 `grep` 更快的搜索工具，默认支持递归搜索，特别适用于层级深、文件多的项目中。
+
+* ag '关键字' .
+* rg '关键字' .
+
 ### 命令find——查找文件
 
 * find ./name *.doc 在当前目录中查找.doc文件
+* find ./ -name 文件名* 递归查找特定前缀的文件
+* find /path/to/directory -mtime -1 按修改时间搜索最近一天内修改的文件
 * find .|grep page 在当前目录及其子目录中查找文件名包含page的文件 locate traceroute 在系统的任何地方查找文件名包含traceroute的文件
 
 ### 命令vi——编辑文件
@@ -204,6 +222,11 @@ sed -n ‘/2019-10-22 10:44/,/2019-10-22 10:47/p’ common.log
 
 * ln source_path target_path 硬连接
 * ln -s source_path target_path 软连接
+
+### 命令history——历史命令
+
+* history 查看历史命令
+* !100 执行第 100 条历史命令
 
 ## 工作中常用命令、快捷键
 

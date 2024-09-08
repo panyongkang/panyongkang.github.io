@@ -2,13 +2,13 @@ title: TypeScript入门整理
 author: PanXiaoKang
 tags:
 
-  - TypeScript
-  - 前端技术
-  - 笔记整理
+- TypeScript
+- 前端技术
+- 笔记整理
 
 categories:
 
-  - 前端技术
+- 前端技术
 
 date: 2024-04-20 12:16:08
 
@@ -1263,3 +1263,310 @@ function swap<T, U>(tuple: [T, U]): [U, T]{
 ```
 
 这样就可以实现了元组第 0 项和第 1 项类型的控制。
+
+### 约束泛型
+
+在TypeScript中，泛型约束可以通过 `extends`关键字来指定，可以和 interface 结合，来约束类型。
+
+```ts
+interface ILength {
+    length: number
+}
+
+function printLength<T extends ILength>(arg: T): T {
+    console.log(arg.length)
+    return arg
+}
+
+```
+
+这样我们定义的变量一定要有 length 属性，比如下面的 str、arr 和 obj，才可以通过 TS 编译，否则就会报错。
+
+```ts
+const str = printLength('lin')// 编译通过
+const arr = printLength([1,2,3])// 编译通过
+const obj = printLength({ length: 10 })// 编译通过
+const num = printLength(10) //直接编译报错
+```
+
+#### 泛型约束接口
+
+使用泛型，也可以对 interface 进行改造，让 interface 更灵活：
+
+```ts
+interface IKeyValue<T, U> {
+    key: T
+    value: U
+}
+
+const k1:IKeyValue<number, string> = { key: 18, value: 'lin'}
+const k2:IKeyValue<string, number> = { key: 'lin', value: 18}
+
+```
+
+#### 泛型定义数组
+
+定义一个数组，我们之前是这么写的：
+
+```ts
+const arr: number[] = [1,2,3]
+```
+
+现在这么写也可以：
+
+```ts
+const arr: Array<number>[] = [1,2,3]
+```
+
+当数组项写错类型，就会直接报错。
+
+```ts
+const arr:Array<number>[] = [1,2,'lin'] //编译报错
+```
+
+### 小结
+
+泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体类型，而是在使用的时候再指定类型。
+
+泛型中的 `T` 就像一个占位符、或者说一个变量，在使用的时候可以把定义的类型 **像参数一样传入** ，它可以 **原封不动地输出** 。
+
+泛型 **在成员之间提供有意义的约束** ，这些成员可以是：函数参数、函数返回值、类的实例成员、类的方法等。
+
+#### 泛型的好处
+
+* 函数和类可以轻松的支持多种类型，增强程序的拓展性。
+* 不必写冗余的联合类型，增强代码的可读性。
+* 灵活控制类型之间的约束。
+
+## 索引类型
+
+从对象中抽取一些属性的值,然后拼接成数组，可以这么写：
+
+```ts
+const userInfo = {
+  name: 'lin',
+  age: '18',
+}
+
+function getValues(userInfo: any, keys: string[]) {
+  return keys.map(key => userInfo[key])
+}
+
+// 抽取指定属性的值
+console.log(getValues(userInfo, ['name','age']))  // ['lin', '18']
+// 抽取obj中没有的属性:
+console.log(getValues(userInfo, ['sex','outlook']))  // [undefined, undefined]
+```
+
+虽然 obj 中并不包含 `sex` 和 `outlook` 属性,但 TS 编译器并未报错,此时使用 TS 索引类型,对这种情况做类型约束，实现动态属性的检查。
+
+理解索引类型，需先理解 `keyof（索引查询）`、`T[K]（索引访问）` 和 `extends (泛型约束)`。
+
+### keyof 索引查询
+
+`keyof` 操作符可以用于获取某种类型的所有键，其返回类型是联合类型：
+
+```ts
+interface IPerson {
+  name: string;
+  age: number;
+}
+
+type Test = keyof IPerson; // 'name' | 'age'
+
+```
+
+### T[K]索引访问
+
+`T[K]`，表示接口 T 的属性 K 所代表的类型：
+
+```ts
+interface IPerson {
+  name: string;
+  age: number;
+}
+
+let type1:  IPerson['name'] // string
+let type2:  IPerson['age']  // number
+
+```
+
+### extends 泛型约束
+
+`T extends U`，表示泛型变量可以通过继承某个类型，获得某些属性：
+
+```ts
+interface ILength {
+    length: number
+}
+
+function printLength<T extends ILength>(arg: T): T {
+    console.log(arg.length)
+    return arg
+}
+
+```
+
+这样入参就一定要有 length 属性，比如 str、arr、obj 都可以， num 就不行:
+
+```ts
+const str = printLength('lin')
+const arr = printLength([1,2,3])
+const obj = printLength({ length: 10 })
+
+const num = printLength(10) // 报错，Argument of type 'number' is not assignable to parameter of type 'ILength'
+
+```
+
+### 检查动态属性
+
+对索引类型的几个概念了解后,对 getValue 函数进行改造，实现对象上动态属性的检查，改造前为：
+
+```ts
+const userInfo = {
+  name: 'lin',
+  age: '18',
+}
+
+function getValues(userInfo: any, keys: string[]) {
+  return keys.map(key => userInfo[key])
+}
+
+```
+
+* 定义泛型 T、K，用于约束 userInfo 和 keys
+* 为 K 增加一个泛型约束,使 K 继承 userInfo 的所有属性的联合类型, 即 `K extends keyof T`
+
+改造后：
+
+```ts
+function getValues<T, K extends keyof T>(userInfo: T, keys: K[]): T[K][] {
+    return keys.map(key => userInfo[key])
+}
+
+```
+
+这样当我们指定不在对象里的属性时，就会报错:
+
+```ts
+getValues(userInfo,'sex','like') // 编译报错
+```
+
+## 映射类型
+
+映射类型是一种通过将现有类型的属性进行转换来生成新类型的方式。映射类型使我们能够对对象类型的属性进行批量操作，例如将所有属性变为可选、只读，或者改变属性的类型。
+
+### 基本语法
+
+映射类型的基本语法如下：
+
+```ts
+type MappedType<OldType> = {
+  [Key in keyof OldType]: NewType
+}
+
+```
+
+* `keyof OldType`：获取 `OldType` 类型的所有属性名，这会返回一个联合类型。
+* `Key in keyof OldType`：遍历 `OldType` 的每个属性。
+* `NewType`：可以根据需要改变属性的类型。
+
+### 应用场景
+
+#### 将所有属性变为可选
+
+```ts
+type Person = {
+  name: string;
+  age: number;
+}
+
+type PartialPerson = {
+  [Key in keyof Person]?: Person[Key];
+}
+
+// PartialPerson 等价于
+// {
+//   name?: string;
+//   age?: number;
+// }
+
+```
+
+#### 将所有属性变为必需
+
+```ts
+interface IPerson {
+  name: string;
+  age?: number;
+  address?: string;
+}
+
+type IRequiredPerson = Required<IPerson>;
+
+// 等价于
+type IRequiredPerson = {
+  name: string;
+  age: number;      // 现在是必需的
+  address: string;  // 现在是必需的
+}
+
+```
+
+
+#### 将所有属性变为只读
+
+```ts
+type ReadonlyPerson = {
+  [Key in keyof Person]: Readonly<Person[Key]>;
+}
+
+// ReadonlyPerson 等价于
+// {
+//   readonly name: string;
+//   readonly age: number;
+// }
+
+```
+
+#### 抽取对象子集
+
+`Pick<T, K>` 是另一个工具类型，用于从类型 `T` 中选择部分属性 `K`，并构造一个新类型。`K` 是属性名的联合类型。
+
+```ts
+interface IPerson {
+  name: string;
+  age: number;
+  address: string;
+  phone: string;
+}
+// 只想选取 name 和 age 属性构成一个新类型
+type INameAndAge = Pick<IPerson, 'name' | 'age'>;
+
+// 组成一个新的类型
+type INameAndAge = {
+  name: string;
+  age: number;
+}
+
+```
+
+#### 改变属性类型
+
+```ts
+type Person = {
+  name: string;
+  age: number;
+}
+
+type StringifiedPerson = {
+  [Key in keyof Person]: string;
+}
+
+// StringifiedPerson 等价于
+// {
+//   name: string;
+//   age: string;
+// }
+
+```
