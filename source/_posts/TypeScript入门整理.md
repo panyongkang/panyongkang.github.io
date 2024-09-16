@@ -1,14 +1,14 @@
-title: TypeScript入门整理
+ixtitle: TypeScript入门整理
 author: PanXiaoKang
 tags:
 
-- TypeScript
-- 前端技术
-- 笔记整理
+  - TypeScript
+  - 前端技术
+  - 笔记整理
 
 categories:
 
-- 前端技术
+  - 前端技术
 
 date: 2024-04-20 12:16:08
 
@@ -1513,7 +1513,6 @@ type IRequiredPerson = {
 
 ```
 
-
 #### 将所有属性变为只读
 
 ```ts
@@ -1568,5 +1567,369 @@ type StringifiedPerson = {
 //   name: string;
 //   age: string;
 // }
+
+```
+
+## 条件类型
+
+```
+T extends U ? X : Y 
+//若类型 T 可被赋值给类型 U,那么结果类型就是 X 类型,否则就是 Y 类型
+
+```
+
+Exclude 和 Extract 的实现就用到了条件类型。
+
+### Exclude(不包含)
+
+`Exclude<T, U>` 是一个工具类型， `Exclude<T, U>` 会返回 `联合类型 T` 中不包含 `联合类型 U` 的部分。
+
+```ts
+type T = "a" | "b" | "c";
+type U = "a" | "c";
+
+type Excluded = Exclude<T, U>; // "b"
+
+```
+
+#### **用法场景**
+
+**类型过滤 ：当你有一个联合类型，想要移除其中的一些成员时，`Exclude` 非常有用。**
+
+### Extract(提取)
+
+`Extract<T, U>` 是 `Exclude` 的相反操作。它从类型 `T` 中提取所有可以赋值给类型 `U` 的子类型。换句话说，它只保留 `T` 中属于 `U` 的类型成员。
+
+```ts
+type T = "a" | "b" | "c";
+type U = "a" | "c";
+
+type Extracted = Extract<T, U>; // "a" | "c"
+
+```
+
+## 工具类型（Utility Types）
+
+工具类型是一组预定义的类型操作函数，它们可以帮助你更方便地处理各种类型，提高代码的可读性和可维护性。TypeScript 内置了一些常用的工具类型，需要的时候去查就行。
+
+### Omit(省略)
+
+`Omit<T, U>`从类型 `T` 中剔除 `U` 中的所有属性。
+
+```ts
+interface User {
+  id: number;
+  name: string;
+  age: number;
+  email: string;
+}
+
+type UserWithoutEmail = Omit<User, 'email'>;
+const user: UserWithoutEmail = { id: 1, name: "John", age: 25 };
+
+```
+
+### NonNullable(不可为空)
+
+`NonNullable<T>` 用来过滤类型T中的 null 及 undefined 类型。
+
+```ts
+type T0 = NonNullable<string | number | undefined>; // string | number
+type T1 = NonNullable<string[] | null | undefined>; // string[]
+
+```
+
+#### Parameters `<Type>`
+
+提取函数类型 `Type` 的参数类型，并以元组的形式返回。
+
+```ts
+function exampleFunction(id: number, name: string, isActive: boolean) {
+  return `${id} - ${name} is ${isActive ? "active" : "inactive"}`;
+}
+
+type ExampleFunctionParams = Parameters<typeof exampleFunction>;
+
+// ExampleFunctionParams 的结果为 [number, string, boolean]
+
+```
+
+
+#### ReturnType(返回类型)
+
+获取函数类型 `Type` 的返回值类型。
+
+```ts
+function getUser() {
+  return { id: 1, name: "John" };
+}
+
+type User = ReturnType<typeof getUser>; // 结果为 { id: number; name: string; }
+
+type T0 = ReturnType<() => string>  // string
+
+type T1 = ReturnType<(s: string) => void>  // void
+
+```
+
+
+## 类型体操
+
+简单来说，就是利用 TypeScript 的类型系统，通过巧妙的类型定义和组合，来实现一些看起来不可思议的类型操作。“类型体操”这个术语通常用于描述在 TypeScript 中通过复杂的类型操作来实现高度灵活和动态的类型定义。这种“体操”主要是利用 TypeScript 的高级类型系统，包括条件类型、映射类型、工具类型等，来构建出满足特定需求的类型。这些操作可以变得非常复杂和抽象，因此被形象地称为“体操”。
+
+### 类型体操的应用场景
+
+* **增强代码的类型安全性** : 通过复杂的类型约束，确保代码在编译时就能捕捉到潜在的错误。
+* **自动化类型转换** : 根据输入类型自动推导出新的类型，减少手动维护类型定义的成本。
+* **构建高复用性库** : 尤其是在设计泛型库时，类型体操可以帮助创建更通用、更灵活的 API。
+
+#### 示例代码一：
+
+```ts
+// 判断一个类型是否为数组
+type IsArray<T> = T extends (infer Element)[] ? true : false;
+
+// 示例
+let arr: IsArray<number[]> = true; // arr 的类型为 true
+let str: IsArray<string> = false; // str 的类型为 false
+```
+
+#### 示例代码二：
+
+```ts
+// 使用条件类型和映射类型来提取对象中的函数键
+type FunctionKeys<T> = {
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never
+}[keyof T];
+
+interface Example {
+  id: number;
+  name: string;
+  greet: () => void;
+  update: (value: number) => void;
+}
+
+type ExampleFunctionKeys = FunctionKeys<Example>;  // "greet" | "update"
+
+```
+
+## TS声明文件
+
+### declare
+
+`declare` 关键字用于告诉编译器某个变量、函数、类、模块、命名空间等的存在，而不实际实现它们。这通常用于为 JavaScript 代码或其他外部资源（如第三方库）提供类型定义。`declare` 关键字通常出现在 `.d.ts` 声明文件中，但也可以在普通的 TypeScript 文件中使用。
+
+#### **声明全局变量** 
+
+如果你在项目中使用了一个没有 TypeScript 类型定义的全局变量，可以用 `declare` 来告诉 TypeScript 这个变量的存在以及它的类型。
+
+```ts
+// 假设这个变量是在某个外部脚本中定义的
+declare var jQuery: (selector: string) => any;
+
+jQuery("#id").doSomething();
+
+```
+
+#### **声明全局函数** 
+
+类似于全局变量，你可以声明全局函数，使其在项目中可用。
+
+```ts
+declare function greet(name: string): void;
+
+greet("Alice");
+
+```
+
+#### 声明类型
+
+使用 `declare` 来声明接口、类型别名或枚举类型。
+
+```ts
+declare interface User {
+  id: number;
+  name: string;
+  age: number;
+}
+
+declare type Point = {
+  x: number;
+  y: number;
+};
+
+declare enum Color {
+  Red,
+  Green,
+  Blue
+}
+
+```
+
+#### 声明模块
+
+当你使用没有 TypeScript 类型定义的第三方库时，可以用 `declare module` 来声明该模块的类型。
+
+```ts
+declare module "myLibrary" {
+  export function myFunction(): void;
+}
+
+```
+
+这样，就可以在 TypeScript 中导入并使用该模块：
+
+```ts
+import { myFunction } from "myLibrary";
+
+myFunction();
+
+```
+
+#### 声明命名空间
+
+`declare namespace` 用于声明一个命名空间，它可以包含其他类型声明或函数声明。
+
+```ts
+declare namespace MyNamespace {
+  function doSomething(): void;
+}
+
+MyNamespace.doSomething();
+
+```
+
+#### 声明类
+
+可以使用 `declare` 来声明类，提供类的结构和方法，而无需实际实现。
+
+```ts
+declare class Person {
+  name: string;
+  constructor(name: string);
+  greet(): void;
+}
+
+```
+
+### `.d.ts` 文件
+
+`.d.ts` 文件是 TypeScript 的声明文件，通常用来为 JavaScript 代码或第三方库编写类型声明。这些文件仅包含类型信息，不包含任何实际实现。`declare` 关键字在这些文件中扮演着关键角色，它确保 TypeScript 编译器理解外部资源的类型结构。
+
+```ts
+// src/Vue.d.ts
+
+interface VueOption {
+    el: string,
+    data: any
+}
+
+declare class Vue {
+    options: VueOption
+    constructor(options: VueOption)
+}
+
+```
+
+```ts
+// src/index.ts
+
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+
+```
+
+一般来说，ts 会解析项目中所有的 `*.ts` 文件，当然也包含以 `.d.ts` 结尾的文件。所以当我们将 `Vue.d.ts` 放到项目中时，其他所有 `*.ts` 文件就都可以获得 `Vue` 的类型定义了。
+
+```css
+/path/to/project
+├── src
+|  ├── index.ts
+|  └── Vue.d.ts
+└── tsconfig.json
+
+```
+
+
+### 使用三方库
+
+
+那么当我们使用三方库的时候，是不是所有的三方库都要写一大堆 decare 的文件呢？
+
+答案是不一定，要看社区里有没有这个三方库的 TS 类型包（一般都有）。
+
+社区使用 `@types` 统一管理第三方库的声明文件，是由 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/) 这个组织统一管理的
+
+比如安装 lodash 的类型包：
+
+```bash
+npm install @types/lodash -D
+```
+
+只需要安装了，就可以在 TS 里正常使用 lodash 了，别的啥也不用做。如果一个库本来就是 TS 写的，就不用担心类型文件的问题，比如 `Vue3`。
+
+### 自己写声明文件
+
+比如在原有的js中写了请求小模块 `myFetch`，代码如下：
+
+```js
+function myFetch(url, method, data) {
+    return fetch(url, {
+        body: data ? JSON.stringify(data) : '',
+        method
+    }).then(res => res.json())
+}
+
+myFetch.get = (url) => {
+    return myFetch(url, 'GET')
+}
+
+myFetch.post = (url, data) => {
+    return myFetch(url, 'POST', data)
+}
+
+export default myFetch
+
+```
+
+现在新项目用了 TS 了，要在新项目中继续用这个 myFetch，有两种选择：
+
+* 用 TS 重写 myFetch，新项目引重写的 myFetch
+* 直接引 myFetch ，给它写声明文件
+
+如果选择第二种方案，就可以这么做：
+
+```ts
+type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
+
+declare function myFetch<T = any>(url: string, method: HTTPMethod, data?: any): Promise<T>
+
+declare namespace myFetch { // 使用 namespace 来声明对象下的属性和方法
+    const get: <T = any>(url: string) => Promise<T> 
+    const post: <T = any>(url: string, data: any) => Promise<T>
+}
+
+```
+
+比较麻烦的是需要配置才行，可以有两种选择：
+
+1. 创建一个 `node_modules/@types/myFetch/index.d.ts` 文件，存放 `myFetch` 模块的声明文件。这种方式不需要额外的配置，但是 `node_modules` 目录不稳定，代码也没有被保存到仓库中，无法回溯版本，有不小心被删除的风险，故不太建议用这种方案，一般只用作临时测试。
+2. 创建一个 `types` 目录，专门用来管理自己写的声明文件，将 `myFetch` 的声明文件放到 `types/myFetch/index.d.ts` 中。这种方式需要配置下 `tsconfig.json` 中的 `paths` 和 `baseUrl` 字段。
+
+```json
+// tsconfig.json
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "baseUrl": "./",
+        "paths": {
+            "*": ["types/*"]
+        }
+    }
+}
 
 ```

@@ -100,20 +100,19 @@ button:active {
 </style>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/gh/w4j1e/blog@latest/js/three.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/gh/w4j1e/blog@latest/js/tween.min.js" ></script>
-<script src="https://cdn.jsdelivr.net/gh/w4j1e/blog@latest/js/TrackballControls.js" ></script>
-<script src="https://cdn.jsdelivr.net/gh/w4j1e/blog@latest/js/CSS3DRenderer.js" ></script>
+<script type="text/javascript" src="static/js/three.min.js" ></script>
+<script type="text/javascript" src="static/js/tween.min.js" ></script>
+<script type="text/javascript" src="static/js/TrackballControls.js" ></script>
+<script type="text/javascript" src="static/js/CSS3DRenderer.js" ></script>
 
 <div id="container"></div>
-<div id="info">3D元素周期表</div>
 <div id="menu">
-<button id="table">表面</button>
-<button id="sphere">球体</button>
-<button id="helix">螺旋</button>
-<button id="grid">网格</button>
+<button id="table">Table - 表单</button>
+<button id="sphere">Ball - 球型</button>
+<button id="helix">Spiral - 螺旋</button>
+<button id="grid">Web - 网格</button>
 </div>
-
+<div style="display: none;">更多HTML5 CSS动画请访问 <a href="http://www.5iweb.com.cn">网页特效库</a>.</div>
 <script>
 
 var table = [
@@ -229,12 +228,12 @@ var table = [
 	"Ds", "Darmstadium", "(281)", 10, 7,
 	"Rg", "Roentgenium", "(280)", 11, 7,
 	"Cn", "Copernicium", "(285)", 12, 7,
-	"Uut", "Unutrium", "(284)", 13, 7,
+	"Nh", "Nihonium", "(284)", 13, 7,
 	"Fl", "Flerovium", "(289)", 14, 7,
-	"Uup", "Ununpentium", "(288)", 15, 7,
+	"Mc", "Moscovium", "(288)", 15, 7,
 	"Lv", "Livermorium", "(293)", 16, 7,
-	"Uus", "Ununseptium", "(294)", 17, 7,
-	"Uuo", "Ununoctium", "(294)", 18, 7
+	"Ts", "Tennessine", "(294)", 17, 7,
+	"Og", "Oganesson", "(294)", 18, 7
 ];
 
 var camera, scene, renderer;
@@ -463,15 +462,4 @@ function render() {
 
 </script>
 </body>
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?76ab374e00f4b853f0ff3310ac6daa96";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 </html>

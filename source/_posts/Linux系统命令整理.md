@@ -143,7 +143,7 @@ vi ~/.bash_profile
 
 # Source global definitions
 if [-f /etc/bashrc ]; then
-		./etc/bashrc
+          ./etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -176,7 +176,6 @@ PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export AFA_HOME=/home/ctbsafa/afa
 еxport PATH=$PATH:$AFA_HOME
 export LANG=zh_CN.UTF-8
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
 cur_date=`date +%Y%m%d`
 alias tlog='cd /home/ctbsafa/afa/log/app/${cur_date}'
 alias jlog='cd /home/ctbsafa/afa/log/app/${cur_date)/PUBLIC/JSONPKG'
@@ -187,19 +186,72 @@ export PATH
 ~
 ```
 
-4.保存并退出编辑器:
+4.保存并退出:
 
 ```
 :wq
 ```
 
-4.使文件立即生效：
+5.使文件立即生效：
 
 ```
 source ~/.bashrc
 ```
 
-5.关闭当前终端，重新打开即可。
+6.关闭当前终端，重新打开即可。
+
+### 注意事项
+
+有时候没有.bash_profile文件，直接配置.bashrc文件并不会生效，需要先在.bash profile文件配置PATH环境变量才行。
+
+1.可以创建该文件:
+
+```
+touch .bash_profile
+```
+
+2.编辑文件内容：
+
+```
+# .bash profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+		.~/.bashrc
+fi
+
+#User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+```
+
+3.保存后重启会话窗口即可。
+
+### .bashrc 和 .bash_profile 的区别
+
+#### .bash_profile
+
+* **加载时机** ：`.bash_profile` 文件通常在用户登录时加载。它仅在登录 shell（login shell）时被执行，也就是当你通过终端或 SSH 登录时。
+* **用途** ：用于设置环境变量和启动时要执行的命令，比如配置路径（`PATH`）、设置语言环境（`LANG`）等。
+* **加载其他文件** ：通常 `.bash_profile` 会包含一行代码以加载 `.bashrc` 文件（如果存在），以确保非登录 shell 也能使用相同的配置：
+
+```shell
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+```
+
+#### .bashrc
+
+* **加载时机** ：`.bashrc` 文件在每次启动非登录 shell（non-login shell）时加载。非登录 shell 通常是在图形界面的终端中打开的新终端，或者通过命令 `bash` 启动一个新的 shell 实例。
+* **用途** ：主要用于定义别名、函数、命令提示符以及其他与交互式 shell 使用相关的配置。
+
+#### 总结
+
+* `.bash_profile` 适合配置登录时的环境变量和一次性执行的命令。
+* `.bashrc` 更适合配置日常使用的 shell 行为，比如别名、函数和命令提示符。
 
 ### 删除别名
 
