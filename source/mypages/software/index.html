@@ -242,7 +242,14 @@
                                 <div class="desc">实现自然语言与SQL语句互转</div>
                             </div>
                         </a>
-
+                    </div>
+                    <div>
+                        <a target="_blank" href="https://www.talebook.org/" title="Cutterman">
+                            <div class="item">
+                                <div class="logo" ><img src="picture/link.ico"> 云书架</div>
+                                <div class="desc">talebook是开源项目，是一个简洁但强大的私人书籍管理系统</div>
+                            </div>
+                        </a>
                     </div>
 
                 </div>
@@ -1387,7 +1394,6 @@
             // 监听页面宽度变化
             window.onresize = function () {
                 judgeWidth();
-                // console.log(document.documentElement.clientWidth);
             };
 
             // 判断页面宽度
@@ -1428,33 +1434,6 @@
             $('#fixedBar').click(function () {
                 $('html,body').animate({ scrollTop: '0px' }, 800);
             })
-        </script>
-
-        <!-- 固定看板娘效果 -->
-        <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
-        <script>
-            L2Dwidget.init({
-                "model": {
-                    //jsonpath控制显示那个小萝莉模型，下面这个就是我觉得比较可爱的小萝莉模型
-                    jsonPath: "https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json",
-                    "scale": 1
-                },
-                "display": {
-                    "position": "right", //看板娘的表现位置
-                    "width": 150,  //小萝莉的宽度
-                    "height": 300, //小萝莉的高度
-                    "hOffset": 0,
-                    "vOffset": -20
-                },
-                "mobile": {
-                    "show": true,
-                    "scale": 0.5
-                },
-                "react": {
-                    "opacityDefault": 0.7,
-                    "opacityOnHover": 0.2
-                }
-            });
         </script>
         <!-- 明浩音乐插件 -->
         <script src="https://myhkw.cn/api/player/161954024911" id="myhk" key="161954024911" m="1"></script>

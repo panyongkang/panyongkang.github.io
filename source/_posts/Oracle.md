@@ -1,11 +1,16 @@
 title: Oracle
 author: PanXiaoKang
 tags:
-- Oracle
+
+  - Oracle
+
 categories:
-- 数据库
+  - 数据库
+
 date: 2020-06-02 11:14:00
+
 ---
+
 ## Oracle安装
 
 [下载链接](https://pan.baidu.com/s/1ZP8hm1so44DllaZj3sdndg)
@@ -330,7 +335,22 @@ insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列2','女',23,26,'1005');
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列3','女',23,26,'1006');
 ```
+
 ## PL/SQL数据库操作笔记
+
+### 查询某个时间戳之前的数据
+
+比如刚修改提交了影像补拍信息表中的某些数据，突然想还原修改之前的数据，可以通过以下SQL语句查询24小时内的内容：
+
+```sql
+select * from IB_IMAGE_TIPS_INFO as of timestamp to_timestamp('2024-09-18 14:00:00','yyyy-mm-dd hh24:mi:ss')
+```
+
+含义如下：
+
+1. **`select * from IB_IMAGE_TIPS_INFO`** ：选择所有来自表 `IB_IMAGE_TIPS_INFO` 的数据。
+2. **`as of timestamp`** ：这个子句用于 Oracle 的闪回查询（Flashback Query），它允许查询过去某个时间点的数据。意思是要查询表在某个过去时间点的状态。
+3. **`to_timestamp('2024-09-18 14:00:00', 'yyyy-mm-dd hh24:mi:ss')`** ：使用 `to_timestamp` 函数将字符串 `'2024-09-18 14:00:00'` 转换为时间戳类型，格式为 `yyyy-mm-dd hh24:mi:ss`，表示要查询的历史数据的具体时间点为 2024 年 9 月 18 日 14:00:00。
 
 ### &&运算符的插入
 
