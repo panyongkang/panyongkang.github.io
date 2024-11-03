@@ -8,13 +8,17 @@ tags:
   - Java基础
   - 代码片段
   - 场景应用
+
 categories:
+
   - 后端技术
+
 date: 2020-04-01 18:31:00
 
 ---
 
-随着年龄的递增，慢慢接受了自己的平凡，趁有空整理一下基础知识，以备不时之需，以下是借鉴大佬博客和自己的思考进行整理。。。
+* 随着年龄的递增，慢慢接受了自己的平凡，趁有空整理一下基础知识，也借鉴了一些大佬的文章内容整理中。。。
+* 本人已和谷歌、百度达成合作了，如果还有啥不懂的，以后可以直接谷歌、百度~
 
 ---
 
@@ -499,3 +503,97 @@ System.out.println(yuwen + "  " + shuxue);
 3. **使用场景：** 一般来说，如果对性能要求比较高，或者需要更丰富的功能和扩展性，可以选择 `com.alibaba.fastjson`。而如果对性能要求不是很高，或者只是进行简单的 JSON 数据操作，也可以选择 `net.sf.json`。
 
 总的来说，两个库都有自己的优势和适用场景，选择哪个取决于你的具体需求和偏好。如果你对性能要求比较高，或者需要更丰富的功能和扩展性，可以选择 `com.alibaba.fastjson`。否则，`net.sf.json` 也是一个不错的选择。
+
+# List的去重方法
+
+## 使用两个for循环实现List去重(有序)
+
+```java
+public static List<Integer> removeDuplicationBy2For(List<Integer> list) {
+    for (int i = list.size() - 1; i >= 0; i--) {
+        for (int j = i - 1; j >= 0; j--) {
+            if (list.get(i).equals(list.get(j))) {
+                list.remove(i);
+                break; // 找到重复元素后，直接跳出内层循环
+            }
+        }
+    }
+    return list;
+}
+```
+
+## 使用List集合contains方法循环遍历(有序)
+
+```java
+/**使用List集合contains方法循环遍历(有序)
+ *
+ * @param list
+ * */
+public static List removeDuplicationByContains(List<Integer> list) {
+    List<Integer> newList =new ArrayList<>();
+    for (int i=0;i<list.size();i++)
+    {
+        boolean isContains =newList.contains(list.get(i));
+        if(!isContains){
+            newList.add(list.get(i));
+        }
+    }
+    list.clear();
+    list.addAll(newList);
+    return list;
+}
+
+```
+
+## 使用HashSet实现List去重(无序)
+
+```java
+/**使用HashSet实现List去重(无序)
+ *
+ * @param list
+ * */
+public static List removeDuplicationByHashSet(List<Integer> list) {
+    HashSet set = new HashSet(list);
+    //把List集合所有元素清空
+    list.clear();
+    //把HashSet对象添加至List集合
+    list.addAll(set);
+    return list;
+}
+
+```
+
+## 使用TreeSet实现List去重(有序)
+
+```java
+/**使用TreeSet实现List去重(有序)
+ *
+ * @param list
+ * */
+public static List removeDuplicationByTreeSet(List<Integer> list) {
+    TreeSet set = new TreeSet(list);
+    //把List集合所有元素清空
+    list.clear();
+    //把HashSet对象添加至List集合
+    list.addAll(set);
+    return list;
+}
+
+```
+
+## 使用java8新特性stream实现List去重(有序)
+
+```java
+/**使用java8新特性stream实现List去重(有序)
+ *
+ * @param list
+ * */
+public static List removeDuplicationByStream(List<Integer> list) {
+    List newList = list.stream().distinct().collect(Collectors.toList());
+    return newList;
+}
+```
+
+## 小结
+
+去重的方法有很多，但实际工作中推荐的是：无序HashSet，有序TreeSet。
