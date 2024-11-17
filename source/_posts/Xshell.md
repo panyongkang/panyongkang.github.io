@@ -90,6 +90,7 @@ date: 2020-06-01 16:30:00
 
 ### 命令grep——过滤搜索文件内容
 
+* grep -lr '关键词' . > 'D:\\\保存.txt'  在Git中进入当前目录下，通过关键词搜索并另存为txt文件保存路径信息，可用于统计文件路径。
 * grep bible /etc/exports 在文件exports中查找包含bible的所有行
 * tail -100 /var/log/apache/access.log | grep 404 在WEB服务器日志文件access.log的后100行中查找包含“404”的行
 * tail -100 /var/log/apache/access.log | grep -v googlebot 在WEB服务器日志文件access.log的后100行中，查找没有被google访问的行
