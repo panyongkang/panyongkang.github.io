@@ -2,13 +2,16 @@ title: Butterfly主题使用手册
 author: PanXiaoKang
 cover: https://cdn.pixabay.com/photo/2017/05/13/03/26/professor-2308610_1280.jpg
 tags:
+
   - Butterfly主题
+
 categories:
+
   - Hexo博客
+
 date: 2020-04-26 10:02:00
+
 ---
-
-
 
 本篇文章只记录自己平时使用到的主题设置内容，详情可参考[传送门](https://jerryc.me/posts/4aa8abbe/#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AA%AC%E6%98%8E)
 
@@ -40,19 +43,20 @@ date: 2020-04-26 10:02:00
 | top        | 文章置顶 (true,false)                    |
 | hide       | 是否隐藏（true，false）                  |
 
-
 ## 文章置頂
 
 给文章置顶所需步骤：
-1. 打开hexo根目录执行Git Bash Here窗口  
-2. 首先执行 npm uninstall hexo-generator-index --save  
-3. 然后再 npm install hexo-generator-index-pin-top --save  
+
+1. 打开hexo根目录执行Git Bash Here窗口
+2. 首先执行 npm uninstall hexo-generator-index --save
+3. 然后再 npm install hexo-generator-index-pin-top --save
 4. 最后在文章的front-matter区域添加 top:true即可文章置顶
 5. 记得hexo clean + hexo g 才能生效
 
 ## 鼠标点击效果
 
 配置butterfly主题下的_config.yml，将enbale值改为true即可开启：
+
 ```
 # 为避免卡顿，建议只开一个
 # 点击火焰特效
@@ -85,7 +89,9 @@ ClickShowText:
     - 友善
   fontSize: 30px
 ```
+
 ## 美化页面显示
+
 ```
 beautify:
   enable: true
@@ -106,6 +112,7 @@ canvas_nest:
   count: 99 # the number of lines, default: 99.
   mobile: false #  false 手机端不显示 true 手机端显示
 ```
+
 ## 动态彩带背景
 
 配置 _config.yml
@@ -115,6 +122,7 @@ canvas_ribbon_piao:
   enable: true
   mobile: false # false 手機端不顯示 true 手機端顯示
 ```
+
 ## 首页弹幕座右铭
 
 配置 _config.yml
@@ -128,10 +136,9 @@ subtitle:
   # 循环
   loop: true
   source: false
-  # (如果有英文逗号' , '，請使用转义字符 &#44;)
+  # (如果有英文逗号' , '，請使用转义字符 ,)
   # 如果关闭打字效果，subtitle只会显示sub的第一行文字
   sub:
-    - 世间安得双全法&#44;不负韶华不负卿！
+    - 世间安得双全法，不负韶华不负卿！
     - 近水楼台先得月，向阳榆木易逢春！
 ```
-

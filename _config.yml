@@ -43,6 +43,7 @@ skip_render:
   - "anires/**"
   - "xkdm/**"
   - "3d-gallery/**"
+  - "3D-Panorama/**"
   - "baidu_verify_code-Ls9v04hBiL.html"
   - "README.md"
   - "mybook/**" 

@@ -552,7 +552,7 @@ subtitle:
   # (如果有英文逗號' , '，請使用轉義字符 &#44;)
   # 如果關閉打字效果，subtitle只會顯示sub的第一行文字
   sub:
-    - 世间安得双全法&#44;不负韶华不负卿！
+    - 世间安得双全法，不负韶华不负卿！
     - 近水楼台先得月，向阳榆木易逢春！
 
 # fontawesome圖標
@@ -754,7 +754,8 @@ CDN:
 
   lazyload: https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js
   instantpage: https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js
-  typed: https://cdn.jsdelivr.net/npm/typed.js
+  typed: https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js
+  # typed: /js/typed.js
   js_cookies: https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js
   pangu: https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js
 
