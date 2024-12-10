@@ -1,12 +1,15 @@
 title: windows系统操作
-author: PanXiaoKang
+author: PanYuKang
 top: true
 tags:
 
   - cmd指令
   - 系统操作
+
 categories:
+
   - windows系统
+
 date: 2020-04-15 14:23:00
 
 ---
@@ -75,6 +78,8 @@ Alt+空格+X:最大化窗口
 win+V:可查看之前复制的内容
 win+D:直接显示桌面
 win+E:秒开文件管理
+
+Fn + Esc：可以方便地切换 Fn 键模式，帮助你直接使用功能键而无需按住 Fn 键
 
 win+L:一键锁屏
 win+X:组合键菜单
