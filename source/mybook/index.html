@@ -31,13 +31,14 @@
 	<script type="text/javascript" src="static/js/jquery.mousewheel.min.js"></script>
 	<script type="text/javascript" src="static/js/jquery.form.min.js"></script>
 	<script type="text/javascript" src="static/js/main.js"></script>
+	<link rel="shortcut icon" type="image/png" href="static/picture/sunshine.jpg">
 	<link rel="stylesheet" href="static/css/prism.css">
 	<link rel="stylesheet" href="static/css/style.css">
 	<link rel="stylesheet" href="static/css/book-cover.css">
 	<link rel="stylesheet" href="static/css/zdy.css">
 	<!-- 通过自有函数输出HTML头部信息 -->
-	<meta name="description" content="每个人，都应该书写你的人生。" />
-	<meta name="keywords" content="潘永康,xiayang09" />
+	<meta name="description" content="每个人，都应该书写你的人生!" />
+	<meta name="keywords" content="你好，永康,向阳榆木,每个人都是一本书" />
 	<meta name="generator" content="Typecho 1.1/17.10.30" />
 	<meta name="template" content="book" />
 </head>
@@ -2483,7 +2484,7 @@
 	<!-- 引入加解密库 -->
 	<script src="static/js/crypto-js.min.js"></script>
 	<script>
-		const encryptedContent = 'U2FsdGVkX19Tx9hbEDIkM69gvFooFkwV7aW34fD2iVj1gEpkg6IuGJptFzCuv5lyJ6Yk6gGZfFszTEYj9ikBUv5Cz1/VIDLt8GOHjN8AHqX0lnPD9HrfpUMV5G+yzjKINQkfO/NdvEPH06H/UMiWPvxzNot/uBEpKcBlwLjtEC1Rp7EolpjAO6t2QW4C0wGJZTXmXcG7x4K6P6SyDN39SkRInRjxlOcYFzyM83ndVm4DBXXDs5fg5RQQytC9axsp' // 粘贴加密的内容
+		const encryptedContent = 'U2FsdGVkX1/s99pjm5zu6+H3c1w0vRlFCSh3Oadvyg1nCZPBbW/4Bl/dChFNvw7N8XpLRclrxakbM8MvgxRe/LQ8bgXhfm9M0DoUjKs6ss6w/LmFmhemJ/sFUC47y25bne8zOV4eBZAiyoKI5wCCKhh59KI/Q4/leLKeb/UTdTIkjtxi7vam8w6py5VLZ4ISwon2QYLH5oTh4gSQ50hNSDcUFtFjgu09BNGhGWEsPflAWannobQCRMbgpLn7IsTW' // 粘贴加密的内容
 		// 监听输入框的回车键事件
         document.getElementById('password').addEventListener('keydown', function(event) {
             if (event.key === 'Enter') {
@@ -2513,14 +2514,14 @@
 					document.getElementById('content').style.display = 'block';
 				} else {
 					errMessageElement.style.display = 'block';
-					errMessageElement.innerText = '密码错误';
+					errMessageElement.innerText = '密码不对哦！';
 					setTimeout(() => {
 						errMessageElement.style.display = 'none';
 					}, 3000);
 				}
 			} catch (e) {
 				errMessageElement.style.display = 'block';
-				errMessageElement.innerText = '密码错误';
+				errMessageElement.innerText = '密码不对哦！';
 				setTimeout(() => {
 					errMessageElement.style.display = 'none';
 				}, 3000);

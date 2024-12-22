@@ -6,7 +6,7 @@ const content =
 <p>记忆碎片整理中。。。</p>
 <p>年代太久远，让我好好回忆一下~</p>
 `;
-const password = '123321'; // 设置访问密码
+const password = '123123'; // 设置访问密码
 // 加密内容
 const encryptedContent = CryptoJS.AES.encrypt(content, password).toString();
 // 在终端执行 node encrypt.js 命令，返回加密内容

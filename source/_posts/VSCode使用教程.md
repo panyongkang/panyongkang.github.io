@@ -2,12 +2,17 @@ title: VSCode使用教程
 author: PanXiaoKang
 cover: 'https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png'
 tags:
+
   - 使用教程
   - VSCode
   - 开发工具
+
 categories:
+
   - 工作笔记
+
 date: 2022-02-04 21:47:00
+
 ---
 
 ## VS Code简介
@@ -153,7 +158,7 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 | Cmd +                        |                 |                                  |                                    |
 | Cmd + U                      | Ctrl + U        | 将光标的移动回退到上一个位置     | 撤销光标的移动和选择               |
 
-## 常用插件
+## 常用插件拓展清单
 
 * View In Browser：在浏览器里预览网页必备，运行html文件。
 * Chinese (Simplified) (简体中文) ：工具汉化插件。
@@ -165,7 +170,7 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 * vetur：前端神器，涵盖语法提示到格式化所有功能。也是 vue 框架推荐的插件。
 * Vue 3 Snippets:一款Vue代码提示插件。
 * Code Translate ：翻译插件。
-* 
+* **Office Viewer(Markdown Editor)**：md文档编辑插件。
 
 ## 新建一个Vue项目
 
