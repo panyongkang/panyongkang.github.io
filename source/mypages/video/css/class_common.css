@@ -1,0 +1,492 @@
+﻿﻿body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p , form, fieldset, legend, input, button, textarea, th, td {
+	margin:0;
+	padding:0;    
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+fieldset, img {
+	border:0;
+}
+li {
+	list-style:none;
+}
+em,i{
+	font-style:normal;
+}
+body {
+    background:#fff url(../images/bg.png) repeat-x;
+    color:#333;
+	font:14px/1.7 Tahoma, Geneva, "\5B8B\4F53";
+}
+.clearfix:after {
+	clear:both;
+	content:'\0020';
+	display:block;
+	height:0;    
+}
+.clearfix {
+	zoom:1;
+}
+.clear {
+	clear:both;
+}
+button,input,textarea{
+    font-family:Tahoma, Geneva, "\5B8B\4F53";
+    font-size:12px;
+}
+button {
+	cursor:pointer;
+    outline:none;
+    blr:expression(this.hideFocus=true);
+}
+textarea {    
+	overflow:auto;
+}
+input {
+	vertical-align:middle;
+}
+/*链接颜色*/
+a{
+	color:#333;
+	text-decoration:none;
+}
+.green{
+    color:#2ab2df;
+}
+.red{
+    color:#f00;
+}
+.blue{
+    color:#36c;
+}
+.gray{
+    color:#454545;
+}
+a:hover,
+.green:hover,
+.red:hover,
+.blue:hover,
+.gray:hover{
+    background-color:#2ab2df;
+    color:#fff;
+	text-decoration:none;
+}
+a,
+a i{
+    cursor:pointer;
+}
+.btn{
+    background:#5558c4;
+    border:0;
+	border-radius: 10px;
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+}
+.btn:hover{
+    background:#148fa3;
+}
+.mt10{
+    margin-top:10px;
+}
+/* end reset */
+.header,
+.footer,
+.row{
+    width:990px;
+    margin:0 auto;
+}
+/* bg */
+.topOther .setHome a i,
+.topOther .skinBtn a i,
+.topOther .skinlist a,
+.searchMain .key,
+.userGuide .more a i,
+.goBack i,
+#JgoTop a{
+    background-image:url(../images/main.png);
+    background-repeat:no-repeat;
+}
+/* header */
+.top{
+    height:25px;
+    overflow:hidden;
+}
+.header{
+    font-size:12px;
+}
+.topLink,
+.topLink li{
+    float:left;
+    line-height:25px;
+}
+.topLink a{
+    margin-right:12px;
+    color:#454545;
+}
+.topLink a:hover{
+    background:none;
+    color:#2ab2df;
+    text-decoration:underline;
+}
+.topOther{
+    float:right;
+}
+.topOther li{
+    float:left;
+    height:25px;
+    overflow:hidden;
+    padding-left:10px;
+    line-height:25px;
+}
+.topOther .setHome a,
+.topOther .skinBtn a{
+    position:relative;
+    padding-left:20px;
+}
+.topOther .setHome a:hover,
+.topOther .skinBtn a:hover{
+    background:none;
+    color:#2ab2df;
+    text-decoration:underline;
+}
+.topOther .setHome a i,
+.topOther .skinBtn a i{
+    height:16px;
+    left:0;
+    position:absolute;
+    width:16px;
+}
+.topOther .setHome a i{
+    background-position:-340px -70px;
+    top:-1px;
+}
+.topOther .skinBtn a i{
+    background-position:-360px -70px;
+    top:-1px;
+}
+.topOther .skinlist a{
+    float:left;
+    height:12px;
+    width:12px;
+    overflow:hidden;
+    margin:6px 3px 0 0;
+    font-size:0;
+    text-indent:-999em;
+}
+.topOther .skinlist .green{
+    background-position:-12px -70px;
+}
+.topOther .skinlist .blue{
+    background-position:-24px -70px;
+}
+.topOther .skinlist .pink{
+    background-position:-36px -70px;
+}
+.head{
+    height:85px;
+}
+.logo{
+    float:left;
+    padding:20px 25px 0 5px;
+}
+.logo img{
+    display:block;
+}
+.logo a:hover{
+    background:none;
+}
+.search{
+    float:right;
+    padding-top:20px;
+    width:573px;
+    _width:577px;
+}
+.searchsohu{
+    float:right;
+    padding-top:30px;
+    width:410px;
+    _width:577px;
+}
+.searchMain{
+    height:32px;
+}
+.searchMain .searchLogo{
+    float:left;
+    width:111px;
+    margin-top:5px;
+}
+.searchMain .searchLogo:hover{
+    background:none;
+}
+.searchMain .searchLogo img{
+    width:101px;
+}
+.searchMain .key{
+    background-position:0 0;
+    float:left;
+    height:32px;
+    width:390px;
+    margin-right:5px;
+    position:relative;
+    overflow:hidden;
+}
+.searchMain .sKeyInput{
+    border:0;
+    display:block;
+    background:none;
+    padding:0 5px;
+    height:32px;
+    line-height:28px;
+    font-size:14px;
+    width:380px;
+}
+.searchMain .btn{
+    float:left;
+    height:32px;
+    width:67px;
+    text-align:center;
+}
+.searchType{
+    padding:8px 0 0 111px;
+}
+.userGuide{
+    font-size:12px;
+    padding-bottom:5px;
+    position:relative;
+}
+
+/* footer */
+.footer{
+    text-align:center;
+    font-size:12px;
+    padding:12px 0;
+    color:#666;
+}
+.footer .goBack{
+    color:#666;
+    display:inline-block;
+    position:relative;
+    padding-left:20px;
+}
+.footer .goBack i{
+    background-position:-40px -100px;
+    position:absolute;
+    left:0;
+    top:2px;
+    width:16px;
+    height:16px;
+}
+.footer .goBack:hover{
+    background:none;
+    text-decoration:underline;
+    color:#2ab2df;
+}
+#JgoTop{
+    display:none;
+}
+#JgoTop a{
+    display:block;
+    background-position:0 -120px;
+    width:47px;
+    height:45px
+}
+#JgoTop a:hover{
+    background-position:-47px -120px;
+}
+#JgoTop{
+    bottom: 60px;
+    cursor: pointer;
+    height: 45px;
+    left:50%;
+    margin: 0 0 0 505px;
+    overflow: hidden;
+    position: fixed;
+    width: 47px;
+    _position: absolute;
+    _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-60);
+}
+* html{ 
+    background:url(../images/673a7c226b354e848a5aca773d036f06.gif) no-repeat fixed; 
+} /* avoid floatImage Shake for IE6 */
+
+.main{
+    border-radius: 15px;
+	overflow: hidden;
+    box-shadow: 0px 0px 10px 5px #aaa;
+    _zoom:1;
+    z-index:9;
+    position:relative;
+}
+.title,
+.labelTab{
+    background:#f1faed;
+    border-top:1px solid #aad69e;
+    border-bottom:1px solid #d4eace;
+    height:31px;
+    line-height:31px;
+    padding:0 12px;
+    font-size:14px;
+    color:#2ab2df;
+    margin-top:-1px;
+    position:relative;
+    z-index:10;
+}
+.list{
+    margin-bottom:-1px;
+}
+.list li{
+    float:left;
+    width:197px;
+    height:33px;
+    line-height:33px;
+    border-style:solid;
+    border-color:#d4eace;
+    border-width:0 1px 1px 0;
+}
+.list li a{
+    margin-left:12px;
+}
+.list .last{
+    border-right:0;
+    width:196px;
+}
+/* 两列布局 */
+.col2 .main{
+    float:left;
+    width:750px;
+    border-width:0;
+}
+.col2 .side{
+    float:right;
+    width:230px;
+}
+.box{
+    border-style:solid;
+    border-color:#aad69e;
+    border-width:1px 1px 2px;
+    _zoom:1;
+    z-index:9;
+    position:relative;
+}
+.box .title,
+.box .labelTab{
+    padding:0;
+}
+.box .title .current,
+.box .labelTab .current{
+    display:block;
+    width:101px;
+    text-align:center;
+    background:#2ab2df;
+    color:#fff;
+    margin-top:-1px;
+    margin-left:-1px;
+    height:33px;
+    line-height:33px;
+    font-weight:bold;
+}
+.box .imgList li,
+.box .list li{
+    width:149px;
+}
+.box .imgList .last,
+.box .list .last{
+    width:148px;
+}
+
+.labelTab li{
+    float:left;
+    height:31px;
+    width:101px;
+    text-align:center;
+    cursor:pointer;
+    color:#333;
+}
+.labelTab .current{
+    
+}
+.sideBox{
+    border:1px solid #aad69e;
+}
+.sideBox h2{
+    background:#f1faed;
+    border-bottom:1px solid #d4eace;
+    height:31px;
+    line-height:31px;
+    padding:0 12px;
+    font-size:14px;
+    color:#2ab2df;
+}
+.sideList{
+    line-height:28px;
+    padding:4px 0 4px 8px;
+    font-size:12px;
+}
+.imgList{
+    margin-bottom:-1px;
+}
+.imgList li{
+    float:left;
+    width:197px;
+    height:70px;
+    border-style:solid;
+    border-color:#d4eace;
+    border-width:0 1px 1px 0;
+    text-align:center;
+}
+.imgList .last{
+    border-right:none;
+}
+.imgList img{
+    margin:20px auto 0;
+    vertical-align:middle;
+    display:block;
+}
+.sidePIcList{
+    padding:12px 6px;
+}
+.sidePIcList li{
+    float:left;
+    width:102px;
+    display:inline;
+    margin:5px 3px;
+}
+.sidePIcList .img img{
+    border:1px solid #f1f1f1;
+    display:block;
+}
+.sidePIcList .til{
+    display:block;
+    text-align:center;
+    font-size:12px;
+}
+.sidePIcList .til:hover,
+.specList a:hover{
+    background:none;
+    text-decoration:underline;
+    color:#2ab2df;
+}
+.specList{
+    border-top:1px dashed #ccc;
+    padding:5px;
+    margin:0 10px;
+}
+.specList li{
+    float:left;
+    width:99px;
+    height:24px;
+    line-height:24px;
+    overflow:hidden;
+    font-size:12px;
+}
+.specList a{
+    color:#2ab2df;
+}
+.specList i{
+    font-family:"宋体";
+}
+
