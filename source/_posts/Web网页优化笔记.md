@@ -1,12 +1,7 @@
 title: Web网页优化笔记
 author: PanXiaoKang
-tags:
-
-  - 网页加载
-  - 性能优化
-  - 兼容适配
-categories:
-  - 前端技术
+tags: [网页加载,性能优化,兼容适配]
+categories: [前端技术]
 date: 2024-07-26 23:07:25
 
 ---
@@ -16,6 +11,8 @@ date: 2024-07-26 23:07:25
 渠道推荐：
 
 [Codepen在线案例](https://codepen.io/ "大量案例参考")
+
+[Uiverse UI库](https://uiverse.io/ "最大的开源 UI 库")
 
 ---
 
