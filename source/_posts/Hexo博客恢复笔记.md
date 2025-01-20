@@ -2,13 +2,9 @@ title: Hexo博客恢复笔记
 author: PanXiaoKang
 top: false
 cover: https://pic.imgdb.cn/item/6638eeca0ea9cb14035bbfe7.gif
-tags:
+tags: [hexo恢复]
 
-  - hexo恢复
-
-categories:
-
-  - Hexo博客
+categories: [Hexo博客]
 
 date: 2020-11-22 16:22:00
 
@@ -252,6 +248,34 @@ rm -rf node_modules
 npm cache clean --force
 
 cnpm install  ##因为依赖太多，npm install下载报错，外网不稳定的缘故吧
+```
+
+问题4：Github时不时连接报错： ssh: connect to host github.com port 22: Connection timed out
+
+原因：通常是由于 SSH 连接的问题，可能与网络环境、端口被限制等有关。默认不配置连接的是github.com,端口22，SSH 使用 22 端口，HTTPS 则使用 443 端口，443 端口通常不会被限制。可以强制使用 SSH 的备用端口。
+
+解决方案：
+
+打开.ssh/config文件（如果没有则创建一个）并添加以下内容：
+
+```
+# github向阳榆木
+Host github.com
+HostName ssh.github.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/id_rsa
+Port 443
+# gitee偏偏💖雨季
+Host gitee.com
+HostName gitee.com
+PreferredAuthentications publickey
+IdentityFile ~/.ssh/Giteeblog_id_rsa
+```
+
+然后保存再测试一下连接是否成功：
+
+```
+ssh -T git@github.com
 ```
 
 ### 执行hexo命令
