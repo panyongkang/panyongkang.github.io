@@ -346,11 +346,25 @@ body section .work_time>div .work_time_bot .work_time_bot_center {
 }
 
 body section .work_time>div .work_time_bot .work_time_bot_center .radius {
-	width: 13px;
-	height: 13px;
-	border-radius: 13px;
-	background-color: #ffffff;
-	border: 2px solid #cfcfcf;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff); /* 彩虹渐变 */
+	box-shadow: 0 0 8px rgba(255, 0, 150, 0.6); /* 霓虹光晕 */
+	animation: glow 2s infinite alternate; /* 呼吸光效 */
+	transition: transform 0.3s ease-in-out;
+
+}
+
+/* 呼吸光效动画 */
+@keyframes glow {
+	0% { box-shadow: 0 0 6px rgba(255, 0, 150, 0.4); }
+	100% { box-shadow: 0 0 12px rgba(255, 0, 150, 0.8); }
+}
+
+/* 悬浮时放大 */
+body section .work_time>div .work_time_bot .work_time_bot_center .radius:hover {
+	transform: scale(1.5);
 }
 
 body section .work_time>div .work_time_bot .work_time_bot_center .line {

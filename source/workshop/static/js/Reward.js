@@ -1488,7 +1488,7 @@
                 value: function () {
                   this.createDom(
                     i(
-                      { href: "https://www.xyym.cf/", target: "_blank" },
+                      { href: "https://www.xyyum.icu/", target: "_blank" },
                       l.textKey,
                       "向阳榆木"
                     ),
