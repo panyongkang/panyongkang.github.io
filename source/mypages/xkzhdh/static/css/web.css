@@ -115,35 +115,6 @@ li, ul {
         color: #a64067;
     }
 
-
-.search {
-    padding: 11px 0 0;
-    margin-left: 340px;
-}
-
-.search a {
-    display: block;
-    padding: 0 10px;
-    font-size: 14px;
-    height: 32px;
-    line-height: 32px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 2px;
-    color: #999;
-    overflow: hidden;
-    word-break: break-all;
-}
-.search a i {
-    color: #1b1937;
-    float: right;
-    font-size: 18px;
-    font-weight: bold;
-}
-.search b {
-    color: #c00;
-}
-
 .navbox {
     position: relative;
 }
@@ -575,11 +546,7 @@ iframe {
     float: left;
     line-height: 54px;
 }
-@media only screen and (max-width: 320px){
-.search a {
-    padding: 0;
-}
-}
+
 @media only screen and (max-width :768px){
     .menubig {
         display: none;
@@ -608,16 +575,7 @@ iframe {
         font-size: 24px;
         font-weight: bold;
     }
-    .search {
-        margin-left: 190px;
-		margin-right: 10px;
-    }
-	.search a{
-	    font-size: 12px;
-	}
-	.search a b{
-	    font-size: 12px;
-	}
+
 	.logo h1{
 	    font-size: 16px;
 	}

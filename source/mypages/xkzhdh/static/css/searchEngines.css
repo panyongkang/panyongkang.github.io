@@ -1,0 +1,97 @@
+    /* 基本样式 */
+    .search-container {
+      position: relative;
+      display: inline-block;
+      padding: 7px 0 0;
+      margin-left: 340px;
+    }
+  
+    /* 搜索框样式 */
+    .search-input {
+      padding: 10px 40px 10px 155px; /* 左边留出空间给下拉选项 */
+      border: 1px solid #ddd;
+      width: 940px;
+      font-size: 16px;
+    }
+  
+    /* 下拉按钮样式 */
+    .dropbtn {
+      position: absolute;
+      left: 10px;
+      top: 55%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0; /* 移除默认 padding */
+    }
+  
+    /* 下拉内容（默认隐藏） */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1000; /* 确保在最上层 */
+      max-height: 200px; /* 最大高度 */
+      overflow-y: auto; /* 添加滚动条 */
+    }
+  
+    /* 下拉菜单中的链接 */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  
+    /* 鼠标悬停时下拉菜单链接的颜色 */
+    .dropdown-content a:hover {background-color: #f1f1f1}
+  
+    /* 显示下拉菜单 */
+    .show {display:block;}
+  
+    /* 搜索按钮样式 */
+    .search-button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  
+    /* 放大镜图标 */
+    .search-button::after {
+      content: '🔍';
+    }
+  
+    /* 图标样式 */
+    .engine-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+  @media only screen and (max-width: 320px) {
+      .search-container {
+        display: none; /* 隐藏搜索框 */
+      }
+    }
+    
+  @media only screen and (max-width :768px){
+    .search-container {
+      margin-left: 190px;
+    }
+    .search-input {
+      width: 570px;
+    }
+  }

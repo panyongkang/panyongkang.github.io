@@ -36,6 +36,7 @@
 	<!--<![endif]-->
 
 	<link href="static/css/web.css" rel="stylesheet">
+	<link href="static/css/searchEngines.css" rel="stylesheet">
 
 	<!--[if lt IE 9]>
 
@@ -47,8 +48,35 @@
 
 	<script src="https://lib.baomitu.com/jquery/3.3.1/jquery.min.js"></script>
 	<!-- 加载自定义标签 -->
-	<script src="static/js/custom-label.js"></script>
-
+	<script src="static/js/custom-label.js" defer></script>
+	<!--动态加载:如果设备宽度小于 320px，就不加载该脚本 -->
+	<script>
+		function loadSearchScript() {
+		if (!document.getElementById('searchScript')) {
+			const script = document.createElement('script');
+			script.src = 'static/js/searchEngines.js';
+			script.id = 'searchScript';
+			script.defer = true;
+			document.head.appendChild(script);
+			console.log('searchEngines.js 已动态加载');
+		}
+		}
+	
+		function handleResize() {
+		if (window.innerWidth > 320) {
+			loadSearchScript();
+		}
+		}
+	
+		// 初始加载时判断
+		if (window.innerWidth > 320) {
+		loadSearchScript();
+		}
+	
+		// 监听屏幕宽度变化
+		window.addEventListener('resize', handleResize);
+	</script>
+  
 </head>
 
 <body>
@@ -76,8 +104,15 @@
 				<h1 class="pmd">康康综合导航</h1><span></span>
 
 			</a>
-
-			<div class="search"><a rel="nofollow" href="##">点击SEO走起。。<i class="icon iconfont icon-sousuo"></i></a></div>
+			<div class="search-container">
+				<button onclick="toggleDropdown()" class="dropbtn">
+				  <img class="engine-icon" id="currentEngineIcon" src="https://www.bing.com/favicon.ico" alt="Bing">
+				  <span id="currentEngineName">Bing</span> ▼
+				</button>
+				<div id="myDropdown" class="dropdown-content"></div>
+				<input type="text" id="searchInput" class="search-input" placeholder="输入搜索内容..." onkeypress="handleKeyPress(event)">
+				<button onclick="performSearch()" class="search-button"></button>
+			</div>			  
 
 		</div>
 
@@ -600,12 +635,14 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item abox" rel="559" target="_blank" rel="nofollow"
-										href="https://www.ttmja.com/" title="在线美剧天堂,免费提供好看的最新美剧资源,高清美剧在线观看">天天美剧</a>
+										href="https://www.ttmja.com/" title="在线美剧天堂,免费提供好看的最新美剧资源,高清美剧在线观看">
+										天天美剧<custom-label></custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item" rel="559" target="_blank" rel="nofollow"
-										href="https://www.zxzja.com/" title="在线观看最新美剧|最新韩剧|天天美剧|人人美剧">在线之家</a>
+										href="https://www.zxzja.com/" title="在线观看最新美剧">在线之家</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
@@ -674,7 +711,9 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item box-full" rel="81" target="_blank" rel="nofollow"
-										href="https://agmov.com/">阿哥美剧<font color="#FF0000">（推荐）</font></a>
+										href="https://agmov.com/">
+										阿哥美剧<custom-label></custom-label>
+									</a>
 								</li>
 
 								<li class="pure-u-1-2 pure-u-md-1-6"><i class="icon iconfont icon-shoucang"></i>
@@ -742,7 +781,10 @@
 							<ul class="pure-g">
 								<li class="pure-u-1-2 pure-u-md-1-6"><i class="icon iconfont icon-shoucang"></i><a
 										class="item" rel="96" target="_blank" rel="nofollow"
-										href="https://www.97hjw.com/">97韩剧网<font color="#FF0000">（推荐）</font></a></li>
+										href="https://www.97hjw.com/">
+										97韩剧网<custom-label></custom-label>
+									</a>
+								</li>
 
 								<li class="pure-u-1-2 pure-u-md-1-6"><i class="icon iconfont icon-shoucang"></i><a
 										class="item" rel="96" target="_blank" rel="nofollow"
@@ -2874,8 +2916,9 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang" style="display: none;"></i>
 									<a class="item box-full" rel="" target="_blank" rel="nofollow"
-										href="https://www.kancloud.cn/" title="看云 | 现代化文档写作、托管及数字出版平台。">看云<font
-											color="#FF0000">（推荐）</font></a>
+										href="https://www.kancloud.cn/" title="看云 | 现代化文档写作、托管及数字出版平台。">
+										看云<custom-label></custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang" style="display: none;"></i>
@@ -3571,8 +3614,8 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item box-full" rel="322" target="_blank" rel="nofollow"
-										href="https://wangdoc.com/" title="提供互联网开发文档|JavaScript|ES6|TypeScript等教程。">网道文档
-										<font color="#FF0000">（推荐）</font>
+										href="https://wangdoc.com/" title="提供互联网开发文档|JavaScript|ES6|TypeScript等教程。">
+										网道文档<custom-label></custom-label>
 									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
@@ -3699,8 +3742,9 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item box-full" rel="322" target="_blank" rel="nofollow"
-										href="https://www.hello-algo.com/" title="动画图解、一键运行的数据结构与算法教程！">Hello 算法<font
-											style="color: #FF0000;">(推荐)</font></a>
+										href="https://www.hello-algo.com/" title="动画图解、一键运行的数据结构与算法教程！">
+										Hello 算法<custom-label></custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
@@ -6009,23 +6053,31 @@
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item" rel="143" target="_blank" rel="nofollow"
-										href="https://www.perplexity.ai/" title="Perplexity AI">Perplexity AI</a>
+										href="https://www.perplexity.ai/" title="Perplexity AI">
+										Perplexity AI<custom-label>【外】</custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item" rel="143" target="_blank" rel="nofollow"
 										href="https://gemini.google.com/"
-										title="Google 推出的对话式 AI 工具，由 PaLM 2 技术驱动">Gemini AI</a>
+										title="Google 推出的对话式 AI 工具，由 PaLM 2 技术驱动">
+										Gemini AI<custom-label>【外】</custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item" rel="143" target="_blank" rel="nofollow"
-										href="https://chat.openai.com/" title="ChatGPT 官方网站">ChatGPT AI</a>
+										href="https://chat.openai.com/" title="ChatGPT 官方网站（魔法）">
+										ChatGPT<custom-label>(推荐外)</custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
 									<a class="item" rel="143" target="_blank" rel="nofollow"
-										href="https://www.deepseek.com/" title="DeepSeek | 深度求索">DeepSeek AI</a>
+										href="https://www.deepseek.com/" title="DeepSeek | 深度求索">
+										DeepSeek<custom-label>(推荐内)</custom-label>
+									</a>
 								</li>
 								<li class="pure-u-1-2 pure-u-md-1-6">
 									<i class="icon iconfont icon-shoucang"></i>
