@@ -51,30 +51,42 @@
 	<script src="static/js/custom-label.js" defer></script>
 	<!--动态加载:如果设备宽度小于 320px，就不加载该脚本 -->
 	<script>
+
+		let isScriptLoaded = false; // 标记脚本是否已加载
+
 		function loadSearchScript() {
-		if (!document.getElementById('searchScript')) {
-			const script = document.createElement('script');
-			script.src = 'static/js/searchEngines.js';
-			script.id = 'searchScript';
-			script.defer = true;
-			document.head.appendChild(script);
-			console.log('searchEngines.js 已动态加载');
+			if (!isScriptLoaded && !document.getElementById('searchScript')) {
+				const script = document.createElement('script');
+				script.src = 'static/js/searchEngines.js';
+				script.id = 'searchScript';
+				script.defer = true;
+				document.head.appendChild(script);
+				isScriptLoaded = true; // 标记脚本已加载
+				console.log('searchEngines.js 已动态加载');
+			}
 		}
+
+		function debounce(func, delay) {
+			let timeout;
+			return function() {
+				clearTimeout(timeout);
+				timeout = setTimeout(() => func.apply(this, arguments), delay);
+			};
 		}
-	
+
 		function handleResize() {
-		if (window.innerWidth > 320) {
-			loadSearchScript();
+			if (window.innerWidth > 320) {
+				loadSearchScript();
+			}
 		}
-		}
-	
+
 		// 初始加载时判断
 		if (window.innerWidth > 320) {
-		loadSearchScript();
+			loadSearchScript();
+		} else {
+			// 只有在窗口宽度小于320px时才监听resize事件
+			window.addEventListener('resize', debounce(handleResize, 200));
 		}
-	
-		// 监听屏幕宽度变化
-		window.addEventListener('resize', handleResize);
 	</script>
   
 </head>
