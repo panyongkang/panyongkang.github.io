@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2020/06/25/%E7%94%9F%E6%B4%BB%E7%99%BE%E7%A7%91%E5%B8%B8%E8%AF%86/</loc>
+    <lastmod>2025-02-05</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2020/04/15/Git%E7%89%88%E6%9C%AC%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2025-02-05</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2020/11/22/Hexo%E5%8D%9A%E5%AE%A2%E6%81%A2%E5%A4%8D%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2025-02-05</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2025/01/12/AI%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/</loc>
     <lastmod>2025-02-03</lastmod>
   </url>
@@ -59,10 +71,6 @@
   <url>
     <loc>http://example.com/2020/09/10/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2025-01-21</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/11/22/Hexo%E5%8D%9A%E5%AE%A2%E6%81%A2%E5%A4%8D%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2025-01-20</lastmod>
   </url>
   <url>
     <loc>http://example.com/2020/04/20/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%B7%A5%E5%85%B7%E6%8F%92%E4%BB%B6/</loc>
@@ -150,10 +158,6 @@
   </url>
   <url>
     <loc>http://example.com/2020/09/12/%E7%94%B5%E5%AD%90%E4%BA%A7%E5%93%81%E8%B4%AD%E4%B9%B0%E6%94%BB%E7%95%A5/</loc>
-    <lastmod>2024-12-21</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/06/25/%E7%94%9F%E6%B4%BB%E5%B0%8F%E5%B8%B8%E8%AF%86/</loc>
     <lastmod>2024-12-21</lastmod>
   </url>
   <url>
@@ -342,10 +346,6 @@
   </url>
   <url>
     <loc>http://example.com/2020/04/12/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2024-12-21</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/04/15/Git%E8%B8%A9%E8%BF%87%E7%9A%84%E5%9D%91/</loc>
     <lastmod>2024-12-21</lastmod>
   </url>
   <url>
