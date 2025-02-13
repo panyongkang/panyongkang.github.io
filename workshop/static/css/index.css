@@ -17,7 +17,7 @@ body header .header_nav {
 	display: -webkit-flex;
 	justify-content: center;
 	margin-bottom: 10px;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 body header .header_nav div {
