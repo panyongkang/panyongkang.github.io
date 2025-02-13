@@ -195,16 +195,40 @@ li {
 html,
 body {
 	width: 100%;
+	margin: 0;
+	cursor: none;
 }
+
+a, img {
+	cursor: none !important;
+  }
 
 /* 全局添加鼠标样式 */
-* {
+/* * {
 	cursor: url('https://img.imgdb.cn/item/60697b638322e6675c5e7e25.png'), auto;
 }
-
 a:hover {
 	cursor: url('https://img.imgdb.cn/item/6065fb418322e6675c282194.png'), pointer !important;
-}
+} 
+*/
+
+
+
+/* 鼠标跟随样式 */
+.cursor {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	background: url('https://img.imgdb.cn/item/60697b638322e6675c5e7e25.png') no-repeat center;
+	background-size: contain;
+	pointer-events: none;
+	z-index: 1000;
+  }
+  .leaf {
+	position: absolute;
+	pointer-events: none;
+	opacity: 0.9;
+  }
 
 /*春节模式 */
 #switchspring {
@@ -219,7 +243,7 @@ a:hover {
 	padding-top: 15px;
 	margin-bottom: 0;
 	z-index: 998;
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .chunjiepic {

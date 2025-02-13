@@ -139,7 +139,7 @@
     left: 0;
     background-image: url('https://pic.imgdb.cn/item/604821d75aedab222c04f000.png');
     background-size: cover;
-    cursor: pointer;
+    cursor: none;
   }
   #resetButton {
     position: fixed;
@@ -150,6 +150,6 @@
     color: white;
     border: none;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: none;
     display: none;
   }
