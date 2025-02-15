@@ -1,6 +1,6 @@
-title: Linux系统
+title: Linux系统运维笔记
 author: PanYuKang
-tags: [Linux,服务器,系统]
+tags: [Linux,服务器,系统运维]
 
 categories: [Linux]
 

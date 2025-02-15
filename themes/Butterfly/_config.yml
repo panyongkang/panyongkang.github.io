@@ -36,7 +36,7 @@ menu:
     - 简历 || /anires/ || fa fa-list-alt
     - 名片 || /vcard/ || fa fa-vcard-o
   娱乐||fa fa-gamepad:
-    - 打字游戏 || https://liuxiangyang.space/game2/ || fa fa-gamepad
+    - 打字游戏 || https://playground.z.wiki/typing-game/index.html || fa fa-gamepad
     - 贪吃蛇 || https://xyyum.icu/mypages/GreedySnake/GreedySnake.html || fa fa-lastfm
     - 表白时刻 || /petalage/ || fa fa-gamepad
     - 3D元素 || /yszq/ || fa fa-gamepad
@@ -47,7 +47,8 @@ menu:
     - 聚合图床 || https://www.superbed.cn/ || fa fa-area-chart
   相册集||fa fa-heartbeat:
     - 3D照片屋 || /3d-gallery/ || fa fa-university
-    - 生活相册 || /live-photo/ || fa fa-photo
+    - 青春校园 || /live-photo/ || fa fa-photo
+    - 生活日常 || /photo-wall/ || fa fa-th
     - 美图秀秀 || /mtxx/ || fa fa-file-photo-o
 
 # Favicon

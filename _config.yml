@@ -39,6 +39,7 @@ skip_render:
   - "workshop/**"
   - "yszq/**"
   - "live-photo/**"
+  - "photo-wall/**"
   - "petalage/**"
   - "anires/**"
   - "xkdm/**"
