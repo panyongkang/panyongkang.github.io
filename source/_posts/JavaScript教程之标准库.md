@@ -1,13 +1,8 @@
 title: ③JavaScript教程之标准库
-author: PanXiaoKang
+author: PanYuKang
 cover: https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1273994899,2704080463&fm=26&gp=0.jpg
-tags:
-
-  - JavaScript
-  - 标准库
-  - 前端技术
-categories:
-  - 前端技术
+tags: [JavaScript,标准库,前端技术]
+categories: [前端技术]
 date: 2021-08-29 23:15:00
 
 ---
@@ -4708,7 +4703,129 @@ m // ['b']
 
 上面的代码使用了先行否定断言，`b`不在 `c`前面所以被匹配，而且括号对应的 `d`不会被返回。
 
-## JSON对象
+## JSON语法规范
+
+关于 **JSON 标准语法** 和 **JavaScript 对象字面量（Object Literal）** 的语法差异。以下是详细解释：
+
+---
+
+### **JSON 标准语法：必须加双引号**
+
+- **JSON（JavaScript Object Notation）** 是一种严格的**数据交换格式**，它的语法要求所有键（key）必须用 **双引号包裹**，且字符串值也必须用双引号。
+- 如果键不加双引号，会导致 JSON 解析失败（例如 `JSON.parse()` 会报错）。
+- 例如：
+  ```json
+  // 合法的 JSON
+  {
+    "name": "Github",
+    "url": "https://github.com",
+    "icon": "https://github.com/favicon.ico"
+  }
+  ```
+
+---
+
+### **JavaScript 对象字面量：可以省略双引号**
+
+- 在 JavaScript 代码中，对象字面量的键（key）**可以省略双引号**，前提是键名符合以下规则：
+  - 是有效的 JavaScript 标识符（例如不包含空格、不以数字开头等）。
+  - 例如：
+    ```javascript
+    // 合法的 JavaScript 对象
+    const obj = {
+      name: 'Github',
+      url: 'https://github.com',
+      icon: 'https://github.com/favicon.ico'
+    };
+    ```
+- 如果键名包含特殊字符（如空格、横线 `-` 等），则必须加引号：
+  ```javascript
+  // 键名包含特殊字符时必须加引号
+  const obj = {
+    "full-name": "Github Search",
+    "search-url": "https://github.com"
+  };
+  ```
+
+---
+
+#### **键名合法性规则**
+
+JavaScript 的键名遵循以下规则：
+
+- **有效标识符**：如果键名是合法的 JavaScript **标识符**（如 `name`、`url`），则可以省略引号。
+- **非标识符**：如果键名包含以下字符，则必须加引号：
+  - 连字符（如 `full-name`）
+  - 空格（如 `full name`）
+  - 数字开头（如 `123key`）
+  - 特殊符号（如 `@`、`$`、`#` 等）
+
+---
+
+#### **具体示例**
+
+##### **示例 1：有效标识符（无需引号）**
+
+```javascript
+const obj1 = {
+  name: "Bing",        // ✅ 合法
+  url: "https://bing.com",
+  iconUrl: "favicon.ico"  // ✅ 驼峰命名合法
+};
+```
+
+##### **示例 2：无效标识符（必须加引号）**
+
+```javascript
+const obj2 = {
+  "full-name": "Bing Search",   // ✅ 连字符必须加引号
+  "full name": "Bing",          // ✅ 空格必须加引号
+  "123key": "value",            // ✅ 数字开头必须加引号
+  "@special": "symbol"          // ✅ 特殊符号必须加引号
+};
+```
+
+---
+
+#### **访问带特殊字符的属性**
+
+如果键名包含特殊字符，必须使用 **方括号语法** 访问：
+
+```javascript
+console.log(obj2["full-name"]); // 输出 "Bing Search"
+console.log(obj2["full name"]); // 输出 "Bing"
+```
+
+如果尝试用点语法访问，会直接报错：
+
+```javascript
+console.log(obj2.full-name); // ❌ 会被解析成 obj2.full - name（变量名不存在）
+console.log(obj2.full name); // ❌ 语法错误
+```
+
+---
+
+#### **为什么需要区分**
+
+- **语法明确性**：JavaScript 需要明确区分键名是标识符还是字符串。
+- **兼容性**：某些键名（如 `class`、`for`）是 JavaScript 保留字，如果不用引号包裹会引发歧义：
+  ```javascript
+  const obj = {
+    "class": "container" // ✅ 必须加引号
+  };
+  ```
+
+---
+
+#### **最佳实践与总结**
+
+- **推荐驼峰命名**：尽量使用无特殊字符的键名（如 `fullName` 代替 `full-name`），避免使用引号。
+- **JSON 特殊要求**：如果数据要序列化为 JSON，所有键名必须用双引号包裹（无论是否有特殊字符）。
+
+| **键名类型**       | **是否需要引号** | **示例**             |
+| ------------------------ | ---------------------- | -------------------------- |
+| 合法标识符（无特殊字符） | 可省略                 | `name`, `url`          |
+| 包含特殊字符或保留字     | 必须加引号             | `"full-name"`, `"123"` |
 
 ### JSON格式
 
@@ -4761,9 +4878,9 @@ JSON 对值的类型和格式有严格的规定。
 
 `JSON`对象是 JavaScript 的原生对象，用来处理 JSON 格式数据。它有两个静态方法：`JSON.stringify()`和 `JSON.parse()`。
 
-### JSON.stringify()
+#### JSON.stringify()
 
-#### 基本用法
+##### 基本用法
 
 `JSON.stringify()`方法用于将一个值转为 JSON 字符串。该字符串符合 JSON 格式，并且可以被 `JSON.parse()`方法还原。
 
@@ -4847,7 +4964,7 @@ JSON.stringify(obj); // "{"foo":1}"
 
 上面代码中，`bar`是 `obj`对象的不可遍历属性，`JSON.stringify`方法会忽略这个属性。
 
-#### 第二个参数
+##### 第二个参数
 
 `JSON.stringify()`方法还可以接受一个数组，作为第二个参数，指定参数对象的哪些属性需要转成字符串。
 
@@ -4947,7 +5064,7 @@ JSON.stringify({ a: "abc", b: 123 }, f)
 
 上面代码中，`a`属性经过处理后，返回 `undefined`，于是该属性被忽略了。
 
-#### 第三个参数
+##### 第三个参数
 
 `JSON.stringify()`还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。
 
@@ -4980,7 +5097,7 @@ JSON.stringify({ p1: 1, p2: 2 }, null, 2);
 */
 ```
 
-#### 参数对象的 toJSON() 方法
+##### 参数对象的 toJSON() 方法
 
 如果参数对象有自定义的 `toJSON()`方法，那么 `JSON.stringify()`会使用这个方法的返回值作为参数，而忽略原对象的其他属性。
 
@@ -5051,7 +5168,7 @@ JSON.stringify(/foo/) // ""/foo/""
 
 上面代码在正则对象的原型上面部署了 `toJSON()`方法，将其指向 `toString()`方法，因此转换成 JSON 格式时，正则对象就先调用 `toJSON()`方法转为字符串，然后再被 `JSON.stringify()`方法处理。
 
-### JSON.parse()
+#### JSON.parse()
 
 `JSON.parse()`方法用于将 JSON 字符串转换成对应的值。
 

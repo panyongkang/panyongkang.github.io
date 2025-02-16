@@ -19,8 +19,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
 	<meta name="renderer" content="webkit">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>
-		你好，永康 </title>
+	<!-- 通过自有函数输出HTML头部信息 -->
+	<meta name="description" content="每个人，都应该书写自己的人生!" />
+	<meta name="keywords" content="你好，永康,向阳榆木,每个人都是一本书" />
+	<meta name="generator" content="Typecho 1.1/17.10.30" />
+	<meta name="template" content="book" />
+	<title> 你好，永康 </title>
 	<script type="text/javascript" src="static/js/jquery.min.js"></script>
 	<script type="text/javascript" src="static/js/jquery.pjax.min.js"></script>
 	<link rel="stylesheet" href="static/css/perfect-scrollbar.min.css">
@@ -36,17 +40,17 @@
 	<link rel="stylesheet" href="static/css/style.css">
 	<link rel="stylesheet" href="static/css/book-cover.css">
 	<link rel="stylesheet" href="static/css/zdy.css">
-	<!-- 通过自有函数输出HTML头部信息 -->
-	<meta name="description" content="每个人，都应该书写你的人生!" />
-	<meta name="keywords" content="你好，永康,向阳榆木,每个人都是一本书" />
-	<meta name="generator" content="Typecho 1.1/17.10.30" />
-	<meta name="template" content="book" />
+	<!-- 划词搜索 -->
+	<link rel="stylesheet" href="static/css/KeywordSearch.css">
+	<script src="static/js/KeywordSearch.js" defer></script>
 </head>
 
 <body>
 	<!--[if lt IE 9]>
     <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="https://browsehappy.com/">升级你的浏览器</a>.</div>
 <![endif]-->
+	<!-- 悬浮层容器 -->
+	<div id="selectionPopup"></div>
 	<div id="body-bg">
 		<div id="music_rod"></div>
 		<div title="没有唱片" id="music_box">
@@ -183,7 +187,7 @@
 											<li><a href="#Article_6">心理语录</a>
 												<span>11 - 26</span>
 											</li>
-											<li><a href="#Article_7">心理类书籍</a>
+											<li><a href="#Article_7">心理类书籍摘录</a>
 												<span>11 - 09</span>
 											</li>
 											<li><a href="#Article_8">徐志摩先生</a>
@@ -478,7 +482,7 @@
 									</p>
 									<p>在父母眼里，尤其是农村的父母，文化水平不高，一辈子任劳任怨供养子女上学，好不容易家里出了大学生，毕业了考不上公务员，无论你干什么都是不务正业。
 										我几次我问我母亲，难道考不上公务员就没有别的出路了吗？大学生只有考上公务员才算有出息吗？在他们的认知范围内，很笃定地说只有考上公务员才算是有出息。</p>
-									<p>我没办法跟他们说出我的想法，思想代沟一时之间难已解决。跟父母对着干始终不是办法，况且家里有没有矿。
+									<p>我没办法跟他们说出我的想法，思想代沟一时之间难已解决。跟父母对着干始终不是办法，况且家里也没有矿。
 										一没有强大的背景，二没有过人的才华，三没有贵人相助。只好不断地报名备考。边工作边考试，问题是今年贵州省报考公务员30万，录取3800多人。
 										可谓是选拔精英中的精英，去体验了一把炮灰，考了个寂寞。</p>
 									<p>梦想是很昂贵的，需要金钱去支撑。有些人一谈到“梦想”二字就感到可笑。还是好好找份工作，攒钱、相亲、结婚、买车买房吧。没钱一切都是扯谈！
@@ -554,7 +558,7 @@
 
 							<article class="post" id="Article_5" itemscope itemtype="http://schema.org/BlogPosting">
 								<h1 class="post-title" itemprop="name headline">
-									<a pajx-right itemtype="url" href="#Article_3">
+									<a pajx-right itemtype="url" href="#Article_5">
 										实习生的经历 </a>
 								</h1>
 								<ul class="post-meta">
@@ -737,7 +741,7 @@
 
 							<article class="post" id="Article_5_2" itemscope itemtype="http://schema.org/BlogPosting">
 								<h1 class="post-title" itemprop="name headline">
-									<a pajx-right itemtype="url" href="#Article_5_1">
+									<a pajx-right itemtype="url" href="#Article_5_2">
 										古典文学哲学思想摘录 </a>
 								</h1>
 								<ul class="post-meta">
@@ -2109,28 +2113,28 @@
 						</pre>
 									</div>
 
-									<h2 class="h2_center">《悲观主义》</h2>
-									<div style="margin:10%;">
-										<pre
-											style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
-					   <div style="font-size:20px;">《悲观主义》</div>
-						   向阳小康
-
-						首先，
-						一想到你啊，
-						我这张丑脸，
-						就不经意的泛起微笑。
-						然而，
-						微微一笑，
-						又有点猥琐。
-						到此为止，
-						来世再修好皮囊，
-						今生只做过路人。
-						</pre>
-									</div>
+						<h2 class="h2_center">《悲观主义》</h2>
+						<div style="margin:10%;">
+							<pre
+								style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
+								<div style="font-size:20px;">《悲观主义》</div>
+												向阳小康
+						
+												首先，
+												一想到你啊，
+												我这张丑脸，
+												就不经意的泛起微笑。
+												然而，
+												微微一笑，
+												又有点猥琐。
+												到此为止，
+												来世再修好皮囊，
+												今生只做过路人。
+							</pre>
+						</div>
 
 									<h2 class="h2_center">《怀念》</h2>
-									<div style="margin:10%;">
+						<div style="margin:10%;">
 										<pre
 											style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
 					   <div style="font-size:20px;">《怀念》</div>
