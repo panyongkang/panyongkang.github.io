@@ -1,11 +1,8 @@
 title: Oracle
-author: PanXiaoKang
-tags:
+author: PanYuKang
+tags: [Oracle,PLSQL,SQL语句]
 
-  - Oracle
-
-categories:
-  - 数据库
+categories: [数据库]
 
 date: 2020-06-02 11:14:00
 
@@ -337,6 +334,13 @@ insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '
 ```
 
 ## PL/SQL数据库操作笔记
+
+### 查询当前被锁定的对象信息
+
+```sql
+--查询表被谁锁住的语句
+select * from v$locked_object;
+```
 
 ### 查询某个时间戳之前的数据
 

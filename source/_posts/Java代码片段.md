@@ -1,17 +1,9 @@
 title: Java代码片段
 author: PanYuKang
 
-cover: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1499015010,895265431&fm=26&gp=0.jpg'
+tags: [Java基础,代码片段,场景应用,正则表达式]
 
-tags:
-
-  - Java基础
-  - 代码片段
-  - 场景应用
-
-categories:
-
-  - 后端技术
+categories: [后端技术]
 
 date: 2020-04-01 18:31:00
 
@@ -504,9 +496,9 @@ System.out.println(yuwen + "  " + shuxue);
 
 总的来说，两个库都有自己的优势和适用场景，选择哪个取决于你的具体需求和偏好。如果你对性能要求比较高，或者需要更丰富的功能和扩展性，可以选择 `com.alibaba.fastjson`。否则，`net.sf.json` 也是一个不错的选择。
 
-# List的去重方法
+## List的去重方法
 
-## 使用两个for循环实现List去重(有序)
+### 使用两个for循环实现List去重(有序)
 
 ```java
 public static List<Integer> removeDuplicationBy2For(List<Integer> list) {
@@ -522,7 +514,7 @@ public static List<Integer> removeDuplicationBy2For(List<Integer> list) {
 }
 ```
 
-## 使用List集合contains方法循环遍历(有序)
+### 使用List集合contains方法循环遍历(有序)
 
 ```java
 /**使用List集合contains方法循环遍历(有序)
@@ -545,7 +537,7 @@ public static List removeDuplicationByContains(List<Integer> list) {
 
 ```
 
-## 使用HashSet实现List去重(无序)
+### 使用HashSet实现List去重(无序)
 
 ```java
 /**使用HashSet实现List去重(无序)
@@ -563,7 +555,7 @@ public static List removeDuplicationByHashSet(List<Integer> list) {
 
 ```
 
-## 使用TreeSet实现List去重(有序)
+### 使用TreeSet实现List去重(有序)
 
 ```java
 /**使用TreeSet实现List去重(有序)
@@ -581,7 +573,7 @@ public static List removeDuplicationByTreeSet(List<Integer> list) {
 
 ```
 
-## 使用java8新特性stream实现List去重(有序)
+### 使用java8新特性stream实现List去重(有序)
 
 ```java
 /**使用java8新特性stream实现List去重(有序)
@@ -594,6 +586,170 @@ public static List removeDuplicationByStream(List<Integer> list) {
 }
 ```
 
-## 小结
+### 小结
 
 去重的方法有很多，但实际工作中推荐的是：无序HashSet，有序TreeSet。
+
+## 日期和时间的校验
+
+在工作中针对文本输入字符串时对日期时间格式进行检查和校验合法性，以下是常见的处理方案。
+
+### 使用正则表达式
+
+* **格式验证：** 验证日期时间字符串是否符合 `"yyyy-MM-dd HH:mm:ss"` 的格式。
+* **日期有效性：** 验证日期的正确性（包括平年、闰年以及每个月的正确天数）。
+* **时间有效期：** 验证时间的合法性。
+
+```java
+String regex = "^(?:(?:(?!0000)[0-9]{4}-" +
+"(?:(?:(?:0[13578]|1[02])-" +
+"(?:0[1-9]|[12]\\d|3[01]))|" +
+"(?:(?:0[469]|11)-" +
+"(?:0[1-9]|[12]\\d|30))|" +
+"(?:02-(?:0[1-9]|1\\d|2[0-8]))))|" +
+"(?:(?:(?!0000)[0-9]{2}" +
+"(?:0[48]|[2468][048]|[13579][26])|" +
+"(?:(?!0000)[0-9]{2}00))-02-29))\\s"+
+"(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$";
+```
+
+这个正则表达式的逻辑是：
+
+* **年份部分：**
+  使用 `(?!0000)[0-9]{4}` 确保年份不是“0000”。
+* **日期部分：**
+  * 对于非2月的情况，根据月份选择对应的天数范围（31天、30天）。
+  * 对于2月，非闰年时只允许 01 至 28 号；
+  * 另外单独使用一组分支处理闰年（利用对年份末两位的判断），允许 2 月 29 日。
+* **时间部分：**
+  使用 `(0[0-9]|1[0-9]|2[0-3])` 校验小时（00-23），`([0-5][0-9])` 校验分钟和秒钟（00-59）。
+
+#### 日期格式为 yyyy-MM-dd
+
+这个正则表达式不仅验证格式，还尝试根据月份和闰年规则判断日期是否合法（注意：正则表达式会非常复杂）：
+
+```java
+String regex1 = "^(?:(?:(?!0000)[0-9]{4}-" +
+    "(?:(?:(?:0[13578]|1[02])-" +
+    "(?:0[1-9]|[12]\\d|3[01]))|" +
+    "(?:(?:0[469]|11)-" +
+    "(?:0[1-9]|[12]\\d|30))|" +
+    "(?:02-(?:0[1-9]|1\\d|2[0-8]))))|" +
+    "(?:(?:(?!0000)[0-9]{2}" +
+    "(?:0[48]|[2468][048]|[13579][26])|" +
+    "(?:(?!0000)[0-9]{2}00))-02-29))$";
+```
+
+**说明：**
+
+* `(?!0000)[0-9]{4}` 确保年份不为 0000。
+* 分别针对大月、小月和2月（非闰年）做了合法日期的限制。
+* 另外单独一组分支处理闰年时2月29日的情况。
+
+---
+
+#### 日期格式为 yyyyMMdd
+
+同样的逻辑，只是不带连接符“－”，正则表达式如下：
+
+```java
+String regex2 = "^(?:(?:(?!0000)[0-9]{4}" +
+    "(?:(?:(?:0[13578]|1[02])" +
+    "(?:0[1-9]|[12]\\d|3[01]))|" +
+    "(?:(?:0[469]|11)" +
+    "(?:0[1-9]|[12]\\d|30))|" +
+    "(?:02(?:0[1-9]|1\\d|2[0-8]))))|" +
+    "(?:(?:(?!0000)[0-9]{2}" +
+    "(?:0[48]|[2468][048]|[13579][26])|" +
+    "(?:(?!0000)[0-9]{2}00))02(?:29)))$";
+```
+
+**说明：**
+
+* 逻辑与第一个正则完全一致，只是日期部分不包含“-”分隔符。
+
+---
+
+#### 时间格式为 HH:mm:ss
+
+时间部分的合法性验证相对简单，因为小时、分钟、秒的取值范围固定：
+
+```java
+String regexTime = "^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$";
+```
+
+**说明：**
+
+* `(0[0-9]|1[0-9]|2[0-3])` 限定小时为 00～23；
+* `([0-5][0-9])` 限定分钟和秒为 00～59。
+
+---
+
+#### 总结
+
+虽然正则表达式理论上可以构造出一次性校验日期格式及其合法性的“万能正则”，但如上所示，表达式会非常复杂且不易维护。实际开发中建议：
+
+1. 先用较简单的正则表达式检查基本格式；
+2. 然后使用诸如 Java 的 `SimpleDateFormat`（设置严格模式）或 Java 8 的 `DateTimeFormatter` 来进一步验证日期的逻辑正确性。
+
+如果你将来需要支持其他格式，只需修改日期格式字符串，而正则表达式则可能需要大幅调整，这也是维护难度较大的原因。
+
+### 使用 Java 8 的 `LocalDateTime` 与 `DateTimeFormatter`
+
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class DateValidator {
+    public static boolean isValidDate(String dateStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        try {
+            LocalDateTime.parse(dateStr, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String validDate = "2025-02-20 12:30:45";
+        String invalidDate = "2025-02-30 12:00:00"; // 错误日期
+
+        System.out.println(isValidDate(validDate) ? "格式正确且日期有效" : "日期无效");
+        System.out.println(isValidDate(invalidDate) ? "格式正确且日期有效" : "日期无效");
+    }
+}
+
+```
+
+### 使用 `SimpleDateFormat` 并设置严格模式
+
+```java
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateValidator {
+    public static boolean isValidDate(String dateStr) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        // 设置严格模式，禁止宽松解析
+        sdf.setLenient(false);
+        try {
+            Date date = sdf.parse(dateStr);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    public static void main(String[] args) {
+        String validDate = "2025-02-20 12:30:45";
+        String invalidDate = "2025-02-30 12:00:00"; // 错误日期
+
+        System.out.println(isValidDate(validDate) ? "格式正确且日期有效" : "日期无效");
+        System.out.println(isValidDate(invalidDate) ? "格式正确且日期有效" : "日期无效");
+    }
+}
+
+```
