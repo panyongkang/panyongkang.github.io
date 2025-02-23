@@ -1,0 +1,115 @@
+    /* 贪吃蛇动画样式 */
+  .greedy-snake-border {
+    position: relative;
+    border: 3px solid transparent;
+    border-radius: 8px;
+    margin: 20px;
+    background: #f0f0f0;
+    overflow: hidden;
+  }
+  /* 彩虹边框（静态，使用 conic-gradient 与 mask 实现仅显示边框区域） */
+  .greedy-snake-border::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    z-index: 0;
+    background: conic-gradient(
+      #ff0000, #ff7300, #fffb00, #48ff00,
+      #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000
+    );
+    border-radius: inherit;
+    animation: rotate 3s linear infinite;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+  }
+  @keyframes rotate {
+    to { transform: rotate(360deg); }
+  }
+  /* 仅一个动态小点沿边框运动 */
+  .css-version .snake {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #ff0000 30%, #ff7300 80%);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 5px rgba(255, 50, 50, 0.8));
+    animation: snakeMove 3s linear infinite;
+    z-index: 1;
+  }
+  @keyframes snakeMove {
+    0%   { top: 0; left: 0; transform: translate(-100%, -100%) scale(1.2); }
+    25%  { top: 0; left: 100%; transform: translate(0, -100%) scale(1); }
+    50%  { top: 100%; left: 100%; transform: translate(0, 0) scale(0.8); }
+    75%  { top: 100%; left: 0; transform: translate(-100%, 0) scale(1); }
+    100% { top: 0; left: 0; transform: translate(-100%, -100%) scale(1.2); }
+  }
+
+    .train-carriage-border {
+      position: relative;
+      border: 3px solid transparent;
+      border-radius: 8px;
+      margin: 20px;
+      background: #f0f0f0;
+      overflow: hidden;
+      padding: 25px; /* 内边距防止裁剪 */
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .snake-segment {
+      position: absolute;
+      /* 恢复原始尺寸 */
+      /* width: 100px;
+      height: 50px; */
+      width: 50px;
+      height: 30px;
+      z-index: 1;
+      transform-origin: center;
+      transition: transform 0.1s ease;
+    }
+
+    .snake-segment img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: fill; /* 修改为cover以确保图片填充整个容器 */
+      transform-origin: center;
+      transition: transform 0.1s ease;
+    }
+
+    /* 火车车厢动画样式 */
+    .train-carriage-border {
+      position: relative;
+      border: 3px solid transparent;
+      border-radius: 8px;
+      margin: 20px;
+      background: #f0f0f0;
+      overflow: hidden;
+      padding: 25px; /* 内边距防止裁剪 */
+    }
+
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    .snake-segment {
+      position: absolute;
+      /* 恢复原始尺寸 */
+      /* width: 100px;
+      height: 50px; */
+      width: 50px;
+      height: 30px;
+      z-index: 1;
+      transform-origin: center;
+      transition: transform 0.1s ease;
+    }
+
+    .snake-segment img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: fill; /* 修改为cover以确保图片填充整个容器 */
+      transform-origin: center;
+      transition: transform 0.1s ease;
+    }
