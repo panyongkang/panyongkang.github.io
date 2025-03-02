@@ -53,8 +53,8 @@
   background-color:#181616 !important
 }
 #waveHorizontal1 {
-    -webkit-mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_001.svg);
-    mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_001.svg);
+    -webkit-mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_001.svg);
+    mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_001.svg);
     animation-delay: -2s;
     animation-duration: 12s;
 }
@@ -88,14 +88,14 @@
 @keyframes move{0%{transform:translate(-175px,0px) scale(1,1)}50%{transform:translate(-87px,0px) scale(1,0.5)}100%{transform:translate(0px,0px) scale(1,1)}}
 
 #waveHorizontal2 {
-    -webkit-mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_002.svg);
-    mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_002.svg);
+    -webkit-mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_002.svg);
+    mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_002.svg);
     animation-delay: -2s;
     animation-duration: 5s;
 }
 #waveHorizontal3 {
-    -webkit-mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_003.svg);
-    mask: url(http://img.srcdict.com/SRCDICT/svg/srcdict_003.svg);
+    -webkit-mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_003.svg);
+    mask: url(https://img.srcdict.com/SRCDICT/svg/srcdict_003.svg);
     animation-delay: -1s;
     animation-duration: 3s;
 }
