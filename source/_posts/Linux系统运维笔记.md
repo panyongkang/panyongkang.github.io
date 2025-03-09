@@ -187,7 +187,6 @@ vi ~/.bash_profile
 
 ```bash
 # .bashrc
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -202,6 +201,7 @@ alias tlog='cd /apphome/ctbsabs/abs/log/teller/${CURDATE}/$1'
 alias conf='cd /apphome/ctbsabs/abs/configuration/ && vi deviceIsDebug.properties'
 alias trade='cd /apphome/ctbsabs/abs/workspace/FCBank/trade/Trade/'
 alias up='cd /apphome/ctbsabs/abs/upload_files/up && ls'
+alias bank='cd /apphome/ctbsabs/abs/workspace/bank && ls'
 # 筛选文件路径和内容同时匹配两个关键词
 function grepa() {
     k1="$1"
@@ -224,38 +224,31 @@ function grepa() {
 
 }
 alias ga='grepa'
-# 筛选所有目录、文件、行的内容
-function grepall() {
-    k1="$1"
-    k2="$2"
+grepw() {
+    local keyword1="$1"
+    local keyword2="$2"
 
-    if [[ -z "$k1" || -z "$k2" ]]; then
-	echo "---------- gall 命令使用说明 ----------"
-        echo "该命令用于所有目录、文件、行同时匹配两个关键词。"
-        echo "用法：gall <内容关键词> <路径关键词>"
-        echo "例如：gall 'tadVarMap().commCode' '020702'"
+    # 参数校验：必须输入两个关键词
+    if [[ -z "$keyword1" || -z "$keyword2" ]]; then
+		echo "---------- gaw 命令使用说明 ----------"
+        echo "该命令用于快速筛选同时包含两个关键词的文件。"
+        echo "用法: gaw <关键词1> <关键词2>"
+        echo "例如：gaw 'SyncOpenTrade' '011042'"
         echo "------------------------------------"
         return 1
     fi
 
-    echo "<<<<<目录匹配（同时包含两个关键词的目录）>>>>>"
-    # 目录名同时包含两个关键词（AND条件）
-    find . -type d -a -name "*${k1}*" -a -name "*${k2}*" -print
+    # 第一步：快速筛选同时包含两个关键词的文件
+    echo "<<<<< 快速生成匹配文件列表（不读全部内容）>>>>>"
+    MATCHED_FILES=$(grep -rlZ "$keyword1" . | xargs -0 grep -lZ "$keyword2")
 
-    echo "<<<<<文件名匹配（同时包含两个关键词的文件名）>>>>>"
-    # 文件名同时包含两个关键词（AND条件）
-    find . -type f -a -name "*${k1}*" -a -name "*${k2}*" -print
-
-    echo "<<<<<文件内容匹配（同一行包含两个关键词）>>>>>"
-    grep -rHn "$k1" . | grep "$k2"
-
-    echo "<<<<< 混合匹配（文件路径中包含一个关键词，文件内容包含另一个关键词） >>>>>"
-    echo "【路径含 '$k1'，内容含 '$k2'】"
-    find . -type f -path "*${k1}*" -print0 | xargs -0 grep -Hn --color=always "$k2"
-    echo "【路径含 '$k2'，内容含 '$k1'】"
-    find . -type f -path "*${k2}*" -print0 | xargs -0 grep -Hn --color=always "$k1"
+    # 第二步：直接管道传递避免变量污染
+    echo "<<<<< 高亮展示匹配内容 [$keyword1] 和 [$keyword2] >>>>>"
+    grep -rlZ --color=never "$keyword1" . \
+        | xargs -0 grep -lZ --color=never "$keyword2" \
+        | xargs -0 -I{} grep -Hn --color=always -e "$keyword1" -e "$keyword2" "{}"
 }
-alias gall='grepall'
+alias gaw='grepw'
 
 ```
 

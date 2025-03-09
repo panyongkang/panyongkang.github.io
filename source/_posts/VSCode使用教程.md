@@ -1,15 +1,9 @@
 title: VSCode使用教程
-author: PanXiaoKang
+author: PanYuKang
 cover: 'https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png'
-tags:
+tags: [使用教程,VSCode,开发工具]
 
-  - 使用教程
-  - VSCode
-  - 开发工具
-
-categories:
-
-  - 工作笔记
+categories: [工作笔记]
 
 date: 2022-02-04 21:47:00
 
@@ -157,20 +151,6 @@ VS Code 用得熟不熟，首先就看你是否会用快捷键。以下列出的
 | Ctrl + J                     |                 | 将多行代码合并为一行             | Win 用户可在命令面板搜索”合并行“ |
 | Cmd +                        |                 |                                  |                                    |
 | Cmd + U                      | Ctrl + U        | 将光标的移动回退到上一个位置     | 撤销光标的移动和选择               |
-
-## 常用插件拓展清单
-
-* View In Browser：在浏览器里预览网页必备，运行html文件。
-* Chinese (Simplified) (简体中文) ：工具汉化插件。
-* HTML Snippets：
-
-  * 这是一款前端开发者必备的扩展，它能将你从手动键入每个标签中解放出来。只需输入 div 然后按下回车，一对标签就出现了。更厉害的是，对于需要嵌套的标签，你可以直接用 ul>li>a 的格式表示，按下回车后就能看到你需要的嵌套。还有一点，这个扩展已经包括所有的 HMTL5 片段
-  * 进入任意html文件，输入内容，如输入html，然后按两下TAB键，第一下TAB键补全代码，第二下TAB键生成键值对。
-* Debugger for Chrome：谷歌浏览器代码调试插件
-* vetur：前端神器，涵盖语法提示到格式化所有功能。也是 vue 框架推荐的插件。
-* Vue 3 Snippets:一款Vue代码提示插件。
-* Code Translate ：翻译插件。
-* **Office Viewer(Markdown Editor)**：md文档编辑插件。
 
 ## 新建一个Vue项目
 

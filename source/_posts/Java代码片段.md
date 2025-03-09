@@ -733,7 +733,6 @@ String regex = ""^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$";
   `(19\\d{2}|[2-9]\\d{3})`
 
   这一部分匹配1900到9999之间的四位年份。
-
 * `19\\d{2}` 匹配 1900 到 1999
 * `[2-9]\\d{3}` 匹配 2000 到 9999
 * **分隔符 `-`**
@@ -745,21 +744,22 @@ String regex = ""^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$";
 
 1. **1、3、5、7、8、10、12 月** ：
 
-    `(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])`
-     * `(0[13578]|1[02])`：匹配月份，允许的值有 01、03、05、07、08、10、12。
-     * 日期部分 `(?:0[1-9]|[12]\\d|3[01])`：允许的日数为 01 到 31。
+   `(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])`
 
-1. **4、6、9、11 月** ：
+   * `(0[13578]|1[02])`：匹配月份，允许的值有 01、03、05、07、08、10、12。
+   * 日期部分 `(?:0[1-9]|[12]\\d|3[01])`：允许的日数为 01 到 31。
+2. **4、6、9、11 月** ：
 
-    `(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)`
-     * `(0[469]|11)`：匹配月份，允许的值有 04、06、09、11。
-     * 日期部分 `(?:0[1-9]|[12]\\d|30)`：允许的日数为 01 到 30。
+   `(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)`
 
-1. **2 月（平年）** ：
+   * `(0[469]|11)`：匹配月份，允许的值有 04、06、09、11。
+   * 日期部分 `(?:0[1-9]|[12]\\d|30)`：允许的日数为 01 到 30。
+3. **2 月（平年）** ：
 
-    `"02-(?:0[1-9]|1\\d|2[0-8])"`
-     * 固定匹配月份 “02”
-     * 日期部分 `(?:0[1-9]|1\\d|2[0-8])`：允许的日数为 01 到 28。
+   `"02-(?:0[1-9]|1\\d|2[0-8])"`
+
+   * 固定匹配月份 “02”
+   * 日期部分 `(?:0[1-9]|1\\d|2[0-8])`：允许的日数为 01 到 28。
 
 **分支2：闰年2月29日部分**
 
@@ -804,19 +804,15 @@ String regex = ""^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$";
 * **小时** ：`(0[0-9]|1\\d|2[0-3])`
 
   匹配两位数小时，允许的值为 00～09（`0[0-9]`）、10～19（`1\\d`）和20～23（`2[0-3]`）。
-
 * **冒号** ：`:`
 
   作为小时与分钟的分隔符。
-
 * **分钟** ：`([0-5]\\d)`
 
   匹配两位分钟，允许的范围 00～59。
-
 * **冒号** ：`:`
 
   作为分钟与秒的分隔符。
-
 * **秒钟** ：`([0-5]\\d)`
 
   同样匹配两位秒钟，范围 00～59。
@@ -997,7 +993,78 @@ String regexTime = ""^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$";
 "abcd-ef-gh ij:kl:mn"
 完全不符合日期时间格式要求。
 
-### 使用Java中的方法
+### 使用Java方法进行校验
+
+#### 格式转换校验
+
+先检查录入字符串合法性，再将格式为 yyyyMMddHHmmss 的字符串转换为 yyyy-MM-dd HH:mm:ss 格式。
+
+```java
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.ResolverStyle;
+import java.time.format.DateTimeParseException;
+
+public class DateTimeValidator {
+
+    /**
+     * 校验日期时间字符串是否合法
+     * @param input 输入字符串（格式必须为 yyyyMMddHHmmss）
+     * @return true 合法 / false 非法
+     */
+    public static boolean isValidDateTime(String input) {
+        DateTimeFormatter strictFormatter = DateTimeFormatter
+            .ofPattern("uuuuMMddHHmmss")  // 注意使用 uuuu 而不是 yyyy
+            .withResolverStyle(ResolverStyle.STRICT); // 启用严格模式
+
+        try {
+            LocalDateTime.parse(input, strictFormatter);
+            return true; // 无异常则合法
+        } catch (DateTimeParseException e) {
+            return false; // 捕获异常则非法
+        }
+    }
+
+    /**
+     * 格式化日期时间字符串（仅在合法时调用）
+     * @param input 输入字符串（格式必须为 yyyyMMddHHmmss）
+     * @return 格式化后的字符串（yyyy-MM-dd HH:mm:ss）
+     */
+    public static String formatDateTime(String input) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuuMMddHHmmss");
+        LocalDateTime dateTime = LocalDateTime.parse(input, formatter);
+        return dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
+    public static void main(String[] args) {
+        String input1 = "19000229120000"; // 非法（1900年不是闰年）
+        String input2 = "20240229120000"; // 合法（2024年是闰年）
+        String input3 = "1900022812006000"; // 非法（秒数6000超长）
+
+        // 校验并格式化
+        checkAndProcess(input1);
+        checkAndProcess(input2);
+        checkAndProcess(input3);
+    }
+
+    private static void checkAndProcess(String input) {
+        if (isValidDateTime(input)) {
+            String formatted = formatDateTime(input);
+            System.out.println("合法日期: " + formatted);
+        } else {
+            System.out.println("非法日期: " + input + " （请检查格式或逻辑值）");
+        }
+    }
+}
+```
+
+**运行结果：**
+
+```
+非法日期: 19000229120000 （请检查格式或逻辑值）
+合法日期: 2024-02-29 12:00:00
+非法日期: 1900022812006000 （请检查格式或逻辑值）
+```
 
 #### 使用 Java 8 `LocalDateTime` 与 `DateTimeFormatter`
 
@@ -1052,7 +1119,7 @@ public class DateCheck {
         System.out.println(validateDateTime("2024-02-29 12:34:56")); // true 闰年日期
         System.out.println(validateDateTime("2023-02-29 12:34:56")); // false 非闰年2月29日 （严格模式触发异常）
         System.out.println(validateDateTime("10000-01-01 00:00:00")); // false（年份超出正则格式）
-    
+  
     }
 }
 ```
