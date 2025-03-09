@@ -1415,7 +1415,7 @@ function activateLightMode(){
 <p><code>replace</code>方法的第二个参数可以使用美元符号 <code>$</code>，用来指代所替换的内容。</p>
 <ul>
 <li><code>$&amp;</code>：匹配的子字符串。</li>
-<li>`$``：匹配结果前面的文本。</li>
+<li>&#96;$&#96;&#96;：匹配结果前面的文本。</li>
 <li><code>$&#39;</code>：匹配结果后面的文本。</li>
 <li><code>$n</code>：匹配成功的第 <code>n</code>组内容，<code>n</code>是从1开始的自然数。</li>
 <li><code>$$</code>：指代美元符号 <code>$</code>。</li>
@@ -1671,9 +1671,7 @@ function activateLightMode(){
 <h3 id="JSON-标准语法：必须加双引号"><a href="#JSON-标准语法：必须加双引号" class="headerlink" title="JSON 标准语法：必须加双引号"></a><strong>JSON 标准语法：必须加双引号</strong></h3><ul>
 <li><strong>JSON（JavaScript Object Notation）</strong> 是一种严格的<strong>数据交换格式</strong>，它的语法要求所有键（key）必须用 <strong>双引号包裹</strong>，且字符串值也必须用双引号。</li>
 <li>如果键不加双引号，会导致 JSON 解析失败（例如 <code>JSON.parse()</code> 会报错）。</li>
-<li>例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合法的 JSON</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Github"</span>,</span><br><span class="line">  <span class="attr">"url"</span>: <span class="string">"https://github.com"</span>,</span><br><span class="line">  <span class="attr">"icon"</span>: <span class="string">"https://github.com/favicon.ico"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>例如：<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合法的 JSON</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"Github"</span>,</span><br><span class="line">  <span class="attr">"url"</span>: <span class="string">"https://github.com"</span>,</span><br><span class="line">  <span class="attr">"icon"</span>: <span class="string">"https://github.com/favicon.ico"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h3 id="JavaScript-对象字面量：可以省略双引号"><a href="#JavaScript-对象字面量：可以省略双引号" class="headerlink" title="JavaScript 对象字面量：可以省略双引号"></a><strong>JavaScript 对象字面量：可以省略双引号</strong></h3><ul>
@@ -1682,9 +1680,7 @@ function activateLightMode(){
 <li>例如：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 合法的 JavaScript 对象</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'Github'</span>,</span><br><span class="line">  url: <span class="string">'https://github.com'</span>,</span><br><span class="line">  icon: <span class="string">'https://github.com/favicon.ico'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
-<li>如果键名包含特殊字符（如空格、横线 <code>-</code> 等），则必须加引号：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 键名包含特殊字符时必须加引号</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="string">"full-name"</span>: <span class="string">"Github Search"</span>,</span><br><span class="line">  <span class="string">"search-url"</span>: <span class="string">"https://github.com"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>如果键名包含特殊字符（如空格、横线 <code>-</code> 等），则必须加引号：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 键名包含特殊字符时必须加引号</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="string">"full-name"</span>: <span class="string">"Github Search"</span>,</span><br><span class="line">  <span class="string">"search-url"</span>: <span class="string">"https://github.com"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h4 id="键名合法性规则"><a href="#键名合法性规则" class="headerlink" title="键名合法性规则"></a><strong>键名合法性规则</strong></h4><p>JavaScript 的键名遵循以下规则：</p>
@@ -1713,9 +1709,7 @@ function activateLightMode(){
 <hr>
 <h4 id="为什么需要区分"><a href="#为什么需要区分" class="headerlink" title="为什么需要区分"></a><strong>为什么需要区分</strong></h4><ul>
 <li><strong>语法明确性</strong>：JavaScript 需要明确区分键名是标识符还是字符串。</li>
-<li><strong>兼容性</strong>：某些键名（如 <code>class</code>、<code>for</code>）是 JavaScript 保留字，如果不用引号包裹会引发歧义：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="string">"class"</span>: <span class="string">"container"</span> <span class="comment">// ✅ 必须加引号</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li><strong>兼容性</strong>：某些键名（如 <code>class</code>、<code>for</code>）是 JavaScript 保留字，如果不用引号包裹会引发歧义：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="string">"class"</span>: <span class="string">"container"</span> <span class="comment">// ✅ 必须加引号</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h4 id="最佳实践与总结"><a href="#最佳实践与总结" class="headerlink" title="最佳实践与总结"></a><strong>最佳实践与总结</strong></h4><ul>

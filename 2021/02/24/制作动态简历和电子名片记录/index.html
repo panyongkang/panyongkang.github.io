@@ -88,7 +88,7 @@ function activateLightMode(){
 <h3 id="简历预览"><a href="#简历预览" class="headerlink" title="简历预览"></a><a href="https://xyyum.icu/anires/" target="_blank" rel="noopener">简历预览</a></h3><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/panyongkang/anires.git //克隆项目到本地</span><br><span class="line"><span class="built_in">cd</span> anires  //打开anires项目</span><br><span class="line">npm install  //安装npm依赖包</span><br><span class="line">npm run dev  //运行项目</span><br></pre></td></tr></table></figure>
 
 <h3 id="部署方法"><a href="#部署方法" class="headerlink" title="部署方法"></a>部署方法</h3><ol>
-<li>编辑 <strong>config/index.js</strong>，修改第 10 行的 <code>assetsPublicPath</code>，值为 <code>项目名/public</code>。如果你没有修改项目名 <code>anires</code>，则可跳过此步骤。</li>
+<li>编辑 <strong>config&#x2F;index.js</strong>，修改第 10 行的 <code>assetsPublicPath</code>，值为 <code>项目名/public</code>。如果你没有修改项目名 <code>anires</code>，则可跳过此步骤。</li>
 <li>编译、上传</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm run build  //构建项目，运行修改完项目，需要重新构建生成public文件</span><br><span class="line">git init	//初始化本地版本库,生成<span class="string">'.git'</span>文件</span><br><span class="line">git remote -v    //查看远程版本库信息（此时没有关联，需添加）</span><br><span class="line">git remote add origin url    //添加关联远程版本库，在github上面先创建anires仓库，然后复制<span class="string">'url'</span>路径</span><br><span class="line">git add .  //跟踪所有改动过的内容,提交到缓存区</span><br><span class="line">git commit -m <span class="string">"update"</span> //提交所有更新过的文件</span><br><span class="line">git push  //上传代码到远程仓库，第一次上传需要<span class="string">'git push origin master'</span>，以后直接 git push即可</span><br></pre></td></tr></table></figure>
@@ -104,13 +104,11 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">关于我||fa fa-user-circle-o:</span><br><span class="line">  - 母校 || http:&#x2F;&#x2F;www.xbmu.edu.cn&#x2F; || fa fa-graduation-cap</span><br><span class="line">  - 简历 || &#x2F;anires&#x2F; || fa fa-list-alt</span><br><span class="line">  - 名片 || &#x2F;vcard&#x2F; || fa fa-vcard-o</span><br></pre></td></tr></table></figure>
 
 <ol>
-<li>在 <code>anires</code>目录中新建一个 <code>index.md</code>文件，建立 <code>type: anires</code>是为了与导航菜单的 <code>/anires/</code>进行关联，内容如下：</li>
+<li>在 <code>anires</code>目录中新建一个 <code>index.md</code>文件，建立 <code>type: anires</code>是为了与导航菜单的 <code> /anires/</code>进行关联，内容如下：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 动态简历</span><br><span class="line">type: anires</span><br><span class="line">date: 2021-02-24 12:31:30</span><br></pre></td></tr></table></figure></li>
 <li><p>跳过渲染：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#跳过渲染</span><br><span class="line">skip_render: </span><br><span class="line">  - &quot;vcard&#x2F;**&quot;</span><br><span class="line">  - &quot;anires&#x2F;**&quot;</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#跳过渲染</span><br><span class="line">skip_render: </span><br><span class="line">  - &quot;vcard&#x2F;**&quot;</span><br><span class="line">  - &quot;anires&#x2F;**&quot;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="动态电子名片模板"><a href="#动态电子名片模板" class="headerlink" title="动态电子名片模板"></a>动态电子名片模板</h2><h3 id="项目截图-1"><a href="#项目截图-1" class="headerlink" title="项目截图"></a>项目截图</h3><p><a href="https://imgtu.com/i/yOLxN4" target="_blank" rel="noopener"><img src="/img/loading.gif" class="lazyload" data-src="https://s3.ax1x.com/2021/02/24/yOLxN4.png"  alt="yOLxN4.png"></a></p>
 <h3 id="名片预览"><a href="#名片预览" class="headerlink" title="名片预览"></a><a href="https://xyyum.icu/vcard/" target="_blank" rel="noopener">名片预览</a></h3><h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><p>直接下载 <code>vcard</code>代码复制到 <code>source</code>目录下面，操作方法与上述动态简历步骤基本相似，不做过多解释。</p>
@@ -162,7 +160,7 @@ function activateLightMode(){
 <h4 id="教育背景（魔幻现实版）"><a href="#教育背景（魔幻现实版）" class="headerlink" title="教育背景（魔幻现实版）"></a>教育背景（魔幻现实版）</h4><p>🎓 家里蹲大学 · 熬夜修仙系 · 博士（肄业）</p>
 <ul>
 <li>主修《咖啡因代谢研究》《深夜debug玄学》</li>
-<li>辅修《如何用Ctrl+C/V构建商业系统》</li>
+<li>辅修《如何用Ctrl+C&#x2F;V构建商业系统》</li>
 <li>毕业论文：《论程序员与产品经理的物种隔离》</li>
 </ul>
 <hr>

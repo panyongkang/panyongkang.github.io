@@ -100,8 +100,10 @@ function activateLightMode(){
     #跳过渲染
     skip_render: 
           - &quot;README.md&quot;
-                        - &quot;mypages/**&quot;</code></pre><blockquote>
-<p>跳过渲染具体参考：<a href="https://blog.csdn.net/qq_40922859/article/details/100877777" target="_blank" rel="noopener" title="跳过渲染">https://blog.csdn.net/qq_40922859/article/details/100877777</a></p>
+                        - &quot;mypages/**&quot;
+</code></pre>
+<blockquote>
+<p>跳过渲染具体参考：<a href="https://blog.csdn.net/qq_40922859/article/details/100877777" target="_blank" rel="noopener" title="跳过渲染">https://blog.csdn.net/qq_40922859&#x2F;article&#x2F;details&#x2F;100877777</a></p>
 </blockquote>
 <h3 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h3><p>参考地址：<a href="https://liuxiangyang.space/2020/02/01/00012/#%E6%B7%BB%E5%8A%A0-SSH-Key-%E5%88%B0-GitHub" target="_blank" rel="noopener">https://liuxiangyang.space/2020/02/01/00012/#%E6%B7%BB%E5%8A%A0-SSH-Key-%E5%88%B0-GitHub</a></p>
 <pre><code>1.问题：hexo更换主题后出现问题：WARN No layout: index.html?  
@@ -117,23 +119,27 @@ function activateLightMode(){
     参考地址：https://blog.csdn.net/ShelleyLittlehero/article/details/83444703  
 4.问题：4000端口 被占用
     处理： 
-
+     
     方法一： netstat -ant |grep 4000查看
     然后kill掉该进程
-
+    
     方法二：可以在_config.yml内加上
     server:
       port: 4001
       compress: true
       header: true
     修改成4001端口
-
-    方法三：windows任务管理器 – 进程 – 找到 ‘Node.js’ 为前缀的进程名，然后主动关闭进程即可</code></pre><h3 id="hexo主题安装"><a href="#hexo主题安装" class="headerlink" title="hexo主题安装:"></a>hexo主题安装:</h3><p>参考地址：<a href="https://jerryc.me/posts/21cfbf15/#%E5%BF%AB%E9%80%9F%E9%96%8B%E5%A7%8B" target="_blank" rel="noopener">https://jerryc.me/posts/21cfbf15/#%E5%BF%AB%E9%80%9F%E9%96%8B%E5%A7%8B</a></p>
+    
+    方法三：windows任务管理器 – 进程 – 找到 ‘Node.js’ 为前缀的进程名，然后主动关闭进程即可
+</code></pre>
+<h3 id="hexo主题安装"><a href="#hexo主题安装" class="headerlink" title="hexo主题安装:"></a>hexo主题安装:</h3><p>参考地址：<a href="https://jerryc.me/posts/21cfbf15/#%E5%BF%AB%E9%80%9F%E9%96%8B%E5%A7%8B" target="_blank" rel="noopener">https://jerryc.me/posts/21cfbf15/#%E5%BF%AB%E9%80%9F%E9%96%8B%E5%A7%8B</a></p>
 <pre><code>安装之后，执行命令如下：  
 清空缓存：hexo clean  
 重新生成datebase:hexo g  
 打开本地仓库服务：hexo s  
-上传到远程仓库：hexo d</code></pre><h3 id="发送文章到博客"><a href="#发送文章到博客" class="headerlink" title="发送文章到博客"></a>发送文章到博客</h3><pre><code>1. 找到md的文件，把它复制到你hexo博客文件夹 中 source 下的 _posts 中，默认只有一个 hello-world.md。  
+上传到远程仓库：hexo d
+</code></pre>
+<h3 id="发送文章到博客"><a href="#发送文章到博客" class="headerlink" title="发送文章到博客"></a>发送文章到博客</h3><pre><code>1. 找到md的文件，把它复制到你hexo博客文件夹 中 source 下的 _posts 中，默认只有一个 hello-world.md。  
 2. 复制完之后然后使用文本编辑器打开它，在第一行加上title，内容自定，如title: this is my first blog
 3. 接着在你博客站点文件夹下右键空白处，选择Git Bash Here，输入 hexo g (完整命令为hexo generate)，用于生成静态文件
 4. 然后 输入 hexo s(完整命令为hexo server)，用于启动服务器，主要用来本地预览；完成后 打开浏览器输入 localhost:4000，会发现多了你刚写的那篇博客
@@ -142,7 +148,9 @@ function activateLightMode(){
 
 问题：hexo d执行后发现本地未添加成功
 处理：在Hexo根目录的_config.yml中修改url为自己的github访问地址：https://panyongkang.github.io/
-注意：修改后本地可以看见发布的文章，但是github上却没有，Google浏览器需要ctrl+F5刷新一下就可以了。</code></pre><h3 id="Hexo可视化编写"><a href="#Hexo可视化编写" class="headerlink" title="Hexo可视化编写"></a>Hexo可视化编写</h3><pre><code>安装Hexo Admin
+注意：修改后本地可以看见发布的文章，但是github上却没有，Google浏览器需要ctrl+F5刷新一下就可以了。
+</code></pre>
+<h3 id="Hexo可视化编写"><a href="#Hexo可视化编写" class="headerlink" title="Hexo可视化编写"></a>Hexo可视化编写</h3><pre><code>安装Hexo Admin
 npm install --save hexo-admin  
 启动本地服务
 hexo s -d
@@ -150,7 +158,9 @@ hexo s -d
 手动部署更新到github
 hexo g -d 
 注意：更新发布后需要退出Git Bash窗口，否则github Pages上面无法更新
-自动部署：学习中。。。</code></pre><hr>
+自动部署：学习中。。。
+</code></pre>
+<hr>
 </div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/04/10/Hexo+GithubPage%E6%90%AD%E5%BB%BA%E6%95%B4%E7%90%86/">http://example.com/2020/04/10/Hexo+GithubPage%E6%90%AD%E5%BB%BA%E6%95%B4%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/"><img class="prev_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3143865248,1602619424&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux系统运维笔记</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/10/Hexo%E6%8C%87%E4%BB%A4/"><img class="next_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo指令</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/12/Hexo博客使用/" title="Hexo博客使用出错记录"><img class="relatedPosts_cover lazyload"data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-12</div><div class="relatedPosts_title">Hexo博客使用出错记录</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1

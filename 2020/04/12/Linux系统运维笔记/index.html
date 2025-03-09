@@ -175,7 +175,7 @@ function activateLightMode(){
 解压：tar -xvf 20170630.tar ROOT
 查看进程：ps -fu [用户名]
 杀掉进程：kill -9 [进程号]
-清理缓存：rm -rf Catalina    提示：一定要在tomcat的work目录下执行此命令。
+清理缓存：rm -rf Catalina	提示：一定要在tomcat的work目录下执行此命令。
 重启项目：./startup.sh
 查看日志：tail -f catalina.out
 查找日志记录：vi Catalina
@@ -184,9 +184,11 @@ function activateLightMode(){
     1.查看占用指定端口的进程：netstat -anp |grep 端口号  //注意监控状态为LISTEN表示已经被占用）
     2.查看所有端口的占用情况:netstat -nultp
     3.结束占用端口的进程:kill -9 进程pid
-    4.查看是否结束占用情况：netstat -anp |grep 80</code></pre><h2 id="Linux命令整理"><a href="#Linux命令整理" class="headerlink" title="Linux命令整理"></a>Linux命令整理</h2><ul>
-<li>查找文件：find / -name filename.txt</li>
-<li>递归查找特定前缀的文件：find ./ -name 文件名*</li>
+    4.查看是否结束占用情况：netstat -anp |grep 80
+</code></pre>
+<h2 id="Linux命令整理"><a href="#Linux命令整理" class="headerlink" title="Linux命令整理"></a>Linux命令整理</h2><ul>
+<li>查找文件：find &#x2F; -name filename.txt</li>
+<li>递归查找特定前缀的文件：find .&#x2F; -name 文件名*</li>
 <li>查看tomcat程序是否运行：ps -ef|grep tomcat</li>
 <li>查看端口8080的使用情况：netstat -tln | grep 8080</li>
 <li>查看进程：ps -fu [用户名]</li>
@@ -199,10 +201,10 @@ function activateLightMode(){
 <li>删除目录：rmdir deleteEmptyFolder</li>
 <li>删除文件包括其子文件:rm -rf deleteFile</li>
 <li>使用超级管理员执行删除命令：sudo rm a.text</li>
-<li>移动文件：mv temp/movefile/targetFolder</li>
+<li>移动文件：mv temp&#x2F;movefile&#x2F;targetFolder</li>
 <li>切换用户：su -username</li>
 <li>修改文件权限：chmod 777 file.java</li>
-<li>压缩文件：tar -czf test.tar.gz/test1/test2</li>
+<li>压缩文件：tar -czf test.tar.gz&#x2F;test1&#x2F;test2</li>
 <li>列出压缩文件列表：tar -tzf test.tar.gz</li>
 <li>解压文件：tar -xvzf test.tar.gz</li>
 <li>查看文件头10行：head -n 10 example.txt</li>
@@ -216,7 +218,7 @@ function activateLightMode(){
 <li>用来查看AIX 系统的，以G为单位显示磁盘使用情况:df -g</li>
 </ul>
 <h3 id="linux上传和下载命令"><a href="#linux上传和下载命令" class="headerlink" title="linux上传和下载命令"></a>linux上传和下载命令</h3><p>linux系统下上传命令是：rz，下载命令是：sz。</p>
-<p>rz命令和sz命令是Linux/Unix系统同Windows进行ZModem文件传输的命令行工具。优点就是不用再开一个sftp工具登录上去上传下载文件。</p>
+<p>rz命令和sz命令是Linux&#x2F;Unix系统同Windows进行ZModem文件传输的命令行工具。优点就是不用再开一个sftp工具登录上去上传下载文件。</p>
 <p>1、rz命令：</p>
 <p>rz中的r意为received(接收)。输入rz命令后 ，会弹出一个选择框，可以从本地选择文件上传到服务器(receive)。</p>
 <p>2、sz命令：</p>
@@ -285,8 +287,8 @@ function activateLightMode(){
 <p>使用 <code>;</code>（无论 <code>cd</code> 成功与否，都会执行 <code>ls</code>）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias myalias&#x3D;&#39;cd &#x2F;path&#x2F;to&#x2F;dir; ls -l&#39;</span><br></pre></td></tr></table></figure>
 
-<h2 id="查看服务器空间"><a href="#查看服务器空间" class="headerlink" title="查看服务器空间"></a>查看服务器空间</h2><p>du-h 文件名 //查看当前文件大小</p>
-<p>df-h //查看当前服务的空间大小</p>
+<h2 id="查看服务器空间"><a href="#查看服务器空间" class="headerlink" title="查看服务器空间"></a>查看服务器空间</h2><p>du-h 文件名 &#x2F;&#x2F;查看当前文件大小</p>
+<p>df-h &#x2F;&#x2F;查看当前服务的空间大小</p>
 <h3 id="常见场景示例"><a href="#常见场景示例" class="headerlink" title="常见场景示例"></a>常见场景示例</h3><p>当前目录空间日志满了，可以删除前一个月以上的日志记录；</p>
 <p>比如当前是6月，可以把5月份之前的都删了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 202205*</span><br></pre></td></tr></table></figure>
@@ -303,7 +305,9 @@ function activateLightMode(){
     参照地址：https://www.cnblogs.com/gwmq/p/10504681.html
     注意：安装好输入法需要重启客户机，否则设置ibus时候找不到输入法
 
-问题：普通虚拟用户如何打开命令窗口？</code></pre></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/">http://example.com/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">系统运维</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/12/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8/"><img class="prev_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hexo博客使用出错记录</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/10/Hexo+GithubPage%E6%90%AD%E5%BB%BA%E6%95%B4%E7%90%86/"><img class="next_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo+mypages搭建整合流程</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2024/11/24/服务器领域/" title="服务器领域"><img class="relatedPosts_cover lazyload"data-src="https://mpimg.cn/view.php/4ca995558ed16d47aa28de0e75a17f11.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-11-24</div><div class="relatedPosts_title">服务器领域</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+问题：普通虚拟用户如何打开命令窗口？
+</code></pre>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/">http://example.com/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a><a class="post-meta__tags" href="/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/">系统运维</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/12/Hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8/"><img class="prev_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hexo博客使用出错记录</div></div></a></div><div class="next-post pull_right"><a href="/2020/04/10/Hexo+GithubPage%E6%90%AD%E5%BB%BA%E6%95%B4%E7%90%86/"><img class="next_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo+mypages搭建整合流程</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2024/11/24/服务器领域/" title="服务器领域"><img class="relatedPosts_cover lazyload"data-src="https://mpimg.cn/view.php/4ca995558ed16d47aa28de0e75a17f11.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-11-24</div><div class="relatedPosts_title">服务器领域</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
 });

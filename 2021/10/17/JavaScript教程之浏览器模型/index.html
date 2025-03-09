@@ -273,7 +273,7 @@ function activateLightMode(){
 <p>字节码不能直接运行，而是运行在一个虚拟机（Virtual Machine）之上，一般也把虚拟机称为 JavaScript 引擎。并非所有的 JavaScript 虚拟机运行时都有字节码，有的 JavaScript 虚拟机基于源码，即只要有可能，就通过 JIT（just in time）编译器直接把源码编译成机器码运行，省略字节码步骤。这一点与其他采用虚拟机（比如 Java）的语言不尽相同。这样做的目的，是为了尽可能地优化代码、提高性能。下面是目前最常见的一些 JavaScript 虚拟机：</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Chakra_(JScript_engine)" target="_blank" rel="noopener">Chakra</a> (Microsoft Internet Explorer)</li>
-<li><a href="https://en.wikipedia.org/wiki/WebKit#JavaScriptCore" target="_blank" rel="noopener">Nitro/JavaScript Core</a> (Safari)</li>
+<li><a href="https://en.wikipedia.org/wiki/WebKit#JavaScriptCore" target="_blank" rel="noopener">Nitro&#x2F;JavaScript Core</a> (Safari)</li>
 <li><a href="https://dev.opera.com/articles/view/labs-carakan/" target="_blank" rel="noopener">Carakan</a> (Opera)</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/SpiderMonkey" target="_blank" rel="noopener">SpiderMonkey</a> (Firefox)</li>
 <li><a href="https://en.wikipedia.org/wiki/Chrome_V8" target="_blank" rel="noopener">V8</a> (Chrome, Chromium)</li>
@@ -719,7 +719,7 @@ function activateLightMode(){
 <p>上面示例中，有多少个可用的逻辑处理器，就创建多少个 Web Worker。</p>
 <h4 id="Navigator-connection"><a href="#Navigator-connection" class="headerlink" title="Navigator.connection"></a>Navigator.connection</h4><p><code>navigator.connection</code>属性返回一个对象，包含当前网络连接的相关信息。</p>
 <ul>
-<li>downlink：有效带宽估计值（单位：兆比特/秒，Mbps），四舍五入到每秒 25KB 的最接近倍数。</li>
+<li>downlink：有效带宽估计值（单位：兆比特&#x2F;秒，Mbps），四舍五入到每秒 25KB 的最接近倍数。</li>
 <li>downlinkMax：当前连接的最大下行链路速度（单位：兆比特每秒，Mbps）。</li>
 <li>effectiveType：返回连接的等效类型，可能的值为<code>slow-2g</code>、<code>2g</code>、<code>3g</code>、<code>4g</code>。</li>
 <li>rtt：当前连接的估计有效往返时间，四舍五入到最接近的25毫秒的倍数。</li>
@@ -1034,7 +1034,7 @@ function activateLightMode(){
 <li>“json”：JSON 对象。</li>
 <li>“text”：字符串。</li>
 </ul>
-<p>上面几种类型之中，<code>text</code>类型适合大多数情况，而且直接处理文本也比较方便。<code>document</code>类型适合返回 HTML / XML 文档的情况，这意味着，对于那些打开 CORS 的网站，可以直接用 Ajax 抓取网页，然后不用解析 HTML 字符串，直接对抓取回来的数据进行 DOM 操作。<code>blob</code>类型适合读取二进制数据，比如图片文件。</p>
+<p>上面几种类型之中，<code>text</code>类型适合大多数情况，而且直接处理文本也比较方便。<code>document</code>类型适合返回 HTML &#x2F; XML 文档的情况，这意味着，对于那些打开 CORS 的网站，可以直接用 Ajax 抓取网页，然后不用解析 HTML 字符串，直接对抓取回来的数据进行 DOM 操作。<code>blob</code>类型适合读取二进制数据，比如图片文件。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">xhr.open(&#39;GET&#39;, &#39;&#x2F;path&#x2F;to&#x2F;image.png&#39;, true);</span><br><span class="line">xhr.responseType &#x3D; &#39;blob&#39;;</span><br><span class="line"></span><br><span class="line">xhr.onload &#x3D; function(e) &#123;</span><br><span class="line">  if (this.status &#x3D;&#x3D;&#x3D; 200) &#123;</span><br><span class="line">    var blob &#x3D; new Blob([xhr.response], &#123;type: &#39;image&#x2F;png&#39;&#125;);</span><br><span class="line">    &#x2F;&#x2F; 或者</span><br><span class="line">    var blob &#x3D; xhr.response;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
 
 <p>如果将这个属性设为<code>ArrayBuffer</code>，就可以按照数组的方式处理二进制数据。</p>
@@ -1636,7 +1636,7 @@ function activateLightMode(){
 </ul>
 <p>除了以上字符，其他字符出现在 URL 之中都必须转义，规则是根据操作系统的默认编码，将每个字节转为百分号（<code>%</code>）加上两个大写的十六进制字母。</p>
 <p>比如，UTF-8 的操作系统上，<code>http://www.example.com/q=春节</code>这个 URL 之中，汉字“春节”不是 URL 的合法字符，所以被浏览器自动转成<code>http://www.example.com/q=%E6%98%A5%E8%8A%82</code>。其中，“春”转成了<code>%E6%98%A5</code>，“节”转成了<code>%E8%8A%82</code>。这是因为“春”和“节”的 UTF-8 编码分别是<code>E6 98 A5</code>和<code>E8 8A 82</code>，将每个字节前面加上百分号，就构成了 URL 编码。</p>
-<p>JavaScript 提供四个 URL 的编码/解码方法。</p>
+<p>JavaScript 提供四个 URL 的编码&#x2F;解码方法。</p>
 <ul>
 <li><code>encodeURI()</code></li>
 <li><code>encodeURIComponent()</code></li>
@@ -1688,7 +1688,7 @@ function activateLightMode(){
 
 <p>上面代码中，改变 URL 实例的<code>pathname</code>属性和<code>hash</code>属性，都会实时反映在 URL 实例当中。</p>
 <h4 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h4><p><strong>（1）URL.createObjectURL()</strong></p>
-<p><code>URL.createObjectURL()</code>方法用来为上传/下载的文件、流媒体文件生成一个 URL 字符串。这个字符串代表了<code>File</code>对象或<code>Blob</code>对象的 URL。</p>
+<p><code>URL.createObjectURL()</code>方法用来为上传&#x2F;下载的文件、流媒体文件生成一个 URL 字符串。这个字符串代表了<code>File</code>对象或<code>Blob</code>对象的 URL。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; HTML 代码如下</span><br><span class="line">&#x2F;&#x2F; &lt;div id&#x3D;&quot;display&quot;&#x2F;&gt;</span><br><span class="line">&#x2F;&#x2F; &lt;input</span><br><span class="line">&#x2F;&#x2F;   type&#x3D;&quot;file&quot;</span><br><span class="line">&#x2F;&#x2F;   id&#x3D;&quot;fileElem&quot;</span><br><span class="line">&#x2F;&#x2F;   multiple</span><br><span class="line">&#x2F;&#x2F;   accept&#x3D;&quot;image&#x2F;*&quot;</span><br><span class="line">&#x2F;&#x2F;   onchange&#x3D;&quot;handleFiles(this.files)&quot;</span><br><span class="line">&#x2F;&#x2F;  &gt;</span><br><span class="line">var div &#x3D; document.getElementById(&#39;display&#39;);</span><br><span class="line"></span><br><span class="line">function handleFiles(files) &#123;</span><br><span class="line">  for (var i &#x3D; 0; i &lt; files.length; i++) &#123;</span><br><span class="line">    var img &#x3D; document.createElement(&#39;img&#39;);</span><br><span class="line">    img.src &#x3D; window.URL.createObjectURL(files[i]);</span><br><span class="line">    div.appendChild(img);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，<code>URL.createObjectURL()</code>方法用来为上传的文件生成一个 URL 字符串，作为<code>&lt;img&gt;</code>元素的图片来源。</p>
@@ -2048,7 +2048,7 @@ function activateLightMode(){
 <p>数据将以 URL 的查询字符串发出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?foo&#x3D;bar&amp;baz&#x3D;The%20first%20line.%0AThe%20second%20line.</span><br></pre></td></tr></table></figure>
 
-<p><strong>（2）application/x-www-form-urlencoded</strong></p>
+<p><strong>（2）application&#x2F;x-www-form-urlencoded</strong></p>
 <p>如果表单用<code>POST</code>方法发送数据，并省略<code>enctype</code>属性，那么数据以<code>application/x-www-form-urlencoded</code>格式发送（因为这是默认值）。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form</span><br><span class="line">  action&#x3D;&quot;register.php&quot;</span><br><span class="line">  method&#x3D;&quot;post&quot;</span><br><span class="line">  onsubmit&#x3D;&quot;AJAXSubmit(this); return false;&quot;</span><br><span class="line">&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
 
@@ -2056,14 +2056,14 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: application&#x2F;x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">foo&#x3D;bar&amp;baz&#x3D;The+first+line.%0D%0AThe+second+line.%0D%0A</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，数据体里面的<code>%0D%0A</code>代表换行符（<code>\r\n</code>）。</p>
-<p><strong>（3）text/plain</strong></p>
+<p><strong>（3）text&#x2F;plain</strong></p>
 <p>如果表单使用<code>POST</code>方法发送数据，<code>enctype</code>属性为<code>text/plain</code>，那么数据将以纯文本格式发送。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form</span><br><span class="line">  action&#x3D;&quot;register.php&quot;</span><br><span class="line">  method&#x3D;&quot;post&quot;</span><br><span class="line">  enctype&#x3D;&quot;text&#x2F;plain&quot;</span><br><span class="line">  onsubmit&#x3D;&quot;AJAXSubmit(this); return false;&quot;</span><br><span class="line">&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
 
 <p>发送的 HTTP 请求如下。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line"></span><br><span class="line">foo&#x3D;bar</span><br><span class="line">baz&#x3D;The first line.</span><br><span class="line">The second line.</span><br></pre></td></tr></table></figure>
 
-<p><strong>（4）multipart/form-data</strong></p>
+<p><strong>（4）multipart&#x2F;form-data</strong></p>
 <p>如果表单使用<code>POST</code>方法，<code>enctype</code>属性为<code>multipart/form-data</code>，那么数据将以混合的格式发送。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form</span><br><span class="line">  action&#x3D;&quot;register.php&quot;</span><br><span class="line">  method&#x3D;&quot;post&quot;</span><br><span class="line">  enctype&#x3D;&quot;multipart&#x2F;form-data&quot;</span><br><span class="line">  onsubmit&#x3D;&quot;AJAXSubmit(this); return false;&quot;</span><br><span class="line">&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
 

@@ -88,7 +88,7 @@ function activateLightMode(){
 <ul>
 <li>打开微PE工具箱，生成可启动ISO镜像。具体操作是，打开 微PE工具箱 ，然后点击右下角的“光盘图标”，之后就可以将工具生成一个 ISO镜像，如图所示。</li>
 </ul>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220306215507054.png"  alt="image-20220306215507054"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220306215507054.png"  alt="image-20220306215507054"></p>
 <ul>
 <li>然后将这个生成ISO镜像的微PE工具箱文件，拷贝到在 Ventoy 的 U 盘里里面就可以了。今后通过 Ventoy 启动U盘 ，就可以选择进入微PE工具了。</li>
 </ul>
@@ -107,7 +107,7 @@ function activateLightMode(){
 <p>分析：因为安装程序执行到自定义安装时，没有仔细看官网文档这段说明就直接安装：</p>
 <p>在这个界面中，需要做一个操作，来提升提升安装成功率。请先定位到您系统盘的位置，观察前面有几个小分区，百十来兆的样子，有时候一个，有时候两个或三个，直接把小分区连同系统大分区一起删除。是的您没听错，选中后直接点红××删除它们，留下一个完整的“未分配空间”。需要先把其他小分区都点击删除后，才能提高安装成功率。</p>
 <h4 id="问题4"><a href="#问题4" class="headerlink" title="问题4"></a><strong>问题4</strong></h4><blockquote>
-<p>your pc/device needs to be repaired</p>
+<p>your pc&#x2F;device needs to be repaired</p>
 <p>a component of the operating system has expired.</p>
 <p>File:\Windows\system32\winload.efi</p>
 <p>Error code:0xc00000605</p>
@@ -117,7 +117,7 @@ function activateLightMode(){
 <h4 id="问题5"><a href="#问题5" class="headerlink" title="问题5"></a>问题5</h4><p>Windows安装完成后报错：Windows 安装程序无法将 Windows 配置为在此计算机的硬件上运行。</p>
 <p>原因：安装前只格式化了C盘，导致安装后系统引导识别失败。</p>
 <p>解决：进入微PE界面，将其他盘的资源提前备份一下，然后打开分区工具（DiskGenius），选择快速分区，格式化所有磁盘数据再重新进行分区。然后再退出重新选择镜像进行重装。</p>
-<p><strong>注意：</strong>UEFI/Legacy BIOS 设置问题：<br>如果您的系统是基于UEFI启动，确保在BIOS中启用了UEFI模式，而不是传统的Legacy BIOS模式。<br>反之，如果系统安装需要Legacy BIOS模式，请确保您在BIOS中切换到Legacy启动模式。</p>
+<p><strong>注意：</strong>UEFI&#x2F;Legacy BIOS 设置问题：<br>如果您的系统是基于UEFI启动，确保在BIOS中启用了UEFI模式，而不是传统的Legacy BIOS模式。<br>反之，如果系统安装需要Legacy BIOS模式，请确保您在BIOS中切换到Legacy启动模式。</p>
 <p>解决：将Boot Mode的启动模式改成UEFI启动即可。</p>
 </div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/02/27/Ventoy-WePE%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/">http://example.com/2022/02/27/Ventoy-WePE%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Ventoy/">Ventoy</a><a class="post-meta__tags" href="/tags/WePE/">WePE</a><a class="post-meta__tags" href="/tags/%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/">装机教程</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/11/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"><img class="prev_cover lazyload" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2674621151,307240708&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">前端项目踩坑笔记</div></div></a></div><div class="next-post pull_right"><a href="/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">域名协议功课笔记</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){

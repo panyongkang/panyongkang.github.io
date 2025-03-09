@@ -158,7 +158,7 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">++x &#x2F;&#x2F; 2</span><br><span class="line">x &#x2F;&#x2F; 2</span><br><span class="line"></span><br><span class="line">--x &#x2F;&#x2F; 1</span><br><span class="line">x &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
 
 <p>上面代码的变量<code>x</code>自增后，返回<code>2</code>，再进行自减，返回<code>1</code>。这两种情况都会使得，原始变量<code>x</code>的值发生改变。</p>
-<p>自增和自减运算符有一个需要注意的地方，就是放在变量之后，会先返回变量操作前的值，再进行自增/自减操作；放在变量之前，会先进行自增/自减操作，再返回变量操作后的值。</p>
+<p>自增和自减运算符有一个需要注意的地方，就是放在变量之后，会先返回变量操作前的值，再进行自增&#x2F;自减操作；放在变量之前，会先进行自增&#x2F;自减操作，再返回变量操作后的值。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">var y &#x3D; 1;</span><br><span class="line"></span><br><span class="line">x++ &#x2F;&#x2F; 1</span><br><span class="line">++y &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
 
 <p>上面代码中，<code>x</code>是先返回当前值，然后自增，所以得到<code>1</code>；<code>y</code>是先自增，然后返回新的值，所以得到<code>2</code>。</p>
@@ -969,8 +969,8 @@ function activateLightMode(){
 </ul>
 <p><code>console</code>对象的浏览器实现，包含在浏览器自带的开发工具之中。以 Chrome 浏览器的“开发者工具”（Developer Tools）为例，可以使用下面三种方法的打开它。</p>
 <ol>
-<li>按 F12 或者<code>Control + Shift + i</code>（PC）/ <code>Command + Option + i</code>（Mac）。</li>
-<li>浏览器菜单选择“工具/开发者工具”。</li>
+<li>按 F12 或者<code>Control + Shift + i</code>（PC）&#x2F; <code>Command + Option + i</code>（Mac）。</li>
+<li>浏览器菜单选择“工具&#x2F;开发者工具”。</li>
 <li>在一个页面元素上，打开右键菜单，选择其中的“Inspect Element”。</li>
 </ol>
 <p>打开开发者工具以后，顶端有多个面板。</p>
@@ -1116,7 +1116,7 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">console.time(&#39;Array initialize&#39;);</span><br><span class="line"></span><br><span class="line">var array&#x3D; new Array(1000000);</span><br><span class="line">for (var i &#x3D; array.length - 1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">  array[i] &#x3D; new Object();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">console.timeEnd(&#39;Array initialize&#39;);</span><br><span class="line">&#x2F;&#x2F; Array initialize: 1914.481ms</span><br></pre></td></tr></table></figure>
 
 <p><code>time</code>方法表示计时开始，<code>timeEnd</code>方法表示计时结束。它们的参数是计时器的名称。调用<code>timeEnd</code>方法之后，控制台会显示“计时器名称: 所耗费的时间”。</p>
-<h4 id="console-group-，console-groupEnd-，console-groupCollapsed"><a href="#console-group-，console-groupEnd-，console-groupCollapsed" class="headerlink" title="console.group()，console.groupEnd()，console.groupCollapsed()"></a>console.group()，console.groupEnd()，console.groupCollapsed()</h4><p><code>console.group</code>和<code>console.groupEnd</code>这两个方法用于将显示的信息分组。它只在输出大量信息时有用，分在一组的信息，可以用鼠标折叠/展开。</p>
+<h4 id="console-group-，console-groupEnd-，console-groupCollapsed"><a href="#console-group-，console-groupEnd-，console-groupCollapsed" class="headerlink" title="console.group()，console.groupEnd()，console.groupCollapsed()"></a>console.group()，console.groupEnd()，console.groupCollapsed()</h4><p><code>console.group</code>和<code>console.groupEnd</code>这两个方法用于将显示的信息分组。它只在输出大量信息时有用，分在一组的信息，可以用鼠标折叠&#x2F;展开。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">console.group(&#39;一级分组&#39;);</span><br><span class="line">console.log(&#39;一级分组的内容&#39;);</span><br><span class="line"></span><br><span class="line">console.group(&#39;二级分组&#39;);</span><br><span class="line">console.log(&#39;二级分组的内容&#39;);</span><br><span class="line"></span><br><span class="line">console.groupEnd(); &#x2F;&#x2F; 二级分组结束</span><br><span class="line">console.groupEnd(); &#x2F;&#x2F; 一级分组结束</span><br></pre></td></tr></table></figure>
 
 <p>上面代码会将“二级分组”显示在“一级分组”内部，并且“一级分组”和“二级分组”前面都有一个折叠符号，可以用来折叠本级的内容。</p>

@@ -86,7 +86,7 @@ function activateLightMode(){
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 转码前</span></span><br><span class="line">input.map(<span class="function"><span class="params">item</span> =&gt;</span> item + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 转码后</span></span><br><span class="line">input.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> item + <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>上面的原始代码用了箭头函数，Babel 将其转为普通函数，就能在不支持箭头函数的 JavaScript 环境执行了。</p>
-<h3 id="浏览器环境"><a href="#浏览器环境" class="headerlink" title="浏览器环境"></a>浏览器环境</h3><p>Babel 也可以用于浏览器环境，使用<a href="https://babeljs.io/docs/en/next/babel-standalone.html" target="_blank" rel="noopener">@babel/standalone</a>模块提供的浏览器版本，将其插入网页。</p>
+<h3 id="浏览器环境"><a href="#浏览器环境" class="headerlink" title="浏览器环境"></a>浏览器环境</h3><p>Babel 也可以用于浏览器环境，使用<a href="https://babeljs.io/docs/en/next/babel-standalone.html" target="_blank" rel="noopener">@babel&#x2F;standalone</a>模块提供的浏览器版本，将其插入网页。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://unpkg.com/@babel/standalone/babel.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/babel"</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="comment">// Your ES6 code</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>注意，网页实时将 ES6 代码转为 ES5，对性能会有影响。生产环境需要加载已经转码完成的脚本。</p>
@@ -118,9 +118,9 @@ function activateLightMode(){
 <li>子作用域能够访问父作用域，父级作用域无法访问子级作用域</li>
 </ul>
 <h2 id="JS闭包"><a href="#JS闭包" class="headerlink" title="JS闭包"></a>JS闭包</h2><h2 id="let和const命令"><a href="#let和const命令" class="headerlink" title="let和const命令"></a>let和const命令</h2><h3 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h3><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>ES6 新增了 <code>let</code>命令，用来声明变量。它的用法类似于 <code>var</code>，但是所声明的变量，只在 <code>let</code>命令所在的代码块内有效。</p>
-<p><strong>let 取代 var，以及他们使用场景的区分，最主要的是实质区分。</strong> ES6新增加了两个新的变量声明关键字 <strong>let 和 <strong>const，而其中的 let完全可以取代 var，两者语义相同且 **let 更适合</strong></strong>作为块级作用域关键字。**</p>
+<p><strong>let 取代 var，以及他们使用场景的区分，最主要的是实质区分。</strong> ES6新增加了两个新的变量声明关键字 *<em>let 和 *<em>const，而其中的 let完全可以取代 var，两者语义相同且 <strong>let 更适合</strong></em>*作为块级作用域关键字。</em>*</p>
 <h3 id="const-命令"><a href="#const-命令" class="headerlink" title="const 命令"></a>const 命令</h3><h4 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h4><p><code>const</code>声明一个只读的常量。一旦声明，常量的值就不能改变。</p>
-<p>全局常量。在定义全局常量时，应优先使用 const关键字，而不是在模块的最顶部采用let或var 声明变量充做全局常量。尤其是在全局环境中，只应设置常量，而不应声明变量以充常量。</p>
+<p>全局常量。在定义全局常量时，应优先使用 const关键字，而不是在模块的最顶部采用let或var 声明变量充做全局常量。尤其是在全局环境中，只应设置常量，而不应声明变量以充常量。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; const 优于 let、var有以下几个原因：</span><br><span class="line">&#x2F;&#x2F; 一、const可以提醒代码阅读者，该参数是一个常量，不能随意修改，修改该参数存在一定的风险；</span><br><span class="line">&#x2F;&#x2F; 二、const比较符合函数式编程思想，运算不改变值，只是新建值，而且有利于将来的分布式运算；</span><br><span class="line">&#x2F;&#x2F; 三、JS编译器会对 const进行优化，有利于提高代码的执行效率，所以可以多用 const。而且 let和 const的本质区别就是编译器内部的处理不同。</span><br><span class="line">    const a &#x3D; 1, b &#x3D; 2, c &#x3D; 3,d &#x3D; 4;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 所有的函数都应该设置为常量</span><br><span class="line">const TempFunc &#x3D; function () &#123;</span><br><span class="line">    console.log(&#39;所有的函数都应该设置为常量!&#39;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <h3 id="ES6-声明变量的六种方法"><a href="#ES6-声明变量的六种方法" class="headerlink" title="ES6 声明变量的六种方法"></a>ES6 声明变量的六种方法</h3><p>ES5 只有两种声明变量的方法：<code>var</code>命令和 <code>function</code>命令。ES6 除了添加 <code>let</code>和 <code>const</code>命令，后面章节还会提到，另外两种声明变量的方法：<code>import</code>命令和 <code>class</code>命令。所以，ES6 一共有 6 种声明变量的方法。</p>
@@ -143,11 +143,11 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;多级对象解构</span><br><span class="line">const pig&#x3D;&#123;</span><br><span class="line">	name:&#39;佩奇&#39;,</span><br><span class="line">	family:&#123;</span><br><span class="line">		mother:&#39;猪妈妈&#39;,</span><br><span class="line">		father:&#39;猪爸爸&#39;,</span><br><span class="line">		sister:&#39;乔治&#39;</span><br><span class="line">	&#125;,</span><br><span class="line">	age:6</span><br><span class="line">&#125;</span><br><span class="line">const &#123;name,family:&#123;mother,father,sister&#125;,age&#125;&#x3D;pig</span><br><span class="line">console.log(name,mother,father,sister)</span><br></pre></td></tr></table></figure>
 
 <p>示例图片：</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="image/ES6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/1698463384443.png"  alt="1698463384443"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="/image/ES6%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/1698463384443.png"  alt="1698463384443"></p>
 <h2 id="forEach遍历数组"><a href="#forEach遍历数组" class="headerlink" title="forEach遍历数组"></a>forEach遍历数组</h2><p>forEach:加强版的for循环 适合于遍历数组对象。map可以return返回对象，而forEach没有返回。</p>
 <p>语法：</p>
 <blockquote>
-<p>被遍历的数组.forEach(function(当前数组元素，当前元素索引号)){//函数体}</p>
+<p>被遍历的数组.forEach(function(当前数组元素，当前元素索引号)){&#x2F;&#x2F;函数体}</p>
 </blockquote>
 <h3 id="筛选数组filter方法"><a href="#筛选数组filter方法" class="headerlink" title="筛选数组filter方法"></a>筛选数组filter方法</h3><ul>
 <li>filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。</li>
@@ -169,21 +169,21 @@ function activateLightMode(){
 <li>通过 export 方式导出，在导入时要加{ }，export default 则不需要。</li>
 <li>export default 向外暴露的成员，可以使用任意变量来接收。</li>
 </ul>
-<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><p>ES6引入新的声明字符串的方式：`` ‘’ “”</p>
+<h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><p>ES6引入新的声明字符串的方式：&#96;&#96; ‘’ “”</p>
 <p>1.声明</p>
-<p>let str =`我也是一个字符串！`;</p>
+<p>let str &#x3D;`我也是一个字符串！&#96;;</p>
 <p>2.内容中可以直接出现换行符</p>
 <p>3.变量拼接</p>
-<p>let lovest =’小宝’;</p>
-<p>let out =`${lovest}是我心目中最好笑的演员！！`;</p>
-<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>ES6允许使用箭头=&gt;定义函数。</p>
+<p>let lovest &#x3D;’小宝’;</p>
+<p>let out &#x3D;`${lovest}是我心目中最好笑的演员！！&#96;;</p>
+<h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><p>ES6允许使用箭头&#x3D;&gt;定义函数。</p>
 <p>1.this是静态的，this始终指向函数声明时所在作用域下的this的值。使用call方法调用时，普通函数会改变，而箭头函数始终是指向window下的this值。</p>
 <p>2.不能作为构造函数去实例化对象</p>
 <p>3.不能使用arguments变量</p>
 <p>4.箭头函数的简写</p>
 <ul>
 <li>省略小括号，当形参有且只有一个的时候</li>
-<li>省略花括号，当代码体只有一条语句的时候，此时return必须省略，而且语句的执行结果就是函数的返回值。let pow = n =&gt; n*n;</li>
+<li>省略花括号，当代码体只有一条语句的时候，此时return必须省略，而且语句的执行结果就是函数的返回值。let pow &#x3D; n &#x3D;&gt; n*n;</li>
 </ul>
 <p>小结：</p>
 <ul>
@@ -251,29 +251,29 @@ function activateLightMode(){
 </ul>
 <h2 id="数参数默认值"><a href="#数参数默认值" class="headerlink" title="数参数默认值"></a>数参数默认值</h2><p>1.形参初始值 具有默认值的参数，一般位置要靠后（潜规则）</p>
 <blockquote>
-<p>function add(a,b,c=10){</p>
+<p>function add(a,b,c&#x3D;10){</p>
 <p>return a+b+c;</p>
 <p>}</p>
-<p>let result =add(1,2);</p>
-<p>console.log(result);//13</p>
+<p>let result &#x3D;add(1,2);</p>
+<p>console.log(result);&#x2F;&#x2F;13</p>
 </blockquote>
 <p>2.与解构赋值结合</p>
 <h2 id="rset参数"><a href="#rset参数" class="headerlink" title="rset参数"></a>rset参数</h2><p>ES6引入rest参数，用于获取函数的实参，用来代替arguments</p>
-<p>//ES5获取实参的方式：</p>
+<p>&#x2F;&#x2F;ES5获取实参的方式：</p>
 <blockquote>
 <p>function date(){</p>
-<p>console.log(arguments);//输出是对象</p>
+<p>console.log(arguments);&#x2F;&#x2F;输出是对象</p>
 <p>}</p>
 <p>date(‘白芷’,’阿娇’,’思思’);</p>
 </blockquote>
-<p>//rest参数</p>
+<p>&#x2F;&#x2F;rest参数</p>
 <blockquote>
 <p>function date(…args){</p>
-<p>console.log(args);//输出是数组，可以用数组中的方法：filter some every map</p>
+<p>console.log(args);&#x2F;&#x2F;输出是数组，可以用数组中的方法：filter some every map</p>
 <p>}</p>
 <p>date(‘白芷’,’阿娇’,’思思’);</p>
 </blockquote>
-<p>//rest参数必须放到参数最后</p>
+<p>&#x2F;&#x2F;rest参数必须放到参数最后</p>
 <blockquote>
 <p>functions fn(a,b,…args){</p>
 <p>console.log(a);</p>
@@ -290,26 +290,26 @@ function activateLightMode(){
 <li>将伪数组转为真正的的数组</li>
 </ul>
 <h2 id="Symbol类型"><a href="#Symbol类型" class="headerlink" title="Symbol类型"></a>Symbol类型</h2><h3 id="Symbol的基本使用"><a href="#Symbol的基本使用" class="headerlink" title="Symbol的基本使用"></a>Symbol的基本使用</h3><blockquote>
-<p>//原始数据类型Symbol，它表示是独一无二的值</p>
-<p>//最大的用途：用来定义对象的私有变量</p>
-<p>const name =Symbol(‘name’);</p>
-<p>const name2 =Symbol(‘name’);</p>
-<p>console.log(name === name2);//false</p>
-<p>let s1 = Symbol(‘s1’);</p>
+<p>&#x2F;&#x2F;原始数据类型Symbol，它表示是独一无二的值</p>
+<p>&#x2F;&#x2F;最大的用途：用来定义对象的私有变量</p>
+<p>const name &#x3D;Symbol(‘name’);</p>
+<p>const name2 &#x3D;Symbol(‘name’);</p>
+<p>console.log(name &#x3D;&#x3D;&#x3D; name2);&#x2F;&#x2F;false</p>
+<p>let s1 &#x3D; Symbol(‘s1’);</p>
 <p>console.log(s1);</p>
-<p>let obj ={</p>
+<p>let obj &#x3D;{</p>
 <p>};</p>
-<p>//obj[s1][s1]=’小马哥’;</p>
-<p>//如果用Symbol定义的对象中的变量，取值时一定要用[变量名]</p>
+<p>&#x2F;&#x2F;obj[s1][s1]&#x3D;’小马哥’;</p>
+<p>&#x2F;&#x2F;如果用Symbol定义的对象中的变量，取值时一定要用[变量名]</p>
 <p>console.log(obj[s1][s1]);</p>
-<p>//Symbol.for 创建</p>
-<p>let s4 = Symbol.for(‘尚硅谷’);</p>
-<p>let s5 = Symbol.for(‘尚硅谷’);</p>
-<p>//不能与其他数据进行运算</p>
-<p>let result =s+100;//报错</p>
-<p>let result =s&gt;100;//报错</p>
-<p>let result =s+s;//报错</p>
-<p>//USONB you are so niubility</p>
+<p>&#x2F;&#x2F;Symbol.for 创建</p>
+<p>let s4 &#x3D; Symbol.for(‘尚硅谷’);</p>
+<p>let s5 &#x3D; Symbol.for(‘尚硅谷’);</p>
+<p>&#x2F;&#x2F;不能与其他数据进行运算</p>
+<p>let result &#x3D;s+100;&#x2F;&#x2F;报错</p>
+<p>let result &#x3D;s&gt;100;&#x2F;&#x2F;报错</p>
+<p>let result &#x3D;s+s;&#x2F;&#x2F;报错</p>
+<p>&#x2F;&#x2F;USONB you are so niubility</p>
 <p>u undefined</p>
 <p>s string symbol</p>
 <p>o object</p>
@@ -381,15 +381,15 @@ function activateLightMode(){
 <li>惰性计算：迭代器可以实现惰性计算，只在需要时才计算下一个元素，可以节省内存和计算资源。</li>
 </ol>
 <h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><blockquote>
-<p>//Iterator</p>
-<p>//是一种新的遍历机制，两个核心</p>
-<p>//1.迭代器是一个接口，能快捷的访问数据，通过Symbol.iterator来创建迭代器，通过迭代器的next()获取迭代之后的结果</p>
-<p>//2.迭代器是用于遍历数据结构的指针（数据库的游标）</p>
-<p>//使用迭代</p>
-<p>const items =[‘one’,’two’,’three’];</p>
-<p>//1.创建新的迭代器</p>
-<p>const ite = items[Symbol.iterator]();</p>
-<p>console.log(ite.next());//{value:”one”,done:false} done如果为false，表示遍历继续，如果为true，表示遍历完成。</p>
+<p>&#x2F;&#x2F;Iterator</p>
+<p>&#x2F;&#x2F;是一种新的遍历机制，两个核心</p>
+<p>&#x2F;&#x2F;1.迭代器是一个接口，能快捷的访问数据，通过Symbol.iterator来创建迭代器，通过迭代器的next()获取迭代之后的结果</p>
+<p>&#x2F;&#x2F;2.迭代器是用于遍历数据结构的指针（数据库的游标）</p>
+<p>&#x2F;&#x2F;使用迭代</p>
+<p>const items &#x3D;[‘one’,’two’,’three’];</p>
+<p>&#x2F;&#x2F;1.创建新的迭代器</p>
+<p>const ite &#x3D; items[Symbol.iterator]();</p>
+<p>console.log(ite.next());&#x2F;&#x2F;{value:”one”,done:false} done如果为false，表示遍历继续，如果为true，表示遍历完成。</p>
 <p>console.log(ite.next());</p>
 <p>console.log(ite.next());</p>
 <p>console.log(ite.next());</p>
@@ -403,46 +403,46 @@ function activateLightMode(){
 <li>部署Ajax操作，让异步代码同步化，解决回调地狱问题。</li>
 </ol>
 <h3 id="实例代码"><a href="#实例代码" class="headerlink" title="实例代码"></a>实例代码</h3><blockquote>
-<p>//generator函数 可以通过yield关键字，将函数挂起，为了改变执行流提供了可能，同时为了做异步编程提供了方案。</p>
-<p>//它和普通函数的区别</p>
-<p>//1.function后面 函数名之前有个*</p>
-<p>//2.只能在函数内部使用yield表达式，让函数挂起</p>
+<p>&#x2F;&#x2F;generator函数 可以通过yield关键字，将函数挂起，为了改变执行流提供了可能，同时为了做异步编程提供了方案。</p>
+<p>&#x2F;&#x2F;它和普通函数的区别</p>
+<p>&#x2F;&#x2F;1.function后面 函数名之前有个*</p>
+<p>&#x2F;&#x2F;2.只能在函数内部使用yield表达式，让函数挂起</p>
 <p>function* func(){</p>
 <p>yield 2;</p>
 <p>yield 3;</p>
 <p>}</p>
-<p>//返回一个遍历器对象，可以调用next()</p>
-<p>let fn=func();</p>
+<p>&#x2F;&#x2F;返回一个遍历器对象，可以调用next()</p>
+<p>let fn&#x3D;func();</p>
 <p>console.log(fn.next());</p>
 <p>console.log(fn.next());</p>
 <p>console.log(fn.next());</p>
-<p>//总结：generator函数式分段执行的，yield语句是暂停执行 而next()方法时恢复执行</p>
+<p>&#x2F;&#x2F;总结：generator函数式分段执行的，yield语句是暂停执行 而next()方法时恢复执行</p>
 <p>function* add(){</p>
 <p>console.log(‘start’);</p>
-<p>//x 可真的不是yield ‘2’的返回值，它是next()调用 恢复当前yield()执行传入的实参</p>
-<p>let x=yield ‘2’;</p>
+<p>&#x2F;&#x2F;x 可真的不是yield ‘2’的返回值，它是next()调用 恢复当前yield()执行传入的实参</p>
+<p>let x&#x3D;yield ‘2’;</p>
 <p>console.log(‘one:’+x);</p>
-<p>let y=yield ‘3’;</p>
+<p>let y&#x3D;yield ‘3’;</p>
 <p>console.log(‘two:’,+y);</p>
 <p>return x+y;</p>
 <p>}</p>
-<p>const fn=add();</p>
-<p>console.log(fn.next());//{value:’2’,done:false}</p>
-<p>console.log(fn.next(20));//{value:’3’,done:false} 注意：传入20实际是给x进行赋值</p>
-<p>console.log(fn.next(30));//{value:’50’,done:true}</p>
-<p>//使用场景：为不具备Interator接口的对象提供了遍历操作</p>
+<p>const fn&#x3D;add();</p>
+<p>console.log(fn.next());&#x2F;&#x2F;{value:’2’,done:false}</p>
+<p>console.log(fn.next(20));&#x2F;&#x2F;{value:’3’,done:false} 注意：传入20实际是给x进行赋值</p>
+<p>console.log(fn.next(30));&#x2F;&#x2F;{value:’50’,done:true}</p>
+<p>&#x2F;&#x2F;使用场景：为不具备Interator接口的对象提供了遍历操作</p>
 <p>function* objectEntries(obj){</p>
-<p>//获取对象的所有key保存到数组[name,age]</p>
-<p>const propKeys =Object.keys(obj);</p>
+<p>&#x2F;&#x2F;获取对象的所有key保存到数组[name,age]</p>
+<p>const propKeys &#x3D;Object.keys(obj);</p>
 <p>for(const propkeys of propKeys){</p>
 <p>yield[propkey,obj[propkey]]</p>
 <p>}</p>
 <p>}</p>
-<p>const obj={</p>
+<p>const obj&#x3D;{</p>
 <p>name:’小马哥’,</p>
 <p>age:20</p>
 <p>}</p>
-<p>obj[Symbol.iterator]=objectEntries;</p>
+<p>obj[Symbol.iterator]&#x3D;objectEntries;</p>
 <p>console.log(obj);</p>
 <p>for(let [key,value] of objectEntries(obj)){</p>
 <p>console.log(`${key}:${value}`);</p>
@@ -482,10 +482,10 @@ function activateLightMode(){
 </ul>
 <p>2.constructor属性在哪？作用是啥？</p>
 <ul>
-<li>prototype原型和对象原型<strong>proto</strong>里面都有</li>
-<li>都指向创建实例对象/原型的构造函数</li>
+<li>prototype原型和对象原型__proto__里面都有</li>
+<li>都指向创建实例对象&#x2F;原型的构造函数</li>
 </ul>
-<p>3.<em>_proto_属性在哪里？指向谁？</em></p>
+<p>3._<em>proto_属性在哪里？指向谁？</em></p>
 <ul>
 <li>在实例对象里</li>
 <li>指向原型prototype</li>
@@ -567,23 +567,23 @@ function activateLightMode(){
 <p>Promise对象有三种状态，他们分别是：</p>
 <p>1.pending: 等待中，或者进行中，表示还没有得到结果<br>2.resolved(Fulfilled): 已经完成，表示得到了我们想要的结果，可以继续往下执行<br>3.rejected: 也表示得到结果，但是由于结果并非我们所愿，因此拒绝执行<br>这三种状态不受外界影响，而且状态只能从pending改变为resolved或者rejected，并且不可逆</p>
 <h3 id="示例代码-1"><a href="#示例代码-1" class="headerlink" title="示例代码"></a>示例代码</h3><blockquote>
-<p>//Promise 承诺</p>
-<p>//相当于一个容器，保存着未来才会结束的事件（异步操作）的一个结果</p>
-<p>//各种异步操作都可以用同样的方法进行处理 axios</p>
-<p>//特点：</p>
-<p>//1.对象的状态不受外界影响 处理异步操作 三个状态 Pending（进行） Resolved(成功) Rejected(失败)</p>
-<p>//2.一旦状态改变，就不会再变，任何时候都可以得到这个结果</p>
-<p>let pro = new Promise(function(resolved,rejected)){</p>
-<p>//执行异步操作</p>
-<p>let res ={</p>
+<p>&#x2F;&#x2F;Promise 承诺</p>
+<p>&#x2F;&#x2F;相当于一个容器，保存着未来才会结束的事件（异步操作）的一个结果</p>
+<p>&#x2F;&#x2F;各种异步操作都可以用同样的方法进行处理 axios</p>
+<p>&#x2F;&#x2F;特点：</p>
+<p>&#x2F;&#x2F;1.对象的状态不受外界影响 处理异步操作 三个状态 Pending（进行） Resolved(成功) Rejected(失败)</p>
+<p>&#x2F;&#x2F;2.一旦状态改变，就不会再变，任何时候都可以得到这个结果</p>
+<p>let pro &#x3D; new Promise(function(resolved,rejected)){</p>
+<p>&#x2F;&#x2F;执行异步操作</p>
+<p>let res &#x3D;{</p>
 <p>code:200,</p>
 <p>data:{</p>
 <p>name:’小马哥’</p>
 <p>},</p>
 <p>error:’失败了’</p>
 <p>}</p>
-<p>setTimeout(()=&gt;{</p>
-<p>if(res.code === 200){</p>
+<p>setTimeout(()&#x3D;&gt;{</p>
+<p>if(res.code &#x3D;&#x3D;&#x3D; 200){</p>
 <p>resolved(res.data);</p>
 <p>}else{</p>
 <p>rejected(res.error);</p>
@@ -591,63 +591,63 @@ function activateLightMode(){
 <p>},1000);</p>
 <p>})</p>
 <p>cosole.log(pro);</p>
-<p>pro.then((val)=&gt;{</p>
+<p>pro.then((val)&#x3D;&gt;{</p>
 <p>console.log(val);</p>
-<p>},(err)=&gt;{</p>
+<p>},(err)&#x3D;&gt;{</p>
 <p>console.log(err);</p>
 <p>});</p>
-<p>//重新封装一下,动态传参设置ms</p>
+<p>&#x2F;&#x2F;重新封装一下,动态传参设置ms</p>
 <p>function timeOut（ms){</p>
-<p>return new Promose((resolved,rejected)=&gt;{</p>
-<p>setTimeout(()=&gt;{</p>
+<p>return new Promose((resolved,rejected)&#x3D;&gt;{</p>
+<p>setTimeout(()&#x3D;&gt;{</p>
 <p>resolved(‘hello promise success!!’)</p>
 <p>},ms)</p>
 <p>})</p>
 <p>}</p>
-<p>timeOut(2000).then((val)=&gt;{</p>
+<p>timeOut(2000).then((val)&#x3D;&gt;{</p>
 <p>console.log(val);</p>
 <p>})</p>
-<p>//then()方法</p>
-<p>//then() 第一个参数是relove回调函数，第二个参数是可选的 是reject状态的回调函数</p>
-<p>//then()返回一个新的promise实例，可以采用链式编程</p>
-<p>//resolve()、reject() 能将现有的任何对象转换成promise对象</p>
-<p>//let p =Promise.resolve(‘foo’);//等价于下一行代码</p>
-<p>let p =new Promise(resolve=&gt;resolve(‘foo’));</p>
-<p>p.then((data)=&gt;{</p>
-<p>console.log(data);//foo</p>
+<p>&#x2F;&#x2F;then()方法</p>
+<p>&#x2F;&#x2F;then() 第一个参数是relove回调函数，第二个参数是可选的 是reject状态的回调函数</p>
+<p>&#x2F;&#x2F;then()返回一个新的promise实例，可以采用链式编程</p>
+<p>&#x2F;&#x2F;resolve()、reject() 能将现有的任何对象转换成promise对象</p>
+<p>&#x2F;&#x2F;let p &#x3D;Promise.resolve(‘foo’);&#x2F;&#x2F;等价于下一行代码</p>
+<p>let p &#x3D;new Promise(resolve&#x3D;&gt;resolve(‘foo’));</p>
+<p>p.then((data)&#x3D;&gt;{</p>
+<p>console.log(data);&#x2F;&#x2F;foo</p>
 <p>})</p>
-<p>//应用场景：一些游戏类的素材比较多，等待图片、flash、静态资源文件 都加载完成 才进行页面初始化</p>
-<p>let promise1=new Promise((resolve,reject)=&gt;{});</p>
-<p>let promise2=new Promise((resolve,reject)=&gt;{});</p>
-<p>let promise3=new Promise((resolve,reject)=&gt;{});</p>
-<p>let p4 =Premise.all([promise1,promise2,promise3])</p>
-<p>p4.then(()=&gt;{</p>
-<p>//三个都成功 才成功</p>
-<p>}).catch((err)=&gt;{</p>
-<p>//如果有一个失败 则失败</p>
+<p>&#x2F;&#x2F;应用场景：一些游戏类的素材比较多，等待图片、flash、静态资源文件 都加载完成 才进行页面初始化</p>
+<p>let promise1&#x3D;new Promise((resolve,reject)&#x3D;&gt;{});</p>
+<p>let promise2&#x3D;new Promise((resolve,reject)&#x3D;&gt;{});</p>
+<p>let promise3&#x3D;new Promise((resolve,reject)&#x3D;&gt;{});</p>
+<p>let p4 &#x3D;Premise.all([promise1,promise2,promise3])</p>
+<p>p4.then(()&#x3D;&gt;{</p>
+<p>&#x2F;&#x2F;三个都成功 才成功</p>
+<p>}).catch((err)&#x3D;&gt;{</p>
+<p>&#x2F;&#x2F;如果有一个失败 则失败</p>
 <p>})</p>
-<p>//race() 某个异步请求设置超时时间，并且在超时后执行相应的操作</p>
-<p>//1 请求图片资源</p>
+<p>&#x2F;&#x2F;race() 某个异步请求设置超时时间，并且在超时后执行相应的操作</p>
+<p>&#x2F;&#x2F;1 请求图片资源</p>
 <p>function requsetImg(imgSrc){</p>
-<p>return new Promise((resolve,reject)=&gt;{</p>
-<p>const img =new Image();</p>
-<p>img.onload =function(){</p>
+<p>return new Promise((resolve,reject)&#x3D;&gt;{</p>
+<p>const img &#x3D;new Image();</p>
+<p>img.onload &#x3D;function(){</p>
 <p>resolve(img);</p>
 <p>}</p>
-<p>img.src=imgSrc;</p>
+<p>img.src&#x3D;imgSrc;</p>
 <p>});</p>
 <p>}</p>
 <p>function timeout(){</p>
-<p>return new Promise((resolve,reject)=&gt;{</p>
-<p>setTimeout(()=&gt;{</p>
+<p>return new Promise((resolve,reject)&#x3D;&gt;{</p>
+<p>setTimeout(()&#x3D;&gt;{</p>
 <p>reject(new Error(‘图片请求超时’));</p>
 <p>},3000)</p>
 <p>})</p>
 <p>}</p>
-<p>Promise.race([requestImg(‘<a href="https://www.xxxx.jpg&#39;),timeout()]).then" target="_blank" rel="noopener">https://www.xxxx.jpg&#39;),timeout()]).then</a>(data=&gt;{</p>
+<p>Promise.race([requestImg(‘<a href="https://www.xxxx.jpg' target="_blank" rel="noopener"),timeout()]).then">https://www.xxxx.jpg&#39;),timeout()]).then</a>(data&#x3D;&gt;{</p>
 <p>console.log(data);</p>
 <p>document.body.appendChild(data);</p>
-<p>}).catch(err=&gt;{</p>
+<p>}).catch(err&#x3D;&gt;{</p>
 <p>console.log(err);</p>
 <p>})</p>
 </blockquote>
@@ -661,56 +661,56 @@ function activateLightMode(){
 <p>export用于规定模块的对外接口 import用于输入其它模块提供的对外接口</p>
 <p>一个模块就是独立的文件。</p>
 <h2 id="Map和Set集合"><a href="#Map和Set集合" class="headerlink" title="Map和Set集合"></a>Map和Set集合</h2><blockquote>
-<p>//set集合：表示无重复值的有序列表</p>
-<p>let set =new Set();</p>
+<p>&#x2F;&#x2F;set集合：表示无重复值的有序列表</p>
+<p>let set &#x3D;new Set();</p>
 <p>console.log(set);</p>
-<p>//添加元素</p>
+<p>&#x2F;&#x2F;添加元素</p>
 <p>set.add(2);</p>
 <p>set.add(‘4’);</p>
 <p>set.add(‘4’);</p>
 <p>set.add([‘hello’,’world’,3]);</p>
-<p>//删除元素</p>
+<p>&#x2F;&#x2F;删除元素</p>
 <p>set.delete(2);</p>
-<p>//校验某个值是否在set中</p>
+<p>&#x2F;&#x2F;校验某个值是否在set中</p>
 <p>console.log(set.has(‘4’));</p>
 <p>console.log(set.size);</p>
-<p>set.forEach((val,key)=&gt;{</p>
+<p>set.forEach((val,key)&#x3D;&gt;{</p>
 <p>console.log(val);</p>
 <p>console.log(key);</p>
 <p>})</p>
-<p>//将set转换为数组</p>
-<p>let set2 = new Set([1,2,3,3,3,4]);</p>
-<p>//通过扩展运算符实现转换</p>
-<p>let arr = […set2];</p>
+<p>&#x2F;&#x2F;将set转换为数组</p>
+<p>let set2 &#x3D; new Set([1,2,3,3,3,4]);</p>
+<p>&#x2F;&#x2F;通过扩展运算符实现转换</p>
+<p>let arr &#x3D; […set2];</p>
 <p>console.log(arr);</p>
-<p>//1.set中对象的引用无法被释放</p>
-<p>let set3=new Set(),obj={};</p>
+<p>&#x2F;&#x2F;1.set中对象的引用无法被释放</p>
+<p>let set3&#x3D;new Set(),obj&#x3D;{};</p>
 <p>set3.add(obj);</p>
-<p>//释放当前资源</p>
-<p>obj=null;</p>
+<p>&#x2F;&#x2F;释放当前资源</p>
+<p>obj&#x3D;null;</p>
 <p>console.log(set3);</p>
-<p>let set4=new WeakSet(),obj={};</p>
+<p>let set4&#x3D;new WeakSet(),obj&#x3D;{};</p>
 <p>set4.add(obj);</p>
-<p>//释放当前资源</p>
-<p>obj=null;</p>
+<p>&#x2F;&#x2F;释放当前资源</p>
+<p>obj&#x3D;null;</p>
 <p>console.log(set4);</p>
-<p>//WeakSet</p>
+<p>&#x2F;&#x2F;WeakSet</p>
 <p>1.不能传入非对象类型的参数</p>
 <p>2.不可迭代</p>
 <p>3.没有forEach()</p>
 <p>4.没有size属性</p>
-<p>//Map类型是键值对的有序列表，键和值是任意类型</p>
-<p>let map =new Map();</p>
+<p>&#x2F;&#x2F;Map类型是键值对的有序列表，键和值是任意类型</p>
+<p>let map &#x3D;new Map();</p>
 <p>map.set(‘name’,’张三’);</p>
 <p>map.set(‘age’,20);</p>
 <p>console.log(map.get(‘name’));</p>
 <p>console.log(map);</p>
-<p>map.has(‘name’);//true</p>
+<p>map.has(‘name’);&#x2F;&#x2F;true</p>
 <p>map.delete(‘name’);</p>
 <p>map.clear();</p>
 <p>map.set([‘a’,[1,2,3]],’hello’);</p>
 <p>console.log(map);</p>
-<p>let m=new Map([</p>
+<p>let m&#x3D;new Map([</p>
 <p>[‘a’,1],</p>
 <p>[‘c’,2]</p>
 <p>])</p>

@@ -123,7 +123,7 @@ function activateLightMode(){
 <tr>
 <td>常见语言</td>
 <td>JavaScript，ASP，JSP，PHP，<br />SQL，Shell，Python等等</td>
-<td>C/C++,C#,Java,Go等等</td>
+<td>C&#x2F;C++,C#,Java,Go等等</td>
 </tr>
 </tbody></table>
 <h2 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h2><p>网络爬虫（又被称为网页蜘蛛、网络机器人、蚂蚁、自动索引、模拟程序或者蠕虫），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。</p>
@@ -144,11 +144,11 @@ function activateLightMode(){
 <li><strong>个性化订阅：</strong> 只订阅自己感兴趣的内容，过滤无关信息。</li>
 <li><strong>无广告干扰：</strong> 通常只显示文本和图片，没有广告干扰。</li>
 </ul>
-<h3 id="域名与IP地址"><a href="#域名与IP地址" class="headerlink" title="域名与IP地址"></a><strong>域名与IP地址</strong></h3><p>域名就是IP地址的一种形象化的表达方式。比如 “<a href="http://www.baidu.com&quot;" target="_blank" rel="noopener">www.baidu.com&quot;</a> 指的是域名，百度的IP地址是[115.239.210.27]，一般是使用域名登录网站，容易记忆。</p>
+<h3 id="域名与IP地址"><a href="#域名与IP地址" class="headerlink" title="域名与IP地址"></a><strong>域名与IP地址</strong></h3><p>域名就是IP地址的一种形象化的表达方式。比如 “<a href="http://www.baidu.com/" target="_blank" rel="noopener">www.baidu.com</a>“ 指的是域名，百度的IP地址是[115.239.210.27]，一般是使用域名登录网站，容易记忆。</p>
 <p><strong>DNS（域名系统）：用来把机器名字转换成IP地址。</strong></p>
 <p>IPv4长这样：192.168.1.1，255.255.255.255</p>
 <p>IPv6长这样：2001:0DB8:02de:0000:0000:0000:0000:0e13</p>
-<p>机器很喜欢这样的格式，换成二进制非常容易处理。但输入这么长串的IP地址非常不方便，因此需要域名来代替具体的某IP地址。但机器是不认识”<a href="http://www.baidu.com&quot;这些字母组成的域名，这时候就需要DNS服务器将&quot;www.baidu.com&quot;域名转换成对应的IP地址。" target="_blank" rel="noopener">www.baidu.com&quot;这些字母组成的域名，这时候就需要DNS服务器将&quot;www.baidu.com&quot;域名转换成对应的IP地址。</a></p>
+<p>机器很喜欢这样的格式，换成二进制非常容易处理。但输入这么长串的IP地址非常不方便，因此需要域名来代替具体的某IP地址。但机器是不认识”<a href="http://www.baidu.com" target="_blank" rel="noopener"这些字母组成的域名,这时候就需要dns服务器将"www.baidu.com"域名转换成对应的ip地址./">www.baidu.com&quot;这些字母组成的域名，这时候就需要DNS服务器将&quot;www.baidu.com&quot;域名转换成对应的IP地址。</a></p>
 <p>全球有很多域名服务器，用来存储从域名到IP地址的映射。我们每台终端，无论手机还是电脑，在联网的时候都会配置一个DNS地址，就是DNS服务器的IP地址。你填的那个8.8.8.8就是google公司设立的DNS服务器。在上网的时候电脑会去向这些DNS服务器查询域名对应的IP。</p>
 <h3 id="Hosts是干什么用的"><a href="#Hosts是干什么用的" class="headerlink" title="Hosts是干什么用的"></a><strong>Hosts是干什么用的</strong></h3><p>在互联网的早期，网络只有几台电脑。人们用hosts文件记录机器名字到IP的映射，后来网络的规模越来越大，hosts文件记录映射已经不可行了，所以发明了DNS，域名系统。但是hosts文件仍然保留在操作系统中，hosts文件的优先级高于DNS查询。操作系统首先会在hosts文件中找域名对应的IP地址，没有找到它才会去问DNS服务器。</p>
 <h3 id="VPN（虚拟专用网）"><a href="#VPN（虚拟专用网）" class="headerlink" title="VPN（虚拟专用网）"></a><strong>VPN（虚拟专用网）</strong></h3><p><strong>VPN的本意是在公用网络上建立专用网络。</strong></p>
@@ -179,7 +179,7 @@ function activateLightMode(){
 <h4 id="与传统存储的区别"><a href="#与传统存储的区别" class="headerlink" title="与传统存储的区别"></a><strong>与传统存储的区别</strong></h4><p>传统的存储方式通常是文件系统或块存储，而 OSS 采用的是对象存储。它们之间有以下主要区别：</p>
 <ul>
 <li><strong>数据组织方式：</strong> 文件系统以目录和文件的树状结构组织数据，块存储将数据分割成固定大小的块进行存储，而对象存储将数据以对象的形式存储，每个对象包含数据本身、元数据和唯一的 ID。</li>
-<li><strong>访问方式：</strong> 文件系统通过文件路径访问数据，块存储通过块地址访问数据，而对象存储通过唯一的 ID 和 HTTP/HTTPS 协议访问数据。</li>
+<li><strong>访问方式：</strong> 文件系统通过文件路径访问数据，块存储通过块地址访问数据，而对象存储通过唯一的 ID 和 HTTP&#x2F;HTTPS 协议访问数据。</li>
 <li><strong>扩展性：</strong> 对象存储通常具有更好的扩展性，可以轻松应对海量数据的存储和访问需求。</li>
 </ul>
 <h2 id="暗网领域"><a href="#暗网领域" class="headerlink" title="暗网领域"></a>暗网领域</h2><p>整个互联网可以划分为明网、深网和暗网三个类别：</p>

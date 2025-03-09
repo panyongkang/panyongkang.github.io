@@ -90,7 +90,7 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">douban:   </span><br><span class="line">  user: xxxxxx</span><br><span class="line">  builtin: true</span><br><span class="line">  book:</span><br><span class="line">    title: &#39;我的书单&#39; # 该页面的标题</span><br><span class="line">    quote: &#39;每读一本书，思维总会发光&#39; # 写在页面开头的一段话,支持html语法.</span><br><span class="line">  movie:</span><br><span class="line">    title: &#39;我的影单&#39;</span><br><span class="line">    quote: &#39;一场电影一场空&#39;</span><br><span class="line">  game:</span><br><span class="line">    title: &#39;我的游戏&#39;</span><br><span class="line">    quote: &#39;一场游戏一场梦&#39;</span><br><span class="line">  timeout: 10000 # 爬取数据的超时时间，默认是 10000ms ,如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>user: 你的豆瓣ID.打开豆瓣，登入账户，然后在右上角点击 “个人主页” ，这时候地址栏的URL大概是这样：”<a href="https://www.douban.com/people/xxxxxx/&quot;" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/&quot;</a> ，其中的”xxxxxx”就是你的个人ID了。</li>
+<li>user: 你的豆瓣ID.打开豆瓣，登入账户，然后在右上角点击 “个人主页” ，这时候地址栏的URL大概是这样：”<a href="https://www.douban.com/people/xxxxxx/" target="_blank" rel="noopener">https://www.douban.com/people/xxxxxx/</a>“ ，其中的”xxxxxx”就是你的个人ID了。</li>
 <li>builtin: 是否将生成页面的功能嵌入hexo s和hexo g中，默认是false,另一可选项为true(1.x.x版本新增配置项,建议开启)。</li>
 <li>title: 该页面的标题.</li>
 <li>quote: 写在页面开头的一段话,支持html语法.</li>
@@ -112,7 +112,7 @@ function activateLightMode(){
 <blockquote>
 <p>注：由于 <code>hexo douban</code>的简写也是hexo d，与hexo deploy的简写指令hexo d冲突，因此在进行二者部署的时候，只能都打全名而不能打简写形式</p>
 </blockquote>
-<h3 id="显示测试"><a href="#显示测试" class="headerlink" title="显示测试"></a>显示测试</h3><p>如果上面的配置和操作都没问题，我们只需要在站点目录下测试<a href="http://localhost:4000/books" target="_blank" rel="noopener">http://localhost:4000/books</a> 或者 <a href="http://localhost:4000/movies等，如果看到页面了就说明成功了。" target="_blank" rel="noopener">http://localhost:4000/movies等，如果看到页面了就说明成功了。</a></p>
+<h3 id="显示测试"><a href="#显示测试" class="headerlink" title="显示测试"></a>显示测试</h3><p>如果上面的配置和操作都没问题，我们只需要在站点目录下测试<a href="http://localhost:4000/books" target="_blank" rel="noopener">http://localhost:4000/books</a> 或者 <a href="http://localhost:4000/movies%E7%AD%89%EF%BC%8C%E5%A6%82%E6%9E%9C%E7%9C%8B%E5%88%B0%E9%A1%B5%E9%9D%A2%E4%BA%86%E5%B0%B1%E8%AF%B4%E6%98%8E%E6%88%90%E5%8A%9F%E4%BA%86%E3%80%82" target="_blank" rel="noopener">http://localhost:4000/movies等，如果看到页面了就说明成功了。</a></p>
 <h3 id="菜单配置"><a href="#菜单配置" class="headerlink" title="菜单配置"></a>菜单配置</h3><p>如果上述都没有问题，我们就可以在菜单栏中添加按钮了，打开主题配置文件 <code>_config.xml</code>，找到菜单按钮，可以选择性的添加下面内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  首页: &#x2F; || fa fa-home</span><br><span class="line">  随机文章: &#x2F;random&#x2F; || fa fa-random</span><br><span class="line">  时间轴: &#x2F;archives&#x2F; || fa fa-archive</span><br><span class="line">  清单||fa fa-list:</span><br><span class="line">    - 书籍 || &#x2F;books&#x2F; || fa fa-book # 这是链接到books页面</span><br><span class="line">    - 电影 || &#x2F;movies&#x2F; || fa fa-film # 这是链接到movies页面</span><br><span class="line">    - 游戏 || &#x2F;games&#x2F; || fa fa-gamepad # 这是链接到games页面</span><br></pre></td></tr></table></figure>
 
@@ -140,8 +140,8 @@ function activateLightMode(){
 </ol>
 <h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><p>将下载的文件解压后得到nvm-setup.exe，安装直接点下一步即可，有两个界面需要注意：</p>
 <ol>
-<li>Select Destination Location/设置nvm路径<br>安装完成后有个setting.txt文件，此路径相当于该文件中的root。<br><code>注意</code>：路径不支持空格，不能设为类似”C:Program Files”这种，否则node无法使用，建议设置为：D:softwarenvm</li>
-<li>Set Node.js Symlink/设置node.js映射路径<br>此路径相当于setting.txt文件中的path，该路径会与使用的node版本一一对应 ，根据nvm使用的版本，对应不同的node目录，从而实现node版本切换。<br><code>注意</code>：<br>此路径同样不支持空格，不能设为类似”C:Program Files”这种，否则当你nvm use node版本时会出现如下：</li>
+<li>Select Destination Location&#x2F;设置nvm路径<br>安装完成后有个setting.txt文件，此路径相当于该文件中的root。<br><code>注意</code>：路径不支持空格，不能设为类似”C:Program Files”这种，否则node无法使用，建议设置为：D:softwarenvm</li>
+<li>Set Node.js Symlink&#x2F;设置node.js映射路径<br>此路径相当于setting.txt文件中的path，该路径会与使用的node版本一一对应 ，根据nvm使用的版本，对应不同的node目录，从而实现node版本切换。<br><code>注意</code>：<br>此路径同样不支持空格，不能设为类似”C:Program Files”这种，否则当你nvm use node版本时会出现如下：</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use 12.18.0</span><br><span class="line">exit status 1: &#39;C:\Program&#39; 一串乱码。。。</span><br></pre></td></tr></table></figure>
 
@@ -257,7 +257,7 @@ function activateLightMode(){
 <p>可以使用其他国内镜像，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;npmmirror.com</span><br><span class="line">cnpm config set registry https:&#x2F;&#x2F;npmmirror.com</span><br></pre></td></tr></table></figure>
 
-<p>问题：执行hexo s 访问<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 浏览器报错：</p>
+<p>问题：执行hexo s 访问<a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000</a> 浏览器报错：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cannot GET &#x2F;</span><br></pre></td></tr></table></figure>
 
 <p>原因和解决办法：需要重新npm i下载安装依赖，否则执行hexo g 命令时，md文章配置有误也不报错，相关的index.html、js和xml文件也无法生成。</p>

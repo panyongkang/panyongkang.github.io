@@ -125,7 +125,7 @@ function activateLightMode(){
 <ol start="3">
 <li><p>查看发布的包</p>
 <p>登录<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm官网</a> ，即可看到刚才发布的包，如果网不是很好，可能等一会才能看到。</p>
-<p><code>&lt;span style=&quot;color:red;&quot;&gt;</code>注意：执行 <code>npm publish</code>命令可能会报403无权发布的错误，很可能是 <code>package.json</code>文件的包名 <code>live2d-widget-model-plt</code>与其他人发布的重复了，要改成没有重名的重新发布就好了。当再次发布新包或更新包时，如果报502 等代理错误，需要将代理关闭，关闭网络重新连接，等待10分钟左右（也许不用那么久）就可以重新上传包了。</p>
+<p><code>&lt;span style=&quot;color:red;&quot;&gt;</code>注意：执行 <code>npm publish</code>命令可能会报403无权发布的错误，很可能是 <code>package.json</code>文件的包名 <code>live2d-widget-model-plt</code>与其他人发布的重复了，要改成没有重名的重新发布就好了。当再次发布新包或更新包时，如果报502 等代理错误，需要将代理关闭，关闭网络重新连接，等待10分钟左右（也许不用那么久）就可以重新上传包了。</p>
 </li>
 </ol>
 <h2 id="向博客添加模型"><a href="#向博客添加模型" class="headerlink" title="向博客添加模型"></a>向博客添加模型</h2><p>以上工作都准备完成之后，就可以在Hexo博客根目录执行 <code>cnpm install live2d-widget-model-plt</code>命令进行下载安装了，可以通过node_modules文件中查看是否下载成功，接下来在Hexo博客的_config.yml文件中将 <code>unitychan</code>模型改为自定义npm模型即可：</p>

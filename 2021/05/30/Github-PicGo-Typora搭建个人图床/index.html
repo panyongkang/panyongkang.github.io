@@ -103,12 +103,12 @@ function activateLightMode(){
 <p>注：创建成功后，会生成一串<code>token</code>，这串<code>token</code>之后不会再显示，所以第一次看到的时候，可以建个文本文件好好保存，忘记了只有重新生成，每次都不一样。</p>
 <h2 id="下载安装PicGo"><a href="#下载安装PicGo" class="headerlink" title="下载安装PicGo"></a>下载安装PicGo</h2><h3 id="1-下载-amp-安装"><a href="#1-下载-amp-安装" class="headerlink" title="1.下载&amp;安装"></a>1.下载&amp;安装</h3><p>git地址：<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">PicGo</a></p>
 <h3 id="2-配置图床"><a href="#2-配置图床" class="headerlink" title="2. 配置图床"></a>2. 配置图床</h3><p>仓库名 即你的仓库名<br>分支名 默认 master</p>
-<p>Token 就是刚刚复制的那一串字符<br>存储路径 这个可以填也可以不填，填了的话图片就上传到仓库名下的子目录<br>域名 <a href="https://raw.githubusercontent.com/[username]/[仓库名]/master" target="_blank" rel="noopener">https://raw.githubusercontent.com/[username]/[仓库名]/master</a></p>
+<p>Token 就是刚刚复制的那一串字符<br>存储路径 这个可以填也可以不填，填了的话图片就上传到仓库名下的子目录<br>域名 <a href="https://raw.githubusercontent.com/[username]/[%E4%BB%93%E5%BA%93%E5%90%8D]/master" target="_blank" rel="noopener">https://raw.githubusercontent.com/[username]/[仓库名]/master</a></p>
 <p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/image-20210530193350586.png"  alt="image-20210530193350586"></p>
 <p>注意：图中的域名为什么是cdn开头，后文要说。</p>
-<p>注意：分支原来默认是master，但从2020.10.01开始，github的默认分支名变更为main。若是创建仓库时使用的分支名是main,设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main。此处的分支一定要填写@main，否则默认使用master分支。而现在github创建的默认分支名为main，如果不指定，则会出现图片不能上传的情况。" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main。此处的分支一定要填写@main，否则默认使用master分支。而现在github创建的默认分支名为main，如果不指定，则会出现图片不能上传的情况。</a></p>
+<p>注意：分支原来默认是master，但从2020.10.01开始，github的默认分支名变更为main。若是创建仓库时使用的分支名是main,设定自定义域名：<a href="https://cdn.jsdelivr.net/gh/[github%E7%94%A8%E6%88%B7%E5%90%8D]/[%E4%BB%93%E5%BA%93%E5%90%8D]@main%E3%80%82%E6%AD%A4%E5%A4%84%E7%9A%84%E5%88%86%E6%94%AF%E4%B8%80%E5%AE%9A%E8%A6%81%E5%A1%AB%E5%86%99@main%EF%BC%8C%E5%90%A6%E5%88%99%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8master%E5%88%86%E6%94%AF%E3%80%82%E8%80%8C%E7%8E%B0%E5%9C%A8github%E5%88%9B%E5%BB%BA%E7%9A%84%E9%BB%98%E8%AE%A4%E5%88%86%E6%94%AF%E5%90%8D%E4%B8%BAmain%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%8D%E6%8C%87%E5%AE%9A%EF%BC%8C%E5%88%99%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%9B%BE%E7%89%87%E4%B8%8D%E8%83%BD%E4%B8%8A%E4%BC%A0%E7%9A%84%E6%83%85%E5%86%B5%E3%80%82" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/[github用户名]/[仓库名]@main。此处的分支一定要填写@main，否则默认使用master分支。而现在github创建的默认分支名为main，如果不指定，则会出现图片不能上传的情况。</a></p>
 <h2 id="进阶使用教程"><a href="#进阶使用教程" class="headerlink" title="进阶使用教程"></a>进阶使用教程</h2><h3 id="1-使用cdn解决GitHub国内访问缓慢的问题"><a href="#1-使用cdn解决GitHub国内访问缓慢的问题" class="headerlink" title="1.使用cdn解决GitHub国内访问缓慢的问题"></a>1.使用cdn解决GitHub国内访问缓慢的问题</h3><p>使用jsDelivr CDN 加速访问（jsDelivr 是一个免费开源的 CDN 解决方案）</p>
-<p>将自定义域名设置为【<a href="https://cdn.jsdelivr.net/gh/用户名/图床仓库名" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/用户名/图床仓库名</a> 】。</p>
+<p>将自定义域名设置为【<a href="https://cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E5%9B%BE%E5%BA%8A%E4%BB%93%E5%BA%93%E5%90%8D" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/用户名/图床仓库名</a> 】。</p>
 <h3 id="2-使用githubPlus替代PicGo自带GitHub上传工具"><a href="#2-使用githubPlus替代PicGo自带GitHub上传工具" class="headerlink" title="2.使用githubPlus替代PicGo自带GitHub上传工具"></a>2.使用githubPlus替代PicGo自带GitHub上传工具</h3><p>PicGo自带的GitHub上传工具，不能同步删除GitHub仓库中的图片，这会导致我们在上传了不需要的图片后，产生冗余资源（强迫症表示很难受），因此，我们需要利用PicGo强大的插件功能实现同步操作相册和仓库图片</p>
 <p>1.点击PicGo左侧菜单最下方的插件设置，在搜索框中输入github-plus</p>
 <p>2.点击灰色的安装按钮</p>
@@ -118,7 +118,7 @@ function activateLightMode(){
 <p>4.别忘了设置后保存设置并点击“设为默认图床”按钮。</p>
 <h2 id="MarkDown编辑器"><a href="#MarkDown编辑器" class="headerlink" title="MarkDown编辑器"></a>MarkDown编辑器</h2><p>使用MarkDown语法写文章，我使用的编辑器是typora，一款非常好用的编辑器。在一个编辑框内，编辑完成后，可以马上显示MarkDown语法效果。</p>
 <p>并且Typora可以和PicGo联合在一起使用，当你在编辑器中插入、粘贴图片时，Typora+PicGo的组合方式，可以自动把图片上传至github保存。</p>
-<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>可以访问typora下载地址进行下载【<a href="https://www.typora.io/】。" target="_blank" rel="noopener">https://www.typora.io/】。</a></p>
+<h3 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h3><p>可以访问typora下载地址进行下载【<a href="https://www.typora.io/%E3%80%91%E3%80%82" target="_blank" rel="noopener">https://www.typora.io/】。</a></p>
 <p>下载完成后正常步骤安装即可。</p>
 <h3 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h3><p>在typora顶部菜单界面，选择“文件” - &gt; “偏好设置”，设置图片存储方式。</p>
 <p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E8%AE%BE%E7%BD%AE.png"  alt="image-20210530195635571"></p>

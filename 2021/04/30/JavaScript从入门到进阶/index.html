@@ -87,8 +87,8 @@ function activateLightMode(){
 <ul>
 <li><strong>ECMAScript</strong>：一个由 ECMA International 进行标准化，TC39 委员会进行监督的语言。通常用于指代标准本身。</li>
 <li><strong>JavaScript</strong>：ECMAScript 标准的各种实现的最常用称呼。这个术语并不局限于某个特定版本的 ECMAScript 规范，并且可能被用于任何不同程度的任意版本的 ECMAScript 的实现。</li>
-<li><strong>ECMAScript 5 (ES5)</strong>：ECMAScript 的第五版修订，于 2009 年完成标准化。这个规范在所有现代浏览器中都相当完全的实现了。</li>
-<li><strong>ECMAScript 6 (ES6) / ECMAScript 2015 (ES2015)</strong>：ECMAScript 的第六版修订，于 2015 年完成标准化。这个标准被部分实现于大部分现代浏览器。可以查阅<a href="https://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">这张兼容性表</a>来查看不同浏览器和工具的实现情况。</li>
+<li>**ECMAScript 5 (ES5)**：ECMAScript 的第五版修订，于 2009 年完成标准化。这个规范在所有现代浏览器中都相当完全的实现了。</li>
+<li>**ECMAScript 6 (ES6) &#x2F; ECMAScript 2015 (ES2015)**：ECMAScript 的第六版修订，于 2015 年完成标准化。这个标准被部分实现于大部分现代浏览器。可以查阅<a href="https://kangax.github.io/compat-table/es6/" target="_blank" rel="noopener">这张兼容性表</a>来查看不同浏览器和工具的实现情况。</li>
 <li><strong>ECMAScript 2016</strong>：预计的第七版 ECMAScript 修订，计划于明年夏季发布。这份规范具体将包含哪些特性还没有最终确定</li>
 <li><strong>ECMAScript Proposals</strong>：被考虑加入未来版本 ECMAScript 标准的特性与语法提案，他们需要经历五个阶段：Strawman（稻草人），Proposal（提议），Draft（草案），Candidate（候选）以及 Finished （完成）。</li>
 </ul>
@@ -108,13 +108,13 @@ function activateLightMode(){
 <li>是一种边解释边执行的脚本语言，不需要编译。  </li>
 <li>主要用来向HTML页面添加交互行为。  </li>
 <li>可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。  </li>
-<li>平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行。  </li>
+<li>平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行。</li>
 </ol>
 <h3 id="JavaScript组成"><a href="#JavaScript组成" class="headerlink" title="JavaScript组成"></a>JavaScript组成</h3><p><strong>ECMAScript(核心)</strong></p>
-<p>​    描述了该语言的语法和基本对象；作为核心，它规定了语言的组成部分：语法、类型、语句、关键字、保留字、操作符、对象 PS：*不完全兼容的实现</p>
+<p>​	描述了该语言的语法和基本对象；作为核心，它规定了语言的组成部分：语法、类型、语句、关键字、保留字、操作符、对象 PS：*不完全兼容的实现</p>
 <p><strong>DOM（文档对象模型）:</strong></p>
-<p>​    操作Html标签的方法和接口；DOM把整个页面映射为一个多层节点结果，开发人员可借助DOM提供的API，轻松地删除、添加、替换或修改任何节点。 PS：DOM也有级别，分为DOM1、DOM2、DOM3，拓展不少规范和新接口。<br><strong>BOM（浏览器对象模型）:</strong></p>
-<p>​    操作浏览器的方法和接口；支持可以访问和操作浏览器窗口的浏览器对象模型，开发人员可以控制浏览器显示的页面以外的部分。 PS：BOM未形成规范</p>
+<p>​	操作Html标签的方法和接口；DOM把整个页面映射为一个多层节点结果，开发人员可借助DOM提供的API，轻松地删除、添加、替换或修改任何节点。 PS：DOM也有级别，分为DOM1、DOM2、DOM3，拓展不少规范和新接口。<br><strong>BOM（浏览器对象模型）:</strong></p>
+<p>​	操作浏览器的方法和接口；支持可以访问和操作浏览器窗口的浏览器对象模型，开发人员可以控制浏览器显示的页面以外的部分。 PS：BOM未形成规范</p>
 <p><strong>JavaScript日常用途：</strong></p>
 <p>1.嵌入动态文本于HTML页面。<br>2.对浏览器事件做出响应。<br>3.读写HTML元素。<br>4.在数据被提交到服务器之前验证数据。<br>5.检测访客的浏览器信息。<br>6.控制cookies，包括创建和修改等。<br>7.基于Node.js技术进行服务器端编程。</p>
 <p><strong>什么是函数？</strong><br>    函数的含义：类似于Java中的方法，是完成特定任务的代码语句块；<br>    使用更简单：不用定义属于某个类，直接使用；<br>    函数分类：系统函数和自定义函数</p>
@@ -1180,9 +1180,9 @@ function activateLightMode(){
 <p>Object.getOwnPropertyDescriptor</p>
 <p>Object.defineProperties</p>
 <p>Object.keys</p>
-<p>Object.preventExtensions / Object.isExtensible</p>
-<p>Object.seal / Object.isSealed</p>
-<p>Object.freeze / Object.isFrozen</p>
+<p>Object.preventExtensions &#x2F; Object.isExtensible</p>
+<p>Object.seal &#x2F; Object.isSealed</p>
+<p>Object.freeze &#x2F; Object.isFrozen</p>
 <p>PS:具体这些方法是什么，可自行深入了解。</p>
 <h3 id="什么是ES6"><a href="#什么是ES6" class="headerlink" title="什么是ES6"></a>什么是ES6</h3><p><a href="http://www.ruanyifeng.com/" target="_blank" rel="noopener">阮一峰</a>大佬通俗易懂ES6入门教程：<a href="https://es6.ruanyifeng.com/" target="_blank" rel="noopener">https://es6.ruanyifeng.com/</a></p>
 <p><strong>ES6是什么</strong></p>
@@ -1190,10 +1190,10 @@ function activateLightMode(){
 <p><strong>ES6的新特性</strong></p>
 <ul>
 <li>ES6中的let命令，声明变量，用法和var差不多，但是let是为JavaScript新增了块级作用域，ES5中是没有块级作用域的，并且var有变量提升的概念，但是在let中，使用的变量一定要进行声明。</li>
-<li>ES6中变量的解构赋值，比如：var [a,b,c] = [0,1,2];</li>
+<li>ES6中变量的解构赋值，比如：var [a,b,c] &#x3D; [0,1,2];</li>
 <li>ES6中不再像ES5一样使用原型链实现继承，而是引入Class这个概念，听起来和Java中的面向对象编程的语法有些像，但是二者是不一样的。</li>
-<li>ES6中的函数定义也不再使用关键字function，而是利用了=&gt;来进行定义；</li>
-<li>ES6中可以设置默认函数参数，如function A（x,y=9）{};</li>
+<li>ES6中的函数定义也不再使用关键字function，而是利用了&#x3D;&gt;来进行定义；</li>
+<li>ES6中可以设置默认函数参数，如function A（x,y&#x3D;9）{};</li>
 </ul>
 <h3 id="Javascript、TypeScript和ES6的关系与区别"><a href="#Javascript、TypeScript和ES6的关系与区别" class="headerlink" title="Javascript、TypeScript和ES6的关系与区别"></a>Javascript、TypeScript和ES6的关系与区别</h3><p><strong>ECMAScript和JavaScript的关系</strong></p>
 <p>由于JavaScript的创造者Netscae公司的版权问题，ECMAScript不能叫Javascript。总之，ECMAScript和JavaScript的关系是，前者是后者的规格（语言规范），后者是前者的一种实现。</p>

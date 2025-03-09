@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vuejs入门教程笔记 | 向阳榆木</title><meta name="description" content="Vuejs入门教程笔记"><meta name="keywords" content="学习记录,Vue,前端框架"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vuejs入门教程笔记"><meta name="twitter:description" content="Vuejs入门教程笔记"><meta name="twitter:image" content="http://example.com/img/butterfly.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Vuejs入门教程笔记"><meta property="og:url" content="http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="Vuejs入门教程笔记"><meta property="og:image" content="http://example.com/img/butterfly.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vuejs入门教程笔记 | 向阳榆木</title><meta name="description" content="Vuejs入门教程笔记"><meta name="keywords" content="前端框架,学习记录,Vue"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Vuejs入门教程笔记"><meta name="twitter:description" content="Vuejs入门教程笔记"><meta name="twitter:image" content="http://example.com/img/butterfly.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Vuejs入门教程笔记"><meta property="og:url" content="http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="Vuejs入门教程笔记"><meta property="og:image" content="http://example.com/img/butterfly.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
 var t = Cookies.get("theme")
 if (autoChangeMode == '1'){
   var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -118,7 +118,7 @@ function activateLightMode(){
 </li>
 <li>指令语法：<ul>
 <li>功能：用于解析标签（包括：标签属性、标签体内容、绑定事件。。。）。</li>
-<li>举例：v-bind:href=”xxx” 或 简写为 ：href=”xxx”,xxx同样要写js表达式，且可以直接读取到data中的所有属性。</li>
+<li>举例：v-bind:href&#x3D;”xxx” 或 简写为 ：href&#x3D;”xxx”,xxx同样要写js表达式，且可以直接读取到data中的所有属性。</li>
 <li>备注：Vue中有很多的指令，且形式都是：v-???,此处我们只是拿v-bind举个例子。</li>
 </ul>
 </li>
@@ -166,19 +166,19 @@ function activateLightMode(){
 </ol>
 <h3 id="数据代理（Object-defineProperty）"><a href="#数据代理（Object-defineProperty）" class="headerlink" title="数据代理（Object.defineProperty）"></a>数据代理（Object.defineProperty）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(person,&#39;age&#39;.&#123;</span><br><span class="line">	vlaue:18,</span><br><span class="line">	enumerable:true,&#x2F;&#x2F;控制属性是否可以枚举（循环遍历），默认是false</span><br><span class="line">	writable:true,&#x2F;&#x2F;控制属性是否可以被修改，默认false</span><br><span class="line">	configurable:true,&#x2F;&#x2F;控制属性是否可以被删除，默认false</span><br><span class="line">	...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>1.Vue中的数据代理定义：通过一个对象代理对另一个对象中属性的操作（读/写）</p>
+<p>1.Vue中的数据代理定义：通过一个对象代理对另一个对象中属性的操作（读&#x2F;写）</p>
 <p>2.Vue中数据代理的好处：</p>
 <p>更加方便的操作data中的数据。<br>2.基本原理：</p>
 <p>通过Object.defineProperty()把data对象中所有属性添加到vm上。</p>
-<p>为每一个添加到vm上的属性，都指定一个getter/setter。</p>
-<p>在getter/setter内部去操作（读/写）data中对应的属性。</p>
+<p>为每一个添加到vm上的属性，都指定一个getter&#x2F;setter。</p>
+<p>在getter&#x2F;setter内部去操作（读&#x2F;写）data中对应的属性。</p>
 <h3 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a>事件处理</h3><p>事件的基本使用：</p>
 <ul>
 <li>使用v-on:xxx或@xxx绑定事件，其中xxx是事件名；</li>
 <li>事件的回调需要配置在methods对象中，最终会在vm上；</li>
 <li>methods中配置的函数，不要用箭头函数，否则this就不是vm了；</li>
 <li>methods中配置的函数，都是被Vue所管理的函数，this的指向是vm或组件实例对象；</li>
-<li>@click=”demo”和@click=”demo($event)”效果一致，但后者可以传参；</li>
+<li>@click&#x3D;”demo”和@click&#x3D;”demo($event)”效果一致，但后者可以传参；</li>
 </ul>
 <h3 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h3><p>Vue中的事件修饰符：</p>
 <ul>
@@ -190,22 +190,22 @@ function activateLightMode(){
 <li>passive：事件的默认行为立即执行，无需等待事件回调执行完毕；</li>
 </ul>
 <h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><p>1.Vue中常用的按键别名：</p>
-<p>回车=&gt;enter</p>
-<p>删除=&gt;delete(捕获“删除”和“退格”键)</p>
-<p>退出=&gt;esc</p>
-<p>空格=&gt;space</p>
-<p>换行=&gt;tab(特殊，必须配合keydown去使用)</p>
-<p>上=&gt;up</p>
-<p>下=&gt;down</p>
-<p>左=&gt;left</p>
-<p>右=&gt;right<br>2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为caps-lock(短横线命名)</p>
+<p>回车&#x3D;&gt;enter</p>
+<p>删除&#x3D;&gt;delete(捕获“删除”和“退格”键)</p>
+<p>退出&#x3D;&gt;esc</p>
+<p>空格&#x3D;&gt;space</p>
+<p>换行&#x3D;&gt;tab(特殊，必须配合keydown去使用)</p>
+<p>上&#x3D;&gt;up</p>
+<p>下&#x3D;&gt;down</p>
+<p>左&#x3D;&gt;left</p>
+<p>右&#x3D;&gt;right<br>2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为caps-lock(短横线命名)</p>
 <p>3.系统修饰键（用法特殊）：ctrl、alt、shift、meta(win键)</p>
 <ul>
 <li>配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。</li>
 <li>配合keydown使用：正常按下即触发事件。</li>
 </ul>
 <p>4.也可以使用keyCode去指定具体的按键（不推荐，因为慢慢被弃用）</p>
-<p>5.Vue.config.keyCodes.自定义键名=键码，可以去定制按键别名</p>
+<p>5.Vue.config.keyCodes.自定义键名&#x3D;键码，可以去定制按键别名</p>
 <h3 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h3><p>1.定义：要使用的属性不存在，需要通过已有的属性计算得来。</p>
 <p>2.原理：底层借助了Object.defineproperty方法提供的getter和setter。</p>
 <p>3.get函数什么时候执行？</p>
@@ -254,15 +254,15 @@ function activateLightMode(){
 <li>对象写法：适用于要绑定的样式个数确定、名字也确定，但要动态决定用不用</li>
 </ul>
 <h3 id="绑定style样式"><a href="#绑定style样式" class="headerlink" title="绑定style样式"></a>绑定style样式</h3><ul>
-<li>:style=”{fontSize:xxx}”，其中xxx是动态值。</li>
-<li>:style=”[a,b]”,其中a、b是样式对象。样式对象里面的key、value值不能随便写，key得是style有的样式英文。</li>
+<li>:style&#x3D;”{fontSize:xxx}”，其中xxx是动态值。</li>
+<li>:style&#x3D;”[a,b]”,其中a、b是样式对象。样式对象里面的key、value值不能随便写，key得是style有的样式英文。</li>
 </ul>
 <h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><ul>
 <li>v-if<ul>
 <li>写法：<ul>
-<li>v-if=”表达式”</li>
-<li>v-else-if=”表达式”</li>
-<li>v-else=”表达式”</li>
+<li>v-if&#x3D;”表达式”</li>
+<li>v-else-if&#x3D;”表达式”</li>
+<li>v-else&#x3D;”表达式”</li>
 </ul>
 </li>
 <li>适用于：切换频率较低的场景。</li>
@@ -271,7 +271,7 @@ function activateLightMode(){
 </ul>
 </li>
 <li>v-show<ul>
-<li>写法：v-show=”表达式”</li>
+<li>写法：v-show&#x3D;”表达式”</li>
 <li>适用于：切换频率较高的场景。</li>
 <li>特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉。</li>
 </ul>
@@ -281,7 +281,7 @@ function activateLightMode(){
 <h3 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h3><p>v-for指令</p>
 <ul>
 <li>用于展示列表数据</li>
-<li>语法：v-for”(item,index) in xxx”  :key=”yyy”</li>
+<li>语法：v-for”(item,index) in xxx”  :key&#x3D;”yyy”</li>
 <li>可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）</li>
 </ul>
 <h3 id="key作用于原理"><a href="#key作用于原理" class="headerlink" title="key作用于原理"></a>key作用于原理</h3><p><strong>面试题：react、vue中的key有什么作用？（key的内部原理）</strong></p>
@@ -301,11 +301,11 @@ function activateLightMode(){
 </li>
 <li>用index作为key可能会引发的问题：<ul>
 <li>若对数据进行：逆序添加、逆序删除等破坏顺序的操作：<ul>
-<li>会产生没有必要的真实DOM更新==&gt;界面效果没问题，但效率低。</li>
+<li>会产生没有必要的真实DOM更新&#x3D;&#x3D;&gt;界面效果没问题，但效率低。</li>
 </ul>
 </li>
 <li>如果结构中还包含输入类的DOM:<ul>
-<li>会产生错误的DOM更新==&gt;界面展示有问题。</li>
+<li>会产生错误的DOM更新&#x3D;&#x3D;&gt;界面展示有问题。</li>
 </ul>
 </li>
 </ul>
@@ -316,7 +316,7 @@ function activateLightMode(){
 </ul>
 </li>
 </ul>
-<h3 id="列表过滤"><a href="#列表过滤" class="headerlink" title="列表过滤"></a>列表过滤</h3><p>知识点记录：将注释内容折叠起来，需要在开始和结束的位置加上//#region和//#endregion即可。</p>
+<h3 id="列表过滤"><a href="#列表过滤" class="headerlink" title="列表过滤"></a>列表过滤</h3><p>知识点记录：将注释内容折叠起来，需要在开始和结束的位置加上&#x2F;&#x2F;#region和&#x2F;&#x2F;#endregion即可。</p>
 <p>两种实现方式：</p>
 <ul>
 <li>用watch实现</li>
@@ -324,24 +324,24 @@ function activateLightMode(){
 </ul>
 <p>注意：当computed都watch都能实现的时候，优先使用computed，因为computed实现比较精简一些。</p>
 <p><strong>用watch实现代码：</strong></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220417215409458.png"  alt="image-20220417215409458"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220417215409458.png"  alt="image-20220417215409458"></p>
 <p><strong>用computed实现代码：</strong></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220417215533090.png"  alt="image-20220417215533090"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220417215533090.png"  alt="image-20220417215533090"></p>
 <p>两种实现的列表过滤查询效果如下：</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220417214840971.png"  alt="image-20220417214840971"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220417215024480.png"  alt="image-20220417215024480"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220417214840971.png"  alt="image-20220417214840971"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220417215024480.png"  alt="image-20220417215024480"></p>
 <h3 id="列表排序"><a href="#列表排序" class="headerlink" title="列表排序"></a>列表排序</h3><p>代码如下：</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220419235938254.png"  alt="image-20220419235938254"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220419235938254.png"  alt="image-20220419235938254"></p>
 <p>效果如图：</p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220420000207540.png"  alt="image-20220420000207540"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220420000207540.png"  alt="image-20220420000207540"></p>
 <h3 id="总结Vue监视数据"><a href="#总结Vue监视数据" class="headerlink" title="总结Vue监视数据"></a>总结Vue监视数据</h3><p><strong>Vue监测数据的原理：</strong></p>
 <ul>
 <li>Vue会监视data中所有层次的数据。</li>
 <li>如何监测对象中的数据？通过setter实现监视，且要在new Vue时就传入要监测的数据。<ul>
 <li>对象中后追加的属性，Vue默认不做响应式处理。</li>
 <li>如需给后添加的属性做响应式，请使用如下API:<ul>
-<li>Vue.set(target, propertyName/index,value)</li>
-<li>vm.$set(target,propertyName/index,value)</li>
+<li>Vue.set(target, propertyName&#x2F;index,value)</li>
+<li>vm.$set(target,propertyName&#x2F;index,value)</li>
 </ul>
 </li>
 </ul>
@@ -371,9 +371,9 @@ function activateLightMode(){
 </ul>
 <p><strong>特别注意：</strong>Vue.set()和vm.$set()不能给vm或vm的根数据（即vm._data）对象添加属性！！！</p>
 <p><strong>数据劫持的含义：</strong>在Vue中其实就是通过Object.defineProperty来劫持对象属性的setter和getter操作，并“种下”一个监听器，当数据发生变化的时候发出通知。</p>
-<h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><p>若：&lt; input type=”text” /&gt;,则v-model收集的是value值，用户输入的就是value值。</p>
-<p>若： &lt; input type=”radio” /&gt;,则v-model收集的是value值，且要给标签配置value值。</p>
-<p>若：&lt; input type=”checkbox” /&gt;</p>
+<h3 id="收集表单数据"><a href="#收集表单数据" class="headerlink" title="收集表单数据"></a>收集表单数据</h3><p>若：&lt; input type&#x3D;”text” &#x2F;&gt;,则v-model收集的是value值，用户输入的就是value值。</p>
+<p>若： &lt; input type&#x3D;”radio” &#x2F;&gt;,则v-model收集的是value值，且要给标签配置value值。</p>
+<p>若：&lt; input type&#x3D;”checkbox” &#x2F;&gt;</p>
 <ul>
 <li>没有配置input的value属性，那么收集的就是checked(都选 or 未勾选，是布尔值)</li>
 <li>配置input的value属性：<ul>
@@ -394,7 +394,7 @@ function activateLightMode(){
 <p>语法：</p>
 <blockquote>
 <p>1.注册过滤器：全局注册为Vue.filter(name,callback)或局部注册为new Vue{filters:{}}</p>
-<p>2.使用过滤器：<code>{xxx|过滤器名}</code>或v-bind:属性=”xxx |过滤器名”</p>
+<p>2.使用过滤器：<code>{xxx|过滤器名}</code>或v-bind:属性&#x3D;”xxx |过滤器名”</p>
 </blockquote>
 <p>备注：</p>
 <ul>
@@ -403,7 +403,7 @@ function activateLightMode(){
 </ul>
 <h3 id="常用的指令"><a href="#常用的指令" class="headerlink" title="常用的指令"></a>常用的指令</h3><p>V-bind:单向绑定解析表达式，可简写为 :xxx</p>
 <p>v-mode:双向数据绑定</p>
-<p>v-for:遍历数组/对象/字符串</p>
+<p>v-for:遍历数组&#x2F;对象&#x2F;字符串</p>
 <p>v-on:绑定事件监听，可简写为@</p>
 <p>v-if:条件渲染（动态控制节点是否存在）</p>
 <p>v-else:条件渲染（动态控制节点是否不存在）</p>
@@ -446,7 +446,7 @@ function activateLightMode(){
 </li>
 <li>指令语法：<ul>
 <li>功能：用于解析标签（包括：标签属性、标签体内容、绑定事件……）。</li>
-<li>举例：v-bind:href=”xxx” 或简写为 :href=”xxx”,xxx同样要写js表达式，且可以直接读取到data中的所有属性。</li>
+<li>举例：v-bind:href&#x3D;”xxx” 或简写为 :href&#x3D;”xxx”,xxx同样要写js表达式，且可以直接读取到data中的所有属性。</li>
 <li>备注：Vue中有很多的指令，且形式都是：v-???，此处我们只是拿v-bind举个例子。</li>
 </ul>
 </li>
@@ -515,7 +515,7 @@ function activateLightMode(){
 </ul>
 <p><strong>组件</strong></p>
 <ul>
-<li>理解：用来实现局部（特定）功能效果的代码集合（html/css/js/image……）</li>
+<li>理解：用来实现局部（特定）功能效果的代码集合（html&#x2F;css&#x2F;js&#x2F;image……）</li>
 <li>为什么用：一个界面的功能可能会很复杂</li>
 <li>作用：复用编码，简化项目编码，提供运行效率</li>
 </ul>
@@ -539,7 +539,7 @@ function activateLightMode(){
 <li>局部注册：靠new Vue的时候传入component选项</li>
 <li>全局注册：靠Vue.component(‘组件名’,组件)</li>
 </ul>
-<h4 id="编写组件标签"><a href="#编写组件标签" class="headerlink" title="编写组件标签"></a>编写组件标签</h4><p>例如：&lt; school&gt;&lt; /school&gt;</p>
+<h4 id="编写组件标签"><a href="#编写组件标签" class="headerlink" title="编写组件标签"></a>编写组件标签</h4><p>例如：&lt; school&gt;&lt; &#x2F;school&gt;</p>
 <p>通过标签的形式去使用组件。</p>
 <h3 id="组件的几个注意点"><a href="#组件的几个注意点" class="headerlink" title="组件的几个注意点"></a>组件的几个注意点</h3><ul>
 <li>关于组件名：<ul>
@@ -561,20 +561,20 @@ function activateLightMode(){
 </ul>
 </li>
 <li>关于组件标签：<ul>
-<li>第一种写法：&lt; school&gt;&lt; /shchool&gt;</li>
-<li>第二种写法： &lt; school/&gt;</li>
-<li>备注：不用Vue脚手架时,&lt; school/&gt;会导致后续相同组件不能渲染，只渲染一次。</li>
+<li>第一种写法：&lt; school&gt;&lt; &#x2F;shchool&gt;</li>
+<li>第二种写法： &lt; school&#x2F;&gt;</li>
+<li>备注：不用Vue脚手架时,&lt; school&#x2F;&gt;会导致后续相同组件不能渲染，只渲染一次。</li>
 </ul>
 </li>
 <li>一个简写方式：<ul>
-<li>const school = Vue.extend(options)可简写为：const school = options</li>
+<li>const school &#x3D; Vue.extend(options)可简写为：const school &#x3D; options</li>
 </ul>
 </li>
 </ul>
 <h3 id="组件的嵌套"><a href="#组件的嵌套" class="headerlink" title="组件的嵌套"></a>组件的嵌套</h3><h3 id="VueComponent构造函数"><a href="#VueComponent构造函数" class="headerlink" title="VueComponent构造函数"></a>VueComponent构造函数</h3><p><strong>关于VueComponent:</strong></p>
 <ul>
 <li>school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。</li>
-<li>我们只需要写&lt; school/&gt;或&lt; school&gt;&lt; /school&gt;，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：new VueComponent(options)。</li>
+<li>我们只需要写&lt; school&#x2F;&gt;或&lt; school&gt;&lt; &#x2F;school&gt;，Vue解析时会帮我们创建school组件的实例对象，即Vue帮我们执行的：new VueComponent(options)。</li>
 <li>特别注意：每次调用Vue.extend,返回的都是一个全新的VueComponent！！！</li>
 <li>关于this指向：<ul>
 <li>组件配置中：<ul>
@@ -596,10 +596,10 @@ function activateLightMode(){
 <li>vm里的data可以是data:{}或data():{}两种写法，但是vc的data必须是data():{}的函数式，确保每次调用都返回最新的数据。</li>
 </ul>
 <h3 id="一个重要的内置关系"><a href="#一个重要的内置关系" class="headerlink" title="一个重要的内置关系"></a>一个重要的内置关系</h3><ul>
-<li>一个重要的内置关系：VueComponent .prototype.__ proto __ === Vue.prototype</li>
+<li>一个重要的内置关系：VueComponent .prototype.__ proto __ &#x3D;&#x3D;&#x3D; Vue.prototype</li>
 <li>为什么要有这个关系：让组件实例对象（vc）可以访问到Vue原型上的属性、方法。</li>
 </ul>
-<h3 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h3><h3 id="创建Vue脚手架"><a href="#创建Vue脚手架" class="headerlink" title="创建Vue脚手架"></a>创建Vue脚手架</h3><h3 id="分析脚手架结构"><a href="#分析脚手架结构" class="headerlink" title="分析脚手架结构"></a>分析脚手架结构</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220525000856768.png"  alt="image-20220525000856768"></p>
+<h3 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h3><h3 id="创建Vue脚手架"><a href="#创建Vue脚手架" class="headerlink" title="创建Vue脚手架"></a>创建Vue脚手架</h3><h3 id="分析脚手架结构"><a href="#分析脚手架结构" class="headerlink" title="分析脚手架结构"></a>分析脚手架结构</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220525000856768.png"  alt="image-20220525000856768"></p>
 <h3 id="render函数"><a href="#render函数" class="headerlink" title="render函数"></a>render函数</h3><p>关于不同版本的Vue:</p>
 <ul>
 <li>vue.js与vue.runtime.xxx.js的区别：<ul>
@@ -618,7 +618,7 @@ function activateLightMode(){
 <li>ref被用来给元素或子组件注册引用信息（id的替代者）。引用信息将会注册在父组件的 <code>$</code>refs对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向该子组件实例。通俗的讲，ref特性就是为元素或子组件赋予一个ID引用,通过this.$refs.refName来访问元素或子组件的实例。</li>
 <li>应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象（vc）</li>
 <li>使用方式：<ul>
-<li>打标识： &lt; h1 ref=”xxx” &gt; …….&lt; /h1&gt; 或 &lt; School ref =”xxx” &gt;&lt; /School&gt;</li>
+<li>打标识： &lt; h1 ref&#x3D;”xxx” &gt; …….&lt; &#x2F;h1&gt; 或 &lt; School ref &#x3D;”xxx” &gt;&lt; &#x2F;School&gt;</li>
 <li>获取：this.$refs.xxx</li>
 </ul>
 </li>
@@ -630,7 +630,7 @@ function activateLightMode(){
 <h3 id="props配置"><a href="#props配置" class="headerlink" title="props配置"></a>props配置</h3><p><strong>配置项props</strong></p>
 <p>功能：让组件接受外部传过来的数据</p>
 <ul>
-<li><p>传递数据：&lt; Demo name=”xxx” /&gt;</p>
+<li><p>传递数据：&lt; Demo name&#x3D;”xxx” &#x2F;&gt;</p>
 </li>
 <li><p>接收数据：</p>
 <ul>
@@ -641,9 +641,9 @@ function activateLightMode(){
 <li><p>第三种方式（限制类型、限制必要性、指定默认值）：</p>
 <p>props:{</p>
 <p>name:{</p>
-<p>type:String,//类型</p>
-<p>required:true,//必要性</p>
-<p>default:’老王’//默认值</p>
+<p>type:String,&#x2F;&#x2F;类型</p>
+<p>required:true,&#x2F;&#x2F;必要性</p>
+<p>default:’老王’&#x2F;&#x2F;默认值</p>
 <p>}</p>
 <p>}</p>
 </li>
@@ -674,16 +674,16 @@ function activateLightMode(){
 <li><p>本质：包含install方法的一个对象，install的第一个参数是Vue,第二个以后的参数是插件使用者传递的数据。</p>
 </li>
 <li><p>定义插件：</p>
-<p>对象.install = function（Vue,options）{</p>
-<p>//1.添加全局过滤器</p>
+<p>对象.install &#x3D; function（Vue,options）{</p>
+<p>&#x2F;&#x2F;1.添加全局过滤器</p>
 <p>Vue.filter(……)</p>
-<p>//2.添加全局指令</p>
+<p>&#x2F;&#x2F;2.添加全局指令</p>
 <p>Vue.directive(……)</p>
-<p>//3.配置全局混入</p>
+<p>&#x2F;&#x2F;3.配置全局混入</p>
 <p>Vue.mixin(……)</p>
-<p>//4.添加实例方法</p>
-<p>Vue.prototype.$myMethod = function(){…}</p>
-<p>Vue.prototype.$myProperty = xxxx</p>
+<p>&#x2F;&#x2F;4.添加实例方法</p>
+<p>Vue.prototype.$myMethod &#x3D; function(){…}</p>
+<p>Vue.prototype.$myProperty &#x3D; xxxx</p>
 <p>}</p>
 </li>
 <li><p>使用插件：Vue.use(插件对象)</p>
@@ -703,8 +703,8 @@ function activateLightMode(){
 </ul>
 </li>
 <li>props适用于：<ul>
-<li>父组件==&gt;子组件 通信</li>
-<li>子组件==&gt; 父组件通信（要求父先给子一个函数）</li>
+<li>父组件&#x3D;&#x3D;&gt;子组件 通信</li>
+<li>子组件&#x3D;&#x3D;&gt; 父组件通信（要求父先给子一个函数）</li>
 </ul>
 </li>
 <li>使用v-model时要切记：v-model绑定的值不能是props传过来的值，因为props是不可修改的!</li>
@@ -729,25 +729,25 @@ function activateLightMode(){
 </ul>
 </li>
 </ul>
-<h3 id="TodoList-本地存储"><a href="#TodoList-本地存储" class="headerlink" title="TodoList_本地存储"></a>TodoList_本地存储</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220614224746306.png"  alt="image-20220614224746306"></p>
+<h3 id="TodoList-本地存储"><a href="#TodoList-本地存储" class="headerlink" title="TodoList_本地存储"></a>TodoList_本地存储</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220614224746306.png"  alt="image-20220614224746306"></p>
 <p>deep:true：开启深度监视。</p>
-<h3 id="组件的自定义事件-绑定"><a href="#组件的自定义事件-绑定" class="headerlink" title="组件的自定义事件_绑定"></a>组件的自定义事件_绑定</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220614231127119.png"  alt="image-20220614231127119"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220614231312780.png"  alt="image-20220614231312780"></p>
+<h3 id="组件的自定义事件-绑定"><a href="#组件的自定义事件-绑定" class="headerlink" title="组件的自定义事件_绑定"></a>组件的自定义事件_绑定</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220614231127119.png"  alt="image-20220614231127119"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220614231312780.png"  alt="image-20220614231312780"></p>
 <p>备注：”…params”写法是ES6里的方式，如果存在参数比较多的时候这样写是为了封装成数组的形式传过去，再通过params取即可。</p>
-<h3 id="组件自定义事件-解绑"><a href="#组件自定义事件-解绑" class="headerlink" title="组件自定义事件_解绑"></a>组件自定义事件_解绑</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220614233034154.png"  alt="image-20220614233034154"></p>
-<p><img src="/img/loading.gif" class="lazyload" data-src="C:%5CUsers%5Cpyk%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20220614232921520.png"  alt="image-20220614232921520"></p>
+<h3 id="组件自定义事件-解绑"><a href="#组件自定义事件-解绑" class="headerlink" title="组件自定义事件_解绑"></a>组件自定义事件_解绑</h3><p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220614233034154.png"  alt="image-20220614233034154"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="C:\Users\pyk\AppData\Roaming\Typora\typora-user-images\image-20220614232921520.png"  alt="image-20220614232921520"></p>
 <h3 id="组件自定义事件-总结"><a href="#组件自定义事件-总结" class="headerlink" title="组件自定义事件_总结"></a>组件自定义事件_总结</h3><ul>
-<li><p>一种组件间通信的方式，适用于：子组件===&gt;父组件</p>
+<li><p>一种组件间通信的方式，适用于：子组件&#x3D;&#x3D;&#x3D;&gt;父组件</p>
 </li>
 <li><p>使用场景：A是父组件，B是子组件，B想给A传数据，那么就要在A中给B绑定自定义事件（事件的回调在A中）</p>
 </li>
 <li><p>绑定自定义事件：</p>
 <ul>
-<li><p>第一种方式，在父组件中：&lt; Demo @atguigu=”test”/ &gt;或&lt; Demo v-on:atguigu=”test”/ &gt;</p>
+<li><p>第一种方式，在父组件中：&lt; Demo @atguigu&#x3D;”test”&#x2F; &gt;或&lt; Demo v-on:atguigu&#x3D;”test”&#x2F; &gt;</p>
 </li>
 <li><p>第二种方式，在父组件中：</p>
 <blockquote>
-<p>&lt; Demo ref=”demo” /&gt;</p>
+<p>&lt; Demo ref&#x3D;”demo” &#x2F;&gt;</p>
 <p>……</p>
 <p>mounted(){</p>
 <p>this.$refs.xxx.$on(‘atguigu’,this.test)</p>
@@ -791,7 +791,7 @@ function activateLightMode(){
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">methods()&#123;</span><br><span class="line">	demo(data)&#123;......&#125;</span><br><span class="line">&#125;</span><br><span class="line">.......</span><br><span class="line">mounted()&#123;</span><br><span class="line">	this.pid &#x3D; pubsub.subscribe(&#39;xxx&#39;,this.demo)&#x2F;&#x2F;订阅消息</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li>提供数据：pubsub.publish(‘xxx’,数据)//发布消息</li>
+<li>提供数据：pubsub.publish(‘xxx’,数据)&#x2F;&#x2F;发布消息</li>
 <li>最好在beforeDestroy钩子中，用PubSub.unsubscribe(pid)去 <code>取消订阅</code>。</li>
 </ul>
 <h3 id="TodoList案例-编辑"><a href="#TodoList案例-编辑" class="headerlink" title="TodoList案例_编辑"></a>TodoList案例_编辑</h3><h3 id="nextTick"><a href="#nextTick" class="headerlink" title="$nextTick"></a>$nextTick</h3><p>1.语法：this.$nextTick(回调函数)</p>
@@ -856,9 +856,7 @@ function activateLightMode(){
 <li>理解：<code>数据在组件的自身，但根据数据生成的结构需要组件的使用者来决定。</code>（games数据在Category组件中，但使用数据所遍历出来的结构由App组件决定）</li>
 <li>具体编码：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">父组件中：</span><br><span class="line">		&lt;Category&gt;</span><br><span class="line">			&lt;!--scope和slot-scope效果一样--&gt;</span><br><span class="line">			&lt;template scope&#x3D;&quot;scopeDate&quot;&gt;</span><br><span class="line">				&lt;!--生成的是ul列表--&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li v-for&#x3D;&quot;g in scopeData.games&quot; :key&#x3D;&quot;g&quot;&gt;&#123;&#123;g&#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">			&lt;template slot-scope&#x3D;&quot;scopeDate&quot;&gt;</span><br><span class="line">				&lt;!--生成的是h4标题--&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;h4 v-for&#x3D;&quot;g in scopeData.games&quot; :key&#x3D;&quot;g&quot;&gt;&#123;&#123;g&#125;&#125;&lt;&#x2F;h4&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;template&gt;</span><br><span class="line">		&lt;&#x2F;Category&gt;</span><br><span class="line">子组件中：</span><br><span class="line">		&lt;template&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;slot :games&#x3D;&quot;games&quot;&gt;&lt;&#x2F;slot&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			export default&#123;</span><br><span class="line">				name:&#39;Category&#39;,</span><br><span class="line">				props:[&#39;title&#39;],</span><br><span class="line">				&#x2F;&#x2F;数据在子组件自身</span><br><span class="line">				data()&#123;</span><br><span class="line">					return&#123;</span><br><span class="line">						games:[&#39;红色警戒&#39;，&#39;使命召唤&#39;，&#39;QQ飞车&#39;，&#39;超级玛丽&#39;，]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">父组件中：</span><br><span class="line">		&lt;Category&gt;</span><br><span class="line">			&lt;!--scope和slot-scope效果一样--&gt;</span><br><span class="line">			&lt;template scope&#x3D;&quot;scopeDate&quot;&gt;</span><br><span class="line">				&lt;!--生成的是ul列表--&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;li v-for&#x3D;&quot;g in scopeData.games&quot; :key&#x3D;&quot;g&quot;&gt;&#123;&#123;g&#125;&#125;&lt;&#x2F;li&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">			&lt;template slot-scope&#x3D;&quot;scopeDate&quot;&gt;</span><br><span class="line">				&lt;!--生成的是h4标题--&gt;</span><br><span class="line">				&lt;ul&gt;</span><br><span class="line">					&lt;h4 v-for&#x3D;&quot;g in scopeData.games&quot; :key&#x3D;&quot;g&quot;&gt;&#123;&#123;g&#125;&#125;&lt;&#x2F;h4&gt;</span><br><span class="line">				&lt;&#x2F;ul&gt;</span><br><span class="line">			&lt;&#x2F;template&gt;</span><br><span class="line">		&lt;&#x2F;Category&gt;</span><br><span class="line">子组件中：</span><br><span class="line">		&lt;template&gt;</span><br><span class="line">			&lt;div&gt;</span><br><span class="line">				&lt;slot :games&#x3D;&quot;games&quot;&gt;&lt;&#x2F;slot&gt;</span><br><span class="line">			&lt;&#x2F;div&gt;</span><br><span class="line">		&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">		&lt;script&gt;</span><br><span class="line">			export default&#123;</span><br><span class="line">				name:&#39;Category&#39;,</span><br><span class="line">				props:[&#39;title&#39;],</span><br><span class="line">				&#x2F;&#x2F;数据在子组件自身</span><br><span class="line">				data()&#123;</span><br><span class="line">					return&#123;</span><br><span class="line">						games:[&#39;红色警戒&#39;，&#39;使命召唤&#39;，&#39;QQ飞车&#39;，&#39;超级玛丽&#39;，]</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;,</span><br><span class="line">			&#125;</span><br><span class="line">		&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
@@ -1055,10 +1053,10 @@ function activateLightMode(){
 </ul>
 <h3 id="ref函数"><a href="#ref函数" class="headerlink" title="ref函数"></a>ref函数</h3><ul>
 <li>作用：定义一个响应式的数据</li>
-<li>语法：const xxx = ref(initValue)<ul>
+<li>语法：const xxx &#x3D; ref(initValue)<ul>
 <li>创建一个包含响应式数据的 <code>引用对象（reference对象，简称ref对象）</code>。</li>
 <li>JS中操作数据：xxx.value</li>
-<li>模板中读取数据：不需要.value,直接：<code>&lt;div &gt;  &lt;/ div&gt;</code> `</li>
+<li>模板中读取数据：不需要.value,直接：<code> &lt;div &gt;  &lt;/ div&gt;</code> &#96;</li>
 </ul>
 </li>
 <li>备注：<ul>
@@ -1070,7 +1068,7 @@ function activateLightMode(){
 </ul>
 <h3 id="reactive函数"><a href="#reactive函数" class="headerlink" title="reactive函数"></a>reactive函数</h3><ul>
 <li>作用：定义一个对象类型的响应式数据（基本类型不要用它，要用ref函数）</li>
-<li>语法：const 代理对象 = reactive (源对象) ；//接收一个对象（或数组），返回一个代理对象（Proxy的实例对象，简称proxy对象）</li>
+<li>语法：const 代理对象 &#x3D; reactive (源对象) ；&#x2F;&#x2F;接收一个对象（或数组），返回一个代理对象（Proxy的实例对象，简称proxy对象）</li>
 <li>reactive定义的响应式数据是“深层次的”。</li>
 <li>内部基于ES6的Proxy实现，通过代理对象操作源对象内部数据进行操作。</li>
 </ul>
@@ -1213,7 +1211,7 @@ function activateLightMode(){
 </ul>
 <h3 id="toRef"><a href="#toRef" class="headerlink" title="toRef"></a>toRef</h3><ul>
 <li>作用：创建一个ref对象，器value值指向另一个对象中的某个属性。</li>
-<li>语法：const name = toRef(person,’name’)</li>
+<li>语法：const name &#x3D; toRef(person,’name’)</li>
 <li>应用：要将响应式对象中的某个属性单独提供给外部使用。</li>
 <li>扩展：toRefs与toRef功能一致，但可以批量创建多个ref对象，语法：toRefs(person)</li>
 </ul>
@@ -1374,7 +1372,7 @@ function activateLightMode(){
 <li>移除过滤器（filter）<br>官网说法：过滤器虽然看起来方便，但它需要一个自定义语法，打破大括号内表达式是‘只是JavaScript’的假设，这不仅有学习成本，而且有实现成本！建议用方法调用或计算属性去替换过滤器。</li>
 <li>更多变化请参考官网文档……</li>
 </ul>
-</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/">http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/"><img class="prev_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">域名协议功课笔记</div></div></a></div><div class="next-post pull_right"><a href="/2022/02/04/VSCode%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">VSCode使用教程</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2024/07/30/UI组件封装/" title="UI组件封装"><img class="relatedPosts_cover lazyload"data-src="/img/butterfly.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-07-30</div><div class="relatedPosts_title">UI组件封装</div></div></a></div><div class="relatedPosts_item"><a href="/2022/02/08/域名协议功课笔记/" title="域名协议功课笔记"><img class="relatedPosts_cover lazyload"data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-02-08</div><div class="relatedPosts_title">域名协议功课笔记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/11/Vue-js框架/" title="Vue.js框架"><img class="relatedPosts_cover lazyload"data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2580821279,2387343998&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-11</div><div class="relatedPosts_title">Vue.js框架</div></div></a></div><div class="relatedPosts_item"><a href="/2020/04/17/前后端分离项目/" title="前后端分离项目"><img class="relatedPosts_cover lazyload"data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2533269724,3550129297&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-17</div><div class="relatedPosts_title">前后端分离项目</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/">http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/">前端框架</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a><a class="post-meta__tags" href="/tags/Vue/">Vue</a></div><div class="post_share"><div class="social-share" data-image="/img/butterfly.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/"><img class="prev_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">域名协议功课笔记</div></div></a></div><div class="next-post pull_right"><a href="/2022/02/04/VSCode%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"><img class="next_cover lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">VSCode使用教程</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/04/17/BootStrap框架/" title="BootStrap框架"><img class="relatedPosts_cover lazyload"data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3148263595,2673588162&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-17</div><div class="relatedPosts_title">BootStrap框架</div></div></a></div><div class="relatedPosts_item"><a href="/2024/07/30/UI组件封装/" title="UI组件封装"><img class="relatedPosts_cover lazyload"data-src="/img/butterfly.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-07-30</div><div class="relatedPosts_title">UI组件封装</div></div></a></div><div class="relatedPosts_item"><a href="/2022/02/08/域名协议功课笔记/" title="域名协议功课笔记"><img class="relatedPosts_cover lazyload"data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-02-08</div><div class="relatedPosts_title">域名协议功课笔记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/05/11/Vue-js框架/" title="Vue.js框架"><img class="relatedPosts_cover lazyload"data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2580821279,2387343998&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-05-11</div><div class="relatedPosts_title">Vue.js框架</div></div></a></div><div class="relatedPosts_item"><a href="/2020/04/17/前后端分离项目/" title="前后端分离项目"><img class="relatedPosts_cover lazyload"data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2533269724,3550129297&fm=26&gp=0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-04-17</div><div class="relatedPosts_title">前后端分离项目</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
   return GUEST_INFO.indexOf(item) > -1
 });
