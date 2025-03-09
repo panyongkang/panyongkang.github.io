@@ -289,7 +289,7 @@ C:\Program Files>vue -V
 
 **错误2**:全局安装Vue后，执行 `vue -V`命令又报错：vue : 无法加载文件 D:\softwarenodejs\node_global\vue.ps1，因为在此系统上禁止运行脚本。
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%88%AA%E5%9B%BE.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%E6%88%AA%E5%9B%BE.png)
 
 原因分析：
 PowerShell执行时阻止了该操作，在终端输入Get-ExecutionPolicy指令后回车，发现返回Restricted，为受限制状态。

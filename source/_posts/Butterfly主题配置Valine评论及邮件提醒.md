@@ -1,16 +1,14 @@
 title: Butterfly主题配置Valine评论及邮件提醒
 cover: https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&fm=26&gp=0.jpg
 author: PanXiaoKang
-tags:
-
-  - 评论系统
-  - Valine Admin
-  - 邮件提醒
-categories:
-  - Hexo博客
+tags: [评论系统,Valine Admin,邮件提醒]
+categories: [Hexo博客]
 date: 2021-01-21 14:34:00
+
 ---
+
 ## 概述
+
 博客也上线很久了，但之前配置的Valine评论系统注册使用的[LeanCloud](https://leancloud.app/)是国内版-华北节点的，由于国内的域名需要审核备案，比较麻烦，因此改用[LeanCloud](https://leancloud.app/)国际版，顺便记录一下博主踩过的坑。
 
 ## 为博客配置Valine评论系统
@@ -20,8 +18,6 @@ Valine评论系统的配置其实很简单，在这里就简单介绍一下。
 * 首先要去[LeanCloud官网](https://www.leancloud.cn/)注册一个帐号，账号注册成功后，我们在控制台创建一个应用，如下：
 
 ![img](https://img-blog.csdnimg.cn/20200710120906355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTE3MDI0,size_16,color_FFFFFF,t_70)
-
- 
 
 ![img](https://img-blog.csdnimg.cn/20200710120918650.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM1MTE3MDI0,size_16,color_FFFFFF,t_70)
 
@@ -49,15 +45,13 @@ valine:
   count: true # top_img显示评论数
 ```
 
-
-
 * 此时，我们的博客页面已经出现了评论面板了，如下所示：
 
-![](评论面板.png "评论面板.png")
+![图片](评论面板.png "评论面板.png")
 
 * 最后，我们在leancloud中的应用设置界面中，通过【设置 | 安全中心】菜单，将我们博客的域名添加到安全中心，如下：
 
-![](安全中心.png "安全中心.png")
+![图片](安全中心.png "安全中心.png")
 
 * 如果配置完之后没有出现评论面板，那你可要认真看看对应的主题应该怎么配置Valine评论系统了，如果使用最新版的Butterfly主题后，配置了Valine但是没有出现评论面板，应该是漏写了一处配置，如下：
 
@@ -75,20 +69,20 @@ valine:
 
 进入评论系统数据库所在的LeanCloud应用。进入“云引擎-设置”，设置环境变量以及云引擎域名。**以下参数需要正确设置。云引擎域名（ADMIN_URL参数）用于评论后台管理，如 。
 
-| 变量             | 示例                                       | 说明                                                         |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------ |
-| SITE_NAME        | 沙漠                                       | [必填]博客名称                                               |
-| SITE_URL         | [http://www.xyym.cf/](http://www.xyym.cf/) | [必填]博客首页地址                                           |
-| **SMTP_SERVICE** | QQ                                         | [新版支持]邮件服务提供商，支持QQ，163、126，Gmail以及[更多](https://nodemailer.com/smtp/well-known/#supported-services) |
-| SMTP_USER        | [xxxxxx@qq.com](mailto:xxxxxx@qq.com)      | [必填] SMTP登录用户                                          |
-| SMTP_PASS        | ccxxxxxxxxch                               | [必填] SMTP登录密码（QQ邮箱需要获取独立密码,也就是授权码）   |
-| 发件人名称       | 沙漠                                       | [必填]发件人                                                 |
-| SENDER_EMAIL     | [xxxxxx@qq.com](mailto:xxxxxx@qq.com)      | [必填]发件邮箱                                               |
-| ADMIN_URL        | https://xxx.leanapp.cn/                    | [建议] Web主机二级域名（云引擎域名），用于自动唤醒           |
-| BLOGGER_EMAIL    | [xxxxx@gmail.com](mailto:xxxxx@gmail.com)  | [任选]博主通知收件地址，替换使用SENDER_EMAIL                 |
-| AKISMET_KEY      | xxxxxxxx                                   | [任选] Akismet键用于垃圾评论检测，设置MANUAL_REVIEW打开人工审核，留空不使用反垃圾 |
+| 变量                   | 示例                                    | 说明                                                                                                                 |
+| ---------------------- | --------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| SITE_NAME              | 沙漠                                    | [必填]博客名称                                                                                                       |
+| SITE_URL               | [http://www.xyym.cf/](http://www.xyym.cf/) | [必填]博客首页地址                                                                                                   |
+| **SMTP_SERVICE** | QQ                                      | [新版支持]邮件服务提供商，支持QQ，163、126，Gmail以及[更多](https://nodemailer.com/smtp/well-known/#supported-services) |
+| SMTP_USER              | [xxxxxx@qq.com](mailto:xxxxxx@qq.com)      | [必填] SMTP登录用户                                                                                                  |
+| SMTP_PASS              | ccxxxxxxxxch                            | [必填] SMTP登录密码（QQ邮箱需要获取独立密码,也就是授权码）                                                           |
+| 发件人名称             | 沙漠                                    | [必填]发件人                                                                                                         |
+| SENDER_EMAIL           | [xxxxxx@qq.com](mailto:xxxxxx@qq.com)      | [必填]发件邮箱                                                                                                       |
+| ADMIN_URL              | https://xxx.leanapp.cn/                 | [建议] Web主机二级域名（云引擎域名），用于自动唤醒                                                                   |
+| BLOGGER_EMAIL          | [xxxxx@gmail.com](mailto:xxxxx@gmail.com)  | [任选]博主通知收件地址，替换使用SENDER_EMAIL                                                                         |
+| AKISMET_KEY            | xxxxxxxx                                | [任选] Akismet键用于垃圾评论检测，设置MANUAL_REVIEW打开人工审核，留空不使用反垃圾                                    |
 
-![](自定义环境变量.png "自定义环境变量.png")
+![图片](自定义环境变量.png "自定义环境变量.png")
 
 以上图片中关于"SMTP_PASS"的值获取方式如下：
 
@@ -108,7 +102,7 @@ valine:
 
 ## 评论管理
 
-首先需要设置管理员信息。访问管理员注册页面`https://云引擎域名/sign-up`，注册管理员登录信息，如：[https://xyym.avosapps.us/sign-up](https://xyym.avosapps.us/sign-up) ,注册好QQ邮箱号和密码之后即可登录管理评论信息了。
+首先需要设置管理员信息。访问管理员注册页面 `https://云引擎域名/sign-up`，注册管理员登录信息，如：[https://xyym.avosapps.us/sign-up](https://xyym.avosapps.us/sign-up) ,注册好QQ邮箱号和密码之后即可登录管理评论信息了。
 
 [![注册](https://github.com/DesertsP/Valine-Admin/raw/master/assets/imgs/signup2.png)](https://github.com/DesertsP/Valine-Admin/blob/master/assets/imgs/signup2.png)
 
@@ -125,9 +119,9 @@ valine:
 
 [![img](https://github.com/DesertsP/Valine-Admin/raw/master/assets/imgs/cron4.png)](https://github.com/DesertsP/Valine-Admin/blob/master/assets/imgs/cron4.png)
 
-选择self-wake云函数，Cron表达式为`0 */30 0-16 * * ?`，表示每天早0点到晚16点每隔30分钟访问云引擎。
+选择self-wake云函数，Cron表达式为 `0 */30 0-16 * * ?`，表示每天早0点到晚16点每隔30分钟访问云引擎。
 
-选择resend-mails云函数，Cron表达为`0 0 0 * * ?`，表示每天0点检查过去24小时内漏发的通知邮件并补发。
+选择resend-mails云函数，Cron表达为 `0 0 0 * * ?`，表示每天0点检查过去24小时内漏发的通知邮件并补发。
 
 - [关于国际版时区的问题](https://github.com/DesertsP/Valine-Admin/issues/63#issuecomment-533784574)：国际版使用UTC-0时间，注意与内部时间对应。
 

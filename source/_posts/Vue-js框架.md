@@ -1,12 +1,10 @@
 title: Vue.js框架
 author: PanXiaoKang
-cover: >-
-  https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2580821279,2387343998&fm=26&gp=0.jpg
-tags:
-  - Vue
-categories:
-  - 前端框架
+cover: https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2580821279,2387343998&fm=26&gp=0.jpg
+tags: [Vue]
+categories: [前端框架]
 date: 2020-05-11 17:21:00
+
 ---
 
 ## Vue.js 是什么
@@ -51,7 +49,7 @@ M：Model（数据层，也就是指数据（前端是js））
 V：View ( 也就是指DOM层 或用户界面 )
 VM : ViewModel (处理数据和界面的中间层，也就是指Vue)
 
-![](http://liangxinghua.com/uploads/image/20180709/1531106991.png)
+![图片](http://liangxinghua.com/uploads/image/20180709/1531106991.png)
 
 ### mvvm和mvc区别
 
@@ -195,12 +193,12 @@ tr.firstLine{
             <td>name</td>
             <td>hp</td>
         </tr>
-     
+   
         <tr v-for="hero in heros">
             <td>{{hero.name}}</td>
             <td>{{hero.hp}}</td>
         </tr>
-     
+   
     </table>
  
 </div>

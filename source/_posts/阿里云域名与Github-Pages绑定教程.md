@@ -1,13 +1,8 @@
 title: 阿里云域名+Github Pages绑定教程
 author: PanXiaoKang
 cover: 'https://blog.naibabiji.com/wp-content/uploads/2019/11/aliyun-yu-ming-jie-xi-1.png'
-tags:
-
-  - 阿里云域名
-  - 域名绑定
-  - DNS和CDN
-categories:
-  - 网站搭建手册
+tags: [阿里云域名,域名绑定,DNS和CDN]
+categories: [网站搭建手册]
 date: 2022-01-03 16:24:00
 
 ---
@@ -16,13 +11,13 @@ date: 2022-01-03 16:24:00
 
 ### 阿里云
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D.png)
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D1.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E9%98%BF%E9%87%8C%E4%BA%91%E5%9F%9F%E5%90%8D1.png)
 
 ### 腾讯云
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%9F%9F%E5%90%8D.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E8%85%BE%E8%AE%AF%E4%BA%91%E5%9F%9F%E5%90%8D.png)
 
 对比了一下，.com后缀域名太贵了，最终选择了阿里云的xyyum.icu域名，作为个人网站使用足够了，整了个3年套餐先用着，并且后缀名ICU对于程序员可是有特殊意义的，也符合我身体虚弱的气质，嘿嘿！
 
@@ -40,7 +35,7 @@ A (Address) 记录是用来指定主机名（或域名）对应的IP地址记录
 
 **2.什么是CNAME记录？**
 
-即：别名记录。这种记录允许您将多个名字映射到另外一个域名。通常用于同时提供WWW和MAIL服务的计算机。例如，有一台计算机名为“host.mydomain.com”（A记录）。它同时提供WWW和MAIL服务，为了便于用户访问服务。可以为该计算机设置两个别名（CNAME）：WWW和MAIL。这两个别名的全称就 `http://www.mydomain.com/` 和`mail.mydomain.com`。实际上他们都指向 “host.mydomain.com”。
+即：别名记录。这种记录允许您将多个名字映射到另外一个域名。通常用于同时提供WWW和MAIL服务的计算机。例如，有一台计算机名为“host.mydomain.com”（A记录）。它同时提供WWW和MAIL服务，为了便于用户访问服务。可以为该计算机设置两个别名（CNAME）：WWW和MAIL。这两个别名的全称就 `http://www.mydomain.com/` 和 `mail.mydomain.com`。实际上他们都指向 “host.mydomain.com”。
 
 **3.A记录和CNAME进行域名解析的区别**
 
@@ -56,8 +51,6 @@ A记录也有一些好处，例如可以在输入域名时不用输入WWW.来访
 
 也有人认为同一个域名加WWW.和不加WWW.访问网站也会使网站权重分散，这也是个问题。但是可以使用301跳转把不加WWW.跳转到加WWW.的域名，问题就解决了。
 
-
-
 ## CDN与DNS知识点
 
 ### 什么是[CDN](https://baike.baidu.com/item/CDN/420951?fr=aladdin)
@@ -69,11 +62,9 @@ CDN的全称是Content Delivery Network，即[内容分发网络](https://baike.
 - 分发服务系统
 
   最基本的工作单元就是Cache设备，cache（边缘cache）负责直接响应最终用户的访问请求，把缓存在本地的内容快速地提供给用 户。同时cache还负责与源站点进行内容同步，把更新的内容以及本地没有的内容从源站点获取并保存在本地。Cache设备的数量、规模、总服务能力是衡 量一个CDN系统服务能力的最基本的指标
-
 - 负载均衡系统
 
   主要功能是负责对所有发起服务请求的用户进行访问调度，确定提供给用户的最终实际访问地址。两级调度体系分为全局负载均衡（GSLB）和本 地负载均衡（SLB）。GSLB主要根据用户就近性原则，通过对每个服务节点进行“最优”判断，确定向用户提供服务的cache的物理位置。SLB主要负 责节点内部的设备负载均衡
-
 - 运营管理系统
 
   分为运营管理和网络管理子系统，负责处理业务层面的与外界系统交互所必须的收集、整理、交付工作，包含客户管理、产品管理、计费管理、统计分析等功能。
@@ -150,18 +141,13 @@ DNS由下面三个部分组成
 1. DNS反射/放大攻击
 
    向大量开放DNS服务器发送大范围域名查询的DNS请求，并将该DNS请求的源IP地址伪造成想要攻击的目标IP地址。由于请求数据比相应数据小得多，攻击者可以利用该技术放大掌握的带宽资源和攻击流量。
-
 2. DDOS攻击可能造成域名解析瘫痪
-
 3. DNS/域名劫持
    在劫持的网络范围内拦截域名解析的请求，分析请求的域名，返回假的IP地址或者使请求失去响应。DNS劫持通过篡改DNS服务器上的数据返回给用户一个错误的查询结果来实现的。
-
 4. DNS污染
 
-​		DNS污染是一种让一般用户由于得到虚假目标主机IP而不能与其通信的方法，指的是用户访问一个地址，国内的服务器(非DNS)监控到用户访问的已经被标记地址时，服务器伪装成DNS服务器向用户发回错误的地址的行为。
+    DNS污染是一种让一般用户由于得到虚假目标主机IP而不能与其通信的方法，指的是用户访问一个地址，国内的服务器(非DNS)监控到用户访问的已经被标记地址时，服务器伪装成DNS服务器向用户发回错误的地址的行为。
 dns污染与dns劫持的区别在于，dns劫持修改了dns的解析结果，dns污染是不经过dns服务器，返回错误信息。
-
-
 
 ## 域名的使用
 
@@ -191,7 +177,7 @@ dns污染与dns劫持的区别在于，dns劫持修改了dns的解析结果，dn
 
 ![image-20220102170617400](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E8%A7%A3%E6%9E%90%E6%B5%8B%E8%AF%95Ping.png)
 
-这个时候着急输入网站`xyyum.icu`就会出现如下图所示：
+这个时候着急输入网站 `xyyum.icu`就会出现如下图所示：
 
 ![image-20220102170903940](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E8%BF%9E%E6%8E%A5404.png)
 
@@ -206,4 +192,3 @@ dns污染与dns劫持的区别在于，dns劫持修改了dns的解析结果，dn
 因为Github是虚拟主机，所以最好将记录类型修改为CNAME，记录值填成仓库域名。
 
 ![image-20220102173608413](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E4%BF%AE%E6%94%B9%E8%AE%B0%E5%BD%95%E7%B1%BB%E5%9E%8B.png)
-

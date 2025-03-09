@@ -1,14 +1,8 @@
 title: Nodejs
 author: PanXiaoKang
 cover: https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=238001970,1745368623&fm=26&gp=0.jpg
-tags:
-
-  - Nodejs
-  - npm
-categories:
-
-  - 前端技术
-
+tags: [Nodejs,npm]
+categories: [前端技术]
 date: 2021-01-03 19:16:00
 
 ---
@@ -200,7 +194,7 @@ npm unpublish --force //实际上是执行撤销操作
 
 安装module测试失败了，报错如下图：
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/npm%E9%94%99%E8%AF%AF1.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/npm%E9%94%99%E8%AF%AF1.png)
 
 ![image-20220102140205526](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/npm%E9%94%99%E8%AF%AF2.png)
 

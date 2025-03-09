@@ -426,7 +426,7 @@ cd ~/.subversion && rm -rf auth/
 
 **中文视图如下：**
 
-![](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/SVN%E6%93%8D%E4%BD%9C%E8%A7%86%E5%9B%BE.png)
+![图片](https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/SVN%E6%93%8D%E4%BD%9C%E8%A7%86%E5%9B%BE.png)
 
 TortoiseSVN是windows下其中一个非常优秀的SVN客户端工具。通过使用它，我们可以可视化的管理我们的版本库。不过由于它只是一个客户端，所以它不能对版本库进行权限管理。
 
