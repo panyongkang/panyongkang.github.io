@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2024/04/21/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
+    <lastmod>2025-03-16</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2020/04/25/Hexo%E5%8D%9A%E5%AE%A2%E5%8A%9F%E8%83%BD%E6%B7%BB%E5%8A%A0/</loc>
     <lastmod>2025-03-09</lastmod>
   </url>
@@ -90,10 +94,6 @@
   </url>
   <url>
     <loc>http://example.com/2022/02/04/VSCode%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2025-03-09</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2024/04/21/%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</loc>
     <lastmod>2025-03-09</lastmod>
   </url>
   <url>
@@ -313,11 +313,11 @@
     <lastmod>2024-12-21</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2020/05/13/Redis/</loc>
+    <loc>http://example.com/2020/03/05/SEO%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-12-21</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2020/03/05/SEO%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://example.com/2020/05/13/Redis/</loc>
     <lastmod>2024-12-21</lastmod>
   </url>
   <url>
