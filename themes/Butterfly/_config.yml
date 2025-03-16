@@ -3,7 +3,8 @@
 # format: xxx: 連結 || icon
 # sub-menu
 # xxx || icon:
-#   xxx || 連結 || icon
+#   xxx || 連結 || icon 
+# 常用图标字体库：https://fontawesome.dashgame.com/
 #导航菜单修改
 menu:
   首页: / || fa fa-home
@@ -46,11 +47,12 @@ menu:
     - 音乐后台 || https://myhkw.cn/admin/user/login/ || fa fa-music
     - 聚合图床 || https://www.superbed.cn/ || fa fa-area-chart
   纪念空间||fa fa-heartbeat:
-    - 3D照片屋 || /3d-gallery/ || fa fa-university
+    - 3D相册屋 || /3d-gallery/ || fa fa-university
     - 青春校园 || /live-photo/ || fa fa-photo
-    - 生活日常 || /photo-wall/ || fa fa-th
+    - 生活照片 || /photo-wall/ || fa fa-th
+    - 在线视频 || /video-wall/ || fa fa-video-camera
     - 美图秀秀 || /mtxx/ || fa fa-file-photo-o
-    - 时间故事线 || /timeStoryline/ || fa fa-video-camera
+    - 时间故事线 || /timeStoryline/ || fa fa-file-video-o
 
 # Favicon
 # ---------------
