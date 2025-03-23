@@ -333,7 +333,65 @@ insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列3','女',23,26,'1006');
 ```
 
-## PL/SQL数据库操作笔记
+## PL/SQL数据库工作日常笔记
+
+### 关联表模糊查询
+
+```sql
+--下拉框信息表
+select T.*,T.rowid from IB_PARA_COMBOCOL_RLT T where T.TRANCODE in ('020432') and T.ENTRYNAME in ('combo_操作类型_020432');
+--下拉框明细表
+select T.*,T.rowid from IB_PARA_COMBOITEM_INFO T where T.ENTRYNAME in ('combo_操作类型_020432','');
+
+--关联模糊查询
+SELECT 
+  c.TRANCODE as 交易码,
+  c.ADENAME as 数据字典,
+  c.ENTRYNAME as 枚举名称,
+  i.ITEMPREFIX as 枚举前缀,
+  i.ITEMVALUE as 枚举后缀,
+  i.orderid as 排序
+FROM 
+  (SELECT
+     TRANCODE, 
+     ADENAME, 
+     ENTRYNAME 
+   FROM IB_PARA_COMBOCOL_RLT 
+   WHERE TRANCODE = '021007' 
+     AND ENTRYNAME LIKE 'combo_%') c
+JOIN 
+  (SELECT
+     ENTRYNAME, 
+     ITEMPREFIX, 
+     ITEMVALUE, 
+     orderid
+   FROM IB_PARA_COMBOITEM_INFO 
+   WHERE ENTRYNAME LIKE 'combo_%') i 
+ON c.ENTRYNAME = i.ENTRYNAME
+--先按ENTRYNAME分组，再按序号排序
+ORDER BY c.ENTRYNAME,i.orderid;
+
+--关联模糊查询
+SELECT 
+  c.*, 
+  i.*,
+  c.rowid AS rlt_rowid, 
+  i.rowid AS item_rowid
+FROM 
+  (SELECT * 
+   FROM IB_PARA_COMBOCOL_RLT 
+   WHERE TRANCODE = '021007' 
+     AND ENTRYNAME LIKE 'combo_%'
+  ) c
+JOIN 
+  (SELECT * 
+   FROM IB_PARA_COMBOITEM_INFO 
+   WHERE ENTRYNAME LIKE 'combo_%'
+  ) i 
+ON c.ENTRYNAME = i.ENTRYNAME
+--先按ENTRYNAME分组，再按序号排序
+ORDER BY c.ENTRYNAME, i.orderid;
+```
 
 ### 查询当前被锁定的对象信息
 
