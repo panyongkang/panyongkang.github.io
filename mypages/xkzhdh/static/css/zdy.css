@@ -343,3 +343,37 @@ a:hover {  cursor: url('https://ihuan.me/wp-content/themes/CKoo/1.cur'), pointer
     box-shadow: 0 10px 10px rgb(0 4 10 / 30%);
 }
 /* 关闭黄条样式end */
+/* 常用访问样式start */
+.close-btn {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #999;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #999;
+}
+
+.close-btn:hover {
+  background: #ddd;
+  color: #666;
+}
+
+/* .main li i {
+  position: absolute;
+  top: 11px;
+  right: 15px;
+  color: #fff;
+  cursor: pointer;
+}
+.main li i:hover {
+  color: #1c29f7;
+} */
+/* 常用访问样式end */
