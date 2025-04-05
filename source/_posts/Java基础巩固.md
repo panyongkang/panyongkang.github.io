@@ -1,13 +1,11 @@
 title: Java基础巩固
-author: PanXiaoKang
+author: PanYuKang
 
 cover: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1499015010,895265431&fm=26&gp=0.jpg'
 
-tags:
+tags: [Java基础]
 
-  - Java基础
-categories:
-  - 后端技术
+categories: [后端技术]
 date: 2020-04-01 18:31:00
 
 ---

@@ -10,9 +10,153 @@ date: 2020-04-01 18:31:00
 ---
 
 * 随着年龄的增长，慢慢接受了自己的平凡，趁有空整理一下基础知识，也借鉴了一些大佬的文章内容整理中。。。
-* 本人已与DeepSeek、通义、智谱、ChatGPT、Gemini、谷歌、360、百度等达成合作，如果还有啥不懂的，可以直接问它们就行~
+* 本人已与DeepSeek、通义、智谱、ChatGPT、Grok、Gemini、谷歌、360、百度等达成合作，如果还有啥不懂的，可以直接问它们就行~
 
 ---
+
+## JSON字符串与Java对象的转换
+
+### **JSON 转 Java 对象（反序列化）**
+
+#### **1. 核心概念**
+
+- **定义**：将 JSON 字符串解析为 Java 对象（如 POJO、集合、数组等）。
+- **工具**：Jackson、Gson、FastJSON 等库。
+- **关键方法**：`objectMapper.readValue(json, Class)`（Jackson）、`JSON.parseObject(json, Class)`（FastJSON）。
+
+#### **2. 应用场景**
+
+- **接收前端请求**：解析 HTTP 请求体中的 JSON 数据为 Java 对象。
+- **读取配置文件**：将 JSON 格式的配置转换为 Java 对象。
+- **数据库存储**：将 JSON 字段（如 MySQL 的 JSON 类型）映射为 Java 对象。
+
+#### **3. 数据结构示例**
+
+##### **场景 1：简单对象**
+
+```json
+{
+  "name": "张三",
+  "age": 25,
+  "isStudent": false
+}
+```
+
+对应 Java 类：
+
+```java
+public class User {
+    private String name;
+    private int age;
+    private boolean isStudent;
+    // Getter/Setter
+}
+```
+
+##### **场景 2：嵌套对象**
+
+```json
+{
+  "orderId": "12345",
+  "user": {
+    "name": "李四",
+    "email": "lisi@example.com"
+  }
+}
+```
+
+对应 Java 类：
+
+```java
+public class Order {
+    private String orderId;
+    private User user; // 嵌套对象
+    // Getter/Setter
+}
+```
+
+##### **场景 3：集合与数组**
+
+```json
+["苹果", "香蕉", "橘子"]
+```
+
+对应 Java 类型：
+
+```java
+List<String> fruits; // 或 String[]
+```
+
+---
+
+### **Java 对象转 JSON（序列化）**
+
+#### **1. 核心概念**
+
+- **定义**：将 Java 对象转换为 JSON 字符串。
+- **工具**：同上，工具库提供序列化方法。
+- **关键方法**：`objectMapper.writeValueAsString(obj)`（Jackson）、`JSON.toJSONString(obj)`（FastJSON）。
+
+#### **2. 应用场景**
+
+- **返回 HTTP 响应**：将 Java 对象序列化为 JSON 返回给前端。
+- **日志输出**：将复杂对象转为 JSON 方便日志分析。
+- **消息队列**：发送结构化数据（如 Kafka 消息）。
+
+#### **3. 数据结构示例**
+
+##### **场景 1：序列化简单对象**
+
+Java 对象：
+
+```java
+User user = new User("王五", 30, true);
+```
+
+序列化结果：
+
+```json
+{"name":"王五","age":30,"isStudent":true}
+```
+
+##### **场景 2：序列化集合**
+
+Java 对象：
+
+```java
+List<Product> products = Arrays.asList(
+    new Product("手机", 2999),
+    new Product("耳机", 599)
+);
+```
+
+序列化结果：
+
+```json
+[
+  {"name":"手机","price":2999},
+  {"name":"耳机","price":599}
+]
+```
+
+---
+
+### **核心区别对比**
+
+| **维度**     | **JSON → Java 对象（反序列化）** | **Java 对象 → JSON（序列化）**    |
+| ------------------ | --------------------------------------- | ---------------------------------------- |
+| **目的**     | 解析外部数据为内存中的 Java 对象        | 将内存中的 Java 对象转换为传输或存储格式 |
+| **输入**     | JSON 字符串                             | Java 对象（POJO、集合、数组等）          |
+| **输出**     | Java 对象                               | JSON 字符串                              |
+| **关键注解** | `@JsonCreator`, `@JsonProperty`     | `@JsonIgnore`, `@JsonFormat`         |
+| **常见错误** | 字段类型不匹配、JSON 语法错误           | 循环引用、未处理的自定义类型             |
+
+### **总结**
+
+- **JSON → Java 对象**：解析外部数据，需关注 **字段映射** 和 **类型安全**。
+- **Java 对象 → JSON**：生成可传输数据，需处理 **格式控制** 和 **性能优化**。
+- **工具选择**：优先使用 Jackson（Spring 生态集成）或 Gson（轻量简洁）。
+- **核心原则**：**保持前后端数据格式约定一致**，避免歧义和兼容性问题。
 
 ## JSONObject和JSONArray
 
@@ -1159,6 +1303,217 @@ public class DateValidator {
         System.out.println(isValidDate("2024-02-29 12:34:56")); // true 闰年日期
         System.out.println(isValidDate("2023-02-29 12:34:56")); // false 非闰年2月29日 （严格模式触发异常）
   
+    }
+}
+```
+
+## Excel表格的读写操作
+
+### 下拉框明细表
+
+主要是批量生成下拉框明细表的枚举值SQL语句。
+
+#### 图片示例
+
+<img src="{% asset_path 1743776562042.png %}" alt="下拉框明细表" title="下拉框明细表" style="max-width:auto; height:300px;">
+
+#### 代码示例
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+
+public class EnumConfigToSQL {
+
+    private static final int HEADER_ROW_COUNT = 3; // 表头占3行
+    private static final String SQL_DELETE = "DELETE FROM IB_PARA_COMBOITEM_INFO WHERE ENTRYNAME = '%s';";
+    private static final String SQL_INSERT = "INSERT INTO IB_PARA_COMBOITEM_INFO (ENTRYNAME, ITEMPREFIX, ITEMVALUE, ORDERID, COREFLAG)\nVALUES ('%s', '%s', '%s', '%s', '%s');";
+
+    public static void main(String[] args) throws IOException, InvalidFormatException {
+        String filePath = "D:\\模板\\枚举配置.xlsx";
+        String sheetName = "下拉框明细表"; // 可通过参数动态传入
+
+        try (InputStream is = new FileInputStream(filePath);
+             Workbook workbook = createWorkbook(is, filePath)) {
+
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) {
+                throw new IllegalArgumentException("Sheet [" + sheetName + "] 不存在");
+            }
+
+            // 动态获取枚举名称（假设在第二行第一列）
+            String mjmc = getCellValue(sheet.getRow(1).getCell(0));
+            System.out.println("--下拉框明细表");
+            System.out.println(String.format(SQL_DELETE, mjmc));
+
+//            System.out.println("\n-- 插入语句");
+            DataFormatter formatter = new DataFormatter();
+            for (Row row : sheet) {
+                if (row.getRowNum() < HEADER_ROW_COUNT) continue; // 跳过表头
+
+                String entryName = formatValue(formatter.formatCellValue(row.getCell(0)), mjmc);
+                String itemPrefix = formatter.formatCellValue(row.getCell(1));
+                String itemValue = formatter.formatCellValue(row.getCell(2));
+                String orderId = formatOrderId(formatter.formatCellValue(row.getCell(3)), row.getRowNum());
+                String coreFlag = formatter.formatCellValue(row.getCell(4));
+
+                if (itemPrefix.isEmpty() && itemValue.isEmpty()) continue;
+
+                String insertSQL = String.format(SQL_INSERT, entryName, itemPrefix, itemValue, orderId, coreFlag);
+                System.out.println(insertSQL);
+            }
+        }
+    }
+
+    // 根据文件后缀创建Workbook
+    private static Workbook createWorkbook(InputStream is, String filePath) throws IOException {
+        if (filePath.endsWith(".xlsx")) {
+            return new XSSFWorkbook(is);
+        } else if (filePath.endsWith(".xls")) {
+            return new HSSFWorkbook(is);
+        } else {
+            throw new IllegalArgumentException("不支持的文件格式");
+        }
+    }
+
+    // 处理ENTRYNAME为空的情况
+    private static String formatValue(String value, String defaultValue) {
+        return value.isEmpty() ? defaultValue : value;
+    }
+
+    // 处理ORDERID为空的情况
+    private static String formatOrderId(String orderId, int rowNum) {
+        return orderId.isEmpty() ? String.valueOf(rowNum - HEADER_ROW_COUNT) : orderId;
+    }
+  
+	public static String getCellValue(Cell cell) {
+		if (cell == null) {
+			return "";
+		}
+		int type = cell.getCellType();
+		switch (type) {
+		case XSSFCell.CELL_TYPE_STRING:
+			return cell.getStringCellValue();
+		case XSSFCell.CELL_TYPE_NUMERIC:
+			return String.valueOf((int) cell.getNumericCellValue());
+		case XSSFCell.CELL_TYPE_BOOLEAN:
+			return String.valueOf(cell.getBooleanCellValue());
+		default:
+			return cell.toString();
+		}
+	}
+}
+```
+
+### 枚举值映射表
+
+主要是用于批量生成枚举值映射转码的SQL语句。
+
+#### 图片示例
+
+<img src="{% asset_path 1743775987872.png %}" alt="枚举值映射表" title="枚举值映射表" style="max-width:auto; height:300px;">
+
+#### 代码示例
+
+```java
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.FileInputStream;
+import java.util.*;
+
+public class ExcelToSqlGenerator {
+    public static void main(String[] args) throws Exception {
+        String excelFilePath = "D:\\模板\\枚举配置.xlsx";
+        String sheetName = "枚举值映射表";
+        List<String> sqlList = generateEnumSql(excelFilePath, sheetName);
+        sqlList.forEach(System.out::println);
+    }
+
+    public static List<String> generateEnumSql(String filePath, String sheetName) throws Exception {
+        List<String> sqlList = new ArrayList<>();
+        try (FileInputStream fis = new FileInputStream(filePath);
+             Workbook workbook = new XSSFWorkbook(fis)) {
+
+            Sheet sheet = workbook.getSheet(sheetName);
+            if (sheet == null) throw new RuntimeException("Sheet not found");
+
+            // 获取默认entryNm（第2行A列）
+            String defaultEntryNm = getCellValue(sheet.getRow(1).getCell(0));
+
+            Set<String> entryNmSet = new HashSet<>();
+
+            for (int i = 3; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                if (row == null) continue;
+
+                // 动态获取entryNm（优先A列）
+                String entryNm = getCellValue(row.getCell(0));
+                if (entryNm.isEmpty()) entryNm = defaultEntryNm;
+
+                String prePfx = getCellValue(row.getCell(1)); // B列
+                String aftPfx = getCellValue(row.getCell(2)); // C列
+                String itemDesc = getCellValue(row.getCell(3)); // D列
+
+                if (!prePfx.isEmpty() && !aftPfx.isEmpty()) {
+                    entryNmSet.add(entryNm);
+                    String sql = String.format(
+                        "insert into ib_para_enummpg_info (ENTRY_NM, PRE_PFX, AFT_PFX, ITEM_DESC)\n" +
+                        "values ('%s', '%s', '%s', '%s');",
+                        entryNm, prePfx, aftPfx, itemDesc.replace("'", "''")
+                    );
+                    sqlList.add(sql);
+                }
+            }
+
+            // 生成DELETE语句
+            if (!entryNmSet.isEmpty()) {
+                StringJoiner joiner = new StringJoiner("','", "'", "'");
+                entryNmSet.forEach(joiner::add);
+                sqlList.add(0, String.format(
+                    "--枚举值映射表\ndelete from ib_para_enummpg_info where ENTRY_NM in (%s);",
+                    joiner
+                ));
+            }
+        }
+        return sqlList;
+    }
+
+    // 兼容旧版POI（使用int类型判断）
+    private static String getCellValue(Cell cell) {
+        if (cell == null) return "";
+  
+        int cellType = cell.getCellType();
+        if (cellType == Cell.CELL_TYPE_FORMULA) {
+            cellType = cell.getCachedFormulaResultType();
+        }
+
+        switch (cellType) {
+            case Cell.CELL_TYPE_STRING:
+                return cell.getStringCellValue().trim();
+            case Cell.CELL_TYPE_NUMERIC:
+                if (DateUtil.isCellDateFormatted(cell)) {
+                    return cell.getDateCellValue().toString();
+                } else {
+                    double num = cell.getNumericCellValue();
+                    if (num == (int) num) {
+                        return String.valueOf((int) num);
+                    } else {
+                        return String.valueOf(num);
+                    }
+                }
+            case Cell.CELL_TYPE_BOOLEAN:
+                return String.valueOf(cell.getBooleanCellValue());
+            case Cell.CELL_TYPE_BLANK:
+                return "";
+            default:
+                return "";
+        }
     }
 }
 ```

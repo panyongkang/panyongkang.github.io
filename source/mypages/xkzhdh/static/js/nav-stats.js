@@ -1,9 +1,9 @@
 (function () {
   // 配置项
   const MAX_COUNT = 20; // 最大点击次数限制
-  const MAX_DISPLAY = 60; // 最多显示常用项
-  const MAX_ITEMS = 100; // 本地存储最多保留条数
-  const DATA_RETENTION_DAYS = 90; // 数据保留天数
+  const MAX_DISPLAY = 6; // 最多显示常用项
+  const MAX_ITEMS = 12; // 本地存储最多保留条数
+  const DATA_RETENTION_DAYS = 1; // 数据保留天数
 
   // 初始化数据
   let clickData = JSON.parse(localStorage.getItem('navClickStats')) || {};
