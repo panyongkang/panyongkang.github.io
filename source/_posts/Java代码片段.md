@@ -1443,38 +1443,43 @@ public class ExcelToSqlGenerator {
             Sheet sheet = workbook.getSheet(sheetName);
             if (sheet == null) throw new RuntimeException("Sheet not found");
 
-            // 获取默认entryNm（第2行A列）
+            // 1. 获取默认枚举名称（第2行A列）
             String defaultEntryNm = getCellValue(sheet.getRow(1).getCell(0));
+  
+            // 2. 动态识别当前处理的枚举名称（初始值为默认值）
+            String currentEntryNm = defaultEntryNm;
+            Set<String> allEntryNms = new HashSet<>();
 
-            Set<String> entryNmSet = new HashSet<>();
-
+            // 3. 遍历数据行（从第4行开始）
             for (int i = 3; i <= sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 if (row == null) continue;
 
-                // 动态获取entryNm（优先A列）
-                String entryNm = getCellValue(row.getCell(0));
-                if (entryNm.isEmpty()) entryNm = defaultEntryNm;
+                // 关键逻辑：如果A列有值，则作为新的枚举名称；否则继承之前的名称
+                String entryNmCell = getCellValue(row.getCell(0));
+                if (!entryNmCell.isEmpty()) {
+                    currentEntryNm = entryNmCell;
+                }
+                allEntryNms.add(currentEntryNm);
 
                 String prePfx = getCellValue(row.getCell(1)); // B列
                 String aftPfx = getCellValue(row.getCell(2)); // C列
                 String itemDesc = getCellValue(row.getCell(3)); // D列
 
                 if (!prePfx.isEmpty() && !aftPfx.isEmpty()) {
-                    entryNmSet.add(entryNm);
                     String sql = String.format(
                         "insert into ib_para_enummpg_info (ENTRY_NM, PRE_PFX, AFT_PFX, ITEM_DESC)\n" +
                         "values ('%s', '%s', '%s', '%s');",
-                        entryNm, prePfx, aftPfx, itemDesc.replace("'", "''")
+                        currentEntryNm, prePfx, aftPfx, itemDesc.replace("'", "''")
                     );
                     sqlList.add(sql);
                 }
             }
 
-            // 生成DELETE语句
-            if (!entryNmSet.isEmpty()) {
+            // 4. 生成DELETE语句（清理所有涉及的枚举名称）
+            if (!allEntryNms.isEmpty()) {
                 StringJoiner joiner = new StringJoiner("','", "'", "'");
-                entryNmSet.forEach(joiner::add);
+                allEntryNms.forEach(joiner::add);
                 sqlList.add(0, String.format(
                     "--枚举值映射表\ndelete from ib_para_enummpg_info where ENTRY_NM in (%s);",
                     joiner
@@ -1484,31 +1489,16 @@ public class ExcelToSqlGenerator {
         return sqlList;
     }
 
-    // 兼容旧版POI（使用int类型判断）
+    // 兼容旧版POI的单元格值获取
     private static String getCellValue(Cell cell) {
         if (cell == null) return "";
-  
-        int cellType = cell.getCellType();
-        if (cellType == Cell.CELL_TYPE_FORMULA) {
-            cellType = cell.getCachedFormulaResultType();
-        }
-
-        switch (cellType) {
+        switch (cell.getCellType()) {
             case Cell.CELL_TYPE_STRING:
                 return cell.getStringCellValue().trim();
             case Cell.CELL_TYPE_NUMERIC:
-                if (DateUtil.isCellDateFormatted(cell)) {
-                    return cell.getDateCellValue().toString();
-                } else {
-                    double num = cell.getNumericCellValue();
-                    if (num == (int) num) {
-                        return String.valueOf((int) num);
-                    } else {
-                        return String.valueOf(num);
-                    }
-                }
-            case Cell.CELL_TYPE_BOOLEAN:
-                return String.valueOf(cell.getBooleanCellValue());
+                return (cell.getNumericCellValue() == (int)cell.getNumericCellValue()) 
+                    ? String.valueOf((int)cell.getNumericCellValue())
+                    : String.valueOf(cell.getNumericCellValue());
             case Cell.CELL_TYPE_BLANK:
                 return "";
             default:
