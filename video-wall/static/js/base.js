@@ -41,6 +41,11 @@ const videoUrls = [
     name: "内心世界",
     description: "从小缺爱的人内心是没有力量的，唯有把心激活，生命才能恢复活力~"
   },
+  {
+    url: "https://mpimg.cn/view.php/f505f14486cf94f070e2e2def7872c65.mp4",
+    name: "来日方长",
+    description: "欲买桂花同载酒，终不似，少年游..."
+  },
 ];
 
 const gridContainer = document.getElementById("gridContainer");
