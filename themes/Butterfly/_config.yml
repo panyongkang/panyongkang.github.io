@@ -46,6 +46,7 @@ menu:
     - 评论管理 || https://xyym.avosapps.us/ || fa fa-commenting-o
     - 音乐后台 || https://myhkw.cn/admin/user/login/ || fa fa-music
     - 聚合图床 || https://www.superbed.cn/ || fa fa-area-chart
+    - 加密访问 || /encryptedPages/ || fa fa-lock
   纪念空间||fa fa-heartbeat:
     - 3D相册屋 || /3d-gallery/ || fa fa-university
     - 青春校园 || /live-photo/ || fa fa-photo
