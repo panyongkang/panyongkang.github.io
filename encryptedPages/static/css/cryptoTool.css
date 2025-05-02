@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    max-width: 90%;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p.intro {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.section {
+    margin-bottom: 30px;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+input[readonly] {
+    background: #f9f9f9;
+    word-break: break-all;
+    user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    cursor: pointer;
+}
+
+input[readonly]:after {
+    content: '点击复制';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 12px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #76be78;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #4CAF50;
+}
+
+.error {
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+.error.red {
+    color: #f33;
+}
+
+.error.green {
+    color: #4CAF50;
+}
+
+.copied {
+    animation: highlight 0.3s;
+}
+
+@keyframes highlight {
+    0% {
+        background: #f9f9f9;
+    }
+
+    50% {
+        background: #d0f0d0;
+    }
+
+    100% {
+        background: #f9f9f9;
+    }
+}
