@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://example.com/2024/12/23/%E6%B1%BD%E8%BD%A6%E9%A2%86%E5%9F%9F/</loc>
-    <lastmod>2025-05-11</lastmod>
+    <loc>http://example.com/2020/10/11/%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2025-05-18</lastmod>
   </url>
   <url>
-    <loc>http://example.com/2020/10/11/%E5%81%A5%E5%BA%B7%E7%AE%A1%E7%90%86/</loc>
-    <lastmod>2025-05-11</lastmod>
+    <loc>http://example.com/2024/12/23/%E6%B1%BD%E8%BD%A6%E9%A2%86%E5%9F%9F/</loc>
+    <lastmod>2025-05-18</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2025/01/12/AI%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/</loc>
+    <lastmod>2025-05-17</lastmod>
+  </url>
+  <url>
+    <loc>http://example.com/2020/06/02/Oracle/</loc>
+    <lastmod>2025-05-15</lastmod>
   </url>
   <url>
     <loc>http://example.com/2020/04/15/%E5%B7%A5%E5%85%B7%E5%BF%AB%E6%8D%B7%E9%94%AE/</loc>
@@ -47,10 +55,6 @@
   <url>
     <loc>http://example.com/2020/04/01/Java%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/</loc>
     <lastmod>2025-03-26</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2020/06/02/Oracle/</loc>
-    <lastmod>2025-03-20</lastmod>
   </url>
   <url>
     <loc>http://example.com/2020/04/12/Linux%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4%E7%AC%94%E8%AE%B0/</loc>
@@ -147,10 +151,6 @@
   <url>
     <loc>http://example.com/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2025-02-28</lastmod>
-  </url>
-  <url>
-    <loc>http://example.com/2025/01/12/AI%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/</loc>
-    <lastmod>2025-02-22</lastmod>
   </url>
   <url>
     <loc>http://example.com/2021/08/29/JavaScript%E6%95%99%E7%A8%8B%E4%B9%8B%E6%A0%87%E5%87%86%E5%BA%93/</loc>
