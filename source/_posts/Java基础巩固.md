@@ -14,7 +14,194 @@ date: 2020-04-01 18:31:00
 
 ---
 
-### Java的数据类型
+## **String常用原生方法**
+
+| 方法                                             | 说明                           |
+| ------------------------------------------------ | ------------------------------ |
+| `length()`                                     | 获取字符串长度                 |
+| `charAt(int index)`                            | 返回指定位置的字符             |
+| `substring(int beginIndex)`                    | 从索引位置截取到末尾           |
+| `substring(int beginIndex, int endIndex)`      | 截取指定范围子串               |
+| `indexOf(String str)`                          | 查找子串首次出现位置           |
+| `lastIndexOf(String str)`                      | 查找子串最后出现位置           |
+| `contains(CharSequence s)`                     | 是否包含子串                   |
+| `startsWith(String prefix)`                    | 是否以某字符串开头             |
+| `endsWith(String suffix)`                      | 是否以某字符串结尾             |
+| `equals(Object obj)`                           | 判断内容是否相等               |
+| `equalsIgnoreCase(String anotherString)`       | 忽略大小写比较                 |
+| `isEmpty()`                                    | 是否为空字符串 (`length==0`) |
+| `trim()`                                       | 去除首尾空白                   |
+| `replace(char oldChar, char newChar)`          | 替换字符                       |
+| `replaceAll(String regex, String replacement)` | 正则替换                       |
+| `toUpperCase()`                                | 转为大写                       |
+| `toLowerCase()`                                | 转为小写                       |
+| `split(String regex)`                          | 分割字符串                     |
+| `getBytes()`                                   | 转为字节数组                   |
+| `toCharArray()`                                | 转为字符数组                   |
+| `format(String format, Object... args)`        | 字符串格式化                   |
+| `compareTo(String anotherString)`              | 字符串字典序比较               |
+| `matches(String regex)`                        | 是否匹配正则表达式             |
+
+---
+
+## **List 接口常用方法**
+
+| 方法                                    | 说明                     |
+| --------------------------------------- | ------------------------ |
+| `add(E e)`                            | 添加元素                 |
+| `add(int index, E element)`           | 指定位置插入元素         |
+| `addAll(Collection<? extends E> c)`   | 添加所有元素             |
+| `remove(Object o)`                    | 删除指定元素             |
+| `remove(int index)`                   | 删除指定索引元素         |
+| `clear()`                             | 清空列表                 |
+| `size()`                              | 返回元素数量             |
+| `isEmpty()`                           | 是否为空                 |
+| `get(int index)`                      | 获取指定索引的元素       |
+| `set(int index, E element)`           | 替换指定位置元素         |
+| `contains(Object o)`                  | 是否包含元素             |
+| `indexOf(Object o)`                   | 返回首次出现位置         |
+| `lastIndexOf(Object o)`               | 返回最后出现位置         |
+| `iterator()`                          | 返回迭代器               |
+| `toArray()`                           | 转为数组                 |
+| `subList(int fromIndex, int toIndex)` | 截取子列表               |
+| `forEach(Consumer<? super T> action)` | 遍历（Java8 Lambda）     |
+| `stream()`                            | 获取 Stream 流           |
+| `sort(Comparator<? super E> c)`       | 排序                     |
+| `retainAll(Collection<?> c)`          | 仅保留在指定集合中的元素 |
+| `removeAll(Collection<?> c)`          | 移除与指定集合相同的元素 |
+
+---
+
+## **Map 接口常用方法**
+
+| 方法                                                 | 说明                               |
+| ---------------------------------------------------- | ---------------------------------- |
+| `put(K key, V value)`                              | 添加键值对                         |
+| `putAll(Map<? extends K, ? extends V> m)`          | 添加所有键值对                     |
+| `get(Object key)`                                  | 根据 key 获取值                    |
+| `remove(Object key)`                               | 删除指定 key 的键值对              |
+| `clear()`                                          | 清空 Map                           |
+| `containsKey(Object key)`                          | 是否包含某 key                     |
+| `containsValue(Object value)`                      | 是否包含某 value                   |
+| `size()`                                           | 键值对数量                         |
+| `isEmpty()`                                        | 是否为空                           |
+| `keySet()`                                         | 返回所有 key 的集合                |
+| `values()`                                         | 返回所有 value 的集合              |
+| `entrySet()`                                       | 返回所有键值对的集合               |
+| `forEach(BiConsumer<? super K, ? super V> action)` | 遍历 (Java8 Lambda)                |
+| `replace(K key, V value)`                          | 替换指定 key 的 value              |
+| `compute(K key, BiFunction)`                       | 根据 key 计算新值                  |
+| `merge(K key, V value, BiFunction)`                | 合并                               |
+| `getOrDefault(Object key, V defaultValue)`         | 获取 value, key 不存在则返回默认值 |
+| `putIfAbsent(K key, V value)`                      | 如果 key 不存在，才放入            |
+
+### put和putAll方法
+
+#### **put 方法**
+
+* **作用** ： **向 Map 中添加一个 key-value 对** ，或更新已存在 key 的 value。
+* **语法** ：
+
+```java
+V put(K key, V value)
+```
+
+* **场景** ：
+* 想往 Map 里 **单独添加或更新某个键值** 。
+* 不管 value 是 String、Map、List、Object，都可以作为 value 直接存。
+
+#### 示例
+
+```java
+Map<String, Object> map = new HashMap<>();
+Map<String, String> innerMap = new HashMap<>();
+innerMap.put("innerKey", "innerValue");
+
+List<String> innerList = new ArrayList<>();
+innerList.add("item1");
+
+map.put("myMap", innerMap);    // 存一个 Map 对象
+map.put("myList", innerList);  // 存一个 List 对象
+```
+
+> ✅  **总结** ：`put` 是 **单独设置某个 key 的 value** ，无论 value 类型。
+
+---
+
+### **putAll 方法**
+
+* **作用** ： **批量向 Map 添加所有键值对** ，来自另一个 Map。
+* **语法** ：
+
+```java
+void putAll(Map<? extends K, ? extends V> m)
+```
+
+* **场景** ：
+* 想把 **一个 Map 的所有 key-value 复制到另一个 Map 中** 。
+* 如果两个 Map 有相同的 key，后者的值会覆盖前者。
+
+#### 示例
+
+```java
+Map<String, String> map1 = new HashMap<>();
+map1.put("key1", "value1");
+map1.put("key2", "value2");
+
+Map<String, String> map2 = new HashMap<>();
+map2.put("key3", "value3");
+map2.put("key4", "value4");
+
+map1.putAll(map2);  // map1 现在包含了 key1~key4
+```
+
+> ✅  **注意** ：`putAll` 的参数必须是  **Map** ，而不能是 List 或其它对象。
+
+---
+
+#### **总结对比**
+
+|                    | put                     | putAll                       |
+| ------------------ | ----------------------- | ---------------------------- |
+| **用途**     | 添加/更新单个 key-value | 批量拷贝 Map 的所有键值对    |
+| **参数**     | 任意对象作为 value      | 只能是 Map 类型              |
+| **替代性**   | 不可代替批量复制        | 不可用于添加 List 或单个对象 |
+| **操作对象** | Map 的单一键            | Map 的所有键                 |
+
+---
+
+#### **如果 Map 里要放 Map 或 List？**
+
+* 需要存一个 Map 进去：
+
+```java
+map.put("nestedMap", innerMap);
+```
+
+* 需要存一个 List 进去：
+
+```java
+map.put("listData", innerList);
+```
+
+**❌ 不可以：**
+
+```java
+map.putAll(innerMap); // ❌ innerMap 的键会被平铺在 map 上，不是作为 value
+map.putAll(innerList); // ❌ 编译报错，因为 putAll 只接受 Map
+```
+
+---
+
+#### **一句话总结**
+
+> **put 是赋值（key -> value），putAll 是平铺合并 Map。**
+>
+> 如果你是要"一个 key 映射一个整体"（比如 List、Map、对象），就用 `put`。
+>
+> 如果你是要"批量扩展 Map 的键值"，就用 `putAll`。
+
+## Java的数据类型
 
 1. 基本类型：long,int,byte,float,double,char
 2. 对象类型（类）： Long,Integer,Byte,Float,Double,String,其它一切java提供的，或者你自己创建的类。引用类型比较大小一定要用equals而不要用==。
@@ -32,7 +219,7 @@ date: 2020-04-01 18:31:00
 | float（浮点型）        | Float         |
 | double（双精度浮点型） | Double        |
 
-#### **什么叫包装类**
+### **什么叫包装类**
 
 在java中有时候的运算必须是两个类对象之间进行的，不充许对象与数字之间进行运算。所以需要有一个对象，这个对象把数字进行了一下包装，这样这个对象就可以和另一个对象进行运算了。byte: 八位整数 -128——127，可用来节省内存的使用。
 
@@ -235,11 +422,11 @@ byte、char、short-->int-->long-->float-->double
 * 桶式排序
 * 基数排序
 
-### JVM的内存结构
+## JVM的内存结构
 
 在JVM中，有几个重要的概念和组件，包括栈、堆、常量池、方法区和静态域。
 
-#### 栈（Stack）
+### 栈（Stack）
 
 栈是一种基于后进先出（LIFO）的数据结构，用于存储方法调用的相关信息，如方法的参数、局部变量、返回地址等。在 Java 中，每个线程都有自己的栈，用于存储该线程的方法调用信息。当一个方法被调用时，会在栈上分配一块新的内存空间，用于存储该方法的参数和局部变量。当方法执行完毕时，这个内存空间会被释放。
 
@@ -254,7 +441,7 @@ public void method(int a, int b) {
 
 当这个方法被调用时，在该方法的栈上会分配一些内存空间，用于存储参数 a 和 b，以及局部变量 sum。当方法执行完毕时，这些内存空间会被释放。
 
-#### 堆（Heap）
+### 堆（Heap）
 
 堆是一种用于动态分配对象的内存区域。在 Java 中，所有的对象都在堆上分配内存。堆是一块共享的内存区域，所有线程都可以访问。当创建一个对象时，会在堆上分配一块新的内存空间，用于存储对象的数据。
 
@@ -288,7 +475,7 @@ Person p = new Person("John", 30);
 
 在这个例子中，p 是一个 Person 类型的对象，它被创建在堆上，并分配了一块内存空间来存储对象的数据。
 
-#### 常量池（Constant Pool）
+### 常量池（Constant Pool）
 
 常量池是一种特殊的内存区域，用于存储常量和符号引用。在 Java 中，常量池主要用于存储字符串常量、数字常量和类、方法、字段等符号引用信息。
 
@@ -307,7 +494,7 @@ public class Constants {
 
 在这个例子中，字符串常量 "Hello, world!" 和整数常量 100 会被存储在常量池中。同时，静态常量 MESSAGE 和 SIZE 也会被存储在常量池中，它们的值是对常量池中字符串和数字常量的引用。当 main 方法被调用时，会从常量池中获取 MESSAGE 的值，并输出到控制台。
 
-#### 方法区（Method Area）
+### 方法区（Method Area）
 
 方法区是一种用于存储类信息、常量池、静态变量等数据的内存区域。在 Java 中，每个类都有自己的方法区，用于存储类的信息和静态成员变量。方法区是堆的一部分，但是它有自己的内存管理机制。
 
@@ -329,7 +516,7 @@ public class Counter {
 
 在这个例子中，静态变量 count 会被存储在方法区中，它的值在整个应用程序的生命周期内都是可见和共享的。当 increment 方法被调用时，会从方法区中获取 count 的值，并将其加 1。当 getCount 方法被调用时，也会从方法区中获取 count 的值并返回。
 
-#### 静态域（Static Field）
+### 静态域（Static Field）
 
 静态域是一种类级别的变量，它属于类而不属于对象。在 Java 中，静态域可以被所有对象共享，也可以被类的所有方法访问。静态域通常用于存储类级别的信息和常量。
 
@@ -353,7 +540,7 @@ public class MathUtils {
 
 需要注意的是，栈、堆、常量池、方法区和静态域是 Java 运行时的重要组成部分，它们的实现和使用方式可能与不同的 Java 实现和版本有所不同。
 
-#### 小结
+### 小结
 
 虚拟机栈，即为平时提到的栈机构。方法的参数和局部变量都存储在栈结构中。
 
@@ -361,9 +548,9 @@ public class MathUtils {
 
 方法区：类的加载信息、常量池、静态域
 
-### 面向对象
+## 面向对象
 
-#### 思想概述
+### 思想概述
 
 面向对象：把属性（成员变量）和方法放入一个类里面，类里面抽象出来共同点就是面向对象。
 
@@ -376,7 +563,7 @@ public class MathUtils {
 * 面向对象程序设计的重点是类的设计
 * 设计类，就是设计类的成员
 
-#### 类中属性的使用
+### 类中属性的使用
 
  **属性（成员变量）VS局部变量**
  1.相同点
@@ -407,7 +594,7 @@ public class MathUtils {
   属性：加载到堆空间中（非static）
   局部变量：加载到栈空间
 
-#### 小结
+### 小结
 
 1.面向对象思想编程内容的三条主线分别是什么：
 
@@ -431,12 +618,12 @@ public class MathUtils {
 
 ③ 调用对象的结构："对象.属性" "对象.方法"
 
-#### 匿名对象的使用
+### 匿名对象的使用
 
 * 理解：我们创建的对象，没有显式的赋给一个变量名，即为匿名对象
 * 特征：匿名对象只能调用一次
 
-#### 面向对象与面向过程（理解）
+### 面向对象与面向过程（理解）
 
 1.面向过程：强调的是功能行为，以函数为最小单位，考虑怎么做。
 
@@ -444,7 +631,7 @@ public class MathUtils {
 
 递归方法：自己调用自己，但要写递归头和递归体，否则陷入死循环，直到占满内容溢出为止。递归是很耗费时间和内存资源的，尽量不要使用，百度的爬虫就是递归，在一个页面不断点击进入下一个页面那种，一般使用迭代循环方法就能满足普通开发。
 
-### 方法重写(Override)与重载(Overload)
+## 方法重写(Override)与重载(Overload)
 
 方法重载：参数的个数、类型和顺序不同，都可以构成重载。方法中参数只有返回值不同、参数只有名称不同，都不构成重载。（跟方法的权限修饰符、返回值类型、形参变量名、方法体都没有关系！）
 
@@ -489,34 +676,34 @@ public class MathUtils {
 *      子类和父类中同名同参数的方法要么都声明为非static的（考虑重写），要么都声明为static的（此时不是重写）。
 ```
 
-### Java的值传递机制
+## Java的值传递机制
 
-#### 关于变量的赋值
+### 关于变量的赋值
 
 * 如果变量是基本数据类型，此时赋值的是变量所保存的数据值。
 * 如果变量是引用数据类型，此时赋值的是变量所保存的数据的地址值。
 
-#### 针对于方法的参数概念
+### 针对于方法的参数概念
 
 形参：方法定义时，声明的小括号内的参数
 
 实参：方法调用时，实际传递给形参的数据
 
-#### Java中参数传递机制
+### Java中参数传递机制
 
 **值传递规则**
 
 * 如果参数是基本数据类型，此时实参赋给形参的是实参真实存储的数据值。
 * 如果参数是引用数据类型，此时实参赋给形参的是实参存储数据的地址值。
 
-### 封装和隐藏
+## 封装和隐藏
 
 我们程序设计追求“高内聚，低耦合”。
 
 * 高内聚：类的内部数据操作细节自己完成，不允许外部干涉。
 * 低耦合：仅对外暴露少量的方法用于使用。
 
-#### 封装性的体现方式
+### 封装性的体现方式
 
 * 将类的属性私有化（private），同时，提供公共的（public）方法来获取（getXXX）和设置（setXXX）此属性的值.
 * 不对外暴露的私有方法
@@ -531,7 +718,7 @@ Java规定的四种权限修饰符：
 
 ![1686369340092](image/Java基础巩固/1686369340092.png)
 
-### 继承性
+## 继承性
 
 > ```
 > * 一、继承性的好处：
@@ -563,7 +750,7 @@ Java规定的四种权限修饰符：
 > *    3.意味着，所有的java类具有java.lang.Object类声明的功能。
 > ```
 
-### 多态性
+## 多态性
 
 1.理解多态性：可以理解为一个事物的多种形态。
 2.何为多态性：
@@ -574,33 +761,33 @@ Java规定的四种权限修饰符：
 4.多态性的使用前提：① 类的继承关系 ② 方法的重写
 5.对象的多态性，只适用于方法，不适用于属性（编译和运行都看左边）
 
-#### 虚拟方法调用（多态情况下）
+### 虚拟方法调用（多态情况下）
 
 子类中定义了与父类同名同参数的方法，在多态情况下，将此时父类的方法称为虚拟方法。父类根据赋给它的不同子类对象，动态调用属于子类的该方法。这样的方法调用在编译期是无法确定的。
 
-#### 从编译和运行角度
+### 从编译和运行角度
 
 对于重载而言：在方法调用之前，编译器就已经确定了所要调用的方法，这称为“早绑定”或“静态绑定”
 
 而对于多态，只有等到方法调用的那一刻，解释运行器才会确定所要调用的具体方法，这称为“晚绑定”或“动态绑定”。
 
-#### Instanceof关键字的使用
+### Instanceof关键字的使用
 
 ![1687496560763](image/Java基础巩固/1687496560763.png)
 
-### 构造器
+## 构造器
 
 1.通过new关键字调用。
 2.构造器有返回值，但不能定义返回值类型，即可以return，但不能返回值。
 3.如果我们没有定义一个构造器，编译器会自动定义一个无参的构造函数。
 4.构造方法名字必须要与类名相同。
 
-#### 构造器的作用
+### 构造器的作用
 
 * 创建对象
 * 初始化对象的信息
 
-#### 说明
+### 说明
 
 * 如果没有显式的定义类的构造器的话，则系统默认提供一个空参的构造器
 * 定义构造器的格式：权限修饰符 类名(形参列表){\}
@@ -608,7 +795,7 @@ Java规定的四种权限修饰符：
 * 一旦我们显式的定义了类的构造器之后，系统就不再提供默认的空参构造器
 * 一个类中，至少会有一个构造器
 
-### this和super关键字
+## this和super关键字
 
 调用构造器注意点：
 
@@ -638,7 +825,7 @@ super(形参列表):调用父类中指定的构造器
 > *      4.5 在类的多个构造器中，至少有一个类的构造器中使用了“super(形参列表)”，调用父类中的构造器
 > ```
 
-### JavaBean的使用
+## JavaBean的使用
 
 描述：JavaBean是一种Java语言写成的可重用组件。
 
@@ -648,15 +835,15 @@ super(形参列表):调用父类中指定的构造器
 * 有一个无参的公共的构造器
 * 有属性，且有对应的get、set方法
 
-### MVC设计模式
+## MVC设计模式
 
 ![1686236975009](image/Java基础巩固/1686236975009.png)
 
-### DeBug调试
+## DeBug调试
 
 ![1686411719261](image/Java基础巩固/1686411719261.png)
 
-### ==和equals()的区别
+## ==和equals()的区别
 
 > ```
 > * 一、回顾==的使用：
@@ -684,11 +871,11 @@ super(形参列表):调用父类中指定的构造器
 >
 > ```
 
-### 设计模式
+## 设计模式
 
 概念：设计模式是在大量的实践中总结和理论化之后优选的代码结构、编程风格、以及解决问题的思考方式。
 
-#### 单例设计模式
+### 单例设计模式
 
 要解决的问题：所谓类的单例设计模式，就是采取一定的方法保证在整个的软件系统中，对某个类只能存在一个对象实例。
 
@@ -762,7 +949,7 @@ public static Order getInstance(){
 * Application
 * Windows的任务管理器、回收站。
 
-### static关键字
+## static关键字
 
 ```
 * 1.static：静态的
@@ -807,7 +994,7 @@ public static Order getInstance(){
 *  
 ```
 
-### final关键字
+## final关键字
 
 ```
 * final:最终的
@@ -829,7 +1016,7 @@ public static Order getInstance(){
 * static final用来修饰属性：全局常量
 ```
 
-### 代码块
+## 代码块
 
 ```
 * 1.代码块的作用：用来初始化类、对象的信息
@@ -855,7 +1042,7 @@ public static Order getInstance(){
 
 实例化子类对象时，涉及到父类、子类中静态代码块、非静态代码块、构造器的加载顺序总结为：由父及子，静态先行。
 
-### abstract抽象类
+## abstract抽象类
 
 ```
 * abstract关键字的使用
@@ -881,7 +1068,7 @@ public static Order getInstance(){
 
 ```
 
-### interface接口
+## interface接口
 
 > ```
 > * 1.接口使用interface来定义
@@ -922,7 +1109,7 @@ public static Order getInstance(){
 > 	//知识点5：如何在子类（或实现类）的方法中调用父类、接口中被重写的方法
 > ```
 
-### 内部类
+## 内部类
 
 > ```
 > * 1.Java中允许将一个类A声明在另一个类B中，则类A就是内部类，类B称为外部类。
@@ -955,13 +1142,13 @@ public static Order getInstance(){
 > *
 > ```
 
-### 异常处理
+## 异常处理
 
 编译时异常：执行javac.exe命名时，可能出现的异常
 
 运行时异常：执行java.exe命名时，出现的异常
 
-#### 常见的异常
+### 常见的异常
 
 ```
 * 一、异常体系结构：
@@ -981,7 +1168,7 @@ public static Order getInstance(){
 *              |-----ArithmeticException
 ```
 
-#### 异常处理的抓抛模型
+### 异常处理的抓抛模型
 
 ```
 * 过程一：“抛”：程序在正常执行的过程中，一旦出现异常，就会在异常代码处生成一个对应异常类的对象。
@@ -996,7 +1183,7 @@ public static Order getInstance(){
 
 ```
 
-#### try-catch-finally的使用
+### try-catch-finally的使用
 
 ```
 * 二、try-catch-finally的使用
@@ -1037,13 +1224,13 @@ public static Order getInstance(){
 * 此时的资源释放，就需要声明在finally中。
 ```
 
-#### 如何自定义异常类
+### 如何自定义异常类
 
 * 继承与现有的异常结构：RuntimeException、Exception
 * 提供全局常量：serialVersionUID
 * 提供重载的构造器
 
-### 会话跟踪技术
+## 会话跟踪技术
 
     1.会话跟踪定义：从进入网站开始到退出网站结束或者关闭浏览器称为一次会话。
     2.开始标志：浏览器成功访问页面。
