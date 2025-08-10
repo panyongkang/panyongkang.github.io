@@ -198,7 +198,7 @@ fi
 # User specific aliases and functions
 export CURDATE=`date +%Y%m%d`
 alias tlog='cd /apphome/ctbsabs/abs/log/teller/${CURDATE}/$1'
-alias conf='cd /apphome/ctbsabs/abs/configuration/ && vi deviceIsDebug.properties'
+alias conf='cd /apphome/ctbsabs/abs/configuration/ && vim -n deviceIsDebug.properties'
 alias trade='cd /apphome/ctbsabs/abs/workspace/FCBank/trade/Trade/'
 alias up='cd /apphome/ctbsabs/abs/upload_files/up && ls'
 alias bank='cd /apphome/ctbsabs/abs/workspace/bank && ls'
@@ -446,6 +446,77 @@ alias myalias='cd /path/to/dir; ls -l'
 ```
 rm -rf 202205*
 ```
+
+## **文件权限信息**
+
+### 查看当前目录文件权限
+
+```
+ls -la | awk '
+{
+  printf "%-30s %-10s %-15s\n", $9, $1, $3":"$4
+}' | column -t
+```
+
+### 权限字符串解析
+
+Linux 权限字符串由 10 个字符组成，分为四部分：
+
+```
+d rwx rwx r-x
+│  │   │   └── 其他用户权限 (others)
+│  │   └────── 所属组权限 (group)
+│  └────────── 所有者权限 (user)
+└───────────── 文件类型
+```
+
+1. **文件类型** ：
+
+* `d`：目录
+* `-`：普通文件
+* `l`：符号链接
+
+1. **权限组** （每组3字符）：
+
+* 顺序：读(r)、写(w)、执行(x)
+* `-` 表示无此权限
+* 例：`rwx` = 读写执行全权限，`r-x` = 可读可执行不可写
+
+### SIT 环境权限分析（用户 absview）
+
+例如SIT 权限列表：
+
+```
+config.ini                    -rwxr-xr-x  ctbs:ctbs
+deviceIsDebug.properties      -rw-r--r--  ctbs:ctbs
+abs_share.properties          -rwxrwxr-x  ctbs:ctbs
+FtpClientConfig.properties    -rw-r--r-x  ctbs:ctbs
+org.eclipse.update            drwxrwxr-x  ctbs:ctbs
+tft.conf                      -rw-r--r-x  ctbs:ctbs
+tft_conf.properties           -rw-r--r-x  root:root
+```
+
+#### 权限矩阵（对 absview 用户）：
+
+| 文件名                     | 类型 | 所有者 | 组   | 用户权限 | 组权限 | 其他权限 | absview 可读 | absview 可写 | absview 可执行 |
+| -------------------------- | ---- | ------ | ---- | -------- | ------ | -------- | ------------ | ------------ | -------------- |
+| config.ini                 | 文件 | ctbs   | ctbs | rwx      | r-x    | r-x      | ✅           | ❌           | ✅             |
+| deviceIsDebug.properties   | 文件 | ctbs   | ctbs | rw-      | r--    | r--      | ✅           | ❌           | ❌             |
+| abs_share.properties       | 文件 | ctbs   | ctbs | rwx      | rwx    | r-x      | ✅           | ❌           | ✅             |
+| FtpClientConfig.properties | 文件 | ctbs   | ctbs | rw-      | r--    | r-x      | ✅           | ❌           | ✅             |
+| org.eclipse.update         | 目录 | ctbs   | ctbs | rwx      | rwx    | r-x      | ✅           | ❌           | ✅             |
+| tft.conf                   | 文件 | ctbs   | ctbs | rw-      | r--    | r-x      | ✅           | ❌           | ✅             |
+| tft_conf.properties        | 文件 | root   | root | rw-      | r--    | r-x      | ✅           | ❌           | ✅             |
+
+#### 关键结论：
+
+1. **所有文件所有者都是 ctbs** ，但当前用户是 absview
+2. **absview 对所有文件都不可写** ，因为：
+
+* 不属于 ctbs 组
+* 其他用户权限中都没有写(w)权限
+
+1. **唯一 root 拥有的文件** ：tft_conf.properties
 
 ## 虚拟机安装linux系统CentOS 7
 
