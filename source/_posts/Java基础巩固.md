@@ -871,6 +871,251 @@ super(形参列表):调用父类中指定的构造器
 >
 > ```
 
+### 不同类型数据判空做法
+
+#### **字符串 String**
+
+**可能的返回值：**
+
+* `null`
+* `""`（空字符串）
+* `"null"`（某些系统序列化时意外产生的字符串）
+* `"   "`（只包含空格或制表符）
+
+**推荐判断：**
+
+* Java 8：
+  ```java
+  if (str == null || str.isEmpty()) { ... }
+  ```
+* Java 11+：
+  ```java
+  if (str == null || str.isBlank() || "null".equalsIgnoreCase(str)) { ... }
+  ```
+* 最推荐（工具类）：
+  ```java
+  if (StringUtils.isBlank(str) || "null".equalsIgnoreCase(str)) { ... }
+  ```
+
+---
+
+#### **集合 List / Set**
+
+**可能的返回值：**
+
+* `null`
+* `[]`（空集合，没有元素）
+
+**推荐判断：**
+
+* 原生写法：
+  ```java
+  if (list == null || list.isEmpty()) { ... }
+  ```
+* 工具类（推荐）：
+  ```java
+  if (CollectionUtils.isEmpty(list)) { ... }
+  ```
+
+---
+
+#### **Map**
+
+**可能的返回值：**
+
+* `null`
+* `{}`（空 map，没有键值对）
+
+**推荐判断：**
+
+* 原生写法：
+  ```java
+  if (map == null || map.isEmpty()) { ... }
+  ```
+* 工具类：
+  ```java
+  if (MapUtils.isEmpty(map)) { ... }
+  ```
+
+---
+
+#### **数组 Array**
+
+**可能的返回值：**
+
+* `null`
+* `new Object[0]`（长度为 0 的数组）
+
+**推荐判断：**
+
+```java
+if (arr == null || arr.length == 0) { ... }
+```
+
+---
+
+#### **数值类型（Integer / Long / Double ...）**
+
+**可能的返回值：**
+
+* `null`（包装类型可能为 null）
+* `0`（业务上代表“没有值”）
+* 特殊默认值（比如 -1 代表未初始化）
+
+**推荐判断：**
+
+```java
+if (num == null || num == 0) { ... }
+```
+
+（根据业务语义定义“空”的含义）
+
+---
+
+#### **布尔 Boolean**
+
+**可能的返回值：**
+
+* `null`
+* `true` / `false`
+
+**推荐判断：**
+
+```java
+if (bool == null || !bool) { ... }
+```
+
+（有时业务上把 `null` 和 `false` 都当成“否”）
+
+---
+
+#### 通用工具类
+
+通常很多公司项目都会写一个通用的工具方法对不同类型数据进行判空处理。
+
+代码示例：
+
+```java
+package com.example.utils;
+
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Map;
+
+/**
+ * 通用数据工具类
+ *
+ * 提供各种对象的空值判断，统一业务逻辑中的“空”定义。
+ */
+public class DataUtils {
+
+    /**
+     * 判断对象是否为空
+     * 支持 String、Collection、Map、Array、Number、Boolean
+     *
+     * @param obj 待判断的对象
+     * @return true 表示为空
+     */
+    public static boolean isEmpty(Object obj) {
+        if (obj == null) {
+            return true;
+        }
+
+        // String 判断
+        if (obj instanceof String) {
+            String str = (String) obj;
+            return str.isBlank() || "null".equalsIgnoreCase(str);
+        }
+
+        // Collection 判断
+        if (obj instanceof Collection) {
+            return ((Collection<?>) obj).isEmpty();
+        }
+
+        // Map 判断
+        if (obj instanceof Map) {
+            return ((Map<?, ?>) obj).isEmpty();
+        }
+
+        // 数组判断
+        if (obj.getClass().isArray()) {
+            return Array.getLength(obj) == 0;
+        }
+
+        // Number 判断（这里以 0 作为空值，可按业务需求调整）
+        if (obj instanceof Number) {
+            return ((Number) obj).doubleValue() == 0;
+        }
+
+        // Boolean 判断（null 或 false 认为是空）
+        if (obj instanceof Boolean) {
+            return !((Boolean) obj);
+        }
+
+        // 其他类型不认为是空
+        return false;
+    }
+
+    /**
+     * 判断对象是否非空
+     *
+     * @param obj 待判断的对象
+     * @return true 表示非空
+     */
+    public static boolean isNotEmpty(Object obj) {
+        return !isEmpty(obj);
+    }
+}
+
+```
+
+使用示例：
+
+```java
+import com.example.utils.DataUtils;
+import java.util.*;
+
+public class Test {
+    public static void main(String[] args) {
+        String s1 = null;
+        String s2 = "";
+        String s3 = "null";
+        String s4 = "   ";
+        List<String> list = new ArrayList<>();
+        Map<String, String> map = new HashMap<>();
+        Integer num = 0;
+        Boolean flag = false;
+
+        System.out.println(DataUtils.isEmpty(s1)); // true
+        System.out.println(DataUtils.isEmpty(s2)); // true
+        System.out.println(DataUtils.isEmpty(s3)); // true
+        System.out.println(DataUtils.isEmpty(s4)); // true
+        System.out.println(DataUtils.isEmpty(list)); // true
+        System.out.println(DataUtils.isEmpty(map)); // true
+        System.out.println(DataUtils.isEmpty(num)); // true
+        System.out.println(DataUtils.isEmpty(flag)); // true
+    }
+}
+
+```
+
+---
+
+✨ 总结成一句话：
+
+* **String → null / "" / "null" / "   "**
+* **Collection → null / []**
+* **Map → null / {}**
+* **Array → null / []**
+* **Number → null / 特殊值（如0/-1）**
+* **Boolean → null / false**
+
+👉 推荐统一封装工具类，避免到处写重复的 `null` 和 `isEmpty()` 判断。
+
+---
+
+要不要我帮你写一个  **完整的 `DataUtils` 工具类** ，支持 `String`、`Collection`、`Map`、`Array`、`Number`、`Boolean` 一键判断空？
+
 ## 设计模式
 
 概念：设计模式是在大量的实践中总结和理论化之后优选的代码结构、编程风格、以及解决问题的思考方式。
