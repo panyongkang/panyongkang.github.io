@@ -1,11 +1,8 @@
 title: SpringBoot入门
 author: PanXiaoKang
 cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2589588367,2632593097&fm=26&gp=0.jpg
-tags:
-  - 微服务框架
-  - SpringBoot
-categories:
-  - 微服务
+tags: [微服务框架,SpringBoot]
+categories: [微服务]
 date: 2021-04-24 09:58:00
 
 ---
@@ -17,28 +14,23 @@ date: 2021-04-24 09:58:00
 @SpringBootApplication是一个复合注解，包含了@SpringBootConfiguration，@EnableAutoCofiguration,@ComponentScan这三个注解。
 
 1. **@SpringBootConfiguration**继承自@Configuration,二者功能一致，标注当前类是配置类，并会将当前类内声明的一个或多个以@Bean注解标记的方法的实例纳入到spring容器中，并且实例名就是方法名。
-
 2. **@EnableAutoConfiguration注解**，开启自动配置功能
 
    @EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IOC容器。借助于Spring框架原有的一个工具类：SpringFactoriesLoader的支持，@EnableAutoConfiguration可以智能的自动配置功效才得以大功告成
-
-3.  **@ComponentScan：** 主要用于组件扫描和自动装配。个人理解相当于< context:component-scan>，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean。 
+3. **@ComponentScan：** 主要用于组件扫描和自动装配。个人理解相当于< context:component-scan>，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean。
 
 ## Controller 相关注解
 
 1. @Controller：标注控制器类，处理http请求；控制器中的方法可以返回一个视图，在Web开发中一般使用的少（主要是用@RestController）。
-
 2. @RestController:复合注解，相当于@ResponseBody ＋ @Controller合在一起的作用。使用的效果是将方法返回的对象直接在浏览器上展示成json格式.
-
 3. @RequestBody:通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象；将json解析为java对象。
 
    使用场景：json传参
-
 4. @RequestMapping:最常用的注解之一，这个注解会将 HTTP 请求的URL映射到处理方法上；在实际开发中，在具体的控制器类之前添加该注解即可。
 
    **详细描述**
 
-   **@RequestMapping** 该注解可以加在方法上，也可以加在类上；如下面例子，加在类上，表示该类所有的方法都加前缀 /user 下面两种方法都是映射到 /user/list 
+   **@RequestMapping** 该注解可以加在方法上，也可以加在类上；如下面例子，加在类上，表示该类所有的方法都加前缀 /user 下面两种方法都是映射到 /user/list
 
    方法一：
 
@@ -70,11 +62,7 @@ date: 2021-04-24 09:58:00
        }
    }
    ```
-
-   
-
 5. @GetMapping：响应GET请求。用于将HTTP get请求映射到特定处理程序的方法注解
-
 6. @PostMapping：响应POST请求。用于将HTTP post请求映射到特定处理程序的方法注解
 
    一般来说，POST方法的传参不受限制，可以使用URL传参，也可以使用@RequestBody获取请求体中的json，并解析为响应的java对象。
@@ -95,7 +83,6 @@ date: 2021-04-24 09:58:00
 知识点：@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
 
 1) 如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，或者html，配置的视图解析器 InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。
-
 2) 如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
 
 例如：
@@ -125,7 +112,7 @@ public @ResponseBody String uploadImg(@RequestParam("file") MultipartFile file,
 	String fileName = file.getOriginalFilename();
 ```
 
-1. @RestController注解，Spring 4.0引入了`@RestController`，相当于@Controller+@ResponseBody两个注解的结合，它会告诉Spring 将返回类型序列化为合适的格式，默认情况下为JSON 格式。返回json数据不需要在方法前面加@ResponseBody注解了，但使用@RestController这个注解，就不能返回jsp,html页面，视图解析器无法解析jsp,html页面
+1. @RestController注解，Spring 4.0引入了 `@RestController`，相当于@Controller+@ResponseBody两个注解的结合，它会告诉Spring 将返回类型序列化为合适的格式，默认情况下为JSON 格式。返回json数据不需要在方法前面加@ResponseBody注解了，但使用@RestController这个注解，就不能返回jsp,html页面，视图解析器无法解析jsp,html页面
 
 ```
 @CrossOrigin
@@ -162,7 +149,6 @@ public  List<Hospital> findAllHospital(){
 **@ResponseBody和@RequestBody区别**
 
 1. @RequestBody是将Json格式的数据转换成Java对象
-
 2. @ResponseBody：将Java对象转成json格式的数据
 
 ## 取请求参数值
@@ -215,8 +201,7 @@ public class HelloWorldController {
 1. @Repository
 
    DAO层注解，DAO层中接口继承JpaRepository,需要在build.gradle中引入相关jpa的一个jar自动加载。
-
-2. @Service：用于标注业务层组件。  
+2. @Service：用于标注业务层组件。
 
    * @Service是@Component注解的一个特例，作用在类上
    * @Service注解作用域默认为单例
@@ -225,26 +210,19 @@ public class HelloWorldController {
 
    - @Service使用时没有传参数，Bean名称默认为当前类的类名，首字母小写
    - @Service](“serviceBeanId”)或@Service(value=”serviceBeanId”)使用时传参数，使用value作为Bean名字
-
 3. @Scope作用域注解
 
    @Scope作用在类上和方法上，用来配置 spring bean 的作用域，它标识 bean 的作用域
-
 4. @Entity实体类注解
 
    * @Table(name =”数据库表名”)，这个注解也注释在实体类上，对应数据库中相应的
    * @Id、@Column注解用于标注实体类中的字段，pk字段标注为@Id，其余@Column。
-
 5. @Bean：相当于XML中的< bean>< /bean>
 
    @Bean明确地指示了一种方法，放在方法的上面，而不是类，产生一个bean的方法，并且交给Spring容器管理。支持别名@Bean(“xx-name”)
-
-6.  **@AutoWired:** byType方式。可以实现Bean的自动注入，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 当加上（required=false）时，就算找不到bean也不报错。
-
-7.   **@Qualifier：** 当有多个同一类型的Bean时，可以用@Qualifier("name")来指定。与@Autowired配合使用  
-
-8. **@Resource(name="name",type="type")：** 没有括号内内容的话，默认byName。与@Autowired干类似的事。 
-
+6. **@AutoWired:** byType方式。可以实现Bean的自动注入，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 当加上（required=false）时，就算找不到bean也不报错。
+7. **@Qualifier：** 当有多个同一类型的Bean时，可以用@Qualifier("name")来指定。与@Autowired配合使用
+8. **@Resource(name="name",type="type")：** 没有括号内内容的话，默认byName。与@Autowired干类似的事。
 9. **@Component：** 泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
 
    * 把普通pojo实例化到spring容器中，虽然有了@Autowired,但是我们还是要写一堆bean的配置文件,相当麻烦,而@Component就是告诉spring,我是pojo类,把我注册到容器中吧,spring会自动提取相关信息。那么我们就不用写麻烦的xml配置文件了.
@@ -255,9 +233,7 @@ public class HelloWorldController {
 
    1. 既被控制器调用，又被服务实现类调用的类
    2. 被多个控制器/服务实现类调用的类
-
 10. **@ComponentScan：** 组件扫描。个人理解相当于< context:component-scan>，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean。
-
 11. **@Value**
 
     @Value用来从配置文件(.properties/.yaml/.yml)中取参数。
@@ -282,7 +258,7 @@ public class HelloWorldController {
 
 二、@Autowired属于Spring的；@Resource属于J2EE的。
 
-三、@Autowired默认按类型装配，默认情况下要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false。 
+三、@Autowired默认按类型装配，默认情况下要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false。
 
 **总结：**
 
@@ -293,7 +269,6 @@ public class HelloWorldController {
 **byName和byType有什么区别**
 
 1. byName 通过**参数名**自动装配,如果一个bean的name 和另外一个bean的 property 相同,就自动装配.
-
 2. byType 通过**参数的数据类型**自动自动装配,如果一个bean的数据类型和另外一个bean的property属性的数据类型兼容,就自动装配
 
 ## 详细描述
@@ -336,12 +311,12 @@ private UserService userService;
 
 **@Component、@Repository、@Service、@Controller** 为了控制反转（将创建对象的控制权交给Spring容器），而不需要去 new，而且创建的对象还是单例的，一举多得。 这几个注解作用是通用的，几乎一样，通常我们根据它的含义来写
 
-| 注解        | 含义                                                         |
-| :---------- | :----------------------------------------------------------- |
+| 注解        | 含义                                                                             |
+| :---------- | :------------------------------------------------------------------------------- |
 | @Component  | 泛指组件，当组件不属于以下三层的，或不好归类的时候，我们可以使用这个注解进行标注 |
-| @Repository | 作用于持久层                                                 |
-| @Service    | 作用于业务逻辑层                                             |
-| @Controller | 作用于控制层（spring-mvc的注解）                             |
+| @Repository | 作用于持久层                                                                     |
+| @Service    | 作用于业务逻辑层                                                                 |
+| @Controller | 作用于控制层（spring-mvc的注解）                                                 |
 
 注意：这些注解都是写在类上面的，不可以写在接口上，默认是创建类名首字母小写的 Bean
 
@@ -350,11 +325,9 @@ private UserService userService;
 1. @Async与@EnableAsync
 
    其中@Async表示这个方法为异步方法；@EnableAsync这个注解需要加在启动类上，表示支持异步操作；如果不加，则@Async将不起作用。
-
 2. @Scheduled与@EnableScheduling
 
    定时任务。@EnableScheduling这个注解需要加在启动类上，表示支持定时任务
-
 3. **@CrossOrigin**
 
    跨域注解，从后端解决跨域问题。
@@ -391,19 +364,16 @@ public class CrosConfig implements WebMvcConfigurer {
 ## entity层
 
 1. 通过@Entity将实体类和数据库的表book进行映射绑定;
-
-2. 通过@Data是lombok的注解，自动生成各种各样的get方法;
-
+2. 通过@Data是lombok的注解，自动生成getter/setter/toString/equals/hashCode方法;
 3. 通过@Id是给属性加主键绑定;
-
 4. 通过 @GeneratedValue给数据库自增的id属性进行映射，否则报错
 
-    @GeneratedValue指定主键的生成策略。有如下四个值
+   @GeneratedValue指定主键的生成策略。有如下四个值
 
-​        TABLE：使用表保存id值
+   TABLE：使用表保存id值
 
-​        IDENTITY：identitycolumn
+   IDENTITY：identitycolumn
 
-​        SEQUENCR ：sequence
+   SEQUENCR ：sequence
 
-​        AUTO：根据数据库的不同使用上面三个
+   AUTO：根据数据库的不同使用上面三个

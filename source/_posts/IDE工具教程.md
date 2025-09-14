@@ -1,13 +1,15 @@
-title: VSCode使用教程
+title: IDE工具教程
 author: PanYuKang
 cover: 'https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png'
-tags: [使用教程,VSCode,开发工具]
+tags: [使用教程,VSCode,开发工具,IDEA]
 
 categories: [工作笔记]
 
 date: 2022-02-04 21:47:00
 
 ---
+
+# VSCode开发工具
 
 ## VS Code简介
 
@@ -315,3 +317,30 @@ PowerShell执行时阻止了该操作，在终端输入Get-ExecutionPolicy指令
 设置一下cmd代理，set http_proxy=http://自己的代理服务器IP:自己的代理服务器端口
 
 我的主要原因是没有安装webpack,安装后重新启动VSCode编辑器。
+
+# IntelliJ IDEA开发工具
+
+[新建Java项目参考](https://blog.csdn.net/AmaniZ/article/details/79250652)
+
+## 高效能插件
+
+IntelliJ IDEA 本身已经非常强大，但搭配一些插件，确实能让开发工作更加得心应手。
+
+| 插件名称                                 | 主要功能                                                           | 推荐指数   | 获取方式/备注                                                                                |
+| :--------------------------------------- | :----------------------------------------------------------------- | :--------- | :------------------------------------------------------------------------------------------- |
+| **Lombok**                         | 减少样板代码，自动生成getter/setter/toString/equals/hashCode等方法 | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/6317-lombok)                          |
+| **SonarLint**                      | 实时检测代码中的潜在问题、漏洞和代码异味                           | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7973-sonarlint)                       |
+| **Alibaba Java Coding Guidelines** | 依据《阿里巴巴Java开发手册》进行代码规范检查                       | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines) |
+| **CheckStyle-IDEA**                | 代码风格检查，帮助遵循编码标准                                     | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)                 |
+| **GsonFormat**                     | 一键根据 JSON 文本生成 Java 类                                     | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7654-gsonformat)                      |
+| **Maven Helper**                   | 方便管理 Maven 项目，分析依赖冲突                                  | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7179-maven-helper)                    |
+| **MyBatisX**                       | MyBatis 专属插件，XML 与 Mapper 接口方法双向跳转，SQL 高亮         | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10719-mybatisx)                       |
+| **Rainbow Brackets**               | 彩虹括号，用不同颜色高亮匹配的括号，提高代码可读性                 | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)               |
+| **CodeGlance**                     | 在编辑器右侧生成代码缩略图，方便快速定位和浏览大型文件             | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7275-codeglance)                      |
+| **String Manipulation**            | 提供丰富的字符串操作功能，如大小写转换、命名风格转换等             | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/2162-string-manipulation)             |
+| **Key Promoter X**                 | 帮助学习和记忆 IntelliJ IDEA 快捷键                                | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)                  |
+| **VisualVM Launcher**              | 方便在 IDEA 内启动 VisualVM 进行 JVM 性能分析                      | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7115-visualvm-launcher)               |
+| **Translation**                    | 翻译插件，方便阅读源码中的英文注释或错误信息                       | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/8579-translation)                     |
+
+🧠 **插件安装方式**：
+在 IntelliJ IDEA 中，通过 `File` -> `Settings` -> `Plugins` 打开插件市场，搜索插件名称即可安装。安装完成后通常需要**重启 IDEA** 生效。

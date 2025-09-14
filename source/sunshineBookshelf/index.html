@@ -13,6 +13,8 @@
 	<link rel="stylesheet" type="text/css" href="static/css/zdy.css" />
     <link rel="stylesheet" type="text/css" href="static/css/balloon.css" />
     <script src="static/js/balloon.js" type="text/javascript" charset="utf-8" defer></script>
+    <link rel="stylesheet" href="static/css/bookTooltip.css">
+    <script src="static/js/bookTooltip.js" defer></script>
 </head>
 
 <body>
@@ -20,7 +22,7 @@
         <div class="books">
             <a href="https://xyyum.icu/" title="向阳榆木博客" target="_blank" rel="noopener noreferrer">
                 <div class="book"
-                    style="--bg-image: url('https://mpimg.cn/view.php/41fe076abd1a0c16bf5f8cc7f6c2dcef.jpg');">
+                    style="--bg-image: url('https://pic1.imgdb.cn/item/67cd3077066befcec6e1c3cf.jpg');">
                 </div>
             </a>
             <a href="https://xyyum.icu/mybook/"title="小人物自传" target="_blank" rel="noopener noreferrer">
@@ -48,8 +50,8 @@
             <a class="book" href="#" target="_blank" rel="noopener noreferrer"
                 style="--bg-image: url('https://mpimg.cn/view.php/85cc97142d20daf4998ac54cf4178670.png');">
             </a>
-            <a class="book" href="https://xyyum.icu/mybook/" target="_blank" rel="noopener noreferrer"
-                style="--bg-image: url('https://mpimg.cn/view.php/41fe076abd1a0c16bf5f8cc7f6c2dcef.jpg');">
+            <a class="book-link" data-book-id="暮色将尽" href="https://xyyum.icu/mybook/" target="_blank" rel="noopener noreferrer"
+                style="--bg-image: url('https://mpimg.cn/view.php/76b200e2e8042fd0fefb07ca55086a63.jpg');">
             </a>
             <a class="book" href="https://xyyum.icu/mybook/" target="_blank" rel="noopener noreferrer"
                 style="--bg-image: url('https://mpimg.cn/view.php/a9d6c27db86b5ec0d25894f1948f328b.png');">
@@ -96,6 +98,18 @@
             </a>
         </div>
     </div>
-    <!-- <script src="static/js/balloon.js"></script> -->
+
+        <!-- 提示框 -->
+    <div class="book-tooltip" id="bookTooltip">
+        <div class="tooltip-header">
+            <div class="tooltip-cover" id="tooltipCover"></div>
+            <div>
+                <div class="tooltip-title" id="tooltipTitle"></div>
+                <div class="tooltip-author" id="tooltipAuthor"></div>
+            </div>
+        </div>
+        <div class="tooltip-content" id="tooltipContent"></div>
+        <div class="tooltip-footer"></div>
+    </div>
 </body>
 </html>
