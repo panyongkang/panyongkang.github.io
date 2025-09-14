@@ -160,8 +160,7 @@
 
 /* 全局添加鼠标样式 */
 *{ cursor:url('https://s3.ax1x.com/2020/12/17/r8HvtJ.png'),auto;}
-a:hover {  cursor: url('https://ihuan.me/wp-content/themes/CKoo/1.cur'), pointer !important;
-}
+a:hover {  cursor: url('https://ihuan.me/wp-content/themes/CKoo/1.cur'), pointer !important;}
 
 /* 网站底部魔方效果 */
 .mofang{width:35px;height:85px;margin:0 auto;position:fixed;z-index:999;-webkit-perspective:1000px;perspective:1000px;right:0;bottom:0;-webkit-transform:translate(-80%,-80%);transform:translate(-80%,-80%);margin-right: 50px;}
