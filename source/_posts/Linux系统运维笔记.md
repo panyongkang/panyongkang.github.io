@@ -187,6 +187,7 @@ vi ~/.bash_profile
 
 ```bash
 # .bashrc
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
         . /etc/bashrc
@@ -198,7 +199,7 @@ fi
 # User specific aliases and functions
 export CURDATE=`date +%Y%m%d`
 alias tlog='cd /apphome/ctbsabs/abs/log/teller/${CURDATE}/$1'
-alias conf='cd /apphome/ctbsabs/abs/configuration/ && vim -n deviceIsDebug.properties'
+alias conf='cd /apphome/ctbsabs/abs/configuration/ && vim -n  deviceIsDebug.properties'
 alias trade='cd /apphome/ctbsabs/abs/workspace/FCBank/trade/Trade/'
 alias up='cd /apphome/ctbsabs/abs/upload_files/up && ls'
 alias bank='cd /apphome/ctbsabs/abs/workspace/bank && ls'
@@ -224,32 +225,267 @@ function grepa() {
 
 }
 alias ga='grepa'
-grepw() {
-    local keyword1="$1"
-    local keyword2="$2"
-
-    # 参数校验：必须输入两个关键词
-    if [[ -z "$keyword1" || -z "$keyword2" ]]; then
-		echo "---------- gaw 命令使用说明 ----------"
-        echo "该命令用于快速筛选同时包含两个关键词的文件。"
-        echo "用法: gaw <关键词1> <关键词2>"
-        echo "例如：gaw 'SyncOpenTrade' '011042'"
-        echo "------------------------------------"
+grepws() {
+    local keywords=()
+    local output_file=""
+    local mode="or"
+    local auto_download=false
+    local default_output_dir="/apphome/ctbsabs/abs/upload_files/up/TestDirectory/111111"
+  
+    # 解析参数
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -o|--output)
+                output_file="$2"
+                shift 2
+                ;;
+            -a|--and)
+                mode="and"
+                shift
+                ;;
+            -d|--download)
+                auto_download=true
+                shift
+                ;;
+            -h|--help)
+                echo "---------- gaws 命令使用说明 ----------"
+                echo "用法: gaws [选项] <关键词1> [关键词2 ...]"
+                echo "选项:"
+                echo "  -o, --output <文件>  导出交易码"
+                echo "                      仅文件名: 保存到默认路径 $default_output_dir/"
+                echo "                      完整路径: 保存到指定路径"
+                echo "  -d, --download      生成文件后自动下载到本地"
+                echo "  -a, --and           使用且运算（默认是或运算）"
+                echo "  -h, --help         显示帮助信息"
+                echo ""
+                echo "示例:"
+                echo "  gaws '3005300000402'                          # 仅查询"
+                echo "  gaws -o 统计.txt '3005300000402'              # 保存到默认路径"
+                echo "  gaws -o 统计.txt '3005300000402' -d           # 保存并下载"
+                echo "  gaws -o /apphome/ctbsabs/abs/upload_files/up/临时统计.txt '3005300000402'     # 保存到指定路径"
+                echo "  gaws -o /apphome/ctbsabs/abs/upload_files/up/临时统计.txt '3005300000402' -d  # 指定路径保存并下载"
+                echo "------------------------------------"
+                return 0
+                ;;
+            *)
+                keywords+=("$1")
+                shift
+                ;;
+        esac
+    done
+  
+    # 检查是否有关键词
+    if [[ ${#keywords[@]} -eq 0 ]]; then
+        echo "错误：请至少输入一个关键词"
+	echo "使用 gaws -h 查看帮助"
         return 1
     fi
-
-    # 第一步：快速筛选同时包含两个关键词的文件
-    echo "<<<<< 快速生成匹配文件列表（不读全部内容）>>>>>"
-    MATCHED_FILES=$(grep -rlZ "$keyword1" . | xargs -0 grep -lZ "$keyword2")
-
-    # 第二步：直接管道传递避免变量污染
-    echo "<<<<< 高亮展示匹配内容 [$keyword1] 和 [$keyword2] >>>>>"
-    grep -rlZ --color=never "$keyword1" . \
-        | xargs -0 grep -lZ --color=never "$keyword2" \
-        | xargs -0 -I{} grep -Hn --color=always -e "$keyword1" -e "$keyword2" "{}"
+  
+    # 如果指定了输出文件但没有路径，使用默认路径
+    if [[ -n "$output_file" ]]; then
+        if [[ "$output_file" != */* ]]; then
+            # 确保默认输出目录存在
+            if [[ ! -d "$default_output_dir" ]]; then
+                mkdir -p "$default_output_dir" 2>/dev/null || {
+                    echo "错误：无法创建默认目录 $default_output_dir"
+                    return 1
+                }
+            fi
+            output_file="$default_output_dir/$output_file"
+            echo "<<<<< 文件将保存到默认路径: $output_file >>>>>"
+        else
+            # 对于完整路径，确保目录存在
+            local output_dir=$(dirname "$output_file")
+            if [[ ! -d "$output_dir" ]]; then
+                mkdir -p "$output_dir" 2>/dev/null || {
+                    echo "错误：无法创建目录 $output_dir"
+                    return 1
+                }
+            fi
+            echo "<<<<< 文件将保存到指定路径: $output_file >>>>>"
+        fi
+    fi
+  
+    echo "<<<<< 搜索关键词: ${keywords[*]} (模式: $mode) >>>>>"
+  
+    # 构建搜索模式
+    local search_pattern=""
+    if [[ "$mode" == "or" ]]; then
+        # 或运算：关键词1|关键词2|...
+        search_pattern=$(IFS="|"; echo "${keywords[*]}")
+    else
+        # 且运算：需要分别匹配每个关键词
+        search_pattern="${keywords[0]}"
+    fi
+  
+    # 提取交易码
+    echo "<<<<< 提取交易码 >>>>>"
+  
+    # 用于存储所有交易码和对应的接口码关系
+    declare -A transaction_keywords
+    declare -A keyword_transactions
+  
+    if [[ "$mode" == "or" ]]; then
+        # 或运算模式 - 分别统计每个关键词
+        for keyword in "${keywords[@]}"; do
+            echo "=== 接口码: $keyword ==="
+            keyword_transactions[$keyword]=$(grep -rl "$keyword" . | \
+                grep -oE '/(t[0-9]+|[0-9]{6,}[a-zA-Z0-9]*)/' | \
+                sed 's/\///g' | sort -u)
+  
+            if [[ -n "${keyword_transactions[$keyword]}" ]]; then
+                echo "${keyword_transactions[$keyword]}"
+                echo "--- 发现 $(echo "${keyword_transactions[$keyword]}" | wc -l) 个交易码 ---"
+    
+                # 记录交易码与关键词的关系
+                while IFS= read -r transaction; do
+                    if [[ -n "$transaction" ]]; then
+                        transaction_keywords["$transaction"]+=" $keyword"
+                    fi
+                done <<< "${keyword_transactions[$keyword]}"
+            else
+                echo "未找到匹配的交易码"
+                echo "--- 发现 0 个交易码 ---"
+            fi
+            echo
+        done
+  
+        # 汇总所有交易码
+        transaction_codes=$(printf "%s\n" "${!transaction_keywords[@]}" | sort -u)
+  
+    else
+        # 且运算模式 - 找出同时包含所有关键词的文件
+        echo "=== 查找同时包含所有关键词的文件 ==="
+  
+        # 第一步：找出包含每个关键词的文件列表
+        local temp_files=()
+        for keyword in "${keywords[@]}"; do
+            temp_file=$(mktemp)
+            grep -rl "$keyword" . > "$temp_file"
+            temp_files+=("$temp_file")
+        done
+  
+        # 第二步：找出包含所有关键词的文件交集
+        if [[ ${#temp_files[@]} -gt 1 ]]; then
+            # 取第一个和第二个文件的交集
+            common_files=$(comm -12 <(sort "${temp_files[0]}") <(sort "${temp_files[1]}"))
+  
+            # 继续与剩余文件取交集
+            for ((i=2; i<${#temp_files[@]}; i++)); do
+                common_files=$(comm -12 <(echo "$common_files" | sort) <(sort "${temp_files[i]}"))
+            done
+  
+            # 从共同文件中提取交易码
+            transaction_codes=$(echo "$common_files" | \
+                grep -oE '/(t[0-9]+|[0-9]{6,}[a-zA-Z0-9]*)/' | \
+                sed 's/\///g' | sort -u)
+        else
+            # 只有一个关键词时，直接提取交易码
+            transaction_codes=$(cat "${temp_files[0]}" | \
+                grep -oE '/(t[0-9]+|[0-9]{6,}[a-zA-Z0-9]*)/' | \
+                sed 's/\///g' | sort -u)
+        fi
+  
+        # 清理临时文件
+        for temp_file in "${temp_files[@]}"; do
+            rm -f "$temp_file"
+        done
+    fi
+  
+    # 显示汇总结果
+    if [[ -n "$transaction_codes" ]]; then
+        echo "<<<<< 汇总结果 >>>>>"
+        if [[ "$mode" == "or" && ${#keywords[@]} -gt 1 ]]; then
+            # 多关键词或运算时显示详细关系
+            while IFS= read -r transaction; do
+                if [[ -n "$transaction" ]]; then
+                    keywords_for_transaction=$(echo "${transaction_keywords[$transaction]}" | sed 's/^ *//;s/ *$//')
+                    echo "$transaction (涉及接口码: $keywords_for_transaction)"
+                fi
+            done <<< "$transaction_codes"
+        else
+            # 单关键词或且运算时简单显示
+            echo "$transaction_codes"
+        fi
+        echo "<<<<< 共发现 $(echo "$transaction_codes" | wc -l) 个交易码 >>>>>"
+    else
+        echo "未找到匹配的交易码"
+        if [[ -n "$output_file" ]]; then
+            echo "<<<<< 未找到交易码，不生成输出文件 >>>>>"
+            return 0
+        fi
+    fi
+  
+    # 只有指定了输出文件时才导出
+    if [[ -n "$output_file" && -n "$transaction_codes" ]]; then
+        # 尝试导出文件
+        {
+            echo "# 搜索关键词: ${keywords[*]}"
+            echo "# 搜索模式: $mode"
+            echo "# 生成时间: $(date)"
+            echo "# 交易码列表:"
+            if [[ "$mode" == "or" && ${#keywords[@]} -gt 1 ]]; then
+                # 多关键词或运算时导出详细关系
+                while IFS= read -r transaction; do
+                    if [[ -n "$transaction" ]]; then
+                        keywords_for_transaction=$(echo "${transaction_keywords[$transaction]}" | sed 's/^ *//;s/ *$//')
+                        echo "$transaction # 涉及接口码: $keywords_for_transaction"
+                    fi
+                done <<< "$transaction_codes"
+            else
+                # 单关键词或且运算时简单导出
+                echo "$transaction_codes"
+            fi
+        } > "$output_file"
+  
+        # 检查文件是否成功创建
+        if [[ -f "$output_file" ]]; then
+            echo "<<<<< 交易码已导出到: $output_file >>>>>"
+  
+            # 如果指定了自动下载，执行sz命令
+            if [[ "$auto_download" == true ]]; then
+                echo "<<<<< 开始下载文件 >>>>>"
+                if command -v sz >/dev/null 2>&1; then
+                    sz "$output_file"
+                else
+                    echo "错误：sz命令不可用，请安装lrzsz包"
+                    echo "CentOS: sudo yum install -y lrzsz"
+                    echo "Ubuntu: sudo apt-get install -y lrzsz"
+                fi
+            fi
+        else
+            echo "<<<<< 错误：无法创建文件 $output_file >>>>>"
+        fi
+    fi
+  
+    # 显示详细匹配内容
+    if [[ -z "$output_file" ]]; then
+        echo "<<<<< 详细匹配内容 >>>>>"
+        if [[ "$mode" == "or" ]]; then
+            # 或运算：显示所有匹配的内容
+            grep -rn --color=always -E "$search_pattern" .
+        else
+            # 且运算：只显示同时包含所有关键词的文件内容
+            if [[ -n "$common_files" ]]; then
+                # 对每个共同文件，高亮显示所有关键词
+                while IFS= read -r file; do
+                    if [[ -n "$file" ]]; then
+                        echo "=== 文件: $file ==="
+                        # 使用grep同时匹配所有关键词并高亮显示
+                        grep -Hn --color=always -e "${keywords[0]}" "$file"
+                        for ((i=1; i<${#keywords[@]}; i++)); do
+                            grep -Hn --color=always -e "${keywords[i]}" "$file"
+                        done
+                    fi
+                done <<< "$common_files"
+            else
+                echo "没有找到同时包含所有关键词的文件"
+            fi
+        fi
+    fi
 }
-alias gaw='grepw'
 
+alias gaws='grepws'
 ```
 
 .bash_profile文件常用配置内容：

@@ -2,7 +2,7 @@ title: SpringBoot入门
 author: PanXiaoKang
 cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2589588367,2632593097&fm=26&gp=0.jpg
 tags: [微服务框架,SpringBoot]
-categories: [微服务]
+categories: [架构与微服务]
 date: 2021-04-24 09:58:00
 
 ---
