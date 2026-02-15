@@ -1,0 +1,775 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>域名协议功课笔记 | 向阳榆木</title><meta name="description" content="域名协议功课笔记"><meta name="keywords" content="学习记录,域名协议,知识点"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="域名协议功课笔记"><meta name="twitter:description" content="域名协议功课笔记"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png"><meta property="og:type" content="article"><meta property="og:title" content="域名协议功课笔记"><meta property="og:url" content="http://example.com/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="域名协议功课笔记"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/"><link rel="prev" title="Ventoy+WePE装机教程" href="http://example.com/2022/02/27/Ventoy-WePE%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/"><link rel="next" title="Vuejs入门教程笔记" href="http://example.com/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#域名描述"><span class="toc-number">1.</span> <span class="toc-text">域名描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名分类"><span class="toc-number">2.</span> <span class="toc-text">域名分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#世界后缀详解"><span class="toc-number">3.</span> <span class="toc-text">世界后缀详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名购买"><span class="toc-number">4.</span> <span class="toc-text">域名购买</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#购买域名的后缀选择。"><span class="toc-number">4.1.</span> <span class="toc-text">购买域名的后缀选择。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名的历史数据分析。"><span class="toc-number">4.2.</span> <span class="toc-text">域名的历史数据分析。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名删除时间参考"><span class="toc-number">4.3.</span> <span class="toc-text">域名删除时间参考</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名备案"><span class="toc-number">5.</span> <span class="toc-text">域名备案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#顶级域名、二级域名与三级域名"><span class="toc-number">6.</span> <span class="toc-text">顶级域名、二级域名与三级域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名解析"><span class="toc-number">7.</span> <span class="toc-text">域名解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#记录类型"><span class="toc-number">7.1.</span> <span class="toc-text">记录类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CDN与DNS知识点"><span class="toc-number">8.</span> <span class="toc-text">CDN与DNS知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DNS解析和CDN加速"><span class="toc-number">8.1.</span> <span class="toc-text">DNS解析和CDN加速</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免费域名注册商"><span class="toc-number">9.</span> <span class="toc-text">免费域名注册商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免费DNS解析商"><span class="toc-number">10.</span> <span class="toc-text">免费DNS解析商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免费CDN加速商"><span class="toc-number">11.</span> <span class="toc-text">免费CDN加速商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免费虚拟主机商"><span class="toc-number">12.</span> <span class="toc-text">免费虚拟主机商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#免费二级域名分发商"><span class="toc-number">13.</span> <span class="toc-text">免费二级域名分发商</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP状态码"><span class="toc-number">14.</span> <span class="toc-text">HTTP状态码</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%B0%81%E9%9D%A2.png)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">域名协议功课笔记</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2022-02-08 22:54:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2022-02-08</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-03-09 19:53:37"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-03-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="域名描述"><a href="#域名描述" class="headerlink" title="域名描述"></a>域名描述</h2><p>域名（Domain Name），是由一串用点分隔的名字组成的Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位（有时也指地理位置，地理上的域名，指代有行政自主权的一个地方区域）。域名是一个IP地址上有“面具” 。一个域名的目的是便于记忆和沟通的一组服务器的地址（网站，电子邮件，FTP等）。域名作为力所能及难忘的互联网参与者的名称，世界上第一个注册的域名是在1985年1月注册的，Symbolics.com。</p>
+<p>由于<a href="https://link.segmentfault.com/?enc=IfEJlOioBSsi1oIyzFZaqA==.onLgUru2WYz1oJ6ZPea1GXa6USo0GclAVB8bRoUTr3RiB76hrRlHGfT09VVcJNqTdAAhHY/avuBpJ70F89Tc2A==" target="_blank" rel="noopener">IP地址</a>具有不方便记忆并且不能显示地址组织的名称和性质等缺点，人们设计出了域名，并通过网域名称系统（<a href="https://link.segmentfault.com/?enc=uYZMxsHQTt16b/8kIaY+vA==.df39UgwB4bI8rc/cKrgDOQHlKZugcls2aI5WRLG0DoBBR3o00imozxeIcLtDycAZ" target="_blank" rel="noopener">DNS</a>，Domain Name System）来将域名和<a href="https://link.segmentfault.com/?enc=yNTJ3+gMen3Ze1S6LTWS5w==.F8QM+tQEIHrh+cZG8CGn1VzUwD2vhshE7hvEXPJ/ALClYw3J4YEO1kZdXlALcDOK85PJBKVRwRIR3HEmBx64XQ==" target="_blank" rel="noopener">IP地址</a>相互<a href="https://link.segmentfault.com/?enc=Ly61nPHDGxYbtuS7HxV65g==.8/yqU3J5gIMUO5vh+tPlgcdoiIJCkPUWU277Mc3zyU6mECGzFm/RrOeXbTJw9cfJGgFPME8z0b31ER6QwU6Ycw==" target="_blank" rel="noopener">映射</a>，使人更方便地访问<a href="https://link.segmentfault.com/?enc=LioSgxcsyc1f1bVQa36EvQ==.heP/KxQon1C24sZj29bt0zagze3zy38zpYSieXqWM8OVBmfWkgRqRqCzwTRcsQEOwIZtaLFVvFRriIiI1PcHWA==" target="_blank" rel="noopener">互联网</a>，而不用去记住能够被机器直接读取的<a href="https://link.segmentfault.com/?enc=K4Zzgzag59zaufTx36f/jg==.MPIPfo2gZ/9DxGkUcfdn5wSl6xME7oysHy57MyIcvsJFzeIpxr/70JtOdmBuPjk3Ms3AJ8zRnWjvJ2nO0oYChA==" target="_blank" rel="noopener">IP地址</a>数串。</p>
+<pre><code>简单多就是因为github的地址太长或服务器的公网IP全数字不好记，我们需要一个好记的地址也就这我们的需要的域名来与自己的github仓库地址来做一个捆绑，通过这个好记的域名来访问我们的网站或者博客，比如我们要访问百度时在浏览器地址栏直接搜做[baidu.com](https://link.segmentfault.com/?enc=6H8%2BNO%2B41sP2JEL72zJizg%3D%3D.8T6WjFQNSG9%2BRhwsg27scmEVHxzZpuB8ZjwcbnKhc88%3D) 就可访问百度网页而不是输入长长的IP地址。这种绑定关系会存储在DNS中，即域名系统（服务）协议。
+</code></pre>
+<h2 id="域名分类"><a href="#域名分类" class="headerlink" title="域名分类"></a>域名分类</h2><p>第一类：类别域名（也就是现在通常说的国际域名）共有十多个。由于Internet最初是在美国发源的，因此最早的域名并无国家标识，都是按用途把它们分为几个大类，比如.com域名（用于商业公司），.net域名（用于网络服务），.org域名（用于组织协会等），.gov域名（用于政府部门），.edu域名（用于教育机构），.mil域名（用于军事领域），.int域名（用于国际组织）等。</p>
+<p>第二类：国别域名（地理顶级域名），是按不同的国家和地区分配的。共有两百多个国家和地区的顶级域名代码比如.cn代表中国，.jp代表日本，.us代表美国，.ph代表菲律宾……</p>
+<p>第三类：是新顶级域名，也就最新开放的顶级域名。例如.vip、.xyz、.top、.club、.shop等。</p>
+<h2 id="世界后缀详解"><a href="#世界后缀详解" class="headerlink" title="世界后缀详解"></a>世界后缀详解</h2><p>.com：商业机构，任何人都可以注册；<br>.edu：教育机构；<br>.gov：政府部门；<br>.int：国际组织；<br>.mil：美国军事部门；<br>.net：网络组织，例如因特网服务商和维修商，现在任何人都可以注册；<br>.org：非盈利组织，任何人都可以注册；<br>.biz：商业；<br>.info：网络信息服务组织；<br>.pro：用于会计、律师和医生。；<br>.name：用于个人；<br>.museum：用于博物馆；<br>.coop：用于商业合作团体；<br>.aero：用于航空工业；<br>.xxx：用于成人、***；<br>.idv：用于个人</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>后缀</strong></td>
+<td align="center"><strong>含义</strong></td>
+<td align="center"><strong>诞生时间</strong></td>
+<td align="center"><strong>运营商</strong></td>
+<td align="center"><strong>备注</strong></td>
+</tr>
+<tr>
+<td align="center">com</td>
+<td align="center">商业性的机构或公司</td>
+<td align="center">1985.3.15</td>
+<td align="center">Verisign</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">net</td>
+<td align="center">从事互联网相关的的机构或公司</td>
+<td align="center">上世纪80年代</td>
+<td align="center">Verisign</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">org</td>
+<td align="center">非盈利的组织、团体或协会</td>
+<td align="center">1985</td>
+<td align="center">Afilias</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">gov</td>
+<td align="center">政府部门</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">美国政府部门</td>
+</tr>
+<tr>
+<td align="center">mil</td>
+<td align="center">军事部门</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">美国军事部门</td>
+</tr>
+<tr>
+<td align="center">edu</td>
+<td align="center">教育机构</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">它原供全世界的教育机构使用，但实际使用的教育机构大部分位于美国</td>
+</tr>
+<tr>
+<td align="center">biz</td>
+<td align="center">网络商务向导，适用于商业公司</td>
+<td align="center">2001</td>
+<td align="center">NeuLevel</td>
+<td align="center">biz是business的习惯缩用</td>
+</tr>
+<tr>
+<td align="center">info</td>
+<td align="center">信息服务的企业</td>
+<td align="center">2001.9.19</td>
+<td align="center">Afilias</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">pro</td>
+<td align="center">医生、律师、会计师等专业人员</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">name</td>
+<td align="center">个人注册</td>
+<td align="center">2002.1.15</td>
+<td align="center">Global Name Registry （GNR）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">coop</td>
+<td align="center">商业合作社</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">travel</td>
+<td align="center">旅游</td>
+<td align="center">2006.12.31</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">xxx</td>
+<td align="center">成人，羞羞网站</td>
+<td align="center">2011</td>
+<td align="center">ICM Registry</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">idv</td>
+<td align="center">个人</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">aero</td>
+<td align="center">航空运输业</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">museum</td>
+<td align="center">博物馆</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">mobi</td>
+<td align="center">手机网络</td>
+<td align="center">2005</td>
+<td align="center">Mobile Top Level Domain （mTLD）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">asia</td>
+<td align="center">亚太地区</td>
+<td align="center">2008.3.26</td>
+<td align="center">Dot Asia</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">tel</td>
+<td align="center">电话、联系方式</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">国际组织</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">post</td>
+<td align="center">邮政机构</td>
+<td align="center">2009.12</td>
+<td align="center">Afilias</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jobs</td>
+<td align="center">招聘和求职市场</td>
+<td align="center"></td>
+<td align="center">Employ Media LLC.</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">cat</td>
+<td align="center">加泰罗尼亚语或和加泰罗尼亚文化有关</td>
+<td align="center">2006.5.19</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<p>域名详细介绍：<a href="http://114.xixik.com/domain/" target="_blank" rel="noopener">http://114.xixik.com/domain/</a></p>
+<h2 id="域名购买"><a href="#域名购买" class="headerlink" title="域名购买"></a>域名购买</h2><h3 id="购买域名的后缀选择。"><a href="#购买域名的后缀选择。" class="headerlink" title="购买域名的后缀选择。"></a>购买域名的后缀选择。</h3><p>一般都建议购买.com的，其次是.net的，.cn后缀的不建议购买，主要是稳定性，国内有诸多限制。如果非要购买其他后缀的域名，也一定要考察好该域名的相关数据，最关键的是要安全可靠的过户，避免资金损失。</p>
+<h3 id="域名的历史数据分析。"><a href="#域名的历史数据分析。" class="headerlink" title="域名的历史数据分析。"></a>域名的历史数据分析。</h3><p>我们购买一个域名，要查看该域名的历史数据，如果是最近注册的域名，而且在各大搜索引擎都没有记录，那就没有任何问题，可以直接拿来做网站。如果是已经有了历史数据的，包括收录数量，外链结构等数据，要查看该域名是否有遭遇过惩罚</p>
+<h3 id="域名删除时间参考"><a href="#域名删除时间参考" class="headerlink" title="域名删除时间参考"></a>域名删除时间参考</h3><p>.com .net .org等国际域名删除时间，通常在域名到期后的第65或75天，凌晨2点30左右会删除. 国内域名的删除时间，通常在域名到期后的第15或16天，凌晨4：30会删除.</p>
+<h2 id="域名备案"><a href="#域名备案" class="headerlink" title="域名备案"></a><strong>域名备案</strong></h2><p>根据相关的法律，解析到中国大陆的互联网信息服务需要进行备案，我们一般说的备案有三种：1. ICP备案。2. 公安备案。3.经营性备案。一般来说，个人站点不需要进行经营性备案，但如果你接入了百度网盟或者google ads，理论上是需要经营性备案的。域名购买成功之后，需要进行ICP备案和公安备案。</p>
+<p>备案的材料包括个人身份证、云服务器ip、手持身份证照片等，根据你所在的省份，政策会有一些不一样，以云服务提供商要求的材料为准。需要注意的是，如果你打算搭建带评论的博客，那就需要注意了，评论是需要强管控的。</p>
+<h2 id="顶级域名、二级域名与三级域名"><a href="#顶级域名、二级域名与三级域名" class="headerlink" title="顶级域名、二级域名与三级域名"></a><strong>顶级域名、二级域名与三级域名</strong></h2><p><img src="/img/loading.gif" class="lazyload" data-src="https://pic1.zhimg.com/80/v2-315f829c6380a8457bb530f2f1782174_720w.jpg"  alt="图片"></p>
+<h2 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h2><p>1、什么是域名解析？</p>
+<p>域名解析就是国际域名或者国内域名以及中文域名等域名申请后做的到IP地址的转换过程。IP地址是网路上标识您站点的数字地址，为了简单好记，采用域名来代替ip地址标识站点地址。域名的解析工作由DNS服务器完成。</p>
+<h3 id="记录类型"><a href="#记录类型" class="headerlink" title="记录类型"></a>记录类型</h3><p><strong>1.什么是A记录？</strong></p>
+<p>A (Address) 记录是用来指定主机名（或域名）对应的IP地址记录。用户可以将该域名下的网站服务器指向到自己的web server上。同时也可以设置您域名的二级域名。</p>
+<p><strong>2.什么是CNAME记录？</strong></p>
+<p>即：别名记录。这种记录允许您将多个名字映射到另外一个域名。通常用于同时提供WWW和MAIL服务的计算机。例如，有一台计算机名为“host.mydomain.com”（A记录）。它同时提供WWW和MAIL服务，为了便于用户访问服务。可以为该计算机设置两个别名（CNAME）：WWW和MAIL。这两个别名的全称就 <code>http://www.mydomain.com/</code> 和 <code>mail.mydomain.com</code>。实际上他们都指向 “host.mydomain.com”。</p>
+<p><strong>3.A记录和CNAME进行域名解析的区别</strong></p>
+<p>A记录就是把一个域名解析到一个IP地址（Address，特制数字IP地址），而CNAME记录就是把域名解析到另外一个域名。其功能是差不多，CNAME将几个主机名指向一个别名，其实跟指向IP地址是一样的，因为这个别名也要做一个A记录的。但是使用CNAME记录可以很方便地变更IP地址。如果一台服务器有100个网站，他们都做了别名，该台服务器变更IP时，只需要变更别名的A记录就可以了。</p>
+<p><strong>4.使用A记录和CNAME哪个好？</strong></p>
+<p>域名解析CNAME记录A记录哪一种比较好？如果论对网站的影响，就没有多大区别。但是：CNAME有一个好处就是稳定，就好像一个IP与一个域名的区别。服务商从方便维护的角度，一般也建议用户使用CNAME记录绑定域名的。如果主机使用了双线IP，显然使用CNAME也要方便一些。</p>
+<p>A记录也有一些好处，例如可以在输入域名时不用输入WWW.来访问网站哦！从SEO优化角度来看，一些搜索引擎如alex或一些搜索查询工具网站等等则默认是自动去掉WWW.来辨别网站，CNAME记录是必须有如：WWW(别名)前缀的域名，有时候会遇到这样的麻烦，前缀去掉了默认网站无法访问。</p>
+<p>有人认为，在SEO优化网站的时候，由于搜索引擎找不到去掉WWW.的域名时，对网站权重也会有些影响。因为有些网民客户也是不喜欢多写三个W来访问网站的，网站无法访问有少量网民客户会放弃继续尝试加WWW.访问域名了，因此网站访问浏览量也会减少一些。</p>
+<p>也有人认为同一个域名加WWW.和不加WWW.访问网站也会使网站权重分散，这也是个问题。但是可以使用301跳转把不加WWW.跳转到加WWW.的域名，问题就解决了。</p>
+<h2 id="CDN与DNS知识点"><a href="#CDN与DNS知识点" class="headerlink" title="CDN与DNS知识点"></a>CDN与DNS知识点</h2><h3 id="DNS解析和CDN加速"><a href="#DNS解析和CDN加速" class="headerlink" title="DNS解析和CDN加速"></a>DNS解析和CDN加速</h3><p><strong>什么是<a href="https://baike.baidu.com/item/CDN/420951?fr=aladdin" target="_blank" rel="noopener">CDN</a></strong></p>
+<p>CDN的全称是Content Delivery Network，即<a href="https://baike.baidu.com/item/%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91%E7%BB%9C/4034265" target="_blank" rel="noopener">内容分发网络</a>。CDN是构建在现有网络基础之上的智能虚拟网络，依靠部署在各地的边缘服务器，通过中心平台的负载均衡、内容分发、调度等功能模块，使用户就近获取所需内容，降低网络拥塞，提高用户访问响应速度和命中率。CDN的关键技术主要有内容存储和分发技术。</p>
+<p>典型的CDN系统由下面三个部分组成</p>
+<ul>
+<li><p>分发服务系统</p>
+<p>最基本的工作单元就是Cache设备，cache（边缘cache）负责直接响应最终用户的访问请求，把缓存在本地的内容快速地提供给用 户。同时cache还负责与源站点进行内容同步，把更新的内容以及本地没有的内容从源站点获取并保存在本地。Cache设备的数量、规模、总服务能力是衡 量一个CDN系统服务能力的最基本的指标</p>
+</li>
+<li><p>负载均衡系统</p>
+<p>主要功能是负责对所有发起服务请求的用户进行访问调度，确定提供给用户的最终实际访问地址。两级调度体系分为全局负载均衡（GSLB）和本 地负载均衡（SLB）。GSLB主要根据用户就近性原则，通过对每个服务节点进行“最优”判断，确定向用户提供服务的cache的物理位置。SLB主要负 责节点内部的设备负载均衡</p>
+</li>
+<li><p>运营管理系统</p>
+<p>分为运营管理和网络管理子系统，负责处理业务层面的与外界系统交互所必须的收集、整理、交付工作，包含客户管理、产品管理、计费管理、统计分析等功能。</p>
+</li>
+</ul>
+<p><strong>CDN的过程</strong></p>
+<p>使用CDN的方法很简单，只需要修改自己的DNS解析，设置一个CNAME指向CDN服务商即可。</p>
+<p>用户访问未使用CDN缓存资源的过程为:</p>
+<ol>
+<li>浏览器通过前面提到的过程对域名进行解析，以得到此域名对应的IP地址；</li>
+<li>浏览器使用所得到的IP地址，向域名的服务主机发出数据访问请求；</li>
+<li>服务器向浏览器返回响应数据</li>
+</ol>
+<p><strong>使用CDN后</strong></p>
+<ol>
+<li>当用户点击网站页面上的内容URL，经过本地DNS系统解析，DNS系统会最终将域名的解析权交给CNAME指向的CDN专用DNS服务器。</li>
+<li>CDN的DNS服务器将CDN的全局负载均衡设备IP地址返回用户。</li>
+<li>用户向CDN的全局负载均衡设备发起内容URL访问请求。</li>
+<li>CDN全局负载均衡设备根据用户IP地址，以及用户请求的内容URL，选择一台用户所属区域的区域负载均衡设备，告诉用户向这台设备发起请求。</li>
+<li>区域负载均衡设备会为用户选择一台合适的缓存服务器提供服务，选择的依据包括：根据用户IP地址，判断哪一台服务器距用户最近；根据用户所请求的URL中携带的内容名称，判断哪一台服务器上有用户所需内容；查询各个服务器当前的负载情况，判断哪一台服务器尚有服务能力。基于以上这些条件的综合分析之后，区域负载均衡设备会向全局负载均衡设备返回一台缓存服务器的IP地址。</li>
+<li>全局负载均衡设备把服务器的IP地址返回给用户</li>
+<li>用户向缓存服务器发起请求，缓存服务器响应用户请求，将用户所需内容传送到用户终端。如果这台缓存服务器上并没有用户想要的内容，而区域均衡设备依然将它分配给了用户，那么这台服务器就要向它的上一级缓存服务器请求内容，直至追溯到网站的源服务器将内容拉到本地。</li>
+</ol>
+<p>上面的字太多，有点绕？通俗点就是用户访问的资源原本是存放在你自己的服务器，通过修改DNS让用户根据IP等情况来选择合适的CDN缓存服务器来获取资源。</p>
+<p><strong>CDN的优点</strong></p>
+<p>这样做有什么好处呢？</p>
+<ol>
+<li>本地Cache加速，加快访问速度</li>
+<li>镜像服务，消除运营商之间互联的瓶颈影响，保证不同网络的用户都能得到良好的访问质量</li>
+<li>远程加速，自动选择cache服务器</li>
+<li>带宽优化，分担网络流量，减轻压力，</li>
+<li>集群抗攻击</li>
+<li>节约成本</li>
+</ol>
+<p><strong>什么是DNS</strong></p>
+<p>我们先讲一下域名系统DNS(Domain Name System)吧。</p>
+<p>他是一个分布式数据库，功能是联系域名和ip地址。域名与ip的对应关系，被称为记录(record)，可分为各种类型</p>
+<ul>
+<li>A: Address，域名指向的IP地址，一个域名可以有多个A记录。</li>
+<li>NS：Name Server，保存下一级域名信息的服务器地址</li>
+<li>MX：Mail eXchange，接受电子邮件的服务器地址</li>
+<li>CNAME：Canonical Name，返回另一个域名，令当前查询域名挑去该域名，多个域名-&gt;服务器的映射。</li>
+<li>PTR： Pointer Record，只用于ip地址查询域名</li>
+</ul>
+<p>DNS由下面三个部分组成</p>
+<ul>
+<li>名称解析器（resolver）</li>
+<li>域名空间（domain name space）</li>
+<li>名称服务器（name server）</li>
+</ul>
+<p>假如你要访问baidu.com，需要先通过dns系统查出他的ip地址如220.181.57.216，才能访问。</p>
+<p><strong>dns查询的过程</strong></p>
+<p>那么问题来了，dns是怎么通过域名来查出ip的呢?我们以浏览器输入 <code>www.example.com</code>为例，</p>
+<ol>
+<li>检查浏览器缓存</li>
+<li>检查操作系统缓存，常见的如hosts文件</li>
+<li>检查路由器缓存</li>
+<li>如果前几步都没没找到，会向ISP(网络服务提供商)的LDNS服务器查询</li>
+<li>如果LDNS服务器没找到，会向跟域名服务器(Root Server)请求解析，分为以下几步：<ol>
+<li>跟服务器返回顶级域名(TLD)服务器如.com，.cn，.org等的地址，全球只有13台，该例子中会返回.com的地址</li>
+<li>接着向TLD发送请求，然后会返回次级域名(SLD)服务器的地址，本例子会返回.example的地址</li>
+<li>接着向SLD域名服务器通过域名查询目标IP，本例子会返回 <code>www.example.com</code>的地址</li>
+<li>Local DNS Server会缓存结果，并返回给用户，缓存在系统中。</li>
+</ol>
+</li>
+</ol>
+<p><strong>DNS安全问题</strong></p>
+<ol>
+<li><p>DNS反射&#x2F;放大攻击</p>
+<p>向大量开放DNS服务器发送大范围域名查询的DNS请求，并将该DNS请求的源IP地址伪造成想要攻击的目标IP地址。由于请求数据比相应数据小得多，攻击者可以利用该技术放大掌握的带宽资源和攻击流量。</p>
+</li>
+<li><p>DDOS攻击可能造成域名解析瘫痪</p>
+</li>
+<li><p>DNS&#x2F;域名劫持<br>在劫持的网络范围内拦截域名解析的请求，分析请求的域名，返回假的IP地址或者使请求失去响应。DNS劫持通过篡改DNS服务器上的数据返回给用户一个错误的查询结果来实现的。</p>
+</li>
+<li><p>DNS污染</p>
+<p> DNS污染是一种让一般用户由于得到虚假目标主机IP而不能与其通信的方法，指的是用户访问一个地址，国内的服务器(非DNS)监控到用户访问的已经被标记地址时，服务器伪装成DNS服务器向用户发回错误的地址的行为。</p>
+</li>
+</ol>
+<p>dns污染与dns劫持的区别在于，dns劫持修改了dns的解析结果，dns污染是不经过dns服务器，返回错误信息。</p>
+<h2 id="免费域名注册商"><a href="#免费域名注册商" class="headerlink" title="免费域名注册商"></a>免费域名注册商</h2><ul>
+<li>freenom：<a href="https://www.freenom.com/" target="_blank" rel="noopener">https://www.freenom.com</a></li>
+<li>eu.org：<a href="https://nic.eu.org/" target="_blank" rel="noopener">https://nic.eu.org/</a></li>
+<li>ua：<a href="https://nic.ua/" target="_blank" rel="noopener">https://nic.ua/</a></li>
+</ul>
+<h2 id="免费DNS解析商"><a href="#免费DNS解析商" class="headerlink" title="免费DNS解析商"></a>免费DNS解析商</h2><ul>
+<li>Cloudflare DNS：<a href="https://dash.cloudflare.com/" target="_blank" rel="noopener">https://dash.cloudflare.com/</a></li>
+<li>DNSPod：<a href="https://www.dnspod.cn/Products/dns" target="_blank" rel="noopener">https://www.dnspod.cn/Products/dns</a></li>
+<li>He.net DNS：<a href="https://dns.he.net/" target="_blank" rel="noopener">https://dns.he.net/</a></li>
+<li>Ns1：<a href="https://ns1.com/" target="_blank" rel="noopener">https://ns1.com/</a></li>
+<li>DNS.LA：<a href="https://www.dns.la/" target="_blank" rel="noopener">https://www.dns.la/</a></li>
+<li>namecheap：<a href="https://www.namecheap.com/domains/freedns" target="_blank" rel="noopener">https://www.namecheap.com/domains/freedns</a></li>
+</ul>
+<h2 id="免费CDN加速商"><a href="#免费CDN加速商" class="headerlink" title="免费CDN加速商"></a>免费CDN加速商</h2><ul>
+<li>腾讯云CDN：<a href="https://cloud.tencent.com/product/cdn" target="_blank" rel="noopener">https://cloud.tencent.com/product/cdn</a></li>
+<li>360网站卫士：<a href="http://wangzhan.360.com/" target="_blank" rel="noopener">http://wangzhan.360.com/</a></li>
+<li>百度云加速：<a href="https://su.baidu.com/" target="_blank" rel="noopener">https://su.baidu.com/</a></li>
+<li>又拍云CDN：<a href="https://www.upyun.com/products/cdn" target="_blank" rel="noopener">https://www.upyun.com/products/cdn</a></li>
+<li>魔门云：<a href="https://www.cachemoment.com/" target="_blank" rel="noopener">https://www.cachemoment.com/</a></li>
+<li>七牛云CDN：<a href="https://www.qiniu.com/products/fusion" target="_blank" rel="noopener">https://www.qiniu.com/products/fusion</a></li>
+<li>性能魔方CDN：<a href="http://www.mmtrix.com/ispeed" target="_blank" rel="noopener">http://www.mmtrix.com/ispeed</a></li>
+<li>VeryCloud云分发：<a href="https://www.verycloud.cn/cloud/cdninfo" target="_blank" rel="noopener">https://www.verycloud.cn/cloud/cdninfo</a></li>
+<li>云盾CDN：<a href="https://www.yundun.com/" target="_blank" rel="noopener">https://www.yundun.com/</a></li>
+<li>Cloudflare：<a href="https://www.cloudflare.com/" target="_blank" rel="noopener">https://www.cloudflare.com/</a></li>
+<li>Nodecache：<a href="https://www.nodecache.com/" target="_blank" rel="noopener">https://www.nodecache.com/</a></li>
+<li>Psychz：<a href="https://www.psychz.net/cdn.html" target="_blank" rel="noopener">https://www.psychz.net/cdn.html</a></li>
+<li>FreeCDN：<a href="http://su.zhiduopc.com/" target="_blank" rel="noopener">http://su.zhiduopc.com/</a></li>
+</ul>
+<h2 id="免费虚拟主机商"><a href="#免费虚拟主机商" class="headerlink" title="免费虚拟主机商"></a>免费虚拟主机商</h2><ul>
+<li>自带子域名</li>
+<li>profreehost：<a href="https://profreehost.com/" target="_blank" rel="noopener">https://profreehost.com</a></li>
+<li>googiehost：<a href="https://googiehost.com/" target="_blank" rel="noopener">https://googiehost.com/</a></li>
+<li>infinityfree：<a href="https://infinityfree.net/" target="_blank" rel="noopener">https://infinityfree.net/</a></li>
+<li>byet：<a href="https://byet.host/" target="_blank" rel="noopener">https://byet.host/</a></li>
+<li>freewebhostingarea：<a href="https://www.freewebhostingarea.com/" target="_blank" rel="noopener">https://www.freewebhostingarea.com/</a></li>
+<li>biz：<a href="https://www.biz.nf/" target="_blank" rel="noopener">https://www.biz.nf/</a></li>
+<li>megabyet：<a href="http://megabyet.com/" target="_blank" rel="noopener">http://megabyet.com/</a></li>
+<li>phpnet：<a href="http://phpnet.us/" target="_blank" rel="noopener">http://phpnet.us/</a></li>
+</ul>
+<h2 id="免费二级域名分发商"><a href="#免费二级域名分发商" class="headerlink" title="免费二级域名分发商"></a>免费二级域名分发商</h2><ul>
+<li>米特网：<a href="https://www.mite5.com/" target="_blank" rel="noopener">https://www.mite5.com</a></li>
+<li>九九网：<a href="https://www.biz.tk/" target="_blank" rel="noopener">https://www.biz.tk/</a></li>
+<li>二级域名分发：<a href="http://camc.ga:97/" target="_blank" rel="noopener">http://camc.ga:97</a></li>
+<li>香港共享域名：<a href="https://www.hkname.com/" target="_blank" rel="noopener">https://www.hkname.com/</a></li>
+<li>若尊 免费二级域名分发：<a href="https://dns.beaa.cn/home" target="_blank" rel="noopener">https://dns.beaa.cn/home</a></li>
+<li>墨染 免费二级域名分发：<a href="http://dns.qjye.cn/" target="_blank" rel="noopener">http://dns.qjye.cn</a></li>
+</ul>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>HTTP状态码（英语：HTTP Status Code）是用以表示网页服务器超文本传输协议响应状态的3位数字代码。它由 RFC 2616 规范定义的，并得到 RFC 2518、RFC 2817、RFC 2295、RFC 2774 与 RFC 4918 等规范扩展。所有状态码的第一个数字代表了响应的五种状态之一。所示的消息短语是典型的，但是可以提供任何可读取的替代方案。 除非另有说明，状态码是HTTP &#x2F; 1.1标准（RFC 7231）的一部分。</p>
+<p>HTTP状态码的官方注册表由互联网号码分配局（Internet Assigned Numbers Authority）维护。</p>
+<p>微软互联网信息服务 （Microsoft Internet Information Services）有时会使用额外的十进制子代码来获取更多具体信息，但是这些子代码仅出现在响应有效内容和文档中，而不是代替实际的HTTP状态代码。</p>
+<table>
+<thead>
+<tr>
+<th align="left">状态码</th>
+<th align="left">原因短语</th>
+<th align="left">代表含义</th>
+<th align="left">HTTP版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">消息响应</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">100</td>
+<td align="left">Continue (继续)</td>
+<td align="left">客户端应当继续发送请求.这个临时响应是用来通知客户端它的部分请求已经被服务器接收,且仍未被拒绝.客户端应当继续发送请求的剩余部分,或者如果请求已经完成,忽略这个响应.服务器必须在请求完成后向客户端发送一个最终响应.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">101</td>
+<td align="left">Switching Protocol (切换协议)</td>
+<td align="left">服务器已经理解了客户端的请求，并将通过Upgrade消息头通知客户端采用不同的协议来完成这个请求。在发送完这个响应最后的空行后，服务器将会切换到在Upgrade消息头中定义的那些协议。:只有在切换新的协议更有好处的时候才应该采取类似措施。例如，切换到新的HTTP版本比旧版本更有优势，或者切换到一个实时且同步的协议以传送利用此类特性的资源。</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">成功响应</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">200</td>
+<td align="left">OK (成功)</td>
+<td align="left">请求成功.成功的意义根据请求所使用的方法不同而不同.GET:资源已被提取,并作为响应体传回客户端.HEAD:实体头已作为响应头传回客户端POST:经过服务器处理客户端传来的数据,适合的资源作为响应体传回客户端.TRACE:服务器收到请求消息作为响应体传回客户端.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">201</td>
+<td align="left">Created (已创建)</td>
+<td align="left">请求成功，而且有一个新的资源已经依据请求的需要而建立，通常这是PUT方法得到的响应码.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">202</td>
+<td align="left">Accepted (已创建)</td>
+<td align="left">服务器已接受请求，但尚未处理。正如它可能被拒绝一样，最终该请求可能会也可能不会被执行。在异步操作的场合下，没有比发送这个状态码更方便的做法了。:返回202状态码的响应的目的是允许服务器接受其他过程的请求（例如某个每天只执行一次的基于批处理的操作），而不必让客户端一直保持与服务器的连接直到批处理操作全部完成。在接受请求处理并返回202状态码的响应应当在返回的实体中包含一些指示处理当前状态的信息，以及指向处理状态监视器或状态预测的指针，以便用户能够估计操作是否已经完成。</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">203</td>
+<td align="left">Non-Authoritative Information (未授权信息)</td>
+<td align="left">服务器已成功处理了请求,但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝,如果不是上述情况,使用200状态码才是最合适的.</td>
+<td align="left">HTTP&#x2F;0.9 and 1.1</td>
+</tr>
+<tr>
+<td align="left">204</td>
+<td align="left">No Content (无内容)</td>
+<td align="left">该响应没有响应内容,只有响应头,响应头也可能是有用的.用户代理可以根据新的响应头来更新对应资源的缓存信息.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">205</td>
+<td align="left">Reset Content (重置内容)</td>
+<td align="left">告诉用户代理去重置发送该请求的窗口的文档视图.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">206</td>
+<td align="left">Partial Content (部分内容)</td>
+<td align="left">当客户端通过使用range头字段进行文件分段下载时使用该状态码</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">重定向</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">300</td>
+<td align="left">Multiple Choice (多种选择)</td>
+<td align="left">该请求有多种可能的响应,用户代理或者用户必须选择它们其中的一个.服务器没有任何标准可以遵循去代替用户来进行选择.</td>
+<td align="left">HTTP&#x2F;1.0 and later</td>
+</tr>
+<tr>
+<td align="left">301</td>
+<td align="left">Moved Permanently (永久移动)</td>
+<td align="left">该状态码表示所请求的URI资源路径已经改变,新的URL会在响应的 <code>Location</code>:头字段里找到.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">302</td>
+<td align="left">Found (临时移动)</td>
+<td align="left">该状态码表示所请求的URI资源路径临时改变,并且还可能继续改变.因此客户端在以后访问时还得继续使用该URI.新的URL会在响应的 <code>Location:</code>头字段里找到.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">303</td>
+<td align="left">See Other (查看其他位置)</td>
+<td align="left">服务器发送该响应用来引导客户端使用GET方法访问另外一个URI.</td>
+<td align="left">HTTP&#x2F;0.9 and 1.1</td>
+</tr>
+<tr>
+<td align="left">304</td>
+<td align="left">Not Modified (未修改)</td>
+<td align="left">告诉客户端,所请求的内容距离上次访问并没有变化.客户端可以直接从浏览器缓存里获取该资源.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">305</td>
+<td align="left">Use Proxy (使用代理)</td>
+<td align="left">所请求的资源必须统过代理才能访问到.由于安全原因,该状态码并未受到广泛支持.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">306</td>
+<td align="left"><em>unused</em> (未使用)</td>
+<td align="left">这个状态码已经不再被使用,当初它被用在HTTP 1.1规范的旧版本中.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">307</td>
+<td align="left">Temporary Redirect (临时重定向)</td>
+<td align="left">服务器发送该响应用来引导客户端使用相同的方法访问另外一个URI来获取想要获取的资源.新的URL会在响应的 <code>Location:</code>头字段里找到.与302状态码有相同的语义,且前后两次访问必须使用相同的方法(GET POST).</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">308</td>
+<td align="left">Permanent Redirect (永久重定向)</td>
+<td align="left">所请求的资源将永久的位于另外一个URI上.新的URL会在响应的 <code>Location:</code>头字段里找到.与301状态码有相同的语义,且前后两次访问必须使用相同的方法(GET POST).</td>
+<td align="left">HTTPbis (试验草案)</td>
+</tr>
+<tr>
+<td align="left">客户端错误</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">400</td>
+<td align="left">Bad Request (错误请求)</td>
+<td align="left">因发送的请求语法错误,服务器无法正常读取.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">401</td>
+<td align="left">Unauthorized (未授权)</td>
+<td align="left">需要身份验证后才能获取所请求的内容,类似于403错误.不同点是.401错误后,只要正确输入帐号密码,验证即可通过.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">402</td>
+<td align="left">Payment Required (需要付款)</td>
+<td align="left">该状态码被保留以供将来使用.创建此代码最初的目的是为数字支付系统而用,然而,到现在也没投入使用.</td>
+<td align="left">HTTP&#x2F;0.9 and 1.1</td>
+</tr>
+<tr>
+<td align="left">403</td>
+<td align="left">Forbidden (禁止访问)</td>
+<td align="left">客户端没有权利访问所请求内容,服务器拒绝本次请求.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">404</td>
+<td align="left">Not Found (未找到)</td>
+<td align="left">服务器找不到所请求的资源.由于经常发生此种情况,所以该状态码在上网时是非常常见的.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">405</td>
+<td align="left">Method Not Allowed (不允许使用该方法)</td>
+<td align="left">该请求使用的方法被服务器端禁止使用,RFC2616中规定,<code>GET</code>和 <code>HEAD</code>方法不能被禁止.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">406</td>
+<td align="left">Not Acceptable (无法接受)</td>
+<td align="left">在进行服务器驱动内容协商后,没有发现合适的内容传回给客户端.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">407</td>
+<td align="left">Proxy Authentication Required (要求代理身份验证)</td>
+<td align="left">类似于状态码401,不过需要通过代理才能进行验证.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">408</td>
+<td align="left">Request Timeout (请求超时)</td>
+<td align="left">客户端没有在服务器预备等待的时间内完成一个请求的发送.这意味着服务器将会切断和客户端的连接.在其他浏览器中,这种响应更常见一些,例如Chrome和IE9,目的是为了使用HTTP预连机制加快浏览速度.同时注意,一些服务器不发送此种响应就直接切断连接.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">409</td>
+<td align="left">Conflict (冲突)</td>
+<td align="left">该请求与服务器的当前状态所冲突.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">410</td>
+<td align="left">Gone (已失效)</td>
+<td align="left">所请求的资源已经被删除.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">411</td>
+<td align="left">Length Required (需要内容长度头)</td>
+<td align="left">因服务器在本次请求中需要 <code>Content-Length</code>头字段,而客户端没有发送.所以,服务器拒绝了该请求.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">412</td>
+<td align="left">Precondition Failed (预处理失败)</td>
+<td align="left">服务器没能满足客户端在获取资源时在请求头字段中设置的先决条件.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">413</td>
+<td align="left">Request Entity Too Large (请求实体过长)</td>
+<td align="left">请求实体大小超过服务器的设置的最大限制,服务器可能会关闭HTTP链接并返回 <code>Retry-After</code>头字段.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">414</td>
+<td align="left">Request-URI Too Long (请求网址过长)</td>
+<td align="left">客户端请求所包含的URI地址太长,以至于服务器无法处理.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">415</td>
+<td align="left">Unsupported Media Type (媒体类型不支持)</td>
+<td align="left">服务器不支持客户端所请求的媒体类型,因此拒绝该请求.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">416</td>
+<td align="left">Requested Range Not Satisfiable (请求范围不合要求)</td>
+<td align="left">请求中包含的 <code>Range</code>头字段无法被满足,通常是因为 <code>Range</code>中的数字范围超出所请求资源的大小.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">417</td>
+<td align="left">Expectation Failed (预期结果失败)</td>
+<td align="left">在请求头 <code>Expect</code>中指定的预期内容无法被服务器满足.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">服务器端错误</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">500</td>
+<td align="left">Internal Server Error (内部服务器错误)</td>
+<td align="left">服务器遇到未知的无法解决的问题.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">501</td>
+<td align="left">Not Implemented (未实现)</td>
+<td align="left">服务器不支持该请求中使用的方法,比如 <code>POST</code>和 <code>PUT.只有``GET</code>和 <code>HEAD</code>是RFC2616规范中规定服务器必须实现的方法.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">502</td>
+<td align="left">Bad Gateway (网关错误)</td>
+<td align="left">服务器作为网关且从上游服务器获取到了一个无效的HTTP响应.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">503</td>
+<td align="left">Service Unavailable (服务不可用)</td>
+<td align="left">由于临时的服务器维护或者过载,服务器当前无法处理请求.这个状况是临时的,并且将在一段时间以后恢复.如果能够预计延迟时间,那么响应中可以包含一个 <code>Retry-After:</code>头用以标明这个延迟时间.如果没有给出这个 <code>Retry-After:</code>信息，那么客户端应当以处理500响应的方式处理它.同时,这种情况下,一个友好的用于解释服务器出现问题的页面应当被返回,并且,缓存相关的HTTP头信息也应该包含,因为通常这种错误提示网页不应当被客户端缓存.</td>
+<td align="left">HTTP&#x2F;0.9可用</td>
+</tr>
+<tr>
+<td align="left">504</td>
+<td align="left">Gateway Timeout (网关超时)</td>
+<td align="left">服务器作为网关且不能从上游服务器及时的得到响应返回给客户端.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">505</td>
+<td align="left">HTTP Version Not Supported (HTTP版本不受支持)</td>
+<td align="left">服务器不支持客户端发送的HTTP请求中所使用的HTTP协议版本.</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">506</td>
+<td align="left">Variant Also Negotiates</td>
+<td align="left">由《透明内容协商协议》（RFC 2295）扩展，代表服务器存在内部配置错误：被请求的协商变元资源被配置为在透明内容协商中使用自己，因此在一个协商处理中不是一个合适的重点。</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">507</td>
+<td align="left">Insufficient Storage</td>
+<td align="left">服务器无法存储完成请求所必须的内容。这个状况被认为是临时的。WebDAV(RFC 4918)</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">509</td>
+<td align="left">Bandwidth Limit Exceeded</td>
+<td align="left">服务器达到带宽限制。这不是一个官方的状态码，但是仍被广泛使用。</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">510</td>
+<td align="left">Not Extended</td>
+<td align="left">获取资源所需要的策略并没有被满足。（RFC 2774）</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+<tr>
+<td align="left">600</td>
+<td align="left">Unparseable Response Headers</td>
+<td align="left">源站没有返回响应头部，只返回实体内容。</td>
+<td align="left">HTTP&#x2F;1.1可用</td>
+</tr>
+</tbody></table>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/">http://example.com/2022/02/08/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE%E5%8A%9F%E8%AF%BE%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a><a class="post-meta__tags" href="/tags/%E5%9F%9F%E5%90%8D%E5%8D%8F%E8%AE%AE/">域名协议</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2022/02/27/Ventoy-WePE%E8%A3%85%E6%9C%BA%E6%95%99%E7%A8%8B/"><img class="prev_cover lazyload" data-src="https://i.ytimg.com/vi/Pg9bhuXm1XA/hqdefault.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Ventoy+WePE装机教程</div></div></a></div><div class="next-post pull_right"><a href="/2022/02/08/Vuejs%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%E7%AC%94%E8%AE%B0/"><img class="next_cover lazyload" data-src="/img/butterfly.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vuejs入门教程笔记</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2024/07/30/UI组件封装/" title="UI组件封装"><img class="relatedPosts_cover lazyload"data-src="/img/butterfly.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-07-30</div><div class="relatedPosts_title">UI组件封装</div></div></a></div><div class="relatedPosts_item"><a href="/2022/02/08/Vuejs入门教程笔记/" title="Vuejs入门教程笔记"><img class="relatedPosts_cover lazyload"data-src="/img/butterfly.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-02-08</div><div class="relatedPosts_title">Vuejs入门教程笔记</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

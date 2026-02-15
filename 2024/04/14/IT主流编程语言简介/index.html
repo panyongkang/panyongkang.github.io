@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>IT主流编程语言简介 | 向阳榆木</title><meta name="description" content="IT主流编程语言简介"><meta name="keywords" content="主流IT,编程语言,技能排行"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="IT主流编程语言简介"><meta name="twitter:description" content="IT主流编程语言简介"><meta name="twitter:image" content="http://example.com/img/butterfly.jpg"><meta property="og:type" content="article"><meta property="og:title" content="IT主流编程语言简介"><meta property="og:url" content="http://example.com/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="IT主流编程语言简介"><meta property="og:image" content="http://example.com/img/butterfly.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/"><link rel="prev" title="TypeScript入门整理" href="http://example.com/2024/04/20/TypeScript%E5%85%A5%E9%97%A8%E6%95%B4%E7%90%86/"><link rel="next" title="前端项目踩坑笔记" href="http://example.com/2022/11/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#十大主流编程语言"><span class="toc-number">1.</span> <span class="toc-text">十大主流编程语言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编程语言排行对比"><span class="toc-number">2.</span> <span class="toc-text">编程语言排行对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习难度"><span class="toc-number">2.1.</span> <span class="toc-text">学习难度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技能等级"><span class="toc-number">2.2.</span> <span class="toc-text">技能等级</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初级"><span class="toc-number">2.2.1.</span> <span class="toc-text">初级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中级"><span class="toc-number">2.2.2.</span> <span class="toc-text">中级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#高级"><span class="toc-number">2.2.3.</span> <span class="toc-text">高级</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#市场定位要素"><span class="toc-number">2.3.</span> <span class="toc-text">市场定位要素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python语言"><span class="toc-number">3.</span> <span class="toc-text">Python语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python-简介"><span class="toc-number">3.1.</span> <span class="toc-text">Python 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特点"><span class="toc-number">3.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优缺点"><span class="toc-number">3.3.</span> <span class="toc-text">优缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">3.4.</span> <span class="toc-text">应用场景</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/butterfly.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">IT主流编程语言简介</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2024-04-14 21:14:14"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2024-04-14</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2024-12-21 18:14:09"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2024-12-21</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/IT%E9%A2%86%E5%9F%9F/">IT领域</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="十大主流编程语言"><a href="#十大主流编程语言" class="headerlink" title="十大主流编程语言"></a>十大主流编程语言</h2><p>以下是一些关于十大主流编程语言使用领域的简要介绍：</p>
+<ul>
+<li><strong>Python:</strong> Python 是一种通用的编程语言，以其易用性和可读性而闻名。它广泛用于数据科学、人工智能、机器学习、Web 开发和其他领域。</li>
+<li><strong>Java:</strong> Java 是一种面向对象的编程语言，以其安全性、可移植性和可靠性而闻名。它广泛用于企业级应用程序、Android 开发、游戏开发和其他领域。</li>
+<li><strong>JavaScript:</strong> JavaScript 是一种脚本语言，用于为 Web 页面添加交互性。它也是前端开发和移动开发的主要语言之一。</li>
+<li><strong>C&#x2F;C++:</strong> C&#x2F;C++ 是一组强大的编程语言，以其性能和效率而闻名。它们广泛用于系统编程、嵌入式系统、游戏开发和其他领域。</li>
+<li><strong>C#:</strong> C# 是一种面向对象的编程语言，由微软开发。它广泛用于企业级应用程序、游戏开发、Unity 开发和其他领域。</li>
+<li><strong>R:</strong> R 是一种统计编程语言，用于数据分析、统计计算和生物信息学。</li>
+<li><strong>PHP:</strong> PHP 是一种服务器端脚本语言，用于开发动态 Web 页面。</li>
+<li><strong>Go:</strong> Go 是一种由 Google 开发的编程语言。它以其速度、并发性和可扩展性而闻名。它广泛用于系统编程、Web 开发和云计算。</li>
+<li><strong>Swift:</strong> Swift 是一种由 Apple 开发的编程语言，用于开发 iOS 和 macOS 应用程序。</li>
+<li><strong>Kotlin:</strong> Kotlin 是一种跨平台编程语言，用于开发 Android 和服务器端应用程序。</li>
+</ul>
+<h2 id="编程语言排行对比"><a href="#编程语言排行对比" class="headerlink" title="编程语言排行对比"></a>编程语言排行对比</h2><p>以下是目前世界上十大主流编程语言的情况对比：</p>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>编程语言</th>
+<th>使用领域</th>
+<th>流行度</th>
+<th>学习难度</th>
+<th>推荐开发工具</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Python</td>
+<td>数据科学、人工智能、机器学习、Web 开发</td>
+<td>21.9%</td>
+<td>初学者</td>
+<td>Visual Studio Code、<br />PyCharm、Spyder</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Java</td>
+<td>企业级应用程序、Android 开发、游戏开发</td>
+<td>17.5%</td>
+<td>中级</td>
+<td>IntelliJ IDEA、Eclipse、<br />NetBeans</td>
+</tr>
+<tr>
+<td>3</td>
+<td>JavaScript</td>
+<td>Web 开发、前端开发、移动开发</td>
+<td>16.4%</td>
+<td>初学者-中级</td>
+<td>Visual Studio Code、<br />WebStorm、Sublime Text</td>
+</tr>
+<tr>
+<td>4</td>
+<td>C&#x2F;C++</td>
+<td>系统编程、嵌入式系统、游戏开发</td>
+<td>15.4%</td>
+<td>高级</td>
+<td>Visual Studio、Code::Blocks、CLion</td>
+</tr>
+<tr>
+<td>5</td>
+<td>C#</td>
+<td>企业级应用程序、游戏开发、Unity 开发</td>
+<td>8.2%</td>
+<td>中级</td>
+<td>Visual Studio、Rider、<br />MonoDevelop</td>
+</tr>
+<tr>
+<td>6</td>
+<td>R</td>
+<td>数据分析、统计计算、生物信息学</td>
+<td>6.6%</td>
+<td>中级</td>
+<td>RStudio、R Commander、<br />Jupyter Notebook</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PHP</td>
+<td>Web 开发、服务器端编程</td>
+<td>5.9%</td>
+<td>初学者-中级</td>
+<td>Visual Studio Code、<br />PHPStorm、Sublime Text</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Go</td>
+<td>系统编程、Web 开发、云计算</td>
+<td>5.4%</td>
+<td>中级</td>
+<td>Visual Studio Code、<br />GoLand、Vim</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Swift</td>
+<td>iOS 开发、macOS 开发</td>
+<td>4.3%</td>
+<td>中级-高级</td>
+<td>Xcode、AppCode</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kotlin</td>
+<td>Android 开发、服务器端开发</td>
+<td>3.9%</td>
+<td>中级</td>
+<td>IntelliJ IDEA、Android Studio、<br />Visual Studio Code</td>
+</tr>
+</tbody></table>
+<h3 id="学习难度"><a href="#学习难度" class="headerlink" title="学习难度"></a><strong>学习难度</strong></h3><ul>
+<li><strong>初学者:</strong> 这些语言相对容易学习，学习曲线平缓。对于初学者来说，这是一个不错的选择，他们刚接触编程。</li>
+<li><strong>中级:</strong> 这些语言需要更多的时间和精力来学习，但对于大多数具有一定编程经验的人来说仍然是可以接受的。</li>
+<li><strong>高级:</strong> 这些语言是最难学习的，需要扎实的编程概念基础。它们通常用于复杂且要求苛刻的应用程序。</li>
+</ul>
+<h3 id="技能等级"><a href="#技能等级" class="headerlink" title="技能等级"></a>技能等级</h3><p>以下是一些关于初级、中级和高级编程人员的技能要求的一般准则：</p>
+<h4 id="初级"><a href="#初级" class="headerlink" title="初级"></a><strong>初级</strong></h4><ul>
+<li>了解编程语言的基础知识，包括语法、数据类型和控制流语句。</li>
+<li>能够编写简单的程序来执行基本任务。</li>
+<li>对软件开发的基本概念有一些了解，例如面向对象编程和设计模式。</li>
+</ul>
+<h4 id="中级"><a href="#中级" class="headerlink" title="中级"></a><strong>中级</strong></h4><ul>
+<li>能够编写更复杂和健壮的程序。</li>
+<li>对软件开发原理有更深入的了解。</li>
+<li>能够使用版本控制系统和其他开发工具。</li>
+<li>拥有一些工作经验。</li>
+</ul>
+<h4 id="高级"><a href="#高级" class="headerlink" title="高级"></a><strong>高级</strong></h4><ul>
+<li>能够设计和开发复杂的软件系统。</li>
+<li>对软件架构和设计模式有深入的了解。</li>
+<li>能够领导和指导其他开发人员。</li>
+<li>拥有丰富的经验。</li>
+</ul>
+<p>当然，这些只是一般准则。实际技能要求可能会有所不同，具体取决于特定工作和公司。</p>
+<h3 id="市场定位要素"><a href="#市场定位要素" class="headerlink" title="市场定位要素"></a>市场定位要素</h3><p>编程语言的薪资和技能要求等级通常根据以下几个因素来定位：</p>
+<ul>
+<li><strong>需求量:</strong> 需求量大的编程语言往往薪资较高，因为这意味着对具有该语言技能的开发人员的需求量更大。例如，Python 和 Java 都是需求量很大的语言，因此它们的薪资通常高于其他语言。</li>
+<li><strong>稀缺性:</strong> 稀缺的编程语言往往薪资较高，因为这意味着具有该语言技能的开发人员较少。例如，Go 和 Swift 都是相对较新的语言，因此它们的薪资往往高于其他更成熟的语言。</li>
+<li><strong>难度:</strong> 难度较高的编程语言往往薪资较高，因为这意味着掌握这些语言需要更多的技能和经验。例如，C&#x2F;C++ 和 Rust 都是难度较高的语言，因此它们的薪资通常高于其他语言。</li>
+<li><strong>行业:</strong> 不同行业的薪资水平差异很大。例如，在科技行业工作的开发人员往往比在其他行业工作的开发人员薪资更高。</li>
+<li><strong>经验:</strong> 拥有更多经验的开发人员往往薪资更高。随着您在特定语言方面的经验增长，您可以期望获得更高的薪资。</li>
+<li><strong>地点:</strong> 不同地区的薪资水平差异很大。例如，在生活成本较高的地区工作的开发人员往往比在生活成本较低的地区工作的开发人员薪资更高。</li>
+</ul>
+<h2 id="Python语言"><a href="#Python语言" class="headerlink" title="Python语言"></a>Python语言</h2><h3 id="Python-简介"><a href="#Python-简介" class="headerlink" title="Python 简介"></a>Python 简介</h3><p>Python 是一种高级编程语言，以其易读、易用、功能强大而闻名。它由荷兰人 Guido van Rossum 于 1991 年创建，旨在为初学者提供一种简单易学的编程语言。</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
+<li><strong>易读易用：</strong> Python 语法简洁明了，接近自然语言，即使是初学者也能快速上手。</li>
+<li><strong>功能强大：</strong> Python 拥有丰富的标准库和第三方库，可以满足各种编程需求。</li>
+<li><strong>跨平台兼容：</strong> Python 可以运行在 Windows、Linux、macOS 等多种操作系统上。</li>
+<li><strong>开源免费：</strong> Python 是开源软件，免费提供使用和修改。</li>
+</ul>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>优点：</strong></p>
+<ul>
+<li>开发效率高</li>
+<li>可移植性强</li>
+<li>解释执行，无需编译</li>
+<li>面向对象编程支持</li>
+<li>丰富的库和社区资源</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>执行效率低于编译型语言</li>
+<li>不适合对性能要求极高的场合</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li><strong>Web 开发：</strong> Django、Flask 等流行的 Web 框架都是基于 Python 开发的。</li>
+<li><strong>数据科学和机器学习：</strong> NumPy、Pandas、scikit-learn 等数据科学和机器学习库都是基于 Python 开发的。</li>
+<li><strong>自动化运维：</strong> Ansible、Fabric 等自动化运维工具都是基于 Python 开发的。</li>
+<li><strong>科学计算：</strong> Python 常用于科学计算和建模。</li>
+<li><strong>教育：</strong> Python 因其易用性而成为很多学校的编程入门语言。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/">http://example.com/2024/04/14/IT%E4%B8%BB%E6%B5%81%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%BB%E6%B5%81IT/">主流IT</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a><a class="post-meta__tags" href="/tags/%E6%8A%80%E8%83%BD%E6%8E%92%E8%A1%8C/">技能排行</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2024/04/20/TypeScript%E5%85%A5%E9%97%A8%E6%95%B4%E7%90%86/"><img class="prev_cover lazyload" data-src="/img/butterfly.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">TypeScript入门整理</div></div></a></div><div class="next-post pull_right"><a href="/2022/11/18/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE/"><img class="next_cover lazyload" data-src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2674621151,307240708&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">前端项目踩坑笔记</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

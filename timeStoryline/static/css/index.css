@@ -1,0 +1,194 @@
+/* 全局基础重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* ===== 顶部导航栏 ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .nav-items button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-items button:hover {
+    background-color: #ccc;
+}
+
+/* ===== 时间线容器 ===== */
+.timeline-container {
+    width: 80%;
+    margin: 40px auto;
+    position: relative;
+    /* 用于放置时间线伪元素 */
+    padding-bottom: 40px;
+}
+
+/* 时间线：使用伪元素从上到下贯穿容器 */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    /* 水平居中 */
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    /* 全高度覆盖 */
+    width: 2px;
+    background: #ccc;
+    z-index: 0;
+}
+
+/* ===== 单个事件的行容器 ===== */
+.event-row {
+    position: relative;
+    /* 内部绝对定位小圆点 */
+    margin-bottom: 30px;
+    /* 行间距 */
+    min-height: 60px;
+    /* 保证有一定高度 */
+}
+
+/* 清除内部浮动，避免高度塌陷 */
+.event-row::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+/* ===== 小圆点：独立元素，贴时间线 ===== */
+.circle {
+    position: absolute;
+    left: 50%;
+    /* 与时间线对齐 */
+    transform: translateX(-50%);
+    top: 1.5em;
+    /* 与卡片header大致对齐，可微调 */
+    width: 16px;
+    height: 16px;
+    border: 3px solid #007bff;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 2;
+    /* 在卡片之上或之下均可 */
+}
+
+/* ===== 事件卡片 ===== */
+.event-card {
+    position: relative;
+    width: 46%;
+    /* 占父容器一部分 */
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* 左侧卡片：浮动到左侧，文本左对齐 */
+.left-card {
+    float: left;
+    text-align: left;
+}
+
+/* 右侧卡片：浮动到右侧，文本左对齐 */
+.right-card {
+    float: right;
+    text-align: left;
+}
+
+/* ===== 响应式：小屏改为单列 ===== */
+@media screen and (max-width: 768px) {
+    .timeline-container {
+        width: 90%;
+    }
+
+    .timeline-container::before {
+        left: 20px;
+        /* 时间线贴左 */
+        transform: none;
+    }
+
+    .event-row {
+        margin-bottom: 30px;
+    }
+
+    .circle {
+        left: 20px;
+        /* 小圆点贴左 */
+        transform: none;
+    }
+
+    .event-card,
+    .left-card,
+    .right-card {
+        float: none;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* ====== 卡片内容示例样式 ====== */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.card-header .sender {
+    font-weight: bold;
+    color: #555;
+}
+
+.card-header .time {
+    font-size: 14px;
+    color: #999;
+}
+
+.card-content {
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+.card-content img,
+.card-content video {
+    border-radius: 4px;
+    margin-top: 8px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    /* 或其他常用宽高比，如 4/3 */
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+}

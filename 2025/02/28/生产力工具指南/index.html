@@ -1,0 +1,240 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>生产力工具指南 | 向阳榆木</title><meta name="description" content="生产力工具指南"><meta name="keywords" content="开发工具,Adobe,办公软件,WPS"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="生产力工具指南"><meta name="twitter:description" content="生产力工具指南"><meta name="twitter:image" content="http://example.com/img/butterfly.jpg"><meta property="og:type" content="article"><meta property="og:title" content="生产力工具指南"><meta property="og:url" content="http://example.com/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="生产力工具指南"><meta property="og:image" content="http://example.com/img/butterfly.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/"><link rel="prev" title="散装理论知识汇集地" href="http://example.com/2025/04/12/%E6%95%A3%E8%A3%85%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E6%B1%87%E9%9B%86%E5%9C%B0/"><link rel="next" title="网络支付的演变与未来" href="http://example.com/2025/02/09/%E7%BD%91%E7%BB%9C%E6%94%AF%E4%BB%98%E7%9A%84%E6%BC%94%E5%8F%98%E4%B8%8E%E6%9C%AA%E6%9D%A5/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创意设计必备"><span class="toc-number">1.</span> <span class="toc-text">创意设计必备</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Adobe全家桶系列"><span class="toc-number">1.1.</span> <span class="toc-text">Adobe全家桶系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Photoshop（PS）"><span class="toc-number">1.1.1.</span> <span class="toc-text">Adobe Photoshop（PS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Lightroom（LR）"><span class="toc-number">1.1.2.</span> <span class="toc-text">Adobe Lightroom（LR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Illustrator（AI）"><span class="toc-number">1.1.3.</span> <span class="toc-text">Adobe Illustrator（AI）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-InDesign（ID）"><span class="toc-number">1.1.4.</span> <span class="toc-text">Adobe InDesign（ID）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Premiere-Pro（PR）"><span class="toc-number">1.1.5.</span> <span class="toc-text">Adobe Premiere Pro（PR）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-After-Effects（AE）"><span class="toc-number">1.1.6.</span> <span class="toc-text">Adobe After Effects（AE）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Audition（AU）"><span class="toc-number">1.1.7.</span> <span class="toc-text">Adobe Audition（AU）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Dreamweaver（DW）"><span class="toc-number">1.1.8.</span> <span class="toc-text">Adobe Dreamweaver（DW）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Animate（AN）"><span class="toc-number">1.1.9.</span> <span class="toc-text">Adobe Animate（AN）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-XD"><span class="toc-number">1.1.10.</span> <span class="toc-text">Adobe XD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#冷门神器推荐"><span class="toc-number">1.2.</span> <span class="toc-text">冷门神器推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adobe-Fresco"><span class="toc-number">1.2.1.</span> <span class="toc-text">Adobe Fresco</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#办公常用工具"><span class="toc-number">2.</span> <span class="toc-text">办公常用工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Microsoft-Office-系列"><span class="toc-number">2.1.</span> <span class="toc-text">Microsoft Office 系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WPS-Office系列"><span class="toc-number">2.2.</span> <span class="toc-text">WPS Office系列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#程序员开发利器"><span class="toc-number">3.</span> <span class="toc-text">程序员开发利器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前端开发工具"><span class="toc-number">3.1.</span> <span class="toc-text">前端开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-GitHub-Copilot"><span class="toc-number">3.1.1.</span> <span class="toc-text">VS Code + GitHub Copilot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Figma"><span class="toc-number">3.1.2.</span> <span class="toc-text">Figma</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后端开发工具"><span class="toc-number">3.2.</span> <span class="toc-text">后端开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Postman-→-Insomnia"><span class="toc-number">3.2.1.</span> <span class="toc-text">Postman → Insomnia</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Kubernetes"><span class="toc-number">3.2.2.</span> <span class="toc-text">Docker + Kubernetes</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker-是什么"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">Docker 是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Kubernetes-K8s-是什么"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">Kubernetes (K8s) 是什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#K8s-和-Docker-的关系"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">K8s 和 Docker 的关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#K8s-能管理-Docker-吗"><span class="toc-number">3.2.2.4.</span> <span class="toc-text">K8s 能管理 Docker 吗</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运维开发工具"><span class="toc-number">3.3.</span> <span class="toc-text">运维开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus-Grafana"><span class="toc-number">3.3.1.</span> <span class="toc-text">Prometheus + Grafana</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins"><span class="toc-number">3.3.2.</span> <span class="toc-text">Jenkins</span></a></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/butterfly.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">生产力工具指南</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2025-02-28 22:41:39"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2025-02-28</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-09-20 23:26:19"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-09-20</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB%E5%B0%8F%E6%8A%80%E8%83%BD/">生活小技能</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><p><strong>Adobe全家桶+WPS神操作+程序员利器推荐，一篇搞定所有生产力述求。</strong></p>
+<hr>
+<h1 id="创意设计必备"><a href="#创意设计必备" class="headerlink" title="创意设计必备"></a><strong>创意设计必备</strong></h1><h2 id="Adobe全家桶系列"><a href="#Adobe全家桶系列" class="headerlink" title="Adobe全家桶系列"></a><strong>Adobe全家桶系列</strong></h2><p>Adobe公司提供了一系列强大且专业的创意软件，俗称“Adobe全家桶”。这些软件广泛应用于图像处理、视频编辑、音频处理、网页设计等领域。对于初学者而言，了解各个软件的基本功能，有助于选择适合自己的工具。以下是对Adobe全家桶中主要软件的简要介绍，按照从基础到高级的顺序，帮助新手逐步入门。</p>
+<h3 id="Adobe-Photoshop（PS）"><a href="#Adobe-Photoshop（PS）" class="headerlink" title="Adobe Photoshop（PS）"></a>Adobe Photoshop（PS）</h3><p> <strong>功能</strong> ：专业的图像处理软件，可用于照片修饰、海报设计、绘画等。</p>
+<p> <strong>适用人群</strong> ：摄影师、平面设计师、插画师，以及任何需要处理图像的用户。</p>
+<p> <strong>特点</strong> ：支持丰富的滤镜和特效，强大的图层功能，广泛应用于各类图像编辑工作。</p>
+<h3 id="Adobe-Lightroom（LR）"><a href="#Adobe-Lightroom（LR）" class="headerlink" title="Adobe Lightroom（LR）"></a>Adobe Lightroom（LR）</h3><p> <strong>功能</strong> ：专为摄影师设计的照片管理和编辑软件，侧重于批量处理和调色。</p>
+<p> <strong>适用人群</strong> ：摄影师、照片编辑者。</p>
+<p> <strong>特点</strong> ：提供非破坏性的编辑方式，方便组织和管理大量照片。</p>
+<h3 id="Adobe-Illustrator（AI）"><a href="#Adobe-Illustrator（AI）" class="headerlink" title="Adobe Illustrator（AI）"></a>Adobe Illustrator（AI）</h3><p> <strong>功能</strong> ：矢量图形设计软件，用于创建插画、徽标、图标等。</p>
+<p> <strong>适用人群</strong> ：平面设计师、插画师、品牌设计师。</p>
+<p> <strong>特点</strong> ：矢量图形具有无限缩放不失真的优势，适合需要高精度的设计工作。</p>
+<h3 id="Adobe-InDesign（ID）"><a href="#Adobe-InDesign（ID）" class="headerlink" title="Adobe InDesign（ID）"></a>Adobe InDesign（ID）</h3><p> <strong>功能</strong> ：专业的排版设计软件，主要用于书籍、杂志、报纸等印刷品的版面设计。</p>
+<p> <strong>适用人群</strong> ：排版设计师、出版从业者。</p>
+<p> <strong>特点</strong> ：强大的文字和图形混排功能，支持多页文档的统一管理。</p>
+<h3 id="Adobe-Premiere-Pro（PR）"><a href="#Adobe-Premiere-Pro（PR）" class="headerlink" title="Adobe Premiere Pro（PR）"></a>Adobe Premiere Pro（PR）</h3><p> <strong>功能</strong> ：专业的视频编辑软件，用于剪辑、编辑和制作视频内容。</p>
+<p> <strong>适用人群</strong> ：视频编辑师、影视制作人、自媒体从业者。</p>
+<p> <strong>特点</strong> ：支持多轨道编辑，兼容多种视频格式，提供丰富的特效和转场。</p>
+<h3 id="Adobe-After-Effects（AE）"><a href="#Adobe-After-Effects（AE）" class="headerlink" title="Adobe After Effects（AE）"></a>Adobe After Effects（AE）</h3><p> <strong>功能</strong> ：视觉特效和动态图形制作软件，常用于影视特效、动画制作等。</p>
+<p> <strong>适用人群</strong> ：特效师、动画师、视频制作人。</p>
+<p> <strong>特点</strong> ：提供强大的合成和动画工具，可制作复杂的视觉效果。</p>
+<h3 id="Adobe-Audition（AU）"><a href="#Adobe-Audition（AU）" class="headerlink" title="Adobe Audition（AU）"></a>Adobe Audition（AU）</h3><p> <strong>功能</strong> ：专业的音频编辑和混音软件，用于录音、音频修复、混音等。</p>
+<p> <strong>适用人群</strong> ：音频工程师、播客制作人、音乐制作人。</p>
+<p> <strong>特点</strong> ：多轨编辑环境，丰富的音频效果器，支持音频降噪和修复。</p>
+<h3 id="Adobe-Dreamweaver（DW）"><a href="#Adobe-Dreamweaver（DW）" class="headerlink" title="Adobe Dreamweaver（DW）"></a>Adobe Dreamweaver（DW）</h3><p> <strong>功能</strong> ：网页设计和开发软件，支持HTML、CSS、JavaScript等。</p>
+<p> <strong>适用人群</strong> ：前端开发者、网页设计师。</p>
+<p> <strong>特点</strong> ：所见即所得的编辑模式，集成代码提示和自动完成功能。</p>
+<h3 id="Adobe-Animate（AN）"><a href="#Adobe-Animate（AN）" class="headerlink" title="Adobe Animate（AN）"></a>Adobe Animate（AN）</h3><p> <strong>功能</strong> ：二维动画制作软件，用于创建交互式动画和多媒体内容。</p>
+<p> <strong>适用人群</strong> ：动画师、网页设计师、游戏开发者。</p>
+<p> <strong>特点</strong> ：支持多平台发布，提供丰富的绘图和动画工具。</p>
+<h3 id="Adobe-XD"><a href="#Adobe-XD" class="headerlink" title="Adobe XD"></a>Adobe XD</h3><p> <strong>功能</strong> ：用户体验和界面设计软件，用于设计应用程序和网站的原型。</p>
+<p> <strong>适用人群</strong> ：UI&#x2F;UX设计师、产品经理。</p>
+<p> <strong>特点</strong> ：支持原型制作和实时预览，方便进行用户测试和反馈。</p>
+<h2 id="冷门神器推荐"><a href="#冷门神器推荐" class="headerlink" title="冷门神器推荐"></a><strong>冷门神器推荐</strong></h2><h3 id="Adobe-Fresco"><a href="#Adobe-Fresco" class="headerlink" title="Adobe Fresco"></a><strong>Adobe Fresco</strong></h3><p><strong>功能</strong> ：专注于数字绘画与手绘风格设计，支持矢量与像素混合创作。<br><strong>适用人群</strong> ：插画师、手绘爱好者、平板用户（iPad&#x2F;Windows触控设备）。<br><strong>特点</strong> ：</p>
+<ul>
+<li>模拟真实水彩、油画笔触，支持压感笔触动态。</li>
+<li>与PS&#x2F;AI无缝联动，可直接导出PSD文件。<br><strong>小贴士</strong> ：搭配Wacom数位板使用效果更佳，适合快速绘制草图和概念设计。</li>
+</ul>
+<h1 id="办公常用工具"><a href="#办公常用工具" class="headerlink" title="办公常用工具"></a><strong>办公常用工具</strong></h1><h2 id="Microsoft-Office-系列"><a href="#Microsoft-Office-系列" class="headerlink" title="Microsoft Office 系列"></a>Microsoft Office 系列</h2><ol>
+<li><strong>Word</strong> ：文字处理软件，用于创建和编辑文本文档。</li>
+<li><strong>Excel</strong> ：电子表格软件，用于数据分析和处理。</li>
+<li><strong>PowerPoint</strong> ：演示文稿软件，用于制作幻灯片演示。</li>
+<li><strong>Outlook</strong> ：电子邮件和日程管理工具。</li>
+<li><strong>Access</strong> ：数据库管理系统。</li>
+<li><strong>OneNote</strong> ：数字笔记本，用于信息收集和整理。</li>
+<li><strong>Publisher</strong> ：桌面出版软件，用于设计和制作宣传材料。</li>
+</ol>
+<h2 id="WPS-Office系列"><a href="#WPS-Office系列" class="headerlink" title="WPS Office系列"></a>WPS Office系列</h2><ol>
+<li><strong>WPS文字</strong> ：文字处理软件。</li>
+<li><strong>WPS表格</strong> ：电子表格软件。</li>
+<li><strong>WPS演示</strong> ：演示文稿软件。</li>
+<li><strong>WPS PDF</strong> ：PDF阅读和编辑工具。</li>
+</ol>
+<h1 id="程序员开发利器"><a href="#程序员开发利器" class="headerlink" title="程序员开发利器"></a><strong>程序员开发利器</strong></h1><h2 id="前端开发工具"><a href="#前端开发工具" class="headerlink" title="前端开发工具"></a><strong>前端开发工具</strong></h2><h3 id="VS-Code-GitHub-Copilot"><a href="#VS-Code-GitHub-Copilot" class="headerlink" title="VS Code + GitHub Copilot"></a><strong>VS Code + GitHub Copilot</strong></h3><p><strong>功能</strong> ：智能代码补全、语法高亮、Git集成。<br><strong>适用人群</strong> ：全栈开发者、前端新手。<br><strong>特点</strong> ：</p>
+<ul>
+<li>输入注释描述需求，Copilot自动生成代码片段（如“实现一个轮播图”）。</li>
+<li>插件推荐：Live Server（实时预览）、Prettier（代码格式化）。</li>
+</ul>
+<h3 id="Figma"><a href="#Figma" class="headerlink" title="Figma"></a><strong>Figma</strong></h3><p><strong>功能</strong> ：UI&#x2F;UX设计工具，支持设计稿转前端代码。<br><strong>适用人群</strong> ：前端工程师、UI设计师。<br><strong>特点</strong> ：</p>
+<ul>
+<li>设计稿可直接导出为CSS代码或React组件。</li>
+<li>团队协作模式下，开发与设计同步评审。</li>
+</ul>
+<h2 id="后端开发工具"><a href="#后端开发工具" class="headerlink" title="后端开发工具"></a>后端开发工具</h2><h3 id="Postman-→-Insomnia"><a href="#Postman-→-Insomnia" class="headerlink" title="Postman → Insomnia"></a><strong>Postman → Insomnia</strong></h3><p><strong>功能</strong> ：API接口调试与管理工具。<br><strong>适用人群</strong> ：后端工程师、测试工程师。<br><strong>特点</strong> ：</p>
+<ul>
+<li>轻量化替代方案（Insomnia）启动更快，界面更简洁。</li>
+<li>支持自动生成API文档（OpenAPI格式）。</li>
+</ul>
+<h3 id="Docker-Kubernetes"><a href="#Docker-Kubernetes" class="headerlink" title="Docker + Kubernetes"></a><strong>Docker + Kubernetes</strong></h3><p><strong>功能</strong> ：容器化部署与集群管理。<br><strong>适用人群</strong> ：运维工程师、全栈开发者。<br><strong>特点</strong> ：</p>
+<ul>
+<li>本地开发环境与生产环境一致，避免“在我电脑上能跑”问题。</li>
+<li>快速横向扩展服务，应对高并发场景。</li>
+</ul>
+<h4 id="Docker-是什么"><a href="#Docker-是什么" class="headerlink" title="Docker 是什么"></a>Docker 是什么</h4><ul>
+<li><strong>定义</strong>：Docker 是一种容器化技术，允许开发者将应用及其依赖（如库、配置文件）打包成一个轻量级、可移植的容器。容器是基于操作系统级虚拟化（共享宿主机的内核），比传统虚拟机更高效。</li>
+<li><strong>核心功能</strong>：<ul>
+<li>构建容器镜像（<code>Dockerfile</code> 定义）。</li>
+<li>运行容器（<code>docker run</code>）。</li>
+<li>管理容器生命周期（启动、停止、删除）。</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：开发、测试、单一服务器部署。</li>
+<li><strong>特点</strong>：简单易用，适合个人或小规模项目，但缺乏自动扩展、负载均衡等高级功能。</li>
+</ul>
+<h4 id="Kubernetes-K8s-是什么"><a href="#Kubernetes-K8s-是什么" class="headerlink" title="Kubernetes (K8s) 是什么"></a>Kubernetes (K8s) 是什么</h4><ul>
+<li><strong>定义</strong>：Kubernetes 是一个开源的容器编排平台，旨在管理多个容器化应用，自动化部署、扩展和运维。</li>
+<li><strong>核心功能</strong>：<ul>
+<li>容器调度：将容器分配到集群中的节点。</li>
+<li>自动扩展：根据负载调整 Pod 数量（Horizontal Pod Autoscaler）。</li>
+<li>自愈：检测容器故障，自动重启或替换。</li>
+<li>服务发现与负载均衡：通过 Service 实现容器间通信。</li>
+<li>滚动更新：零停机升级应用。</li>
+</ul>
+</li>
+<li><strong>使用场景</strong>：大规模生产环境、分布式系统、多节点集群。</li>
+<li><strong>特点</strong>：复杂但强大，需学习（1-2 个月上手），适合企业级应用。</li>
+</ul>
+<h4 id="K8s-和-Docker-的关系"><a href="#K8s-和-Docker-的关系" class="headerlink" title="K8s 和 Docker 的关系"></a>K8s 和 Docker 的关系</h4><ul>
+<li><strong>层次关系</strong>：<ul>
+<li>Docker 提供容器运行时（Container Runtime），负责创建和运行容器。</li>
+<li>Kubernetes 是一个更高层次的编排工具，管理 Docker 容器（或其他运行时，如 containerd）。</li>
+<li>简单比喻：Docker 像“工人”造房子（容器），K8s 像“建筑师”规划和管理整个工地（集群）。</li>
+</ul>
+</li>
+<li><strong>协作方式</strong>：<ul>
+<li>K8s 通过 <strong>Container Runtime Interface (CRI)</strong> 与 Docker 交互。Docker 作为默认运行时，K8s 使用 <code>dockershim</code>（现已移除，2025 年多用 containerd）调度容器。</li>
+<li>你在 K8s 中定义 <strong>Pod</strong>（一组容器的最小单位），K8s 告诉 Docker 在指定节点上运行这些 Pod。</li>
+<li>示例：<code>kubectl apply -f deployment.yaml</code> 会触发 K8s 创建 Pod，Docker 执行容器启动。</li>
+</ul>
+</li>
+<li><strong>依赖性</strong>：K8s 不强制依赖 Docker（可换成 containerd 或 CRI-O），但 Docker 是最常见的运行时，2025 年仍占 60%+ 市场份额。</li>
+</ul>
+<h4 id="K8s-能管理-Docker-吗"><a href="#K8s-能管理-Docker-吗" class="headerlink" title="K8s 能管理 Docker 吗"></a>K8s 能管理 Docker 吗</h4><ul>
+<li><strong>答案</strong>：是的，K8s 可以管理 Docker 容器，但管理的是“编排层面”，而非直接操作单个容器。</li>
+<li><strong>具体管理</strong>：<ul>
+<li><strong>部署</strong>：通过 Deployment 或 StatefulSet 定义容器组，K8s 自动调度到节点并用 Docker 运行。</li>
+<li><strong>扩展</strong>：根据 CPU&#x2F;内存使用，K8s 调整 Pod 数量，Docker 负责实例化。</li>
+<li><strong>健康检查</strong>：K8s 监控 Pod 状态（如 Liveness Probe），Docker 重启失败容器。</li>
+<li><strong>网络</strong>：K8s 配置 Service&#x2F;CNI，Docker 容器通过网络桥接通信。</li>
+</ul>
+</li>
+<li><strong>限制</strong>：K8s 不管理 Docker 的镜像构建（仍需 <code>docker build</code>），也不直接干预容器内部（如日志需用 K8s 日志收集器）。</li>
+</ul>
+<h2 id="运维开发工具"><a href="#运维开发工具" class="headerlink" title="运维开发工具"></a>运维开发工具</h2><h3 id="Prometheus-Grafana"><a href="#Prometheus-Grafana" class="headerlink" title="Prometheus + Grafana"></a><strong>Prometheus + Grafana</strong></h3><p><strong>功能</strong> ：系统监控与可视化告警。<br><strong>适用人群</strong> ：运维工程师、DevOps团队。<br><strong>特点</strong> ：</p>
+<ul>
+<li>自定义监控指标（如服务器CPU、数据库查询耗时）。</li>
+<li>通过Grafana仪表盘实时展示数据，支持短信&#x2F;邮件告警。</li>
+</ul>
+<h3 id="Jenkins"><a href="#Jenkins" class="headerlink" title="Jenkins"></a><strong>Jenkins</strong></h3><p><strong>功能</strong> ：持续集成与自动化部署（CI&#x2F;CD）。<br><strong>适用人群</strong> ：中大型项目团队、追求敏捷开发的企业。<br><strong>特点</strong> ：</p>
+<ul>
+<li>代码提交后自动触发测试、构建、部署流程。</li>
+<li>支持与GitHub、GitLab无缝集成。</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/">http://example.com/2025/02/28/%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7%E6%8C%87%E5%8D%97/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a><a class="post-meta__tags" href="/tags/Adobe/">Adobe</a><a class="post-meta__tags" href="/tags/%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6/">办公软件</a><a class="post-meta__tags" href="/tags/WPS/">WPS</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2025/04/12/%E6%95%A3%E8%A3%85%E7%90%86%E8%AE%BA%E7%9F%A5%E8%AF%86%E6%B1%87%E9%9B%86%E5%9C%B0/"><img class="prev_cover lazyload" data-src="/img/butterfly.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">散装理论知识汇集地</div></div></a></div><div class="next-post pull_right"><a href="/2025/02/09/%E7%BD%91%E7%BB%9C%E6%94%AF%E4%BB%98%E7%9A%84%E6%BC%94%E5%8F%98%E4%B8%8E%E6%9C%AA%E6%9D%A5/"><img class="next_cover lazyload" data-src="https://mpimg.cn/view.php/2fa269b217b58f2389b89e09d904ad7c.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">网络支付的演变与未来</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2022/02/04/IDE工具教程/" title="IDE工具教程"><img class="relatedPosts_cover lazyload"data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/VSCode%E5%B7%A5%E5%85%B7%E6%95%99%E7%A8%8B.png"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2022-02-04</div><div class="relatedPosts_title">IDE工具教程</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

@@ -1,0 +1,72 @@
+﻿.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+	font-weight: 600;
+}
+
+<!--自定义分享按钮CSS -->
+.pin-view .tool-bar .huaban-share-unit {
+    position: absolute;
+    right: 50px;
+    top: 0
+}
+
+.huaban-share-unit {
+    width: 200px;
+	margin-top: 5px;
+    height: 30px;
+    line-height: 40px;
+    text-align: right;
+    position: relative
+}
+
+.huaban-share-unit .share-btns {
+    height: 28px;
+    width: 110px;
+    background: #fafafa;
+    border: 1px solid #ededed;
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer
+}
+
+.huaban-share-unit .share-btns .share-btn {
+    height: 28px;
+    width: 30px;
+    display: inline-block;
+    background: url(https://huaban.com/img/pin_view/share_icon.svg ) 6px 4px no-repeat;
+    position: relative
+}
+
+.huaban-share-unit .share-btns .weibo:hover {
+    background-position: -34px 4px
+}
+
+.huaban-share-unit .share-btns .qzone {
+    background-position: 6px -36px
+}
+
+.huaban-share-unit .share-btns .qzone:hover {
+    background-position: -34px -36px
+}
+
+.huaban-share-unit .share-btns .weixin {
+    background-position: 6px -276px
+}
+
+.huaban-share-unit .share-btns .weixin:hover {
+    background-position: -34px -276px
+}
+
+.huaban-share-unit .share-btns a.qq {
+    background-position: 8px -156px
+}
+
+.huaban-share-unit .share-btns a.qq:hover {
+    background-position: -32px -156px
+}

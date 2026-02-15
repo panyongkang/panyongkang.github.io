@@ -1,0 +1,116 @@
+﻿
+/**花瓣飘落特效CSS **/
+	html,body{padding:0;margin:0;}
+	.darkBg{background:#3a3a3a;}
+	*{margin:0;padding:0;}
+	body{background-color:#FFF;}
+	.snowfall-flakes{animation:sakura 1s linear 0s infinite;}
+	@keyframes sakura{
+		0% {transform:rotate3d(0, 0, 0, 0deg);}
+		25%{transform:rotate3d(1, 1, 0, 60deg);}
+		50%{transform:rotate3d(1, 1, 0, 0deg);}
+		75%{transform:rotate3d(1, 0, 0, 60deg);}
+		100% {transform:rotate3d(1, 0, 0, 0deg);}
+	}
+	
+/* 全局添加鼠标样式 */
+*{ cursor:url('https://www.trueme.net/images/yuhou_tree.cur'),auto;}
+a:hover {  cursor: url('https://ihuan.me/wp-content/themes/CKoo/1.cur'), pointer !important;
+}
+
+
+/* 梅花灯笼效果 */
+.lantern {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    -webkit-animation: swing1 ease-in-out 5s infinite alternate;
+    animation: swing1 ease-in-out 5s infinite alternate
+}
+
+.lantern-l {
+    left: 0;
+    -webkit-transform-origin: top left;
+    -ms-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-animation: swing1 ease-in-out 5s infinite alternate;
+    animation: swing1 ease-in-out 5s infinite alternate
+}
+
+.lantern-r {
+    right: 0;
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+    -webkit-animation: swing2 ease-in-out 5s infinite alternate;
+    animation: swing2 ease-in-out 5s infinite alternate
+}
+
+@-webkit-keyframes swing1 {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@keyframes swing1 {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@-webkit-keyframes swing2 {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+
+@keyframes swing2 {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+    }
+}
+

@@ -1,0 +1,381 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nodejs | 向阳榆木</title><meta name="description" content="Nodejs"><meta name="keywords" content="Nodejs,npm"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Nodejs"><meta name="twitter:description" content="Nodejs"><meta name="twitter:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=238001970,1745368623&amp;fm=26&amp;gp=0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Nodejs"><meta property="og:url" content="http://example.com/2021/01/03/Nodejs/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="Nodejs"><meta property="og:image" content="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=238001970,1745368623&amp;fm=26&amp;gp=0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2021/01/03/Nodejs/"><link rel="prev" title="Butterfly主题配置Valine评论及邮件提醒" href="http://example.com/2021/01/21/Butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEValine%E8%AF%84%E8%AE%BA%E5%8F%8A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92/"><link rel="next" title="给Hexo博客新增血小板模型" href="http://example.com/2021/01/03/%E7%BB%99Hexo%E5%8D%9A%E5%AE%A2%E6%96%B0%E5%A2%9E%E8%A1%80%E5%B0%8F%E6%9D%BF%E6%A8%A1%E5%9E%8B/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js简介"><span class="toc-number">1.</span> <span class="toc-text">Node.js简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm简介"><span class="toc-number">2.</span> <span class="toc-text">npm简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js和npm的发展"><span class="toc-number">3.</span> <span class="toc-text">Node.js和npm的发展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js和npm的安装"><span class="toc-number">4.</span> <span class="toc-text">Node.js和npm的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm-全局安装和局部安装的区别"><span class="toc-number">5.</span> <span class="toc-text">npm 全局安装和局部安装的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装命令"><span class="toc-number">5.1.</span> <span class="toc-text">安装命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装位置"><span class="toc-number">5.2.</span> <span class="toc-text">安装位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调用方式"><span class="toc-number">5.3.</span> <span class="toc-text">调用方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局安装局限性"><span class="toc-number">5.4.</span> <span class="toc-text">全局安装局限性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地安装的重要性"><span class="toc-number">5.5.</span> <span class="toc-text">本地安装的重要性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#npm的使用"><span class="toc-number">6.</span> <span class="toc-text">npm的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发布包"><span class="toc-number">6.1.</span> <span class="toc-text">发布包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查看发布的包信息"><span class="toc-number">6.2.</span> <span class="toc-text">查看发布的包信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新包"><span class="toc-number">6.3.</span> <span class="toc-text">更新包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除上传的包"><span class="toc-number">6.4.</span> <span class="toc-text">删除上传的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NPM常用命令"><span class="toc-number">6.5.</span> <span class="toc-text">NPM常用命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重装NVM版本管理"><span class="toc-number">7.</span> <span class="toc-text">重装NVM版本管理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是nvm"><span class="toc-number">7.1.</span> <span class="toc-text">什么是nvm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-install-express-g"><span class="toc-number">7.2.</span> <span class="toc-text">npm install express -g</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cnpm的使用"><span class="toc-number">7.3.</span> <span class="toc-text">cnpm的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重新配置SSH-key"><span class="toc-number">7.4.</span> <span class="toc-text">重新配置SSH key</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#①检查SSH-Keys"><span class="toc-number">7.4.1.</span> <span class="toc-text">①检查SSH Keys</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#②生成SSH-key"><span class="toc-number">7.4.2.</span> <span class="toc-text">②生成SSH key</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API接口开发"><span class="toc-number">8.</span> <span class="toc-text">API接口开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#API简介"><span class="toc-number">8.1.</span> <span class="toc-text">API简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开发实现方案"><span class="toc-number">8.2.</span> <span class="toc-text">开发实现方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常见数据库比较"><span class="toc-number">8.3.</span> <span class="toc-text">常见数据库比较</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=238001970,1745368623&amp;fm=26&amp;gp=0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Nodejs</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2021-01-03 19:16:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2021-01-03</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-03-09 19:57:09"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-03-09</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/">前端技术</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2021/01/03/Nodejs/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2021/01/03/Nodejs/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="Node-js简介"><a href="#Node-js简介" class="headerlink" title="Node.js简介"></a>Node.js简介</h2><p> Node.js 就是运行在服务端的 JavaScript。它让 JavaScript 成为与PHP、Python 等服务端语言平起平坐的脚本语言。Node.js是一个事件驱动I&#x2F;O服务端JavaScript环境，基于Google的V8引擎，V8引擎执行Javascript的速度非常快，性能非常好。</p>
+<h2 id="npm简介"><a href="#npm简介" class="headerlink" title="npm简介"></a>npm简介</h2><p>npm 是javascript的包管理工具，是前端模块化下的一个标志性产物，当一个网站依赖的js代码越来越多，程序员发现这是一件很麻烦的事情，于是npm就出来了。这一点和maven、gradle十分相似，只不过maven、gradle是用来管理java jar包的，而npm是用来管理js包的。</p>
+<p>简单地说，就是通过npm下载模块，复用已有的代码，提高工作效率。</p>
+<ol>
+<li>从社区的角度：把针对某一特定问题的模块发布到npm的服务器上，供社区里的其他人下载和使用，同时自己也可以在社区里寻找特定的模块的资源，解决问题。</li>
+<li>从团队的角度：有了npm这个包管理工具，复用团队既有的代码也变的更加地方便。</li>
+</ol>
+<h2 id="Node-js和npm的发展"><a href="#Node-js和npm的发展" class="headerlink" title="Node.js和npm的发展"></a>Node.js和npm的发展</h2><p>npm作者已经将npm开发完成，于是发邮件通知 jQuery、Bootstrap、Underscore 作者，希望他们把 jquery、bootstrap 、 underscore 放到npm远程仓库，但是没有收到回应，于是npm的发展遇到了瓶颈。<br>Node.js作者也将Node.js开发完成，但是 Node.js 缺少一个包管理器，于是他和 npm 的作者一拍即合、抱团取暖，最终 Node.js 内置了 npm。<br>后来的事情大家都知道，Node.js 火了。随着 Node.js 的火爆，大家开始用 npm 来共享 JS 代码了，于是 jQuery 作者也将 jQuery 发布到 npm 了。所以现在，你可以使用 npm install jquery 来下载 jQuery 代码。现在用 npm 来分享代码已经成了前端的标配。</p>
+<h2 id="Node-js和npm的安装"><a href="#Node-js和npm的安装" class="headerlink" title="Node.js和npm的安装"></a>Node.js和npm的安装</h2><p>Node.js的<a href="https://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="noopener">安装教程</a>直接上菜鸟教程有详细介绍。由于最新版的Node.js内置了npm，所以就一并安装了。有时候我们只想单独安装npm，不想安装Node.js，这个好像是不行的。</p>
+<h2 id="npm-全局安装和局部安装的区别"><a href="#npm-全局安装和局部安装的区别" class="headerlink" title="npm 全局安装和局部安装的区别"></a>npm 全局安装和局部安装的区别</h2><h3 id="安装命令"><a href="#安装命令" class="headerlink" title="安装命令"></a>安装命令</h3><p><strong>全局安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack -g 或 npm install webpack --global</span><br></pre></td></tr></table></figure>
+
+<p><strong>本地安装</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack 或 npm install webpack --save-dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装位置"><a href="#安装位置" class="headerlink" title="安装位置"></a>安装位置</h3><p>全局安装：<br>安装到全局环境里面，包安装在Node安装目录下的node_modules文件夹中，一般在 \Users\用户名\AppData\Roaming\ 目录下，可以使用npm root -g查看全局安装目录。</p>
+<blockquote>
+<p>C:\Users\lenovo&gt;npm root -g<br>D:\Program Files\nodejs\node_global\node_modules</p>
+</blockquote>
+<p>本地安装：<br>把安装包信息写入package.json文件的devDependencies字段中，包安装在指定项目的node_modules文件夹下。</p>
+<h3 id="调用方式"><a href="#调用方式" class="headerlink" title="调用方式"></a>调用方式</h3><p>全局安装：<br>用户可以在命令行中直接运行该组件包支持的命令。</p>
+<p>本地安装：<br>直接通过require()的方式引入项目中node_modules目录下的模块。</p>
+<h3 id="全局安装局限性"><a href="#全局安装局限性" class="headerlink" title="全局安装局限性"></a>全局安装局限性</h3><p>1.全局安装，不能直接通过require()的方式去引用模块</p>
+<p>在js实例代码中，默认下node.js会在NODE_PATH和目前js所在项目下的node_modules文件夹下去寻找模块，全局安装需要手动解决包路径的配置问题，当然你也可以复制全局安装的node_modules文件夹到项目下，还有办法可以选择将环境变量的NODE_PATH设置为C:\Program Files\nodejs。</p>
+<p>2.不利于包的更新管理</p>
+<p>可能需要为每个包重新命名，如<a href="mailto:&#103;&#117;&#108;&#112;&#64;&#51;&#x2e;&#56;&#46;&#49;">&#103;&#117;&#108;&#112;&#64;&#51;&#x2e;&#56;&#46;&#49;</a>、<a href="mailto:&#103;&#x75;&#x6c;&#112;&#64;&#x33;&#46;&#x39;&#x2e;&#x31;">&#103;&#x75;&#x6c;&#112;&#64;&#x33;&#46;&#x39;&#x2e;&#x31;</a>…，为了区别不同项目使用指定的包，保证模块之间的相互依赖，区别每个项目正常运行。</p>
+<h3 id="本地安装的重要性"><a href="#本地安装的重要性" class="headerlink" title="本地安装的重要性"></a>本地安装的重要性</h3><p>本地安装可以让每个项目拥有独立的包，不受全局包的影响，方便项目的移动、复制、打包等，保证不同版本包之间的相互依赖，这些优点是全局安装难以做到的。另外，本地安装包对于项目的加载会更快。缺点，如每次新项目都要本地安装所依赖的包，安装包时间相对较长。</p>
+<h2 id="npm的使用"><a href="#npm的使用" class="headerlink" title="npm的使用"></a>npm的使用</h2><h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p>使用npm发布之前必须先进入<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm官网</a>注册自己的账户。</p>
+<ol>
+<li>本地创建自己需要发布的目录文件。执行npm init命令，生成package.json文件。</li>
+<li>发布自己的npm包。命令如下：</li>
+</ol>
+<p>第一次发布包：</p>
+<ul>
+<li>添加账号</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm adduser &#x2F;&#x2F; 输入自己的npm账号、密码、邮箱</span><br></pre></td></tr></table></figure>
+
+<p>非第一次发布包：</p>
+<ul>
+<li>登录npm</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login &#x2F;&#x2F; 输入账号、密码、邮箱，登录后方可发包</span><br></pre></td></tr></table></figure>
+
+<p><code>注意:</code>npm adduser成功的时候默认你已经登陆了，所以不需要再接着npm login.</p>
+<ul>
+<li>发布包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>取消发布</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish [--force] &#x2F;&#x2F; 不成功可以强制取消</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看发布的包信息"><a href="#查看发布的包信息" class="headerlink" title="查看发布的包信息"></a>查看发布的包信息</h3><p>登录<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm官网</a> ，即可看到刚才发布的包，如果网不是很好，可能等一会才能看到。</p>
+<h3 id="更新包"><a href="#更新包" class="headerlink" title="更新包"></a>更新包</h3><p>更新包和发布包的命令是一样的，更新包只需修改package.json里面的 <code>version</code>字段，也可以使用npm 自带的版本控制命令修改版本号，更新的步骤为：</p>
+<ol>
+<li>修改包的版本（package.json里的version字段）</li>
+<li>npm publish &#x2F;&#x2F;发布</li>
+<li>npm version  &#x2F;&#x2F;查看版本信息</li>
+</ol>
+<p><strong>npm有一套自己的版本控制标准——Semantic versioning（语义化版本）</strong></p>
+<p><strong>具体体现为：</strong></p>
+<p>对于”version”:”x.y.z”</p>
+<blockquote>
+<p><strong>1. 修复bug,小改动，增加z</strong></p>
+<p><strong>2. 增加了新特性，但仍能向后兼容，增加y</strong></p>
+<p><strong>3. 有很大的改动，无法向后兼容,增加x</strong></p>
+</blockquote>
+<p>例如：初始的项目为1.0.0版本，相关变动如下：</p>
+<p>若是1中情况，变为1.0.1</p>
+<p>若是2中情况，变为1.1.0</p>
+<p>若是3中情况，变为2.0.0</p>
+<h3 id="删除上传的包"><a href="#删除上传的包" class="headerlink" title="删除上传的包"></a>删除上传的包</h3><p>**注意:**根据规范，只有在发包的24小时内才允许撤销发布的包</p>
+<p>由于本人发布的包是测试包，不希望污染npm网站，所以在测试成功后需要删除包。</p>
+<p>终端打开包项目，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish --force &#x2F;&#x2F;实际上是执行撤销操作</span><br></pre></td></tr></table></figure>
+
+<p>删除后重新登录<a href="https://www.npmjs.com/" target="_blank" rel="noopener">npm网站</a>上搜索这个包，发现已经不存在了。超过24小时已发布的包，一般不允许删除，若非要删除则可以通过邮件联系npm官网人员进行彻底删除。</p>
+<h3 id="NPM常用命令"><a href="#NPM常用命令" class="headerlink" title="NPM常用命令"></a>NPM常用命令</h3><p>如查看xxx包的最新版本信息：npm view xxx versions  或者  npm info xxx</p>
+<p>使用npm安装指定版本的包：npm i <a href="mailto:&#x78;&#x78;&#x78;&#x40;&#x34;&#46;&#x31;&#49;&#46;&#48;">&#x78;&#x78;&#x78;&#x40;&#x34;&#46;&#x31;&#49;&#46;&#48;</a> –save-dev</p>
+<p>使用npm升级指定版本的包：npm update xxx –save-dev</p>
+<p>安装xxx最新版本的包：npm i xxx@latest –save-dev</p>
+<p>使用npm查看已安装的包列表：npm list</p>
+<p>使用npm查看已安装某一指定包的版本信息：npm list xxx</p>
+<h2 id="重装NVM版本管理"><a href="#重装NVM版本管理" class="headerlink" title="重装NVM版本管理"></a>重装NVM版本管理</h2><p>记录win10系统重装后所遇到的一些问题记录。</p>
+<h3 id="什么是nvm"><a href="#什么是nvm" class="headerlink" title="什么是nvm"></a>什么是nvm</h3><p>　　  nvm就是nodejs version manage 叫做nodejs 版本管理，而nodejs有很多版本，场景如下:</p>
+<p>　　  1、而你手上开发的有多个项目又分别是不同的nodejs版本，咱们就可以用nvm轻松切换！</p>
+<p>　　  2、假设你正在开发的项目开始使用的nodejs版本是8.0，而现在因为某些原因，你需要升级 或者 降级 nodejs 版本，也可以使用 nvm 轻松切换。</p>
+<h3 id="npm-install-express-g"><a href="#npm-install-express-g" class="headerlink" title="npm install express -g"></a>npm install express -g</h3><p>安装module测试失败了，报错如下图：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/npm%E9%94%99%E8%AF%AF1.png"  alt="图片"></p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/npm%E9%94%99%E8%AF%AF2.png"  alt="image-20220102140205526"></p>
+<p>具体原因未知，只是先使用npm install -g cnpm –registry&#x3D;<a href="https://registry.npm.taobao.org下载cnpm/" target="_blank" rel="noopener">https://registry.npm.taobao.org下载cnpm</a> 后，利用cnpm install express -g下载成功；</p>
+<h3 id="cnpm的使用"><a href="#cnpm的使用" class="headerlink" title="cnpm的使用"></a>cnpm的使用</h3><p>虽然下载成功了，但是cmd窗口访问很慢：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/cnpm%E6%B5%8B%E8%AF%95.png"  alt="image-20220103123701601"></p>
+<p>首先来看看默认的registry是什么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>
+
+<p>因为此时的镜像是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\pyk&gt;npm config get registry</span><br><span class="line">https:&#x2F;&#x2F;registry.cnpmjs.org&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>原因就是使用cnpm镜像也可以下载，但还是很慢，需要切换成淘宝镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>再次查看是否切换成功：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%88%87%E6%8D%A2%E9%95%9C%E5%83%8F.png"  alt="image-20220103130858019"></p>
+<p>成功后重新使用npm,cnpm命令就会快很多了。</p>
+<h3 id="重新配置SSH-key"><a href="#重新配置SSH-key" class="headerlink" title="重新配置SSH key"></a>重新配置SSH key</h3><p>简介：什么是<a href="https://so.csdn.net/so/search?q=ssh" target="_blank" rel="noopener">ssh</a>：ssh是Secure Shell（安全外壳协议）的缩写，建立在应用层和传输层基础上的安全协议。为了便于访问github，要生成ssh公钥，这样就不用每一次访问github都要输入用户名和密码。</p>
+<h4 id="①检查SSH-Keys"><a href="#①检查SSH-Keys" class="headerlink" title="①检查SSH Keys"></a>①检查SSH Keys</h4><p>首先，要查看在电脑上是否已经存在SSH keys。运行Git Bash 然后输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -al ~&#x2F;.ssh</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E6%A3%80%E6%9F%A5ssh.png"  alt="image-20220103135123055"></p>
+<p>这个命令就是检查是否已经存在 id_rsa.pub 或 id_dsa.pub 文件，如果文件已经存在，那么你可以跳过步骤2，直接进入步骤3。很明显重装系统后空空如也，下次记得及时备份！</p>
+<h4 id="②生成SSH-key"><a href="#②生成SSH-key" class="headerlink" title="②生成SSH key"></a>②生成SSH key</h4><p>1.在Git Bash中输入下面命令，引号内一定是你的Github注册邮箱地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;2549315545@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>等待几秒，当提示让你输入保存地址时，官方特别推荐放在默认位置就可以了。所以这里直接输入回车，提示如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;pyk&#x2F;.ssh&#x2F;id_rsa):[直接输入回车]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>将会提示你输入一个密码串(这里输入密码时不会显示在屏幕上的，只要输入正确按回车就好):</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase （empty for no passphrase）: [输入你想设置的密码]</span><br><span class="line">Enter same passphrase again：[在输入一遍密码]</span><br><span class="line">＃虽然说这里可以设置为空，但是推荐用一个更加安全的密码</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>输完密码之后，你将会得到你的SSH的<a href="https://ws1.sinaimg.cn/large/ad3a9ce5gy1foroi8j00ej217s0oojxi.jpg" target="_blank" rel="noopener">print</a>或者id。</li>
+</ol>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E7%94%9F%E6%88%90SSH%20key.png"  alt="image-20220103142639972"></p>
+<p>当你看到上面这段代码时，就说明你的 SSH key 已经创建成功，你只需要添加到github的SSH key上就可以了。</p>
+<p>打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E9%87%8D%E6%96%B0%E9%85%8D%E7%BD%AESSH%20key.png"  alt="image-20220103143655648"></p>
+<p>新建好的ssh密钥，先测试一下是否成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E6%B5%8B%E8%AF%95%E8%BF%9E%E6%8E%A5.png"  alt="image-20220103143840563"></p>
+<p><strong>用户名 邮箱配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot;&#x2F;&#x2F; 你的github用户名，非昵称</span><br><span class="line">git config --global user.email  &quot;xxx@qq.com&quot;&#x2F;&#x2F; 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<p><strong>进入到博客(Hexo)文件夹</strong></p>
+<p>文件夹只需要删除node_modules、 public、 .git 、.deploy_git，剩下的保留。</p>
+<p><strong>关联Github项目</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git remote add origin git@github.com:panyongkang&#x2F;panyongkang.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>查看关联好的的url是否成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E5%85%B3%E8%81%94%E6%B5%8B%E8%AF%95.png"  alt="image-20220103145949299"></p>
+<p><strong>全局安装hexo</strong></p>
+<p>所有必备的应用程序安装完成后，即可在 <code>cmd窗口</code>使用 npm 安装 Hexo。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装项目依赖</strong></p>
+<p>在hexo文件中使用 <code>git bash</code>执行以下命令进行下载:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">##不建议使用npm install，因为可能会报错</span><br><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+
+<p><strong>执行hexo命令</strong></p>
+<p>在hexo根目录使用git窗口依次执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo version #查看安装版本信息</span><br><span class="line">hexo g  #生成public目录的本地预览文件</span><br><span class="line">hexo s #本地预览，浏览器中输入 http:&#x2F;&#x2F;localhost:4000&#x2F;打开</span><br><span class="line">hexo d  # 部署上传到github仓库</span><br></pre></td></tr></table></figure>
+
+<p><strong>不要用hexo init初始化，部分文件已经拷贝生成，如果不慎使用，则站点配置文件_config.yml会被初始化为默认值</strong></p>
+<p>错误记录：bash: hexo: command not found</p>
+<p>原因：环境变量没有配置好，要找到正确的hexo安装地址，比如我把我npm的下载地址都改到d盘了，我的path就是D:\softwarenodejs\node_global</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/Hexo%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84.png"  alt="image-20220103155942140"></p>
+<p>一定要配置在有hexo.cmd的路径，否则无论使用cmd窗口还是git bash窗口还是无法执行hexo命令：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/Hexo%E9%94%99%E8%AF%AF%E8%B7%AF%E5%BE%84.png"  alt="image-20220103160123934"></p>
+<p>如果bin路径下面没有hexo.cmd,系统环境变量path就不能使用bin下面的路径：</p>
+<p><img src="/img/loading.gif" class="lazyload" data-src="https://cdn.jsdelivr.net/gh/panyongkang/MyImgBed/img/%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F.png"  alt="image-20220103160235698"></p>
+<p>如果不确定全局下载的路径，可以执行 <code>npm config get prefix</code>，会得到 <code>node_modules的全局安装目录</code>，设置到 <code>PATH</code>中，就可以了。</p>
+<h2 id="API接口开发"><a href="#API接口开发" class="headerlink" title="API接口开发"></a>API接口开发</h2><h3 id="API简介"><a href="#API简介" class="headerlink" title="API简介"></a>API简介</h3><p>API，全称是  <strong>Application Programming Interface</strong> ，中文意思是  <strong>应用程序编程接口</strong> 。它是一些预先定义的函数，包括接口地址、传入参数和返回参数。API的作用是 <strong>在应用程序之间提供一种可控的、标准化的访问方式</strong> 。</p>
+<p>使用API，程序员可以无需了解底层实现细节，就可以调用其他应用程序的功能。这使得应用程序之间可以 <strong>轻松地进行通信和共享数据</strong> 。</p>
+<p>简单理解：一个接口就是 <code>服务中的一个路由规则</code>，根据请求响应结果。</p>
+<p>API通常以<strong>URL</strong>形式表示，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;api.example.com&#x2F;users&#x2F;123</span><br></pre></td></tr></table></figure>
+
+<p>该URL表示一个API，用于获取用户ID为123的用户信息。</p>
+<p>API不仅可以用URL表示，还可以用其他方式表示，例如：</p>
+<ul>
+<li><strong>函数调用：</strong> 一些编程语言提供API函数，可以直接在代码中调用。</li>
+<li><strong>库：</strong> 一些API以库的形式提供，需要在程序中引入才能使用。</li>
+</ul>
+<h3 id="开发实现方案"><a href="#开发实现方案" class="headerlink" title="开发实现方案"></a>开发实现方案</h3><p>常见的服务端开发技术栈组合：</p>
+<ul>
+<li>Tomcat+Java+MySQL</li>
+<li>Node.js+JavaScript+MongoDB</li>
+</ul>
+<p>使用Node.js可以编写API接口服务来调用大量文章内容、图片、视频和音频，而无需将它们存储在后端数据库中。</p>
+<p>以下是一些实现方案：</p>
+<p><strong>1.使用文件系统存储内容</strong></p>
+<p>将文章内容、图片、视频和音频存储在文件系统中，例如本地磁盘或云存储。<br>使用Node.js编写API接口，根据请求参数从文件系统中读取相应的内容并返回。<br>这种方案的优点是简单易行，成本低。<br>缺点是文件系统的扩展性可能有限，并且难以实现内容的实时更新。</p>
+<p><strong>2.使用内容分发网络（CDN）存储内容</strong></p>
+<p>将文章内容、图片、视频和音频存储在CDN中，CDN可以将内容分发到全球各地的节点，从而提高访问速度。<br>使用Node.js编写API接口，根据请求参数从CDN中获取相应的内容并返回。<br>这种方案的优点是访问速度快，扩展性好。<br>缺点是成本较高，需要付费使用CDN服务。</p>
+<p><strong>3.使用其他存储服务</strong></p>
+<p>可以使用其他存储服务来存储内容，例如对象存储服务或数据库。<br>使用Node.js编写API接口，根据请求参数从存储服务中获取相应的内容并返回。<br>这种方案的优点是灵活性和可扩展性好。<br>缺点是成本可能较高，具体取决于所使用的存储服务。</p>
+<h3 id="常见数据库比较"><a href="#常见数据库比较" class="headerlink" title="常见数据库比较"></a>常见数据库比较</h3><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>Redis</th>
+<th>MongoDB</th>
+<th>Oracle</th>
+<th>MySQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类型</td>
+<td>非关系型</td>
+<td>非关系型</td>
+<td>关系型</td>
+<td>关系型</td>
+</tr>
+<tr>
+<td>数据模型</td>
+<td>键值对、列表、集合、<br />有序集合、哈希表</td>
+<td>JSON文档</td>
+<td>表格</td>
+<td>表格</td>
+</tr>
+<tr>
+<td>结构化数据</td>
+<td>有限</td>
+<td>不擅长</td>
+<td>擅长</td>
+<td>擅长</td>
+</tr>
+<tr>
+<td>非结构化数据</td>
+<td>擅长</td>
+<td>擅长</td>
+<td>不擅长</td>
+<td>不擅长</td>
+</tr>
+<tr>
+<td>可扩展性</td>
+<td>非常高</td>
+<td>较高</td>
+<td>较高</td>
+<td>较高</td>
+</tr>
+<tr>
+<td>事务支持</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>一致性</td>
+<td>弱一致性</td>
+<td>最终一致性</td>
+<td>强一致性</td>
+<td>强一致性</td>
+</tr>
+<tr>
+<td>复杂查询</td>
+<td>有限</td>
+<td>不擅长</td>
+<td>擅长</td>
+<td>擅长</td>
+</tr>
+</tbody></table>
+<p><strong>举例说明:</strong></p>
+<ul>
+<li><strong>Redis</strong> 是一款高性能的非关系型数据库，用于缓存、消息队列、领导选举和其他用例。它以其速度、可扩展性和灵活性而闻名。Redis 通常用于需要处理大量数据的实时应用程序。</li>
+<li><strong>MongoDB</strong> 是一款使用非关系型数据库的应用程序。它存储有关产品、订单和客户的信息。每个产品都有一个文档，其中包含有关其名称、描述、价格和库存数量的信息。每个订单都有一个文档，其中包含有关订单日期、客户信息和所订购产品的详细信息。每个客户都有一个文档，其中包含他们的姓名、地址和电子邮件地址的信息。</li>
+<li><strong>Oracle</strong> 是一款功能强大的关系型数据库，可用于各种应用程序。它擅长处理结构化数据并支持复杂查询。Oracle 通常用于需要高性能和可靠性的企业应用程序。</li>
+<li><strong>MySQL</strong> 是一款流行的关系型数据库，以其易用性和可扩展性而闻名。它通常用于 Web 应用程序和小型企业应用程序。</li>
+</ul>
+<p><strong>总结：</strong></p>
+<p>关系型数据库擅长处理结构化数据，而非关系型数据库擅长处理非结构化数据。关系型数据库还支持事务和强一致性，这对于需要高数据完整性的应用程序很重要。非关系型数据库通常比关系型数据库更具可扩展性，并且可以更轻松地处理大量非结构化数据。</p>
+<p>选择哪种类型的数据库取决于您的特定需求。如果您需要处理大量结构化数据并且需要强一致性，那么关系型数据库是一个不错的选择。如果您需要处理大量非结构化数据并且需要可扩展性，那么非关系型数据库可能是一个更好的选择。</p>
+<p><strong>Redis</strong> 是一种独特的非关系型数据库，它提供了一些其他数据库没有的功能。它非常快速且可扩展，使其成为实时应用程序的理想选择。Redis 还支持各种数据结构，这使其适用于各种用例。如果您需要一种快速、可扩展且通用的数据库，那么 Redis 值得考虑。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/01/03/Nodejs/">http://example.com/2021/01/03/Nodejs/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Nodejs/">Nodejs</a><a class="post-meta__tags" href="/tags/npm/">npm</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2021/01/21/Butterfly%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AEValine%E8%AF%84%E8%AE%BA%E5%8F%8A%E9%82%AE%E4%BB%B6%E6%8F%90%E9%86%92/"><img class="prev_cover lazyload" data-src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2010232996,1620516668&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Butterfly主题配置Valine评论及邮件提醒</div></div></a></div><div class="next-post pull_right"><a href="/2021/01/03/%E7%BB%99Hexo%E5%8D%9A%E5%AE%A2%E6%96%B0%E5%A2%9E%E8%A1%80%E5%B0%8F%E6%9D%BF%E6%A8%A1%E5%9E%8B/"><img class="next_cover lazyload" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=234003937,2734421640&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">给Hexo博客新增血小板模型</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

@@ -1,0 +1,72 @@
+﻿/**动图定位CSS**/
+	.meiha {
+		position: absolute;
+		top: -15px;
+		left: 0;
+		z-index: 999;/** 参数越大，堆叠顺序越往前 **/
+		width: 200px;/** PNG图宽度 **/
+		height: 160px;/** PNG图高度 **/
+		pointer-events: none;
+		background: url(https://s1.ax1x.com/2020/10/29/B86XYd.gif) no-repeat;
+	}
+	
+/**枫叶飘落特效CSS **/
+	html,body{padding:0;margin:0;}
+	.darkBg{background:#3a3a3a;}
+	*{margin:0;padding:0;}
+	body{background-color:#FFF;}
+	.snowfall-flakes{animation:sakura 1s linear 0s infinite;}
+	@keyframes sakura{
+		0% {transform:rotate3d(0, 0, 0, 0deg);}
+		25%{transform:rotate3d(1, 1, 0, 60deg);}
+		50%{transform:rotate3d(1, 1, 0, 0deg);}
+		75%{transform:rotate3d(1, 0, 0, 60deg);}
+		100% {transform:rotate3d(1, 0, 0, 0deg);}
+	}
+
+/* 彩色滚动条 */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(17 249 255 / 79%);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #e74108f7;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+/* 自定义夜间模式CSS */
+.darkmode-toggle{
+	box-shadow: 0px 0px 10px 5px #aaa;
+}
+
+/* 字体高亮 */
+.font-highlighting{
+	text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #00b4ff, 0 0 70px #00b4ff;
+    font-weight: 600;
+    color: #ff4a57;
+}

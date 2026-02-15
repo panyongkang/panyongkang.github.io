@@ -1,0 +1,228 @@
+/* 设置整个页面的样式 */
+body {
+  display: flex;
+  /* 使用 Flexbox 布局 */
+  flex-wrap: wrap;
+  /* 允许子元素换行 */
+  align-items: center;
+  /* 在垂直方向上居中对齐子元素 */
+  min-height: 500px;
+  /* 最小高度设置为 500px */
+  height: 100vh;
+  /* 高度设置为视口高度的 100% */
+  justify-content: center;
+  /* 在水平方向上居中对齐子元素 */
+  position: relative;
+  /* 相对于自身定位 */
+  padding: 50px;
+  /* 内边距设置为 50px */
+  box-sizing: border-box;
+  /* 边界盒模型，包括内边距和边框在总宽度和高度内 */
+  pointer-events: none;
+  /* 忽略鼠标事件 */
+}
+
+/* 针对移动端的样式 */
+/* 适用于 426px ~ 768px 之间 */
+@media (min-width: 426px) and (max-width: 768px) {
+  body {
+    padding: 0;
+    /* 仅覆盖需要修改的样式 */
+  }
+
+  body .bookshelf {
+    margin-top: 170px;
+    /* 426px 到 768px 使用 */
+  }
+}
+
+/* 适用于 425px 及以下 */
+@media (max-width: 425px) {
+  body {
+    padding: 0;
+    /* 仅覆盖需要修改的样式 */
+  }
+
+  body .bookshelf {
+    margin-top: 100px;
+    /* 425px 及以下使用 */
+  }
+}
+
+/* 书架容器的样式 */
+.bookshelf {
+  margin-top: 270px;
+  /* 上外边距设置为 200px */
+  max-width: 1000px;
+  /* 最大宽度设置为 1000px */
+  width: 80%;
+  /* 宽度设置为父元素宽度的 80% */
+  display: flex;
+  /* 使用 Flexbox 布局 */
+  justify-content: center;
+  /* 在水平方向上居中对齐子元素 */
+  flex-shrink: 0;
+  /* 防止子元素缩小 */
+  z-index: -1;
+  /* 放置在其他元素后面 */
+  position: relative;
+  /* 相对于自身定位 */
+  height: 0px;
+  /* 高度设置为 0px */
+  box-sizing: border-box;
+  /* 边界盒模型 */
+  border-bottom: 16px solid #f3f3f3;
+  /* 底部边框 */
+  border-left: 20px solid transparent;
+  /* 左侧透明边框 */
+  border-right: 20px solid transparent;
+  /* 右侧透明边框 */
+  pointer-events: auto;
+  /* 启用鼠标事件 */
+}
+
+/* 书架顶部的装饰条 */
+.bookshelf::before {
+  content: "";
+  /* 添加一个伪元素 */
+  position: absolute;
+  /* 绝对定位 */
+  top: 16px;
+  /* 从顶部偏移 16px */
+  background: linear-gradient(90deg, #fafafa 0%, #ffffff 100%);
+  /* 背景渐变 */
+  height: 26px;
+  /* 高度设置为 26px */
+  width: calc(100% + 40px);
+  /* 宽度为自身的 100% 加上 40px */
+  box-shadow: 0px -1px 6px rgba(0, 0, 0, 0.05), 0px 4px 16px rgba(0, 0, 0, 0.25);
+  /* 盒阴影效果 */
+  z-index: 2;
+  /* 层叠顺序 */
+}
+
+/* 书架的投影 */
+.bookshelf::after {
+  content: "";
+  /* 添加一个伪元素 */
+  height: 80px;
+  /* 高度设置为 80px */
+  width: calc(100% + 40px);
+  /* 宽度为自身的 100% 加上 40px */
+  position: absolute;
+  /* 绝对定位 */
+  top: 42px;
+  /* 从顶部偏移 42px */
+  display: block;
+  /* 显示为块级元素 */
+  background: linear-gradient(180deg, #f3f3f3 0%, rgba(255, 255, 255, 0) 100%);
+  /* 背景渐变 */
+  clip-path: polygon(0% 0%, 100% 0%, 97% 100%, 3% 100%);
+  /* 使用 clip-path 创建不规则形状 */
+  z-index: -1;
+  /* 放置在其他元素后面 */
+}
+
+/* 书籍容器的样式 */
+.books {
+  display: grid;
+  /* 使用 Grid 布局 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 定义网格列布局 */
+  gap: 10%;
+  /* 列之间的间距 */
+  width: 80%;
+  /* 宽度设置为 80% */
+  margin: auto;
+  /* 水平居中 */
+  transform: translateY(-100%);
+  /* 向上移动书籍容器 */
+  padding: 0 0 2px;
+  /* 下内边距设置为 2px */
+  z-index: -1;
+  /* 放置在其他元素后面 */
+  position: relative;
+  /* 相对于自身定位 */
+  top: 10px;
+  /* 从顶部偏移 10px */
+}
+
+/* 单个书籍的样式 */
+.book {
+  width: 100%;
+  /* 宽度设置为 100% */
+  border-radius: 3px 0.5px 0.5px 3px;
+  /* 圆角 */
+  aspect-ratio: 115 / 180;
+  /* 宽高比 */
+  position: relative;
+  /* 相对于自身定位 */
+}
+
+/* 当鼠标悬停在书籍上时的样式 */
+.book:hover::before,
+.book:hover::after {
+  transition: transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1), opacity 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* 平滑过渡 */
+}
+
+/* 当鼠标悬停在书籍上时，书籍的前部变化 */
+.book:hover::before {
+  transform: translate(0, -45%) skew(3deg, -3deg) scale(1.35);
+  /* 变形效果 */
+}
+
+/* 当鼠标悬停在书籍上时，书籍的后部变化 */
+.book:hover::after {
+  transform: translate(0, -45%) skew(3deg, -3deg) scale(1.275);
+  /* 变形效果 */
+}
+
+/* 当鼠标悬停在偶数书籍上时，书籍的前部变化 */
+.book:nth-of-type(even):hover::before {
+  transform: translate(0, -45%) skew(-30deg, 30deg) scale(1.35);
+  /* 变形效果 */
+}
+
+/* 当鼠标悬停在偶数书籍上时，书籍的后部变化 */
+.book:nth-of-type(even):hover::after {
+  transform: translate(0, -45%) skew(-30deg, 30deg) scale(1.275);
+  /* 变形效果 */
+}
+
+/* 书籍的基本样式 */
+.book::before,
+.book::after {
+  position: absolute;
+  /* 绝对定位 */
+  width: 100%;
+  /* 宽度设置为 100% */
+  display: block;
+  /* 显示为块级元素 */
+  content: " ";
+  /* 添加一个伪元素 */
+  transition: all 300ms ease-out;
+  /* 平滑过渡 */
+  background: var(--bg-image) center center/cover no-repeat, #f3f3f3;
+  /* 背景图片和颜色 */
+}
+
+/* 书籍的前部 */
+.book::before {
+  height: 100%;
+  /* 高度设置为 100% */
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25), inset 2px 0px 2px 1px rgba(29, 27, 27, 0.2);
+  /* 盒阴影效果 */
+}
+
+/* 书籍的后部 */
+.book::after {
+  height: 102%;
+  /* 高度设置为 102% */
+  filter: blur(10px);
+  /* 模糊效果 */
+  z-index: -1;
+  /* 放置在其他元素后面 */
+  opacity: 1;
+  /* 不透明度设置为 1 */
+}

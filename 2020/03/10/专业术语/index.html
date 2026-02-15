@@ -1,0 +1,213 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>专业术语 | 向阳榆木</title><meta name="description" content="专业术语"><meta name="keywords" content="计算机术语,名词解读,新鲜词汇"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="专业术语"><meta name="twitter:description" content="专业术语"><meta name="twitter:image" content="http://example.com/img/butterfly.jpg"><meta property="og:type" content="article"><meta property="og:title" content="专业术语"><meta property="og:url" content="http://example.com/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="专业术语"><meta property="og:image" content="http://example.com/img/butterfly.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/"><link rel="prev" title="Java基础巩固" href="http://example.com/2020/04/01/Java%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/"><link rel="next" title="SEO进阶笔记" href="http://example.com/2020/03/05/SEO%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本语言"><span class="toc-number">1.</span> <span class="toc-text">脚本语言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概述"><span class="toc-number">1.1.</span> <span class="toc-text">基本概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#脚本语言与编程语言的区别"><span class="toc-number">1.2.</span> <span class="toc-text">脚本语言与编程语言的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络爬虫"><span class="toc-number">2.</span> <span class="toc-text">网络爬虫</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#互联网名词解释"><span class="toc-number">3.</span> <span class="toc-text">互联网名词解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RSS订阅"><span class="toc-number">3.1.</span> <span class="toc-text">RSS订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名与IP地址"><span class="toc-number">3.2.</span> <span class="toc-text">域名与IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hosts是干什么用的"><span class="toc-number">3.3.</span> <span class="toc-text">Hosts是干什么用的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VPN（虚拟专用网）"><span class="toc-number">3.4.</span> <span class="toc-text">VPN（虚拟专用网）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CDN是内容分发网络"><span class="toc-number">3.5.</span> <span class="toc-text">CDN是内容分发网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSS对象存储服务"><span class="toc-number">3.6.</span> <span class="toc-text">OSS对象存储服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#OSS-的主要特点"><span class="toc-number">3.6.1.</span> <span class="toc-text">OSS 的主要特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OSS-的应用场景"><span class="toc-number">3.6.2.</span> <span class="toc-text">OSS 的应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#与传统存储的区别"><span class="toc-number">3.6.3.</span> <span class="toc-text">与传统存储的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#暗网领域"><span class="toc-number">4.</span> <span class="toc-text">暗网领域</span></a></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/butterfly.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">专业术语</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-03-10 16:52:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-03-10</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-01-21 23:29:16"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-01-21</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="脚本语言"><a href="#脚本语言" class="headerlink" title="脚本语言"></a>脚本语言</h2><p>脚本（Script），是使用一种特定的描述性语言，依据一定的格式编写的可执行文件。</p>
+<h3 id="基本概述"><a href="#基本概述" class="headerlink" title="基本概述"></a>基本概述</h3><p>脚本语言又被称为扩建的语言, 或者动态语言, 是一种编程语言, 用来控制软件应用程序, 脚本通常是以文本 (ASCⅡ) 保存, 只是在被调用时进行解释或者编译。</p>
+<p>打开Windows系统中常见的扩展名为.bat的批处理文件，会出现一个黑色窗口，若干白字迸发而出，这就是批处理文件，也就是脚本文件。</p>
+<p>最常见的脚本语言有：JavaScript，ASP，JSP，PHP，SQL，Shell，Python等。</p>
+<p>应用 Shell 脚本完成对数据库系统一些重要进程的监控以及系统开机服务的自动开启工作。比如服务器的启停工作。</p>
+<h3 id="脚本语言与编程语言的区别"><a href="#脚本语言与编程语言的区别" class="headerlink" title="脚本语言与编程语言的区别"></a>脚本语言与编程语言的区别</h3><p>脚本语言和编程语言之间没有绝对的界限，它们之间存在着一定的模糊性。但一般来说，我们可以从以下几个方面来区分：</p>
+<table>
+<thead>
+<tr>
+<th>特征</th>
+<th>脚本语言</th>
+<th>编程语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>执行方式</strong></td>
+<td>解释执行</td>
+<td>编译执行</td>
+</tr>
+<tr>
+<td><strong>类型系统</strong></td>
+<td>动态类型，弱类型</td>
+<td>静态类型，强类型</td>
+</tr>
+<tr>
+<td><strong>应用场景</strong></td>
+<td>控制软件、网页脚本、自动化任务</td>
+<td>系统软件、大型应用、游戏开发</td>
+</tr>
+<tr>
+<td><strong>开发周期</strong></td>
+<td>快速开发</td>
+<td>开发周期较长</td>
+</tr>
+<tr>
+<td><strong>性能</strong></td>
+<td>执行效率相对较低</td>
+<td>执行效率较高</td>
+</tr>
+<tr>
+<td>常见语言</td>
+<td>JavaScript，ASP，JSP，PHP，<br />SQL，Shell，Python等等</td>
+<td>C&#x2F;C++,C#,Java,Go等等</td>
+</tr>
+</tbody></table>
+<h2 id="网络爬虫"><a href="#网络爬虫" class="headerlink" title="网络爬虫"></a>网络爬虫</h2><p>网络爬虫（又被称为网页蜘蛛、网络机器人、蚂蚁、自动索引、模拟程序或者蠕虫），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。</p>
+<p>通俗的讲，爬虫就是能够自动访问互联网并将网站内容下载下来的的程序或脚本，类似一个机器人，能把别人网站的信息弄到自己的电脑上，再做一些过滤，筛选，归纳，整理，排序等等。</p>
+<p>可以做爬虫的语言：PHP,JAVA,C#,C++,Python等。</p>
+<p>Python进行爬虫开发是有其独特的优势，上手快，难度低，第三方插件很完善，开发难度低。这些优点是其他语言不能比拟的，所以Python是编写爬虫的首要语言。</p>
+<h2 id="互联网名词解释"><a href="#互联网名词解释" class="headerlink" title="互联网名词解释"></a>互联网名词解释</h2><h3 id="RSS订阅"><a href="#RSS订阅" class="headerlink" title="RSS订阅"></a>RSS订阅</h3><p>RSS 订阅是一种通过 RSS（Really Simple Syndication，简易信息聚合）技术来订阅网站内容更新的方式。它允许用户无需访问网站即可获取最新的信息，例如新闻、博客文章、播客等。简单来说，RSS 就像一个“订阅器”，帮你自动收集你感兴趣的网站的最新内容。</p>
+<p><strong>工作原理：</strong></p>
+<ol>
+<li><strong>网站提供 RSS 源（Feed）：</strong> 网站会生成一个包含最新内容的 XML 文件，这个文件就是 RSS 源。它包含了文章标题、链接、摘要等信息。</li>
+<li><strong>用户使用 RSS 阅读器订阅：</strong> 用户使用 RSS 阅读器（也称为聚合器）订阅网站的 RSS 源地址。</li>
+<li><strong>阅读器自动更新：</strong> RSS 阅读器会定期检查订阅的 RSS 源，一旦发现有新内容，就会自动下载并显示给用户。</li>
+</ol>
+<p><strong>RSS 订阅的优点：</strong></p>
+<ul>
+<li><strong>方便快捷：</strong> 无需频繁访问网站，即可获取最新信息。</li>
+<li><strong>信息集中：</strong> 在一个地方查看所有订阅的内容，节省时间。</li>
+<li><strong>个性化订阅：</strong> 只订阅自己感兴趣的内容，过滤无关信息。</li>
+<li><strong>无广告干扰：</strong> 通常只显示文本和图片，没有广告干扰。</li>
+</ul>
+<h3 id="域名与IP地址"><a href="#域名与IP地址" class="headerlink" title="域名与IP地址"></a><strong>域名与IP地址</strong></h3><p>域名就是IP地址的一种形象化的表达方式。比如 “<a href="http://www.baidu.com/" target="_blank" rel="noopener">www.baidu.com</a>“ 指的是域名，百度的IP地址是[115.239.210.27]，一般是使用域名登录网站，容易记忆。</p>
+<p><strong>DNS（域名系统）：用来把机器名字转换成IP地址。</strong></p>
+<p>IPv4长这样：192.168.1.1，255.255.255.255</p>
+<p>IPv6长这样：2001:0DB8:02de:0000:0000:0000:0000:0e13</p>
+<p>机器很喜欢这样的格式，换成二进制非常容易处理。但输入这么长串的IP地址非常不方便，因此需要域名来代替具体的某IP地址。但机器是不认识”<a href="http://www.baidu.com" target="_blank" rel="noopener"这些字母组成的域名,这时候就需要dns服务器将"www.baidu.com"域名转换成对应的ip地址./">www.baidu.com&quot;这些字母组成的域名，这时候就需要DNS服务器将&quot;www.baidu.com&quot;域名转换成对应的IP地址。</a></p>
+<p>全球有很多域名服务器，用来存储从域名到IP地址的映射。我们每台终端，无论手机还是电脑，在联网的时候都会配置一个DNS地址，就是DNS服务器的IP地址。你填的那个8.8.8.8就是google公司设立的DNS服务器。在上网的时候电脑会去向这些DNS服务器查询域名对应的IP。</p>
+<h3 id="Hosts是干什么用的"><a href="#Hosts是干什么用的" class="headerlink" title="Hosts是干什么用的"></a><strong>Hosts是干什么用的</strong></h3><p>在互联网的早期，网络只有几台电脑。人们用hosts文件记录机器名字到IP的映射，后来网络的规模越来越大，hosts文件记录映射已经不可行了，所以发明了DNS，域名系统。但是hosts文件仍然保留在操作系统中，hosts文件的优先级高于DNS查询。操作系统首先会在hosts文件中找域名对应的IP地址，没有找到它才会去问DNS服务器。</p>
+<h3 id="VPN（虚拟专用网）"><a href="#VPN（虚拟专用网）" class="headerlink" title="VPN（虚拟专用网）"></a><strong>VPN（虚拟专用网）</strong></h3><p><strong>VPN的本意是在公用网络上建立专用网络。</strong></p>
+<p>设想你是一名公安民警，你出差在外住酒店，需要到公安内部网络查询某些资料。但是酒店的网络是公有网络，数据传输途中要经过酒店的路由，ISP的路由。中途任何有技术的人都可以看到你跟内部网络之间的明文通信。这时候需要在你和公安内部网络建立一条加密的专用信道。发送数据的时候加密，接收数据的时候解密，加解密的方式事先设定好。这样第三方看到加密过后的数据也无法理解其中的含义。</p>
+<p>由于中国国情比较奇葩，发明了GFW(中国国家防火墙)这种东西，GFW是对中国政府在其管辖互联网内部建立的多套网络审查系统（包括相关行政审查系统）的称呼。</p>
+<p>于此对应我们伟大的程序员发明了用VPN科学上谷歌的方法。如果你明文请求Google主机，GFW会直接重置连接。但是你在国外有个VPN代理服务器，代理服务器帮你请求Google；再把Google的响应用加密的方式转发给你。因为你跟VPN代理之间是加密传输，GFW不知道你访问的是Google，它不可能把所有发到国外的请求都重置掉，所以成功突破封锁。</p>
+<h3 id="CDN是内容分发网络"><a href="#CDN是内容分发网络" class="headerlink" title="CDN是内容分发网络"></a><strong>CDN是内容分发网络</strong></h3><p><strong>目的是让用户能够更快速的得到请求的数据。</strong></p>
+<ol>
+<li>由于跨地区、跨网络运营商访问网站会有明显的壁垒，访问速度很慢。为了解决这个问题，有些机构会在一些关键地区、机房设立代理服务器（也就结点），这些节点上会缓存网站的部分内容，当用户访问网站时，就近选择合适的结点，从何提高网站的访问速度。</li>
+<li>vpn和cdn都能对访问网站起到一定的加速作用。但vpn需要账号和密码，所以只用拥有账号和密码的用户才能使用，不是对所有访问网站的人都有加速作用；cdn是在各地设置结点，对绝大多数访问用户都有一定的加速作用。</li>
+</ol>
+<h3 id="OSS对象存储服务"><a href="#OSS对象存储服务" class="headerlink" title="OSS对象存储服务"></a>OSS对象存储服务</h3><p>OSS 是 Object Storage Service 的缩写，中文译为 <strong>对象存储服务</strong> 。简单来说，它是一种在云端存储和管理大量非结构化数据的服务，例如图片、视频、音频、文档等。你可以把它理解成一个无限大的网络硬盘，但它比传统的硬盘存储更加灵活、可靠和经济高效。</p>
+<h4 id="OSS-的主要特点"><a href="#OSS-的主要特点" class="headerlink" title="OSS 的主要特点"></a><strong>OSS 的主要特点</strong></h4><ul>
+<li><strong>海量存储：</strong> 可以存储几乎无限量的数据，无需担心容量限制。</li>
+<li><strong>高可靠性：</strong> 数据通常会进行多重备份和冗余存储，以确保数据的安全性和持久性。</li>
+<li><strong>低成本：</strong> 相比传统的硬件存储，OSS 通常采用按需付费的模式，可以显著降低存储成本。</li>
+<li><strong>高扩展性：</strong> 可以根据业务需求弹性扩展存储容量和处理能力。</li>
+<li><strong>易于使用：</strong> 通常提供简单的 API 接口和各种语言的 SDK，方便开发者进行集成和使用。</li>
+<li><strong>安全可靠：</strong> 提供多种安全机制，例如访问控制、数据加密等，以保护数据的安全性。</li>
+</ul>
+<h4 id="OSS-的应用场景"><a href="#OSS-的应用场景" class="headerlink" title="OSS 的应用场景"></a><strong>OSS 的应用场景</strong></h4><ul>
+<li><strong>图片和视频存储：</strong> 网站、应用程序、社交媒体等需要存储大量图片和视频的场景。</li>
+<li><strong>备份和归档：</strong> 对重要数据进行备份和长期归档。</li>
+<li><strong>大数据分析：</strong> 存储和处理海量数据，用于数据分析和挖掘。</li>
+<li><strong>软件分发：</strong> 分发软件安装包、更新程序等。</li>
+<li><strong>静态网站托管：</strong> 托管静态网站的 HTML、CSS、JavaScript 等文件。</li>
+</ul>
+<h4 id="与传统存储的区别"><a href="#与传统存储的区别" class="headerlink" title="与传统存储的区别"></a><strong>与传统存储的区别</strong></h4><p>传统的存储方式通常是文件系统或块存储，而 OSS 采用的是对象存储。它们之间有以下主要区别：</p>
+<ul>
+<li><strong>数据组织方式：</strong> 文件系统以目录和文件的树状结构组织数据，块存储将数据分割成固定大小的块进行存储，而对象存储将数据以对象的形式存储，每个对象包含数据本身、元数据和唯一的 ID。</li>
+<li><strong>访问方式：</strong> 文件系统通过文件路径访问数据，块存储通过块地址访问数据，而对象存储通过唯一的 ID 和 HTTP&#x2F;HTTPS 协议访问数据。</li>
+<li><strong>扩展性：</strong> 对象存储通常具有更好的扩展性，可以轻松应对海量数据的存储和访问需求。</li>
+</ul>
+<h2 id="暗网领域"><a href="#暗网领域" class="headerlink" title="暗网领域"></a>暗网领域</h2><p>整个互联网可以划分为明网、深网和暗网三个类别：</p>
+<p>明网（Surface Web），是指能被普通搜索引擎检索到的网络以及网站，约占整个互联网的4%。网站内容可以用普通搜索引擎（比如 Google、百度、搜狗）检索到的网站。我们的大部分上网时间，都是停留在明网上。</p>
+<p>与明网相对的，被称为深网（Deep Web），是指内容不能被普通搜索引擎检索到的网络，约占整个互联网的 96%。深网里面的内容，需要账号密码、访问权限等才可以访问。比如说，我们邮箱里的内容，存储在云服务里面的内容，公司的数据库，学术论文数据库等等，都属于深网的范畴。我们的一部分上网时间，停留在深网上。</p>
+<p>在深网这个大范畴下，还有一部分网络被称为暗网（Dark Web），需要通过特定的<a href="https://www.torproject.org/zh-CN/download/languages/" target="_blank" rel="noopener">Tor浏览器</a> 、特殊授权或者特殊设置、特殊软件才能链接上的网络，普通的浏览器和搜索引擎无法进入。</p>
+<p>暗网的特点是经过加密，隐秘性极强，不易追踪到真实的地理位置和使用者的身份。这也导致了暗网上充斥着许多非法交易，比如贩卖JH、DP、SFZ护照等隐私数据信息等等。</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/">http://example.com/2020/03/10/%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%9C%AF%E8%AF%AD/">计算机术语</a><a class="post-meta__tags" href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E8%AF%BB/">名词解读</a><a class="post-meta__tags" href="/tags/%E6%96%B0%E9%B2%9C%E8%AF%8D%E6%B1%87/">新鲜词汇</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/04/01/Java%E5%9F%BA%E7%A1%80%E5%B7%A9%E5%9B%BA/"><img class="prev_cover lazyload" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1499015010,895265431&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Java基础巩固</div></div></a></div><div class="next-post pull_right"><a href="/2020/03/05/SEO%E8%BF%9B%E9%98%B6%E7%AC%94%E8%AE%B0/"><img class="next_cover lazyload" data-src="/img/butterfly.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">SEO进阶笔记</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2024/11/24/服务器领域/" title="服务器领域"><img class="relatedPosts_cover lazyload"data-src="https://mpimg.cn/view.php/4ca995558ed16d47aa28de0e75a17f11.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2024-11-24</div><div class="relatedPosts_title">服务器领域</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>

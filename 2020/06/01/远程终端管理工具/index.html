@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>远程终端管理工具 | 向阳榆木</title><meta name="description" content="远程终端管理工具"><meta name="keywords" content="Xshell,FinalShell,Linux命令"><meta name="author" content="PanXiaoKang"><meta name="copyright" content="PanXiaoKang"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/Lotus.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="wyZknSW2XMDLHhrSvtifCN1aQwr2nn53ydI_lDzVJmI"/><meta name="baidu-site-verification" content="p1OeTLcEA8"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="远程终端管理工具"><meta name="twitter:description" content="远程终端管理工具"><meta name="twitter:image" content="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3085989673,336141428&amp;fm=115&amp;gp=0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="远程终端管理工具"><meta property="og:url" content="http://example.com/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"><meta property="og:site_name" content="向阳榆木"><meta property="og:description" content="远程终端管理工具"><meta property="og:image" content="https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3085989673,336141428&amp;fm=115&amp;gp=0.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://example.com/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/"><link rel="prev" title="Oracle" href="http://example.com/2020/06/02/Oracle/"><link rel="next" title="算法与数据结构" href="http://example.com/2020/05/14/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: {"text":"最近有点失眠了,每天被自己帅醒,帅早已成为负担,除了帅一无所有,富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"20px"},
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: true,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'true',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://s1.ax1x.com/2020/06/09/t40ARx.th.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">235</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">25</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux常用命令整理"><span class="toc-number">1.</span> <span class="toc-text">Linux常用命令整理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命令cd——更改目录"><span class="toc-number">1.1.</span> <span class="toc-text">命令cd——更改目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令ls——列出文件"><span class="toc-number">1.2.</span> <span class="toc-text">命令ls——列出文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#检查指定路径的目录文件"><span class="toc-number">1.2.1.</span> <span class="toc-text">检查指定路径的目录文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令cp——复制文件"><span class="toc-number">1.3.</span> <span class="toc-text">命令cp——复制文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#将所有匹配-Clear-sh-的文件复制到目标目录"><span class="toc-number">1.3.1.</span> <span class="toc-text">将所有匹配 Clear.sh 的文件复制到目标目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#复制列出的文件名"><span class="toc-number">1.3.2.</span> <span class="toc-text">复制列出的文件名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交互式选择复制（存在同名文件会逐个确认）"><span class="toc-number">1.3.3.</span> <span class="toc-text">交互式选择复制（存在同名文件会逐个确认）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#把文件file复制为新文件newfile-bak"><span class="toc-number">1.3.4.</span> <span class="toc-text">把文件file复制为新文件newfile.bak</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#把当前目录下的所有未隐藏文件复制到-x2F-tmp-x2F-目录下"><span class="toc-number">1.3.5.</span> <span class="toc-text">把当前目录下的所有未隐藏文件复制到&#x2F;tmp&#x2F;目录下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#递归性复制"><span class="toc-number">1.3.6.</span> <span class="toc-text">递归性复制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在覆盖前询问用户"><span class="toc-number">1.3.7.</span> <span class="toc-text">在覆盖前询问用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#告诉用户正在做什么"><span class="toc-number">1.3.8.</span> <span class="toc-text">告诉用户正在做什么</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令mv——移动和重命名文件"><span class="toc-number">1.4.</span> <span class="toc-text">命令mv——移动和重命名文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令rm——删除文件和目录"><span class="toc-number">1.5.</span> <span class="toc-text">命令rm——删除文件和目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令mkdir——建立目录"><span class="toc-number">1.6.</span> <span class="toc-text">命令mkdir——建立目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令rmkdir——删除目录"><span class="toc-number">1.7.</span> <span class="toc-text">命令rmkdir——删除目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令touch——创建一个空文件"><span class="toc-number">1.8.</span> <span class="toc-text">命令touch——创建一个空文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令more、less——查看文件内容"><span class="toc-number">1.9.</span> <span class="toc-text">命令more、less——查看文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令tail——查看文件详细信息"><span class="toc-number">1.10.</span> <span class="toc-text">命令tail——查看文件详细信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令head——查看文件名字和后缀"><span class="toc-number">1.11.</span> <span class="toc-text">命令head——查看文件名字和后缀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令grep——过滤搜索文件内容"><span class="toc-number">1.12.</span> <span class="toc-text">命令grep——过滤搜索文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令find——查找文件"><span class="toc-number">1.13.</span> <span class="toc-text">命令find——查找文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#模糊查找文件并输出绝对路径"><span class="toc-number">1.13.1.</span> <span class="toc-text">模糊查找文件并输出绝对路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#同时匹配clear或clean关键词"><span class="toc-number">1.13.2.</span> <span class="toc-text">同时匹配clear或clean关键词</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在当前目录中查找-doc文件"><span class="toc-number">1.13.3.</span> <span class="toc-text">在当前目录中查找.doc文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#递归查找特定前缀的文件"><span class="toc-number">1.13.4.</span> <span class="toc-text">递归查找特定前缀的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按修改时间搜索最近一天内修改的文件"><span class="toc-number">1.13.5.</span> <span class="toc-text">按修改时间搜索最近一天内修改的文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在当前目录下查找包含page的文件名"><span class="toc-number">1.13.6.</span> <span class="toc-text">在当前目录下查找包含page的文件名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令vi——编辑文件"><span class="toc-number">1.14.</span> <span class="toc-text">命令vi——编辑文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令rz、sz——文件上传下载"><span class="toc-number">1.15.</span> <span class="toc-text">命令rz、sz——文件上传下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令cat——显示文件内容"><span class="toc-number">1.16.</span> <span class="toc-text">命令cat——显示文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#netstat是查看端口是否被占用"><span class="toc-number">1.17.</span> <span class="toc-text">netstat是查看端口是否被占用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令ps——查看进程"><span class="toc-number">1.18.</span> <span class="toc-text">命令ps——查看进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令kill——杀掉进程"><span class="toc-number">1.19.</span> <span class="toc-text">命令kill——杀掉进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令stop、start——重启tomcat"><span class="toc-number">1.20.</span> <span class="toc-text">命令stop、start——重启tomcat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令top——查看cpu、内存"><span class="toc-number">1.21.</span> <span class="toc-text">命令top——查看cpu、内存</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令pwd——查看当前路径"><span class="toc-number">1.22.</span> <span class="toc-text">命令pwd——查看当前路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令clear——清屏"><span class="toc-number">1.23.</span> <span class="toc-text">命令clear——清屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令tar——打包、解包rar"><span class="toc-number">1.24.</span> <span class="toc-text">命令tar——打包、解包rar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令diff——比较文件内容"><span class="toc-number">1.25.</span> <span class="toc-text">命令diff——比较文件内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令ln——建立连接"><span class="toc-number">1.26.</span> <span class="toc-text">命令ln——建立连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令history——历史命令"><span class="toc-number">1.27.</span> <span class="toc-text">命令history——历史命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工作中工具的常见操作"><span class="toc-number">2.</span> <span class="toc-text">工作中工具的常见操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题记录"><span class="toc-number">2.1.</span> <span class="toc-text">问题记录</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FinalShell工具卡死"><span class="toc-number">2.1.1.</span> <span class="toc-text">FinalShell工具卡死</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用命令、快捷键"><span class="toc-number">2.2.</span> <span class="toc-text">常用命令、快捷键</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3085989673,336141428&amp;fm=115&amp;gp=0.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">向阳榆木</a></span><span class="pull_right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/random/"><i class="fa-fw fa fa-random"></i><span> 随机文章</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-th-large" aria-hidden="true"></i><span> 归档</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间轴</span></a></li><li><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/tagsnet/"><i class="fa-fw fa fa-connectdevelop"></i><span> 关系网</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-send-o" aria-hidden="true"></i><span> 导航栏</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://xyyum.icu/mypages/OnlyI.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 主页导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/xkzhdh/Integrated.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-paper-plane-o"></i><span> 综合导航</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/software/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-send"></i><span> 软件分享</span></a></li><li><a class="site-page" href="/sunshineBookshelf/"><i class="fa-fw fa fa-university"></i><span> 向阳书架</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> 列表</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> 书籍</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> 电影</span></a></li><li><a class="site-page" href="/games/"><i class="fa-fw fa fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page" href="/bilibili/"><i class="fa-fw fa fa-play-circle"></i><span> 番剧</span></a></li><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movie/"><i class="fa-fw fa fa-play-circle-o"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-link" aria-hidden="true"></i><span> 友情链接</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page" href="https://yumuxy.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 桑榆未晚</span></a></li><li><a class="site-page" href="https://lllzxqq.gitee.io/" target="_blank" rel="noopener"><i class="fa-fw fa fa-link"></i><span> 偏偏💖雨季</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-user-circle-o" aria-hidden="true"></i><span> 关于我</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="http://www.xbmu.edu.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-graduation-cap"></i><span> 母校</span></a></li><li><a class="site-page" href="/workshop/"><i class="fa-fw fa fa-heartbeat"></i><span> 作品</span></a></li><li><a class="site-page" href="/mybook/"><i class="fa-fw fa fa-book"></i><span> 自传</span></a></li><li><a class="site-page" href="/anires/"><i class="fa-fw fa fa-list-alt"></i><span> 简历</span></a></li><li><a class="site-page" href="/vcard/"><i class="fa-fw fa fa-vcard-o"></i><span> 名片</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gamepad" aria-hidden="true"></i><span> 娱乐</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="https://playground.z.wiki/typing-game/index.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 打字游戏</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/GreedySnake/GreedySnake.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-lastfm"></i><span> 贪吃蛇</span></a></li><li><a class="site-page" href="https://xyyum.icu/mypages/nineGridGame/nineGridGame.html" target="_blank" rel="noopener"><i class="fa-fw fa fa-gamepad"></i><span> 抽奖游戏</span></a></li><li><a class="site-page" href="/petalage/"><i class="fa-fw fa fa-gamepad"></i><span> 表白时刻</span></a></li><li><a class="site-page" href="/yszq/"><i class="fa-fw fa fa-gamepad"></i><span> 3D元素</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-gear (alias)" aria-hidden="true"></i><span> 工具平台</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/xkdm/"><i class="fa-fw fa fa-star"></i><span> 星空弹幕</span></a></li><li><a class="site-page" href="https://xyym.avosapps.us/" target="_blank" rel="noopener"><i class="fa-fw fa fa-commenting-o"></i><span> 评论管理</span></a></li><li><a class="site-page" href="https://myhkw.cn/admin/user/login/" target="_blank" rel="noopener"><i class="fa-fw fa fa-music"></i><span> 音乐后台</span></a></li><li><a class="site-page" href="https://www.superbed.cn/" target="_blank" rel="noopener"><i class="fa-fw fa fa-area-chart"></i><span> 聚合图床</span></a></li><li><a class="site-page" href="/encryptedPages/"><i class="fa-fw fa fa-lock"></i><span> 加密访问</span></a></li></ul></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-heartbeat" aria-hidden="true"></i><span> 纪念空间</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/3d-gallery/"><i class="fa-fw fa fa-university"></i><span> 3D相册屋</span></a></li><li><a class="site-page" href="/live-photo/"><i class="fa-fw fa fa-photo"></i><span> 青春校园</span></a></li><li><a class="site-page" href="/photo-wall/"><i class="fa-fw fa fa-th"></i><span> 生活照片</span></a></li><li><a class="site-page" href="/video-wall/"><i class="fa-fw fa fa-video-camera"></i><span> 在线视频</span></a></li><li><a class="site-page" href="/mtxx/"><i class="fa-fw fa fa-file-photo-o"></i><span> 美图秀秀</span></a></li><li><a class="site-page" href="/timeStoryline/"><i class="fa-fw fa fa-file-video-o"></i><span> 时间故事线</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">远程终端管理工具</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-06-01 16:30:00"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-06-01</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2025-10-12 22:32:36"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2025-10-12</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/Linux/">Linux</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="post-meta__icon fa fa-comment-o" aria-hidden="true"></i><span>评论数:</span><a href="/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" itemprop="commentCount"></span></a></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h2 id="Linux常用命令整理"><a href="#Linux常用命令整理" class="headerlink" title="Linux常用命令整理"></a>Linux常用命令整理</h2><h3 id="命令cd——更改目录"><a href="#命令cd——更改目录" class="headerlink" title="命令cd——更改目录"></a>命令cd——更改目录</h3><ul>
+<li>cd ~ 切换到用户目录，比如是root用户，则切换到&#x2F;root下</li>
+<li>cd &#x2F;tmp 切换到目录&#x2F;tmp</li>
+<li>cd dir 切换到当前目录下的dir目录</li>
+<li>cd &#x2F; 切换到根目录</li>
+<li>cd - 回到之前的目录</li>
+<li>cd .. 切换到到上一级目录</li>
+<li>cd ..&#x2F;.. 切换到上二级目录</li>
+</ul>
+<h3 id="命令ls——列出文件"><a href="#命令ls——列出文件" class="headerlink" title="命令ls——列出文件"></a>命令ls——列出文件</h3><h4 id="检查指定路径的目录文件"><a href="#检查指定路径的目录文件" class="headerlink" title="检查指定路径的目录文件"></a>检查指定路径的目录文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /apphome/ctbsabs/abs/upload_files/up/TestDirectory/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>ls -la 给出当前目录下所有文件的一个长列表，包括以句点开头的“隐藏”文件</li>
+<li>ls a* 列出当前目录下以字母a开头的所有文件</li>
+<li>ls -l *.doc 给出当前目录下以.doc结尾的所有文件</li>
+<li>ls -lrt 会以详细列表形式显示文件和目录，按修改时间排序，并将最旧的文件显示在前，最新的显示在最后</li>
+<li>ls -lt 查看最近修改的文件列表</li>
+<li>ls -ls 快速找出占用空间较大的文件</li>
+<li>ls –color&#x3D;auto 为不同类型的文件添加颜色，以便区分</li>
+</ul>
+<h3 id="命令cp——复制文件"><a href="#命令cp——复制文件" class="headerlink" title="命令cp——复制文件"></a>命令cp——复制文件</h3><h4 id="将所有匹配-Clear-sh-的文件复制到目标目录"><a href="#将所有匹配-Clear-sh-的文件复制到目标目录" class="headerlink" title="将所有匹配 Clear.sh 的文件复制到目标目录"></a>将所有匹配 <em>Clear</em>.sh 的文件复制到目标目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -v *Clear*.sh /apphome/ctbsabs/abs/upload_files/up/TestDirectory/</span><br></pre></td></tr></table></figure>
+
+<h4 id="复制列出的文件名"><a href="#复制列出的文件名" class="headerlink" title="复制列出的文件名"></a>复制列出的文件名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -v logClear.sh fileBakClear.sh /apphome/ctbsabs/abs/upload_files/up/TestDirectory/</span><br></pre></td></tr></table></figure>
+
+<h4 id="交互式选择复制（存在同名文件会逐个确认）"><a href="#交互式选择复制（存在同名文件会逐个确认）" class="headerlink" title="交互式选择复制（存在同名文件会逐个确认）"></a>交互式选择复制（存在同名文件会逐个确认）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> *Clear*.sh; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">read</span> -p <span class="string">"复制文件 <span class="variable">$file</span> 到目标目录吗？[y/N] "</span> yn</span><br><span class="line">    <span class="keyword">case</span> <span class="variable">$yn</span> <span class="keyword">in</span></span><br><span class="line">        [Yy]* ) cp -v <span class="string">"<span class="variable">$file</span>"</span> /apphome/ctbsabs/abs/upload_files/up/TestDirectory/;;</span><br><span class="line">        * ) <span class="built_in">echo</span> <span class="string">"已跳过 <span class="variable">$file</span>"</span>;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="把文件file复制为新文件newfile-bak"><a href="#把文件file复制为新文件newfile-bak" class="headerlink" title="把文件file复制为新文件newfile.bak"></a>把文件file复制为新文件newfile.bak</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp file newfile.bak</span><br></pre></td></tr></table></figure>
+
+<h4 id="把当前目录下的所有未隐藏文件复制到-x2F-tmp-x2F-目录下"><a href="#把当前目录下的所有未隐藏文件复制到-x2F-tmp-x2F-目录下" class="headerlink" title="把当前目录下的所有未隐藏文件复制到&#x2F;tmp&#x2F;目录下"></a>把当前目录下的所有未隐藏文件复制到&#x2F;tmp&#x2F;目录下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp * /tmp</span><br></pre></td></tr></table></figure>
+
+<h4 id="递归性复制"><a href="#递归性复制" class="headerlink" title="递归性复制"></a>递归性复制</h4><p>递归性把docs目录复制为新目录docs.bak,保持文件属性，并复制所有的文件，包括以句点开头的隐藏文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -a docs docs.bak</span><br></pre></td></tr></table></figure>
+
+<h4 id="在覆盖前询问用户"><a href="#在覆盖前询问用户" class="headerlink" title="在覆盖前询问用户"></a>在覆盖前询问用户</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -i</span><br></pre></td></tr></table></figure>
+
+<h4 id="告诉用户正在做什么"><a href="#告诉用户正在做什么" class="headerlink" title="告诉用户正在做什么"></a>告诉用户正在做什么</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -v</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令mv——移动和重命名文件"><a href="#命令mv——移动和重命名文件" class="headerlink" title="命令mv——移动和重命名文件"></a>命令mv——移动和重命名文件</h3><ul>
+<li>mv aflie bfile 将afile重命名为bfile</li>
+<li>mv afile &#x2F;tmp 把当前目录下的afile移动到&#x2F;tmp&#x2F;目录下</li>
+</ul>
+<h3 id="命令rm——删除文件和目录"><a href="#命令rm——删除文件和目录" class="headerlink" title="命令rm——删除文件和目录"></a>命令rm——删除文件和目录</h3><ul>
+<li>rm afile 删除文件afile</li>
+<li>rm * 删除当前目录下的所有文件(未隐藏文件)。rm命令不删除目录，除非也指定了-r(递归)参数。</li>
+<li>rm -rf domed 删除domed目录以及它所包含的所有内容</li>
+<li>rm -i a* 删除当前目录下所有以字母a开头的文件，并且在每次删除时，提示用户进行确认</li>
+<li>rm -i ‘D:\22.txt’  单引号内不解析转义字符，可正常删除特殊符号文件</li>
+</ul>
+<h3 id="命令mkdir——建立目录"><a href="#命令mkdir——建立目录" class="headerlink" title="命令mkdir——建立目录"></a>命令mkdir——建立目录</h3><ul>
+<li>mkdir photos 在当前目录中建立名为photos的目录</li>
+<li>mkdir -p this&#x2F;that&#x2F;theother 在当前目录下建立指定的嵌套子目录</li>
+</ul>
+<h3 id="命令rmkdir——删除目录"><a href="#命令rmkdir——删除目录" class="headerlink" title="命令rmkdir——删除目录"></a>命令rmkdir——删除目录</h3><ul>
+<li>rmkdir  空目录名 将删除空目录</li>
+</ul>
+<h3 id="命令touch——创建一个空文件"><a href="#命令touch——创建一个空文件" class="headerlink" title="命令touch——创建一个空文件"></a>命令touch——创建一个空文件</h3><ul>
+<li>touch aaa.txt 创建一个空文件，文件名为aaa.txt</li>
+</ul>
+<h3 id="命令more、less——查看文件内容"><a href="#命令more、less——查看文件内容" class="headerlink" title="命令more、less——查看文件内容"></a>命令more、less——查看文件内容</h3><ul>
+<li>more &#x2F;etc&#x2F;passwd 查看&#x2F;etc&#x2F;passwd的内容</li>
+<li>less &#x2F;etc&#x2F;passwd 查看&#x2F;etc&#x2F;passwd的内容</li>
+</ul>
+<h3 id="命令tail——查看文件详细信息"><a href="#命令tail——查看文件详细信息" class="headerlink" title="命令tail——查看文件详细信息"></a>命令tail——查看文件详细信息</h3><ul>
+<li><p>tail -f aaa.txt  看aaa.txt文件的详细信息(查看实时的日志)</p>
+<p>例如：tail -200f normal.log (查看近200条实时运行的日志)<br>tail -200 normal.log (查看近200条日志(不实时))</p>
+</li>
+<li><p>tail -n x aaa.log  x:最后几行的信息</p>
+</li>
+</ul>
+<h3 id="命令head——查看文件名字和后缀"><a href="#命令head——查看文件名字和后缀" class="headerlink" title="命令head——查看文件名字和后缀"></a>命令head——查看文件名字和后缀</h3><ul>
+<li>head -n x aaa.log 查看x行数的aaa.log文件</li>
+</ul>
+<h3 id="命令grep——过滤搜索文件内容"><a href="#命令grep——过滤搜索文件内容" class="headerlink" title="命令grep——过滤搜索文件内容"></a>命令grep——过滤搜索文件内容</h3><ul>
+<li>grep -lr ‘关键词’ . &gt; ‘D:\\保存.txt’  在Git中进入当前目录下，通过关键词搜索并另存为txt文件保存路径信息，可用于统计文件路径。</li>
+<li>grep bible &#x2F;etc&#x2F;exports 在文件exports中查找包含bible的所有行</li>
+<li>tail -100 &#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log | grep 404 在WEB服务器日志文件access.log的后100行中查找包含“404”的行</li>
+<li>tail -100 &#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log | grep -v googlebot 在WEB服务器日志文件access.log的后100行中，查找没有被google访问的行</li>
+<li>grep -v ^# &#x2F;etc&#x2F;apache2&#x2F;httpd.conf 在主apache配置文件中，查找所有非注释行</li>
+<li>grep -r ‘关键词’ .   &#x2F;&#x2F;搜索当前目录下所有有关键词的文件（可直接展示关键词位置)</li>
+<li>grep -r ‘关键词1\|关键词2’ .  &#x2F;&#x2F;递归查询包含关键词1或关键词2的文件内容</li>
+<li>grep -r -P ‘^(?&#x3D;.*关键词1)(?&#x3D;.*关键词2)’ .  &#x2F;&#x2F;同时满足关键词1,2的筛选命令</li>
+<li>grep -r –exclude-dir&#x3D;{dir1,dir2} ‘关键字’ .  &#x2F;&#x2F;使用 <code>--exclude</code> 排除不需要搜索的目录或文件</li>
+<li>grep -r –include&#x3D;”*.txt” ‘关键字’ .  &#x2F;&#x2F;使用 <code>--include</code> 只搜索特定类型的文件</li>
+<li>grep -o “ORA-12899” *.log  &#x2F;&#x2F;在所有 <code>.log</code> 文件中搜索 <code>ORA-1123</code> 字符串。快速统计或提取日志文件中特定错误码、标识符的位置。</li>
+</ul>
+<p><strong>在xshell上查看某个时间段的日志 ，记两种方式</strong></p>
+<pre><code>(1) 用grep：格式为：grep -E ‘起始时间|结束时间’ 日志文件
+</code></pre>
+<p>grep -E ‘2019-10-22 09:00:05|2019-10-22 10:50:15’ common.log</p>
+<pre><code>(2) 用sed命令，格式为：sed -n ‘/起始时间/,/结束时间/p’ 日志文件
+</code></pre>
+<p>sed -n ‘&#x2F;2019-10-22 10:44&#x2F;,&#x2F;2019-10-22 10:47&#x2F;p’ common.log</p>
+<p><strong>使用 <code>ag</code> 或 <code>ripgrep</code> 替代 <code>grep</code></strong></p>
+<p><code>ag</code>（The Silver Searcher）和 <code>ripgrep</code> 是两个比 <code>grep</code> 更快的搜索工具，默认支持递归搜索，特别适用于层级深、文件多的项目中。</p>
+<ul>
+<li>ag ‘关键字’ .</li>
+<li>rg ‘关键字’ .</li>
+</ul>
+<h3 id="命令find——查找文件"><a href="#命令find——查找文件" class="headerlink" title="命令find——查找文件"></a>命令find——查找文件</h3><h4 id="模糊查找文件并输出绝对路径"><a href="#模糊查找文件并输出绝对路径" class="headerlink" title="模糊查找文件并输出绝对路径"></a>模糊查找文件并输出绝对路径</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> f -iname <span class="string">"*clear*.sh"</span> 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<h4 id="同时匹配clear或clean关键词"><a href="#同时匹配clear或clean关键词" class="headerlink" title="同时匹配clear或clean关键词"></a>同时匹配clear或clean关键词</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -<span class="built_in">type</span> f -iname <span class="string">"*clea[r|n]*.sh"</span> 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
+
+<h4 id="在当前目录中查找-doc文件"><a href="#在当前目录中查找-doc文件" class="headerlink" title="在当前目录中查找.doc文件"></a>在当前目录中查找.doc文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./name *.doc</span><br></pre></td></tr></table></figure>
+
+<h4 id="递归查找特定前缀的文件"><a href="#递归查找特定前缀的文件" class="headerlink" title="递归查找特定前缀的文件"></a>递归查找特定前缀的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name 文件名*</span><br></pre></td></tr></table></figure>
+
+<h4 id="按修改时间搜索最近一天内修改的文件"><a href="#按修改时间搜索最近一天内修改的文件" class="headerlink" title="按修改时间搜索最近一天内修改的文件"></a>按修改时间搜索最近一天内修改的文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /path/to/directory -mtime -1</span><br></pre></td></tr></table></figure>
+
+<h4 id="在当前目录下查找包含page的文件名"><a href="#在当前目录下查找包含page的文件名" class="headerlink" title="在当前目录下查找包含page的文件名"></a>在当前目录下查找包含page的文件名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find .|grep page</span><br></pre></td></tr></table></figure>
+
+<h3 id="命令vi——编辑文件"><a href="#命令vi——编辑文件" class="headerlink" title="命令vi——编辑文件"></a>命令vi——编辑文件</h3><ul>
+<li>vi &#x2F;etc&#x2F;bubby.txt 用vi编辑文件&#x2F;etc&#x2F;bubby.txt</li>
+<li>vim &#x2F;etc&#x2F;bubby.txt 用vi编辑文件&#x2F;etc&#x2F;bubby.txt</li>
+</ul>
+<p>按住 i键进入编辑模式<br>　　编辑完 按住Esc取消编辑<br>　　输入 : wq! 保存<br>　　        : q! 是不保存</p>
+<p>快捷操作：</p>
+<p>　　切换窗口：alt+1,alt+2</p>
+<p>　　全屏：alt+回车</p>
+<p>　　将vim挂起(暂停)：ctrl+z，暂停后可进行其他shell操作，完了之后可通过 fg 命令切换回vim界面继续编辑</p>
+<p>　　:MR：查看历史文件记录(注意：MR大写)</p>
+<p>　　:sp 横向切换界面窗口</p>
+<p>　　:vsp 纵向切换界面窗口</p>
+<h3 id="命令rz、sz——文件上传下载"><a href="#命令rz、sz——文件上传下载" class="headerlink" title="命令rz、sz——文件上传下载"></a>命令rz、sz——文件上传下载</h3><ul>
+<li>运行命令Sudo rz，即是接收文件，xshell就会弹出文件选择对话框，选好文件之后关闭对话框，文件就会上传到linux里的当前目录 。</li>
+<li>运行命令Sudo sz file 就是发文件到windows上(保存的目录是可以配置)</li>
+<li>比ftp命令方便多了，而且服务器不用再开FTP服务了。</li>
+</ul>
+<h3 id="命令cat——显示文件内容"><a href="#命令cat——显示文件内容" class="headerlink" title="命令cat——显示文件内容"></a>命令cat——显示文件内容</h3><ul>
+<li>cat file</li>
+<li>cat &#x2F;etc&#x2F;os-release 查看当前系统的种类(即发行版信息)</li>
+<li>cat &#x2F;etc&#x2F;debian_version 查看基于Debian的系统（如Ubuntu）<br>cat &#x2F;etc&#x2F;redhat-release 查看基于Red Hat的系统（如CentOS）</li>
+<li>cat &#x2F;proc&#x2F;version   –查看操作系统版本</li>
+<li>cat &#x2F;etc&#x2F;issue   —查看操作系统版本，此命令也适用于所有的Linux发行版</li>
+</ul>
+<h3 id="netstat是查看端口是否被占用"><a href="#netstat是查看端口是否被占用" class="headerlink" title="netstat是查看端口是否被占用"></a>netstat是查看端口是否被占用</h3><p>　　例如：netstat -app|grep 10086</p>
+<h3 id="命令ps——查看进程"><a href="#命令ps——查看进程" class="headerlink" title="命令ps——查看进程"></a>命令ps——查看进程</h3><ul>
+<li>ps [options]</li>
+</ul>
+<p>　　DESCRIPTION(描述)：ps命令显示运行程序选项的一些信息。如果你想显示选项的一些重复信息，请使用top命令替代。 用标准语法查看系统上的每一个进程。</p>
+<p>　　ps -e</p>
+<p>　　ps -ef</p>
+<p>　　ps -eF</p>
+<p>　　ps -ely</p>
+<p>例如：</p>
+<ul>
+<li><p>查看运行的进程</p>
+<p>ps -ef|grep ServerRun</p>
+</li>
+<li><p>查看全部进程数</p>
+<p>ps -ef  | wc -l</p>
+<p>-e：显示所有程序。</p>
+<p>-f：显示UID,PPIP,C与STIME栏位。</p>
+</li>
+<li><p>查看httpd的进程数</p>
+<p>ps -ef | grep httpd | wc -l</p>
+</li>
+</ul>
+<h3 id="命令kill——杀掉进程"><a href="#命令kill——杀掉进程" class="headerlink" title="命令kill——杀掉进程"></a>命令kill——杀掉进程</h3><p>　　[root@linux ~]# kill -signal %jobnumber</p>
+<p>　　[root@linux ~]# kill -l</p>
+<p>　　参数： -l ：这个是 L 的小写，列出目前 kill 能够使用的讯号 (signal) 有哪些?共有62个。</p>
+<h3 id="命令stop、start——重启tomcat"><a href="#命令stop、start——重启tomcat" class="headerlink" title="命令stop、start——重启tomcat"></a>命令stop、start——重启tomcat</h3><ul>
+<li>.&#x2F;catalina.sh stop</li>
+<li>.&#x2F;catalina.sh start</li>
+</ul>
+<h3 id="命令top——查看cpu、内存"><a href="#命令top——查看cpu、内存" class="headerlink" title="命令top——查看cpu、内存"></a>命令top——查看cpu、内存</h3><h3 id="命令pwd——查看当前路径"><a href="#命令pwd——查看当前路径" class="headerlink" title="命令pwd——查看当前路径"></a>命令pwd——查看当前路径</h3><h3 id="命令clear——清屏"><a href="#命令clear——清屏" class="headerlink" title="命令clear——清屏"></a>命令clear——清屏</h3><h3 id="命令tar——打包、解包rar"><a href="#命令tar——打包、解包rar" class="headerlink" title="命令tar——打包、解包rar"></a>命令tar——打包、解包rar</h3><ul>
+<li>tar -cvf <strong>.tar a.jsp b.java 将a和b打成</strong>.rar</li>
+<li>tar -xvf <strong>.tar a.jsp b.java 将</strong>.tar 解包</li>
+</ul>
+<h3 id="命令diff——比较文件内容"><a href="#命令diff——比较文件内容" class="headerlink" title="命令diff——比较文件内容"></a>命令diff——比较文件内容</h3><ul>
+<li>diff dir1 dir2 比较目录1与目录2的文件列表是否相同，但不比较文件的实际内容，不同则列出</li>
+<li>diff file1 file2 比较文件1与文件2的内容是否相同，如果是文本格式的文件，则将不相同的内容显示，如果是二进制代码则只表示两个文件是不同的</li>
+<li>comm file1 file2 比较文件，显示两个文件不相同的内容</li>
+</ul>
+<h3 id="命令ln——建立连接"><a href="#命令ln——建立连接" class="headerlink" title="命令ln——建立连接"></a>命令ln——建立连接</h3><ul>
+<li>ln source_path target_path 硬连接</li>
+<li>ln -s source_path target_path 软连接</li>
+</ul>
+<h3 id="命令history——历史命令"><a href="#命令history——历史命令" class="headerlink" title="命令history——历史命令"></a>命令history——历史命令</h3><ul>
+<li>history 查看历史命令</li>
+<li>!100 执行第 100 条历史命令</li>
+</ul>
+<h2 id="工作中工具的常见操作"><a href="#工作中工具的常见操作" class="headerlink" title="工作中工具的常见操作"></a>工作中工具的常见操作</h2><h3 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h3><h4 id="FinalShell工具卡死"><a href="#FinalShell工具卡死" class="headerlink" title="FinalShell工具卡死"></a>FinalShell工具卡死</h4><p><strong>描述：</strong></p>
+<p>有时候在编辑某个txt文件的时候，将大量的XML报文复制进去，会发现卡死无法关闭，这时可用资源管理器结束进程，但通过搜索句柄，把Finalshell关联的句柄都结束进程之后，Windows10系统突然黑屏了。原因是有相关进程是有explorer.exe的名称与FinalShell之间有交互造成的。</p>
+<p><strong>解决办法：</strong></p>
+<p>尝试唤出任务管理器，按下  <strong>Ctrl + Alt + Delete</strong> ，看看是否能打开任务管理器。如果能打开，尝试重启 <strong>explorer.exe</strong> 进程：</p>
+<ul>
+<li>在任务管理器中选择“文件” → “运行新任务”，输入 <code>explorer.exe</code>，然后确定。</li>
+</ul>
+<h3 id="常用命令、快捷键"><a href="#常用命令、快捷键" class="headerlink" title="常用命令、快捷键"></a>常用命令、快捷键</h3><ul>
+<li>查看日志信息：view+报错日志</li>
+<li>.gz压缩包解压命令：gunzip -d filename</li>
+<li>.gz压缩包压缩命令：gzip filename</li>
+<li>:q：强制退出</li>
+<li>:wq:保存退出</li>
+<li>:w:保存</li>
+<li>shift+G:到最后一行</li>
+<li>从下往上定位查询：？+关键词</li>
+<li>从上往下定位查询：&#x2F;关键词</li>
+<li>ctrl+B:向上</li>
+<li>ctrl+D向下</li>
+<li>fdisk -l 查看磁盘空间大小</li>
+<li>df -h  查看分区空间大小</li>
+<li>du -sh * 查看当前目录下所有文件总计大小</li>
+</ul>
+<p><strong>代码升级后重启服务器流程</strong></p>
+<p>将三个56环境在右下角点击为全部会话，可以进行同时命令的操作</p>
+<p>进入modules目录下执行以下命令</p>
+<p>停56环境服务：plstopall.sh</p>
+<p>检查是否停止完成：showserver</p>
+<p>先提交：svn up</p>
+<p>再编译：ant onl</p>
+<p>最后重启服务：plstartall.sh</p>
+<p>检查是否启动完成：showserver</p>
+<p>出现某个服务未启动，需要在对应目录下，将对应文件删除，再重启单独启动。</p>
+<p>比如onlApp5服务未启动成功<br>输入etc命令找到pids目录<br>删除ltts.onl.onlApp5.pid文件:\rm+该文件<br>再重启即可</p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">PanXiaoKang</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/">http://example.com/2020/06/01/%E8%BF%9C%E7%A8%8B%E7%BB%88%E7%AB%AF%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">向阳榆木</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Xshell/">Xshell</a><a class="post-meta__tags" href="/tags/FinalShell/">FinalShell</a><a class="post-meta__tags" href="/tags/Linux%E5%91%BD%E4%BB%A4/">Linux命令</a></div><div class="post_share"><div class="social-share" data-image="https://mpimg.cn/view.php/58dfeb8921e8fb4a93de3dae7d99a816.jpg" data-sites="qq,wechat,facebook,twitter,weibo"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t40mLD.th.png" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://s1.ax1x.com/2020/06/09/t4czVK.th.jpg" alt="支付宝"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="prev-post pull_left"><a href="/2020/06/02/Oracle/"><img class="prev_cover lazyload" data-src="/img/butterfly.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Oracle</div></div></a></div><div class="next-post pull_right"><a href="/2020/05/14/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><img class="next_cover lazyload" data-src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1928993202,1226469577&amp;fm=26&amp;gp=0.jpg" onerror="onerror=null;src='/img/404.png'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法与数据结构</div></div></a></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify: true,
+  verify: true,
+  appId: 'z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI',
+  appKey: 'gI6Yhfwz4JiUIv9546gepko8',
+  placeholder: '来吧，造作吧，快活吧，肆无忌惮吧！(～￣▽￣)～',
+  avatar: 'monsterid',
+  meta: guest_info,
+  pageSize: '10',
+  lang: 'zh-cn',
+  recordIP: false,
+  serverURLs: ''
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By PanXiaoKang</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="footer_custom_text">小伙伴们好！欢迎来到<a href="https://panyongkang.github.io/" target="_blank" rel="noopener">向阳榆木</a>的博客！</div><div class="icp"><a href="http://www.beian.miit.gov.cn" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>黔ICP备54587259号</span></a></div><div id="running-time"></div><script>setInterval(()=>{let create_time=Math.round(new Date(Date.UTC(2020,01,01,0,0,0)).getTime()/1000);let timestamp=Math.round((new Date().getTime()+8*60*60*1000)/1000);let second=timestamp-create_time;let time=new Array(0,0,0,0,0);if(second>=365*24*3600){time[0]=parseInt(second/(365*24*3600));second%=365*24*3600;}if(second>=24*3600){time[1]=parseInt(second/(24*3600));second%=24*3600;}if(second>=3600){time[2]=parseInt(second/3600);second%=3600;}if(second>=60){time[3]=parseInt(second/60);second%=60;}if(second>0){time[4]=second;}currentTimeHtml='本站已安全运行 '+time[0]+' 年 '+time[1]+' 天 '+time[2]+' 时 '+time[3]+' 分 '+time[4]+' 秒';document.getElementById("running-time").innerHTML=currentTimeHtml;},1000);</script></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+ <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script id="canvas_nest" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><script src="/js/third-party/ClickShowText.js"></script><script src="/js/search/local-search.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":500},"mobile":{"show":true},"log":false});</script></body></html>
