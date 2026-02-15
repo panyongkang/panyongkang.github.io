@@ -1,0 +1,428 @@
+*{
+    font-family: 標楷體;
+    position: relative;
+}
+html, body {
+    width: 100%;    
+    height: 100%;
+}
+body{
+  background-color: #FAF2FF;
+  margin: 0px; 
+  padding: 0px;
+  border-top: solid 20px 	#9955FF;
+  border-bottom: solid 20px 	#9955FF;
+  box-sizing: border-box; 
+  overflow: hidden;
+}
+.card{
+  width: 350px;      
+  height:  200px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 230px;
+  background-color: #fff;
+  color: #666;
+  letter-spacing: 1px;
+  border: solid 1px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+h2{
+  	font-size: 30px;
+}
+h2 span{
+  	font-size: 15px;
+    font-family: 微軟正黑體;
+}
+h5{
+    font-size: 18px;
+    padding-left:25px;
+}
+p{
+  font-size: 12px;
+  line-height: 22px;
+  color: #fff;
+}
+#logo{
+  width: 120px; 
+  height: 100px;
+  position: absolute;
+  top: 15px; 
+  right: 30px;
+  background-position:center center;
+  background-size: 100%;
+  border-radius:100%;
+  background-image: url("https://img.imgdb.cn/item/60423552360785be54225ba5.png");
+}
+#black{
+  background-color: rgba(30,30,30,0.6);
+  width:450px;
+  height:110px;
+  position:absolute;
+  top:140px;
+  left:0px;
+}
+#gradient{
+  position: absolute;
+  width: 90px; height: 305px;
+  top: -30px; left: 48px;
+  background: linear-gradient(to bottom,#caaaf7 0%,#edcff9 54%,#edcff9 54%,#caaaf7 100%); 
+  transform: rotate(155deg);
+}
+#gradient2{
+  position: absolute;
+  width: 10px; height: 450px;
+  top: -50px; left: 170px;
+  background: linear-gradient(45deg,#b2e1ff 17%,#66b6fc 51%,#66b6fc 51%,#b2e1ff 89%);
+  transform: rotate(80deg);
+}
+.circle{
+  border-radius: 100%;
+  position: absolute;
+}
+.circle1{
+  width: 100px;   
+  height: 50px;
+  right: 180px;
+  bottom: 68px;
+  border-radius: 0px 100px 0px 0px;
+  background-color: 	#FFFFDF;
+  transform: rotate(350deg);
+}
+.circle2{
+  width: 65px;     
+  height: 65px;
+  right: -30px;
+  top: -30px;
+  border: solid 5px #95D5FC;
+}
+.circle3{
+  width: 70px;    
+  height: 70px;
+  right: 20px;
+  top: 90px;
+  border: 0;
+  background-color: rgba(177,237,250,0.7);
+}
+/* 浮水印 */
+.watermark{
+  font-size: 170px;
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  color: rgb(155 49 255 / 6%);
+  text-shadow: 2px 1px 1px rgba(255,255,255,0.2);
+  transform: rotate(348deg);
+}
+/* 滑鼠停在card會左移2px */
+@keyframes move-left{
+    from {left: 0px; }
+    to {left: -2px; }
+}
+.card:hover{
+  animation-name: move-left;
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+}
+/* card 掉落 */
+@keyframes down{
+    0% { top: -500px;}
+   50% { top: 150px;}
+  100% { top: 0px;}
+}
+body:hover .card{
+  animation-name: down;
+  animation-duration: 2s;
+  animation-timing-function: linear; /*線性加減速*/
+}
+/* logo會旋轉浮現 */
+@keyframes rotate{
+    from {transform: rotate(360deg);opacity: 0; }
+    to {transform: rotate(0deg);opacity: 1; }
+}
+body:hover #logo{
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  /*線性加減速*/
+  animation-delay: 1s;
+}
+/* 滑鼠停在card, name會上下左右移動 */
+@keyframes change{
+     0% { top: 0px;}
+    20% { top: -30px;}
+    40% { left: 25px;}
+    60% { top: 30px;}
+    80% { right: 25px;}
+   100% { top: 0px;}
+}
+.card:hover h2{
+  animation-name: change;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-delay: 0.2s;
+}
+
+/* p會往上浮現 */
+@keyframes opacity{
+    0%   {top:100px;opacity: 0;}
+    50%  {opacity: 0.5;}
+    100% {top:0px;opacity: 1;}
+}
+body:hover p{
+  animation-name: opacity;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+/* CSS3实现文字跑马灯(流光)效果 */
+.pmd {
+	margin: 0;
+	background: -webkit-linear-gradient(left,
+		#ffffff,
+		#ff0000 6.25%,
+		#ff7d00 12.5%,
+		#ffff00 18.75%,
+		#00ff00 25%,
+		#00ffff 31.25%,
+		#0000ff 37.5%,
+		#ff00ff 43.75%,
+		#ffff00 50%,
+		#ff0000 56.25%,
+		#ff7d00 62.5%,
+		#ffff00 68.75%,
+		#00ff00 75%,
+		#00ffff 81.25%,
+		#0000ff 87.5%,
+		#ff00ff 93.75%,
+		#ffff00 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 200% 100%;
+	animation: masked-animation 2s infinite linear;
+}
+
+@keyframes masked-animation {
+	0% {
+		background-position: 0 0;
+	}
+
+	100% {
+		background-position: -100%, 0;
+	}
+}
+
+/* 文字跳动效果 */
+ .my-face {
+    animation: my-face 5s infinite ease-in-out;
+    color: #00f1ff;
+    display: inline-block;
+	margin-left: -30px;
+}
+@-webkit-keyframes my-face {
+    2%, 24%, 80% {
+        -webkit-transform: translate(0, 1.5px) rotate(1.5deg);
+        transform: translate(0, 1.5px) rotate(1.5deg)
+    }
+    4%, 68%, 98% {
+        -webkit-transform: translate(0, -1.5px) rotate(-.5deg);
+        transform: translate(0, -1.5px) rotate(-.5deg)
+    }
+    38%, 6% {
+        -webkit-transform: translate(0, 1.5px) rotate(-1.5deg);
+        transform: translate(0, 1.5px) rotate(-1.5deg)
+    }
+    8%, 86% {
+        -webkit-transform: translate(0, -1.5px) rotate(-1.5deg);
+        transform: translate(0, -1.5px) rotate(-1.5deg)
+    }
+    10%, 72% {
+        -webkit-transform: translate(0, 2.5px) rotate(1.5deg);
+        transform: translate(0, 2.5px) rotate(1.5deg)
+    }
+    12%, 64%, 78%, 96% {
+        -webkit-transform: translate(0, -.5px) rotate(1.5deg);
+        transform: translate(0, -.5px) rotate(1.5deg)
+    }
+    14%, 54% {
+        -webkit-transform: translate(0, -1.5px) rotate(1.5deg);
+        transform: translate(0, -1.5px) rotate(1.5deg)
+    }
+    16% {
+        -webkit-transform: translate(0, -.5px) rotate(-1.5deg);
+        transform: translate(0, -.5px) rotate(-1.5deg)
+    }
+    18%, 22% {
+        -webkit-transform: translate(0, .5px) rotate(-1.5deg);
+        transform: translate(0, .5px) rotate(-1.5deg)
+    }
+    20%, 36%, 46% {
+        -webkit-transform: translate(0, -1.5px) rotate(2.5deg);
+        transform: translate(0, -1.5px) rotate(2.5deg)
+    }
+    26%, 50% {
+        -webkit-transform: translate(0, .5px) rotate(.5deg);
+        transform: translate(0, .5px) rotate(.5deg)
+    }
+    28% {
+        -webkit-transform: translate(0, .5px) rotate(1.5deg);
+        transform: translate(0, .5px) rotate(1.5deg)
+    }
+    30%, 40%, 62%, 76%, 88% {
+        -webkit-transform: translate(0, -.5px) rotate(2.5deg);
+        transform: translate(0, -.5px) rotate(2.5deg)
+    }
+    32%, 34%, 66% {
+        -webkit-transform: translate(0, 1.5px) rotate(-.5deg);
+        transform: translate(0, 1.5px) rotate(-.5deg)
+    }
+    42% {
+        -webkit-transform: translate(0, 2.5px) rotate(-1.5deg);
+        transform: translate(0, 2.5px) rotate(-1.5deg)
+    }
+    44%, 70% {
+        -webkit-transform: translate(0, 1.5px) rotate(.5deg);
+        transform: translate(0, 1.5px) rotate(.5deg)
+    }
+    48%, 74%, 82% {
+        -webkit-transform: translate(0, -.5px) rotate(.5deg);
+        transform: translate(0, -.5px) rotate(.5deg)
+    }
+    52%, 56%, 60% {
+        -webkit-transform: translate(0, 2.5px) rotate(2.5deg);
+        transform: translate(0, 2.5px) rotate(2.5deg)
+    }
+    58% {
+        -webkit-transform: translate(0, .5px) rotate(2.5deg);
+        transform: translate(0, .5px) rotate(2.5deg)
+    }
+    84% {
+        -webkit-transform: translate(0, 1.5px) rotate(2.5deg);
+        transform: translate(0, 1.5px) rotate(2.5deg)
+    }
+    90% {
+        -webkit-transform: translate(0, 2.5px) rotate(-.5deg);
+        transform: translate(0, 2.5px) rotate(-.5deg)
+    }
+    92% {
+        -webkit-transform: translate(0, .5px) rotate(-.5deg);
+        transform: translate(0, .5px) rotate(-.5deg)
+    }
+    94% {
+        -webkit-transform: translate(0, 2.5px) rotate(.5deg);
+        transform: translate(0, 2.5px) rotate(.5deg)
+    }
+    0%, 100% {
+        -webkit-transform: translate(0, 0) rotate(0);
+        transform: translate(0, 0) rotate(0)
+    }
+}
+@keyframes my-face {
+    2%, 24%, 80% {
+        -webkit-transform: translate(0, 1.5px) rotate(1.5deg);
+        transform: translate(0, 1.5px) rotate(1.5deg)
+    }
+    4%, 68%, 98% {
+        -webkit-transform: translate(0, -1.5px) rotate(-.5deg);
+        transform: translate(0, -1.5px) rotate(-.5deg)
+    }
+    38%, 6% {
+        -webkit-transform: translate(0, 1.5px) rotate(-1.5deg);
+        transform: translate(0, 1.5px) rotate(-1.5deg)
+    }
+    8%, 86% {
+        -webkit-transform: translate(0, -1.5px) rotate(-1.5deg);
+        transform: translate(0, -1.5px) rotate(-1.5deg)
+    }
+    10%, 72% {
+        -webkit-transform: translate(0, 2.5px) rotate(1.5deg);
+        transform: translate(0, 2.5px) rotate(1.5deg)
+    }
+    12%, 64%, 78%, 96% {
+        -webkit-transform: translate(0, -.5px) rotate(1.5deg);
+        transform: translate(0, -.5px) rotate(1.5deg)
+    }
+    14%, 54% {
+        -webkit-transform: translate(0, -1.5px) rotate(1.5deg);
+        transform: translate(0, -1.5px) rotate(1.5deg)
+    }
+    16% {
+        -webkit-transform: translate(0, -.5px) rotate(-1.5deg);
+        transform: translate(0, -.5px) rotate(-1.5deg)
+    }
+    18%, 22% {
+        -webkit-transform: translate(0, .5px) rotate(-1.5deg);
+        transform: translate(0, .5px) rotate(-1.5deg)
+    }
+    20%, 36%, 46% {
+        -webkit-transform: translate(0, -1.5px) rotate(2.5deg);
+        transform: translate(0, -1.5px) rotate(2.5deg)
+    }
+    26%, 50% {
+        -webkit-transform: translate(0, .5px) rotate(.5deg);
+        transform: translate(0, .5px) rotate(.5deg)
+    }
+    28% {
+        -webkit-transform: translate(0, .5px) rotate(1.5deg);
+        transform: translate(0, .5px) rotate(1.5deg)
+    }
+    30%, 40%, 62%, 76%, 88% {
+        -webkit-transform: translate(0, -.5px) rotate(2.5deg);
+        transform: translate(0, -.5px) rotate(2.5deg)
+    }
+    32%, 34%, 66% {
+        -webkit-transform: translate(0, 1.5px) rotate(-.5deg);
+        transform: translate(0, 1.5px) rotate(-.5deg)
+    }
+    42% {
+        -webkit-transform: translate(0, 2.5px) rotate(-1.5deg);
+        transform: translate(0, 2.5px) rotate(-1.5deg)
+    }
+    44%, 70% {
+        -webkit-transform: translate(0, 1.5px) rotate(.5deg);
+        transform: translate(0, 1.5px) rotate(.5deg)
+    }
+    48%, 74%, 82% {
+        -webkit-transform: translate(0, -.5px) rotate(.5deg);
+        transform: translate(0, -.5px) rotate(.5deg)
+    }
+    52%, 56%, 60% {
+        -webkit-transform: translate(0, 2.5px) rotate(2.5deg);
+        transform: translate(0, 2.5px) rotate(2.5deg)
+    }
+    58% {
+        -webkit-transform: translate(0, .5px) rotate(2.5deg);
+        transform: translate(0, .5px) rotate(2.5deg)
+    }
+    84% {
+        -webkit-transform: translate(0, 1.5px) rotate(2.5deg);
+        transform: translate(0, 1.5px) rotate(2.5deg)
+    }
+    90% {
+        -webkit-transform: translate(0, 2.5px) rotate(-.5deg);
+        transform: translate(0, 2.5px) rotate(-.5deg)
+    }
+    92% {
+        -webkit-transform: translate(0, .5px) rotate(-.5deg);
+        transform: translate(0, .5px) rotate(-.5deg)
+    }
+    94% {
+        -webkit-transform: translate(0, 2.5px) rotate(.5deg);
+        transform: translate(0, 2.5px) rotate(.5deg)
+    }
+    0%, 100% {
+        -webkit-transform: translate(0, 0) rotate(0);
+        transform: translate(0, 0) rotate(0)
+    }
+}
+/* end */
+
+.zw {
+    font-weight: bold;
+    color: #100f11;
+    margin-left: 15px;
+}

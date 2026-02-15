@@ -1,0 +1,213 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 向阳榆木
+subtitle: ''
+description: '向阳榆木的博客'
+keywords:
+author: PanXiaoKang
+language: zh-CN
+timezone: ''
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+##url: https://panyongkang.github.io/
+url: http://example.com/
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+
+#跳过渲染
+skip_render: 
+  - "mtxx/**"
+  - "music/**"
+  - "vcard/**"
+  - "workshop/**"
+  - "yszq/**"
+  - "live-photo/**"
+  - "photo-wall/**"
+  - "video-wall/**"
+  - "petalage/**"
+  - "anires/**"
+  - "xkdm/**"
+  - "3d-gallery/**"
+  - "3D-Panorama/**"
+  - "baidu_verify_code-Ls9v04hBiL.html"
+  - "README.md"
+  - "mybook/**" 
+  - "mypages/**"
+  - "sunshineBookshelf/**"  
+  - "timeStoryline/**"  
+  - "encryptedPages/**"  
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+marked:
+  prependRoot: true    # 启用根路径前缀
+  postAsset: true      # 自动处理文章资源
+  relativePath: true   # 支持相对路径解析
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace: ''
+  wrap: true
+  hljs: false
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## Use post's date for updated date unless set in front-matter
+use_date_for_updated: false
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+##原始的主题风格是landscape 可以修改主题Butterfly
+theme: Butterfly
+
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: 'git'
+  repo: git@github.com:panyongkang/panyongkang.github.io.git
+  branch: master
+  
+  
+# 设置音乐播放器MetingJS
+aplayer:
+    meting: true
+
+# 设置宠物模型
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-plt
+  display:
+    position: right
+    width: 200
+    height: 500
+  mobile:
+    show: true
+    
+# Security设置加密插件
+encrypt:
+    enable: true
+    
+# 自动生成sitemap
+# sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
+# 豆瓣插件
+douban:
+  user: 231953414
+  builtin: true
+  book:
+    title: '我的书单' # 该页面的标题
+    quote: '每读一本书，思维总会发光' # 写在页面开头的一段话,支持html语法.
+  movie:
+    title: '我的影单'
+    quote: '一场电影一场空'
+  game:
+    title: '我的游戏'
+    quote: '一场游戏一场梦'
+  timeout: 10000 # 爬取数据的超时时间，默认是 10000ms ,如果在使用时发现报了超时的错(ETIMEOUT)可以把这个数据设置的大一点。
+
+# B站番剧页面插件
+bangumi:
+  enable: true
+  path: bilibili/index.html
+  vmid: 520059030
+  title: '追番列表'
+  quote: '生命不息，追番不止！'
+  show: 1
+  loading:
+  metaColor:
+  color:
+  webp:
+  progress:
+
+# 标签关系网插件 注意是放到根目录配置文件下
+tagsnet:
+  builtin: false #默认即可
+  title: 文章导航关系网
+  quote:  由标签及分类构建关联。本页使用<a target="_blank" href="https://www.npmjs.com/package/hexo-generator-tagsnet">hexo-generator-tagsnet</a>插件构建。<a target="_blank" href="https://xyyum.icu/tagsnet/">[关系网]</a>
+  svg:
+    svg_big_color: "#ff4081"
+    svg_small_color: "#3f51b5"
+    svg_line_color: "#b1b1b1"
+    svg_line_weight: "0.5"
+    svg_text_weight: "12px"
+    svg_width: "100%"
+    svg_exheight: 20
+    svg_bgcolor: "#faf9f900"
+    svg_force: "-20"
+  valine: #渲染页面内valine加载不出来时使用
+    app_id: z2GwNsG7RRpWpx5rt7psedl5-MdYXbMMI
+    app_key: gI6Yhfwz4JiUIv9546gepko8

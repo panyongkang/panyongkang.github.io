@@ -1,0 +1,113 @@
+
+  .book-link {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 3px 0.5px 0.5px 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    aspect-ratio: 115 / 180;
+    position: relative;
+  }
+
+  .book-link:hover {
+    transform: translateY(-5px);
+  }
+
+  /* 自定义提示框样式 */
+  .book-tooltip {
+    position: absolute;
+    width: 320px;
+    background: linear-gradient(135deg, #2c3e50, #4a6491);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    text-align: left;
+  }
+
+  .book-tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .tooltip-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .tooltip-cover {
+    width: 60px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+
+  .tooltip-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: #ffdd59;
+    margin-bottom: 5px;
+  }
+
+  .tooltip-author {
+    font-size: 14px;
+    color: #a0c0ff;
+    font-style: italic;
+  }
+
+  .tooltip-content {
+    margin-bottom: 10px;
+  }
+
+  .tooltip-content p {
+    margin-bottom: 10px;
+  }
+
+  .tooltip-footer {
+    font-style: italic;
+    font-size: 13px;
+    color: #a0c0ff;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 10px;
+    text-align: center;
+  }
+
+  .instructions {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .instructions h3 {
+    margin-bottom: 15px;
+    color: #ffdd59;
+  }
+
+  .instructions code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }

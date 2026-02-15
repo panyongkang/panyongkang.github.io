@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线加密/解密工具</title>
+  <link rel="stylesheet" type="text/css" href="static/css/cryptoTool.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>在线加密/解密工具</h2>
+    <p class="intro">此工具用于为访问控制页面生成加密配置：目标 URL 使用 AES-256-CBC 加密（以密码为密钥，IV 嵌入密文），
+      访问密码使用 SHA-256 哈希（仅存储哈希）。支持生成配置和验证解密。</p>
+    
+    <!-- 加密部分 -->
+    <div class="section">
+      <h3>生成加密配置</h3>
+      <label for="encryptPassword">密码（8 位以上，字母和数字）:</label>
+      <input type="text" id="encryptPassword" placeholder="如: qqoo1122">
+      <label for="targetURL">目标 URL:</label>
+      <input type="text" id="targetURL" placeholder="如: https://youku.com/">
+      <button onclick="generateConfig()">生成配置</button>
+      <div id="encryptError" class="error"></div>
+      <label>密文 (ciphertext):</label>
+      <input type="text" id="ciphertextOutput" readonly onclick="copyText('ciphertextOutput')">
+      <label>密码哈希 (passwordHash):</label>
+      <input type="text" id="hashOutput" readonly onclick="copyText('hashOutput')">
+    </div>
+    
+    <!-- 解密部分 -->
+    <div class="section">
+      <h3>解密验证</h3>
+      <label for="decryptPassword">密码:</label>
+      <input type="text" id="decryptPassword" placeholder="输入密码">
+      <label for="ciphertext">密文 (ciphertext):</label>
+      <input type="text" id="ciphertext" placeholder="输入 ciphertext">
+      <button onclick="decryptURL()">解密</button>
+      <div id="decryptError" class="error"></div>
+      <label>解密结果:</label>
+      <input type="text" id="decryptOutput" readonly onclick="copyText('decryptOutput')">
+    </div>
+  </div>
+
+  <script>
+    // 验证 CryptoJS 是否加载
+    if (typeof CryptoJS === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'static/js/crypto-js.min.js';
+      script.onload = () => console.log('CryptoJS loaded');
+      script.onerror = () => showError('encryptError', '无法加载加密库，请检查网络', true);
+      document.head.appendChild(script);
+    }
+
+    // 错误提示函数
+    function showError(elementId, msg, isError = true) {
+      const errorElement = document.getElementById(elementId);
+      errorElement.textContent = msg;
+      errorElement.className = `error ${isError ? 'red' : 'green'}`;
+      setTimeout(() => {
+        errorElement.textContent = '';
+        errorElement.className = 'error';
+      }, 5000);
+    }
+
+    // 复制文本到剪贴板
+    function copyText(elementId) {
+      const element = document.getElementById(elementId);
+      const text = element.value || element.textContent;
+      if (!text) {
+        showError('encryptError', '无内容可复制', true);
+        return;
+      }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          showError('encryptError', '已复制！', false);
+          element.classList.add('copied');
+        }).catch(err => {
+          console.error('Clipboard API failed:', err);
+          showError('encryptError', '复制失败，请使用 HTTPS 访问或手动复制', true);
+        });
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showError('encryptError', '已复制！', false);
+          element.classList.add('copied');
+        } catch (err) {
+          console.error('execCommand failed:', err);
+          showError('encryptError', '复制失败，请手动复制', true);
+        }
+        document.body.removeChild(textarea);
+      }
+    }
+
+    // 验证密码格式（8 位以上，字母和数字）
+    function validatePassword(password) {
+      return password.length >= 8 && /^[a-zA-Z0-9]+$/.test(password);
+    }
+
+    // 生成 SHA-256 哈希
+    async function generateHash(password) {
+      const encoder = new TextEncoder();
+      const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(password));
+      return Array.from(new Uint8Array(hashBuffer))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
+
+    // 生成加密配置
+    async function generateConfig() {
+      const password = document.getElementById('encryptPassword').value.trim();
+      const targetURL = document.getElementById('targetURL').value.trim();
+      const ciphertextOutput = document.getElementById('ciphertextOutput');
+      const hashOutput = document.getElementById('hashOutput');
+
+      if (!password || !targetURL) {
+        showError('encryptError', '请输入密码和目标 URL', true);
+        return;
+      }
+      if (!validatePassword(password)) {
+        showError('encryptError', '密码需 8 位以上，仅限字母和数字', true);
+        return;
+      }
+      if (!/^https?:\/\//.test(targetURL)) {
+        showError('encryptError', '请输入有效的 URL（如 https://example.com）', true);
+        return;
+      }
+
+      if (typeof CryptoJS === 'undefined') {
+        showError('encryptError', '加密库未加载，请稍后重试', true);
+        return;
+      }
+
+      try {
+        const iv = CryptoJS.lib.WordArray.random(16);
+        const encrypted = CryptoJS.AES.encrypt(targetURL, password, { iv: iv });
+        const passwordHash = await generateHash(password);
+
+        ciphertextOutput.value = encrypted.toString();
+        hashOutput.value = passwordHash;
+      } catch (error) {
+        showError('encryptError', '生成失败：' + error.message, true);
+      }
+    }
+
+    // 解密 URL
+    function decryptURL() {
+      const password = document.getElementById('decryptPassword').value.trim();
+      const ciphertext = document.getElementById('ciphertext').value.trim();
+      const output = document.getElementById('decryptOutput');
+
+      if (!password || !ciphertext) {
+        showError('decryptError', '请输入密码和密文', true);
+        return;
+      }
+
+      if (typeof CryptoJS === 'undefined') {
+        showError('decryptError', '加密库未加载，请稍后重试', true);
+        return;
+      }
+
+      try {
+        const decrypted = CryptoJS.AES.decrypt(ciphertext, password);
+        const result = decrypted.toString(CryptoJS.enc.Utf8);
+        if (!result) {
+          showError('decryptError', '解密失败：密码或密文错误', true);
+          return;
+        }
+        output.value = result;
+      } catch (error) {
+        showError('decryptError', '解密失败：' + error.message, true);
+      }
+    }
+  </script>
+</body>
+</html>

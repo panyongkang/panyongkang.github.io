@@ -1,0 +1,129 @@
+class:
+  class_name: 大佬地址
+  link_list:
+    1:
+      name: 刘向洋博主
+      link: https://liuxiangyang.space/
+      avatar: https://cdn.jsdelivr.net/gh/LiuXiangYang-Git/cloudimg/img-2/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200408193536.jpg
+      descr: Butterfly
+    2:
+      name: JerryC博主
+      link: https://jerryc.me/
+      avatar: https://jerryc.me/image/avatar.png
+      descr: Butterfly
+    
+    3:
+      name: 试毅-思伟
+      link: https://zhousiwei.gitee.io/
+      avatar: https://zhousiwei.gitee.io/img/head.jpg
+      descr: 特效简历
+    
+    4:
+      name: 沛零主页
+      link: https://blog.ailcc.com/
+      avatar: https://blog.ailcc.com/content/templates/colorful/images/icon.png
+      descr: 文章标签
+    5:
+      name: 鱼忆柒秒
+      link: http://www.liyupi.top/
+      avatar: https://wangdudyb.gitee.io/img/logo.svg
+      descr: 知识星球
+    6:
+      name: 孟坤博客
+      link: https://mkblog.cn/
+      avatar: https://xbdcc.github.io/img/xiaobudian.jpg
+      descr: 吐槽
+    7:
+      name: 小康博主
+      link: https://www.antmoe.com/
+      avatar: https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/avatar.jpg
+      descr: 链接库
+    8:
+      name: 幻杀博客
+      link: https://ihuan.me/
+      avatar: https://ihuan.me/zhu.jpg
+      descr: 电脑技巧
+    9:
+      name: CloudAndBoy
+      link: https://www.clboy.cn/
+      avatar: https://www.clboy.cn/upload/2019/9/cloudlandboy_big-9fd24c92e6044b04a6a64b0206bea4c1.png
+      descr: 我的笔记
+    10:
+      name: 一个懒人的博客
+      link: https://blog.hclonely.com/
+      avatar: https://cdn.jsdelivr.net/gh/HCLonely/hclonely.github.io@1.5.1/img/avatar.jpg
+      descr: 看板娘
+    11:
+      name: 明浩信息网
+      link: https://lmih.cn/
+      avatar: https://lmih.cn/content/templates/colorful/images/icon.png
+      descr: 音乐播放器
+    12:
+      name: 雨后池塘
+      link: http://www.trueme.net/
+      avatar: http://www.trueme.net/images/o_yuhou.gif
+      descr: 我的小屋
+
+class2:
+  class_name: 实用链接
+  link_list:
+    1:
+      name: 喵喵博主
+      link: https://sh.alynx.one/
+      avatar: https://sh.alynx.one/images/FutureGazerSmall.webp
+      descr: StackHarbor
+    2:
+      name: Athink博主
+      link: https://blog.onfree.cn/
+      avatar: https://cdn.maxbill.cn/blog/img/avatar.png
+      descr: 导航收藏
+    3:
+      name: Sanarous博主
+      link: https://bestzuo.cn/
+      avatar: https://site-1258928558.cos.ap-guangzhou.myqcloud.com/touxiang.jpg
+      descr: 码农人生
+    4:
+      name: XJHui's Blog
+      link: https://xingjiahui.top/
+      avatar: https://cdn.jsdelivr.net/gh/xingjiahui/CDN/touxiang.jpg
+      descr: 卡通
+    5:
+      name: 三水非冰
+      link: https://www.sanshuifeibing.com/
+      avatar: https://www.sanshuifeibing.com/usr/images/favicon2.png
+      descr: 藏书文章
+    6:
+      name: 程序羊
+      link: https://www.codesheep.cn/
+      avatar: https://www.codesheep.cn/css/images/codesheep_logo_heart.jpg
+      descr: 知识星球
+    7:
+      name: 会飞的小戈
+      link: https://lovelijunyi.gitee.io/
+      avatar: https://lovelijunyi.gitee.io/img/avatar.gif
+      descr: 百宝箱
+    8:
+      name: Javidの部落
+      link: https://javid.cn/
+      avatar: https://cdn.jsdelivr.net/gh/Javid-Xi/cdn@2.2.5/img/background/back32.jpg
+      descr: 切换主题
+    9:
+      name: 爱紫懿个人博客
+      link: http://www.52ziyi.com/
+      avatar: http://www.52ziyi.com/content/templates/colorful/qqlogo/407692413.jpg
+      descr: 会跳舞的小人
+    10:
+      name: 明月登楼
+      link: https://www.imydl.com/
+      avatar: https://www.imydl.com/wp-content/uploads/2016/06/e0f52c3e8da2_avatar.jpg
+      descr: 网站建设
+    11:
+      name: 折纸少年
+      link: https://zzsnn.github.io/
+      avatar: https://cdn.jsdelivr.net/gh/Javid-Xi/cdn@2.2.5/img/background/back32.jpg
+      descr: 宠物猫
+    12:
+      name: Hirako博客
+      link: https://hirak0.xyz/
+      avatar: https://hirak0.xyz/img/avatar.jpg
+      descr: 鼠标特效

@@ -1,0 +1,147 @@
+    /* 基本样式 */
+    .search-container {
+      position: relative;
+      display: inline-block;
+      padding: 7px 0 0;
+      margin-left: 340px;
+    }
+
+    /* 搜索框样式 */
+    .search-input {
+      padding: 10px 40px 10px 155px;
+      /* 左边留出空间给下拉选项 */
+      border: 1px solid #ddd;
+      width: 940px;
+      font-size: 16px;
+    }
+
+    /* 下拉按钮样式 */
+    .dropbtn {
+      position: absolute;
+      left: 10px;
+      top: 55%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0;
+      /* 移除默认 padding */
+    }
+
+    /* 下拉内容（默认隐藏） */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      /* 确保在最上层 */
+      max-height: 200px;
+      /* 最大高度 */
+      overflow-y: auto;
+      /* 添加滚动条 */
+    }
+
+
+    /* 下拉菜单中的链接 */
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: white;/* 默认背景颜色 */
+      transition: background-color 0.2s ease;/* 添加过渡效果 */
+    }
+
+    /* 移除默认的焦点轮廓 */
+    .dropdown-content a:focus {
+      outline: none;/* 移除默认的黑色边框 */
+    }
+
+    /* 聚焦时的背景颜色和阴影 */
+    .dropdown-content a:focus {
+      background-color: #47ed26; /* 更深的背景颜色 */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    }
+
+    /* 鼠标悬停时下拉菜单链接的颜色 */
+    .dropdown-content a:hover {
+      background-color: #c9c0c09c;
+    }
+
+    /* 显示下拉菜单 */
+    .show {
+      display: block;
+    }
+
+    /* 搜索按钮样式 */
+    .search-button {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* 放大镜图标 */
+    .search-button::after {
+      content: '🔍';
+    }
+
+    /* 图标样式 */
+    .engine-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    @media only screen and (max-width: 320px) {
+      .search-container {
+        display: none;
+        /* 隐藏搜索框 */
+      }
+    }
+
+    @media only screen and (max-width: 360px) {
+      .logo img {
+        width: 40px;
+      }
+
+      .logo h1 {
+        font-size: 13px;
+      }
+
+      .search-container {
+        margin-left: 140px;
+      }
+
+      .search-input {
+        width: 210px;
+        padding: 10px 40px 10px 105px;
+      }
+
+      .dropbtn {
+        font-size: 10px;
+        gap: 1px;
+      }
+
+    }
+
+    @media only screen and (min-width:361px) and (max-width:768px) {
+      .search-container {
+        margin-left: 190px;
+      }
+
+      .search-input {
+        width: 570px;
+      }
+    }
