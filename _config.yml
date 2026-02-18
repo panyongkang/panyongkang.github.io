@@ -127,9 +127,9 @@ theme: Butterfly
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: 'git'
-  repo: git@github.com:panyongkang/panyongkang.github.io.git
+  #repo: git@github.com:panyongkang/panyongkang.github.io.git
+  repo: https://github.com/panyongkang/panyongkang.github.io.git
   branch: master
-  
   
 # 设置音乐播放器MetingJS
 aplayer:

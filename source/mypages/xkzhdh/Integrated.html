@@ -170,7 +170,7 @@
 			<a rel="9" class="c9 trans" href="javascript:;">稀奇古怪</a>
 
 			<a rel="10" class="c14 trans" href="javascript:;">百宝箱</a>
-			<a rel="11" class="c14 trans" href="javascript:;">常用访问</a>
+			<a rel="11" class="c8 trans" href="javascript:;">常用访问</a>
 			<a rel="12" class="c15 trans" rel="nofollow" href="https://search.chongbuluo.com/" target="_blank">搜索神器</a>
 			<button class="btnpf" onclick="myFunction()">皮肤切换</button>
 		</div>
@@ -8000,25 +8000,25 @@
 
 			$('.swiper-slide li i').click(function () {
 
-				//var Y = $(this).offset().top;
+				var Y = $(this).offset().top;
 
-				//var X = $(this).offset().left;
+				var X = $(this).offset().left;
 
-				//var my = $('.my').offset();
+				var my = $('.my').offset();
 
-				//var id = $(this).parent().find('.item').attr('rel');
+				var id = $(this).parent().find('.item').attr('rel');
 
 
 
-				//$('#sc').css({'top' : Y+'px', 'left': X+'px','border-radius': '15px'}).show()
+				$('#sc').css({'top' : Y+'px', 'left': X+'px','border-radius': '15px'}).show()
 
-				//.animate({ top : '78px', left: (my.left + 3) + 'px'}, 1000, 'easeOutBounce', function () {
+				.animate({ top : '78px', left: (my.left + 3) + 'px'}, 1000, 'easeOutBounce', function () {
 
-				//$(this).fadeOut();
+				$(this).fadeOut();
 
-				//$.get('http://hao.xsldh.com/welcome/customize_favourite',{id:id});
+				$.get('http://hao.xsldh.com/welcome/customize_favourite',{id:id});
 
-				//});
+				});
 
 			});
 

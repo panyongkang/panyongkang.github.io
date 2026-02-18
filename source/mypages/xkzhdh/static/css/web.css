@@ -308,10 +308,11 @@ li, ul {
         perspective: 1200px;
       }
       .swiper-wrapper, .swiper-slide {
-        -webkit-transform-style: preserve-3d;
+        /* 原始3D旋转效果
+         -webkit-transform-style: preserve-3d;
         -moz-transform-style: preserve-3d;
         -ms-transform-style: preserve-3d;
-        transform-style: preserve-3d;
+        transform-style: preserve-3d; */
         padding-bottom: 10px;
         border-radius: 5px;
       }
