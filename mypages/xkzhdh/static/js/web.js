@@ -48,8 +48,25 @@ function home_create_swiper(currindex) {
             var translate = progress*swiper.width/2;  
             var opacity = 1 - Math.min(Math.abs(progress),1);
             slide.style.opacity = opacity;
-            swiper.setTransform(slide,'rotateY('+rotate+'deg) translate3d('+translate+'px,0,0)');
+            // 科技旋转效果
+                var abs = Math.abs(progress);
+                var rotate = -120 * progress;                 // 更大角度
+                var translate = progress * swiper.width * 0.7; // 横向拉开
+                var scale = 1 - abs * 0.15;                   // 轻微压缩
+
+                swiper.setTransform(
+                    slide,
+                    'translateX(' + translate + 'px) ' +
+                    'rotateY(' + rotate + 'deg) ' +
+                    'scale(' + scale + ')'
+                );
+
+                // 中间层级最高
+                slide.style.zIndex = 1000 - Math.abs(Math.round(progress * 100));
+
             }
+             // 原始3D旋转效果
+            // swiper.setTransform(slide,'rotateY('+rotate+'deg) translate3d('+translate+'px,0,0)');
         },
         onTouchStart:function(swiper){
             for (var i = 0; i < swiper.slides.length; i++){
