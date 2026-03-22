@@ -203,6 +203,7 @@ alias conf='cd /apphome/ctbsabs/abs/configuration/ && vim -n  deviceIsDebug.prop
 alias trade='cd /apphome/ctbsabs/abs/workspace/FCBank/trade/Trade/'
 alias up='cd /apphome/ctbsabs/abs/upload_files/up && ls'
 alias bank='cd /apphome/ctbsabs/abs/workspace/bank && ls'
+alias wor='cd /apphome/ctbsabs/abs/workspace'
 # 筛选文件路径和内容同时匹配两个关键词
 function grepa() {
     k1="$1"
@@ -251,7 +252,7 @@ grepws() {
                 echo "---------- gaws 命令使用说明 ----------"
                 echo "用法: gaws [选项] <关键词1> [关键词2 ...]"
                 echo "选项:"
-                echo "  -o, --output <文件>  导出交易码"
+                echo "  -o, --output <文件>  导出本生成文件"
                 echo "                      仅文件名: 保存到默认路径 $default_output_dir/"
                 echo "                      完整路径: 保存到指定路径"
                 echo "  -d, --download      生成文件后自动下载到本地"
@@ -259,7 +260,8 @@ grepws() {
                 echo "  -h, --help         显示帮助信息"
                 echo ""
                 echo "示例:"
-                echo "  gaws '3005300000402'                          # 仅查询"
+                echo "  gaws -a 'tadVarMap().commCode' '021007'       # 且查询"
+                echo "  gaws '3005300000402'                          # 或查询"
                 echo "  gaws -o 统计.txt '3005300000402'              # 保存到默认路径"
                 echo "  gaws -o 统计.txt '3005300000402' -d           # 保存并下载"
                 echo "  gaws -o /apphome/ctbsabs/abs/upload_files/up/临时统计.txt '3005300000402'     # 保存到指定路径"
@@ -277,7 +279,7 @@ grepws() {
     # 检查是否有关键词
     if [[ ${#keywords[@]} -eq 0 ]]; then
         echo "错误：请至少输入一个关键词"
-	echo "使用 gaws -h 查看帮助"
+        echo "使用 gaws -h 查看帮助"
         return 1
     fi
   
@@ -486,6 +488,42 @@ grepws() {
 }
 
 alias gaws='grepws'
+
+ff() {
+    if [ $# -eq 0 ]; then
+        echo "---------- f 命令文件查找使用说明 ----------"
+        echo "用法:"
+        echo "  f <关键词>        # 模糊查找（路径/文件名包含关键词）"
+        echo "  f -e <文件名>     # 精确查找（文件名完全匹配）"
+        echo ""
+        echo "示例:"
+        echo "  f GRLS2026031710858441742_signed.pdf # 查找所有包含 GRLS2026031710858441742_signed.pdf 的路径"
+        echo "  f 00007138        # 查找包含 00007138 的路径" 
+        echo "  f DP/down/clear    # 查找路径中包含 DP/down/clear 的文件"
+        echo "  f -e passwd        # 精确查找文件名为 passwd 的文件"
+        echo "  f -e .bashrc       # 精确查找 .bashrc"
+        echo ""
+        echo "说明: 自动忽略权限错误，直接返回全路径"
+        return 0
+    fi
+  
+    if [ "$1" = "-e" ]; then
+        # 精确查找
+        if [ -z "$2" ]; then
+            echo "请指定要查找的文件名"
+            return 1
+        fi
+        echo "精确查找: $2"
+        echo "=================="
+        find / -type f -iname "$2" 2>/dev/null | grep --color=always -i "$2"
+    else
+        # 模糊查找
+        echo "模糊查找: $1"
+        echo "=================="
+        find / -type f 2>/dev/null | grep --color=always -i "$1"
+    fi
+}
+alias f='ff'
 ```
 
 .bash_profile文件常用配置内容：
@@ -675,12 +713,30 @@ alias myalias='cd /path/to/dir; ls -l'
 
 ### 常见场景示例
 
-若服务器空间存储满了，可以删除前一个月以上的日志记录；
-
-比如当前是6月，可以把5月份之前的都删了：
+若服务器空间存储满了，可以在log目录文件下删除一些子目录：
 
 ```
-rm -rf 202205*
+[ttbss@localhost teller]$ du -sh *
+1.8G    20260310
+3.3G    20260311
+1.6G    20260312
+1.9G    20260313
+204K    20260314
+196K    20260315
+731M    20260316
+1.2G    20260317
+836M    20260318
+527M    20260319
+[ttbss@localhost teller]$ rm -r 20260310 20260317
+
+#删除3月的所有目录
+rm -rf 202603*
+
+#连续删除
+rm -rf 2026031[0-7]
+
+#不连续删除
+rm -rf 2026031{0,2,4,6}
 ```
 
 ## **文件权限信息**

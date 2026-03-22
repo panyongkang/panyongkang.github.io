@@ -335,6 +335,56 @@ insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '
 
 ## PL/SQL数据库工作日常笔记
 
+### 创建视图表
+
+注意：该柜员流水日志登记表由于核心、ESB等后台系统接口未规范请求返回报文配置，需使用临时视图表进行处理后，就可以点击报文格式化XML的功能了。
+
+```sql
+--PL/SQL数据库管理工具不规范请求响应报文格式化处理方法
+--先查看视图表是否存在
+SELECT VIEW_NAME FROM USER_VIEWS WHERE VIEW_NAME LIKE '%V_CIP%';
+
+--创建 V_CIP_HOSTEXCHBOOK 视图表来源于 TP_CIP_HOSTEXCHBOOK 原表
+CREATE OR REPLACE VIEW V_CIP_HOSTEXCHBOOK AS
+SELECT
+    t.*,
+	-- 请求报文格式化
+    CASE
+        WHEN t.REQXML IS NULL THEN NULL
+        WHEN t.REQXML LIKE '`<?xml%' THEN t.REQXML
+        WHEN t.REQXML LIKE '<%' THEN 
+            '<?xml version="1.0" encoding="GBK"?>`' || CHR(10) || t.REQXML
+        ELSE t.REQXML
+    END AS REQXML_FORMATTED,
+    -- 响应报文格式化
+    CASE
+        WHEN t.RSPXML IS NULL THEN NULL
+        WHEN t.RSPXML LIKE '`<?xml%' THEN t.RSPXML
+        WHEN t.RSPXML LIKE '<%' THEN 
+            '<?xml version="1.0" encoding="GBK"?>`' || CHR(10) || t.RSPXML
+        ELSE t.RSPXML
+    END AS RSPXML_FORMATTED
+FROM TP_CIP_HOSTEXCHBOOK t;
+
+--查询视图表格式化XML
+SELECT * FROM V_CIP_HOSTEXCHBOOK
+WHERE menunum in ('020702','')
+and hostreqdate = '20260105'
+and h_servicecode in ('','C202034','')
+order by REQDATETIME desc;
+
+--删除V_TP_CIP_FORMAT视图表
+DROP VIEW V_CIP_HOSTEXCHBOOK;
+
+--查询确认是否已删除
+SELECT '已删除 V_CIP_HOSTEXCHBOOK' AS 提示 FROM DUAL
+WHERE NOT EXISTS (
+    SELECT 1 FROM USER_VIEWS
+    WHERE VIEW_NAME = 'V_CIP_HOSTEXCHBOOK'
+);
+```
+
+
 ### 创建临时备份表
 
 ```sql
