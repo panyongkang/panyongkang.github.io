@@ -1,13 +1,116 @@
 title: SpringBoot入门
-author: PanXiaoKang
+author: Pyk
 cover: https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2589588367,2632593097&fm=26&gp=0.jpg
-tags: [微服务框架,SpringBoot]
+tags: [微服务,SpringBoot]
 categories: [架构与微服务]
 date: 2021-04-24 09:58:00
 
 ---
 
-## 常用注解总结
+## SpringBoot 项目标准目录结构
+
+```
+src/
+└── main/
+    ├── java/
+    │   └── com/cake/store/          # 根包（示例：com.cake.store）
+    │       ├── Application.java     # ⑦ 启动类（SpringBoot 入口）
+    │       ├── config/              # ① 配置类（如 WebMvcConfig、Swagger 等）
+    │       ├── controller/          # ② 控制层（提供 REST 接口）
+    │       ├── service/             # ⑤ 服务层（业务逻辑）
+    │       ├── mapper/              # ③ 持久层（MyBatis 接口）
+    │       ├── pojo/                # ④ 实体类（与数据库表对应）
+    │       ├── vo/                  # 视图对象（返回给前端的结构）
+    │       ├── form/                # 表单对象（接收前端参数）
+    │       └── utils/               # ⑥ 工具类（通用工具）
+    └── resources/
+        ├── mapper/                  # MyBatis 的 XML 映射文件（可选）
+        ├── static/                  # ⑧ 静态资源（css/js/图片）
+        ├── application.properties  # 核心配置文件（或 .yml）
+        ├── application.yml          # 另一种格式的配置文件
+        └── logback-spring.xml       # 日志配置文件
+```
+
+> **说明**：
+>
+> - `pojo` 也可叫 `entity`，`vo` 和 `form` 都是用于前端交互的数据载体。
+> - `mapper` 包下放接口，`resources/mapper` 下放 XML 文件（如果使用 XML 方式）。
+
+---
+
+## 方法调用链 & 数据流转（三层架构）
+
+整理标准调用顺序：
+
+```
+前端（浏览器/App）
+    │
+    │ 发送 HTTP 请求（JSON / 表单数据）
+    ▼
+Controller 层（控制层）  ← 提供接口，接收请求，参数校验，返回响应
+    │
+    │ 调用 Service 层方法（传入处理后的数据）
+    ▼
+Service 层（业务层）    ← 核心业务逻辑（事务、权限、缓存、计算）
+    │
+    │ 调用 Mapper 层方法（传入实体或条件）
+    ▼
+Mapper 层（持久层）     ← 与数据库交互（执行 SQL）
+    │
+    │ 读写数据库
+    ▼
+Database（数据库）
+```
+
+**数据返回路径**（逆向）：数据库 → Mapper（实体对象） → Service（业务处理后可能转为 VO/BO） → Controller（包装为 JSON） → 前端展示
+
+> **关键点**：
+>
+> - **Controller 不写业务逻辑**，只做请求解析和响应封装。
+> - **Service 不直接处理 HTTP 请求**，专注业务。
+> - **Mapper 只做数据库操作**，不掺业务。
+
+---
+
+## 与 SSM 对比
+
+| 对比维度                 | **SSM 传统方式**                                                                            | **SpringBoot 方式**                                                                         | 说明                                          |
+| :----------------------- | :------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------ | :-------------------------------------------- |
+| **核心分层思想**   | Controller → Service → Mapper                                                                   | **完全一致**                                                                                | 三层架构没有变，这是 Java Web 的基石          |
+| **注解驱动**       | 使用 `@Controller`、`@Service`、`@Autowired` 等                                             | **相同**                                                                                    | 核心注解完全兼容                              |
+| **SpringMVC 本质** | 需要手动配置 `DispatcherServlet`、视图解析器等                                                  | **仍然使用 SpringMVC**，但自动配置                                                          | SpringBoot 只是简化了配置，<br />没有替换 MVC |
+| **依赖管理**       | 手动引入 Spring、SpringMVC、MyBatis <br />等多个包，需保证版本兼容                                | **只需引入 `spring-boot-starter-web`、`mybatis-spring-boot-starter`**，版本由父工程管理 | 极大简化，避免版本冲突                        |
+| **配置文件**       | 需要 `web.xml`、`applicationContext.xml`、<br />`spring-mvc.xml`、`mybatis-config.xml` 等 | **只需一个 `application.properties` 或 `application.yml`**                              | 绝大多数配置零配置或一行配置                  |
+| **Web 容器部署**   | 打包成 `.war` 部署到外置 Tomcat / Jetty                                                         | **打包为 `.jar` 直接 `java -jar` 运行**（内置 Tomcat）                                  | 开发测试极其方便                              |
+| **整合 MyBatis**   | 手动配置 SqlSessionFactory、<br />DataSource、事务管理器                                          | **自动配置**，只需在 `application.properties` 写数据库连接信息                            | 大幅减少样板代码                              |
+| **日志系统**       | 手动配置 log4j / logback<br />（需写 xml 并手动加载）                                             | `logback-spring.xml` 自动生效，且支持多环境配置                                                 | 简化但依然灵活                                |
+| **热部署**         | 需要额外插件或手动重启                                                                            | `spring-boot-devtools` 自动热重启                                                               | 开发体验提升                                  |
+| **测试**           | 需要启动 Web 容器或 Mock 环境                                                                     | `@SpringBootTest` 一键启动上下文                                                                | 测试代码更简洁                                |
+
+---
+
+## 总结：SpringBoot 并没有颠覆，而是“驯服”了 SSM
+
+> ✅ **一致的核心**：
+>
+> - 分层架构（Controller/Service/Mapper）
+> - 注解驱动（`@Controller`、`@Service`、`@Autowired` 等）
+> - SpringMVC 的本质（`@RequestMapping` 家族）
+> - MyBatis 的使用方式（Mapper 接口 + XML）
+
+> 🚀 **简化的地方**：
+>
+> - **配置**：从几十行 XML 变成几行 `application.properties`
+> - **依赖**：从手动管理版本变成 starter 自动组合
+> - **部署**：从 war 包 + 外置 Tomcat 变成 jar 包 + 内置服务器
+> - **开发效率**：自动配置、热部署、测试支持大幅提升
+
+**一句话记忆**：
+
+> **SpringBoot = SSM 的优秀实践 + 自动配置 + 开箱即用**。
+> 学会 SSM 的架构思想，就能无缝上手 SpringBoot；SpringBoot 让你专注于业务代码，而不是繁琐的配置。
+
+## 常见注解
 
 ### 启动注解@SpringBootApplication
 
@@ -19,55 +122,60 @@ date: 2021-04-24 09:58:00
    @EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IOC容器。借助于Spring框架原有的一个工具类：SpringFactoriesLoader的支持，@EnableAutoConfiguration可以智能的自动配置功效才得以大功告成
 3. **@ComponentScan：** 主要用于组件扫描和自动装配。个人理解相当于< context:component-scan>，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean。
 
-## Controller 相关注解
+## Controller层相关注解
 
-1. @Controller：标注控制器类，处理http请求；控制器中的方法可以返回一个视图，在Web开发中一般使用的少（主要是用@RestController）。
-2. @RestController:复合注解，相当于@ResponseBody ＋ @Controller合在一起的作用。使用的效果是将方法返回的对象直接在浏览器上展示成json格式.
-3. @RequestBody:通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象；将json解析为java对象。
+* @Controller：标注控制器类，处理http请求；控制器中的方法可以返回一个视图，在Web开发中一般使用的少（主要是用@RestController）。
+* @RestController:复合注解，相当于@ResponseBody ＋ @Controller合在一起的作用。使用的效果是将方法返回的对象直接在浏览器上展示成json格式.
+* @RequestBody:通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象；将json解析为java对象。
 
-   使用场景：json传参
-4. @RequestMapping:最常用的注解之一，这个注解会将 HTTP 请求的URL映射到处理方法上；在实际开发中，在具体的控制器类之前添加该注解即可。
+  使用场景：json传参
+* @RequestMapping:最常用的注解之一，这个注解会将 HTTP 请求的URL映射到处理方法上；在实际开发中，在具体的控制器类之前添加该注解即可。
 
-   **详细描述**
+  **详细描述**
 
-   **@RequestMapping** 该注解可以加在方法上，也可以加在类上；如下面例子，加在类上，表示该类所有的方法都加前缀 /user 下面两种方法都是映射到 /user/list
+  **@RequestMapping** 该注解可以加在方法上，也可以加在类上；如下面例子，加在类上，表示该类所有的方法都加前缀 /user 下面两种方法都是映射到 /user/list
 
-   方法一：
+  方法一：
 
-   ```
-   @RestController
-   public class UserController {
-       @Autowired
-       private UserService userService;
-       @RequestMapping(value = "/user/list",method = RequestMethod.GET)
-       //相当于 @GetMapping("/user/list")
-       public List<User> userList() {
-           return userService.listUsers();
-       }
-   }
-   ```
+  ```
+  @RestController
+  public class UserController {
+      @Autowired
+      private UserService userService;
+      @RequestMapping(value = "/user/list",method = RequestMethod.GET)
+      //相当于 @GetMapping("/user/list")
+      public List<User> userList() {
+          return userService.listUsers();
+      }
+  }
+  ```
 
-   方法二：
+  方法二：
 
-   ```
-   @RestController
-   @RequestMapping("/user")
-   public class UserController {
-       @Autowired
-       private UserService userService;
-       @RequestMapping(value = "/list",method = RequestMethod.GET)
-       //相当于 @GetMapping("/list")
-       public List<User> userList() {
-           return userService.listUsers();
-       }
-   }
-   ```
-5. @GetMapping：响应GET请求。用于将HTTP get请求映射到特定处理程序的方法注解
-6. @PostMapping：响应POST请求。用于将HTTP post请求映射到特定处理程序的方法注解
+  ```
+  @RestController
+  @RequestMapping("/user")
+  public class UserController {
+      @Autowired
+      private UserService userService;
+      @RequestMapping(value = "/list",method = RequestMethod.GET)
+      //相当于 @GetMapping("/list")
+      public List<User> userList() {
+          return userService.listUsers();
+      }
+  }
+  ```
+* **`@GetMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.GET)`。明确标识该方法只处理 HTTP GET 请求，语义更清晰，常用于查询数据。
+*   **`@PostMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.POST)`。明确处理 HTTP POST 请求，常用于提交数据（如新增记录）。
 
-   一般来说，POST方法的传参不受限制，可以使用URL传参，也可以使用@RequestBody获取请求体中的json，并解析为响应的java对象。
+*   **`@PutMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.PUT)`。明确处理 HTTP PUT 请求，通常用于全量更新操作。
 
-   POST方法和GET方法可以共用一个URL，不用担心起冲突。@PutMapping、@DeleteMapping使用方式大同小异，其实从功能上来说，**@PostMapping能替代所有的请求**，但是这么使用会导致代码**语义混乱**。
+*   **`@DeleteMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.DELETE)`。明确处理 HTTP DELETE 请求，用于删除资源。
+
+
+ 一般来说，POST方法的传参不受限制，可以使用URL传参，也可以使用@RequestBody获取请求体中的json，并解析为响应的java对象。
+
+  POST方法和GET方法可以共用一个URL，不用担心起冲突。@PutMapping、@DeleteMapping使用方式大同小异，其实从功能上来说，**@PostMapping能替代所有的请求**，但是这么使用会导致代码**语义混乱**。
 
 **简单说明一下各种请求方法的使用场景：**
 
@@ -222,7 +330,7 @@ public class HelloWorldController {
    @Bean明确地指示了一种方法，放在方法的上面，而不是类，产生一个bean的方法，并且交给Spring容器管理。支持别名@Bean(“xx-name”)
 6. **@AutoWired:** byType方式。可以实现Bean的自动注入，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。 当加上（required=false）时，就算找不到bean也不报错。
 7. **@Qualifier：** 当有多个同一类型的Bean时，可以用@Qualifier("name")来指定。与@Autowired配合使用
-8. **@Resource(name="name",type="type")：** 没有括号内内容的话，默认byName。与@Autowired干类似的事。
+8. **@Resource(name="name",type="type")：** 没有括号内内容的话，默认按名称。与@Autowired干类似的事。
 9. **@Component：** 泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
 
    * 把普通pojo实例化到spring容器中，虽然有了@Autowired,但是我们还是要写一堆bean的配置文件,相当麻烦,而@Component就是告诉spring,我是pojo类,把我注册到容器中吧,spring会自动提取相关信息。那么我们就不用写麻烦的xml配置文件了.
