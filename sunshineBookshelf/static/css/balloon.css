@@ -1,0 +1,109 @@
+/* 气球容器 */
+#balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+/* 气球样式 */
+.balloon {
+  position: absolute;
+  cursor: pointer;
+  animation: float 8s ease-in-out infinite;
+  width: 80px;
+  height: 100px;
+  transition: transform 0.3s;
+}
+
+.balloon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: crisp-edges;
+  pointer-events: auto;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateX(-5px) translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateX(5px) translateY(-10px) rotate(3deg);
+  }
+}
+
+/* 控制面板 */
+.control-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  pointer-events: auto;
+  /* 启用鼠标事件 */
+}
+
+.control-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100px;
+}
+
+#startBtn {
+  background: #4CAF50;
+  color: white;
+}
+
+#pauseBtn {
+  background: #FF9800;
+  color: white;
+}
+
+#clearBtn {
+  background: #f44336;
+  color: white;
+}
+
+.control-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* 移动端适配 */
+@media (max-width: 480px) {
+  .control-panel {
+    bottom: 10px;
+    right: 10px;
+    padding: 8px;
+  }
+
+  .control-btn {
+    width: 50px;
+    padding: 8px 2px;
+    font-size: 10px;
+  }
+}

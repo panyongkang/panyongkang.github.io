@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>在线加密网页</title>
+  <link rel="stylesheet" type="text/css" href="static/css/index.css" />
+  <script defer src="static/js/crypto-js.min.js"></script>
+  <script defer src="static/js/onlineEncryption.js"></script>
+</head>
+
+<body>
+  <div id="glass-overlay">
+    <div class="glass-container">
+      <h2>访问受限</h2>
+      <p>请输入密码进行访问（需 8 位以上，字母和数字）</p>
+      <input id="passwordInput" type="password" placeholder="输入密码" />
+      <button id="submitBtn">提交</button>
+      <p id="errorMessage"></p>
+    </div>
+  </div>
+  <button id="fullscreenBtn" class="hidden">全屏</button>
+</body>
+
+</html>

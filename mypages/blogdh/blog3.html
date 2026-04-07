@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-transform" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta content="always" name="referrer" />
+	<meta name="renderer" content="webkit" />
+	<meta name="author" content="Johnny Kun" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<base href="." target="_blank">
+	<title>小康のBlog3</title>
+	<meta name="Keywords" content="小康博客收录网,技术博客导航,个性博客导航">
+	<link rel="stylesheet" href="static/css/style.css" type="text/css" media="all" />
+	<link rel="icon" href="https://daohang.aizhancloud.cn/favicon.ico" />
+	<!-- 引入自由拖拽的JS库 -->
+	<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.13.0/Sortable.min.js"></script>
+	<!-- 添加字体闪烁（变色）特效 -->
+	<script>function magicColor(mode, t) {
+			t = t || 10;
+			let elem = document.getElementsByClassName("magic-color");
+			if (!elem) {
+				setTimeout(function () {
+					magicColor(mode, t - 1);
+				}, 400);
+				return;
+			}
+			if (window.mcHandler == undefined) {
+				window.mcHandler = { elements: [] };
+				window.mcHandler.colorIndex = 0;
+				window.mcHandler.run = function (mode) {
+					let color = mode == "random" ? ("rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ",1)") : ["#CC0000", "#9999CC", "#CC3366", "#669999", "#FFCC00", "#00CCCC", "#CC00CC"][(window.mcHandler.colorIndex++) % 7];
+					for (var i = 0, L = window.mcHandler.elements.length; i < L; i++)window.mcHandler.elements[i].style.color = color;
+				}
+			}
+			window.mcHandler.elements = elem;
+			if (window.mcHandler.timer == undefined) {
+				window.mcHandler.timer = setInterval(() => { window.mcHandler.run(mode) }, 500);
+			}
+		}
+		magicColor("");</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="dingbu">
+					<div class="header zuo">
+						<a href="https://xyyum.icu/mypages/blogdh/blog2.html"><img
+								src="https://xyyum.icu/mypages/img/logo.png" alt="博客首页导航"></a>
+					</div><!-- /.header -->
+				</div><!-- /.dingbu -->
+			</div>
+			<div class="col announce">
+				<div class="left zuo">
+
+					<div class="card-header">
+						<h3 class="card-title"><a>友链站长</a>
+						</h3>
+						<div class="listdhsl">
+							<ul>
+
+								<li>
+									<p><a href="https://lllzxqq.gitee.io/" title="本人matery主题">偏偏💖雨季</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://yumuxy.gitee.io/" title="本人Volantis主题">浪子游方</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://dldgpc.github.io/" title="本人VuePress主题。">壹米阳光の档案馆</a></p>
+								</li>
+
+								<li>
+									<p><a href="http://agree.sunfengfeng.com/" title="自助小帮手 | 孙锋锋的文档（同事博客）。">孙锋锋的文档</a>
+									</p>
+								</li>
+
+								<li>
+									<p><a href="https://www.sunfengfeng.com/" title="孙锋锋的网络日志。">孙锋锋的网络日志</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://blog.myhkw.cn/" title="明月浩空，李明浩的网站，明月浩空播放器音乐网站。">明月浩空网</a></p>
+								</li>
+								<li>
+									<p><a href="https://haozi.2xb.cc/" title="懒耗子信息网。">懒耗子信息网</a></p>
+								</li>
+								<li>
+									<p><a href="https://hzbk.net/" title="耗子博客，专注于资源分享与技术交流。">耗子博客</a></p>
+								</li>
+								<li>
+									<p><a href="http://ym01.cn/" title="与末个人引导主页。">与末个人引导页</a></p>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title">
+							<a>Wordpress博客</a>
+							<span class="expand-icon" onclick="toggleList()">收起➷</span>
+						</h3>
+						<div class="listdhsl ZS_box">
+							<ul>
+								<li>
+									<p><a href="https://panda.panda-studio.cn/"
+											title="专注于各种（原创Wordpress主题）美好设计的博客">Panda的博客</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://blog.xgblack.cn/"
+											title="道也者,不可须臾离者也,可离非道也。（付费niRvana轻拟物WordPress主题：已停售）">臾离博客</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.zsxcool.com/" title="计算机应用之精华与优雅。">字节智造</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.nange.cn/" title="每天都是最好的自己。|唯美女生">楠格</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://huzizi.com/" title="胡自自的独立博客，记录生活与爱。">胡自自博客</a></p>
+								</li>
+
+								<li>
+									<p><a href="http://www.tanyichen.com/" title="亲子博客|记录成长点滴，分享亲子快乐。">奕晨小站</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://dushusir.com/" title="Python、Web、软件测试等学习笔记，IT相关应用。">独书先生</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://dayday.plus/"
+											title="KAAHO'S BLOG / DAYDAY.PLUS / 微博@夏和帆。">夏和帆的博客</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://openingsource.org/" title="开源工场 - Opening Source">开源工场</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.xqiandan.com/" title="浅淡信息 - 浚县浅淡信息咨询部">浅淡信息</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.jiangruitao.com/" title="姜瑞涛的官方网站（webpack学习）">姜瑞涛的官方网站</a>
+									</p>
+								</li>
+
+								<li>
+									<p><a href="https://lab.ur1.fun/" title="每年更新一点点(原创作品)">孟坤Web实验室</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.itnanls.cn/" title="学习博客|B站学习视频">元动力-IT楠老师</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.panziye.com/"
+											title="java学习_java培训_项目下载_毕业设计入门教程">潘子夜个人博客</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://course.51qux.com/"
+											title="QUX轻设计|前端开发云笔记，专业写代码，用心做设计！(本站打赏榜效果)">QUI-Pure</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.ma36.cn/" title="RiPro主题是最好的资源下载付费主题！(浮动看板娘效果)">姝豪江</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.ijkxs.com/"
+											title="科技资讯、学术资源、会议交流、视频活动以及兴趣部落社交等信噪比最高的网站">即刻学术</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://www.ijinse.cn/" title="分享优质电台文案以及情感故事文章的网站">锦瑟的糖果屋</a></p>
+								</li>
+								<li>
+									<p><a href="https://flzzz.com/" title="专注收录有意思的软件和网站">将心向明月</a></p>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title"><a>技术文档</a></h3>
+						<div class="listdhsl">
+							<ul class="sortable-list">
+								<li class="sortable-item">
+									<p><a href="https://www.pdai.tech/" title="Java 全栈知识体系大佬。（超棒的站点导航图）">Java 全栈知识体系</a>
+									</p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://ddkk.com/" title="弟弟快看，程序员编程资料站">弟弟快看-教程</a>
+									</p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://javabetter.cn/"
+											title="沉默王二BB：这是一份通俗易懂、风趣幽默的Java学习指南">二哥的Java进阶之路</a>
+									</p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://hejialianghe.gitee.io/" title="web全栈体系">web全栈体系</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://icyfenix.cn/" title="构建可靠的大型分布式系统。">凤凰架构</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://www.bmrs.top/" title="编码人生—CodingLife">编码人生</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://javaguide.cn/"
+											title="Java 面试指南 | JavaGuide(Java面试+学习指南)。">JavaGuide</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://www.wdbyte.com/" title="结构化 Java 系列文档，再来点数据结构与算法！">未读代码</a></p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://www.codefather.cn/" title="贴心的编程学习路线，全面的编程知识百科">鱼皮的编程宝典</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://lxmusic.toside.cn/"
+											title="一个免费&开源的音乐查找工具 | LX Music！">LXMusic</a></p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://www.programmercarl.com/" title="算法训练营|设计模式训练">代码随想录</a></p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://www.elibaron.com/" title="学习笔记 & 工作总结">Elibaron学习笔记</a></p>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title"><a>VuePress主题</a>
+						</h3>
+						<div class="listdhsl">
+							<ul>
+								<li>
+									<p><a class="magic-color" href="https://vuepress-theme-yuu.netlify.app/"
+											title="支持深色主题，多种颜色主题和其他有用功能的VuePress主题。">Vuepress主题Yuu</a></p>
+								</li>
+								<li>
+									<p><a href="https://coder.itclan.net/"
+											title="书以启智,技于谋生,活出斜杠。（手把手教程）">itclanCoder</a></p>
+								</li>
+
+								<li>
+									<p><a class="magic-color" href="https://vuepress-theme-reco.recoluan.com/"
+											title="一款简洁而优雅的reco主题。">Vuepress主题reco</a></p>
+								</li>
+								<li>
+									<p><a href="https://zhousiwei.gitee.io/" title="試毅-思伟_技术博客。">試毅-思伟</a></p>
+								</li>
+								<li>
+									<p><a href="https://lovelijunyi.gitee.io/blog/"
+											title="每个牛逼的人，都有一段苦逼的坚持！（魔改vuepress-theme-reco主题）">小弋の阅览室</a></p>
+								</li>
+								<li>
+									<p><a href="https://zpj80231.gitee.io/znote/" title="荷尽已无擎雨盖，菊残犹有傲霜枝。">znote</a></p>
+								</li>
+								<li>
+									<p><a href="http://www.honkerzhou.com/"
+											title="VuePress博客搭建教程，前端面试真题。">honkerzhou</a></p>
+								</li>
+								<li>
+									<p><a href="https://mulander-j.github.io/fillory/Wiki1001/"
+											title="金志相的 Wiki 1001 维基博客。">Wiki 1001</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.usword.cn/" title="可搜索歌曲的音乐播放器，项目下单服务。">春风化雨行健不息</a></p>
+								</li>
+								<li>
+									<p><a href="https://zscnb.gitee.io/" title="一款简洁易懂算法博客 & 文档抠细节 & 主题">青灯有味</a></p>
+								</li>
+								<li>
+									<p><a href="https://docs.shanyuhai.top/" title="vuepress 文档，有视频教程。">飞跃高山与大洋的鱼</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://xwjie.github.io/"
+											title="把代码写复杂很容易，把代码写简单很难，这里讲的是如何编写简单易读的代码。">晓风轻技术小站</a></p>
+								</li>
+								<li>
+									<p><a href="https://doc.xiaonuo.vip/" title="可能是支持数据库最全面的低代码快速开发平台。">小诺快速开发平台文档</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://hellogitlab.com/" title="种一棵树最好的时间是十年前，其次就是现在。">梅朝辉的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://shanyue.tech/"
+											title="全栈成长之路，分享前后端相关文章，使各端开发者能够突破瓶颈进一步成长。">山月行</a></p>
+								</li>
+
+								<li>
+									<p><a href="https://lxchuan12.gitee.io/" title="若川，微信搜索「若川视野」关注我，长期交流学习。">若川的博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://book.hliedu.com/" title="君哥聊编程、知码知天下。">君哥的学习笔记</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.inode.club/" title="程序员成长指北 前端 公众号 koala 前端文章。">程序员成长指北</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://lssblog.ml/" title="山行野宿，孑然万里。">摸鱼人</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.lookroot.cn/"
+											title="追求理想与现实的平衡。（Vue、webpack系列教程）">lookroot的个人空间</a></p>
+								</li>
+								<li>
+									<p><a href="https://mu-yan.cn/" title="正在努力加载中...">山海以南</a></p>
+								</li>
+								<li>
+									<p><a href="https://conimi.com/" title="记录，成为更好的自己。">Torrk's Blog</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.wstee.com/" title="闲人愁多，懒人病多，忙人快活。">王世庭的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://qiufeihong2018.github.io/" title="我的心路历程。">飞鸿的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://yating.online/" title="用心写代码，不辜负程序员之名。">雅婷</a></p>
+								</li>
+								<li>
+									<p><a href="https://tsanfer.xyz/" title="现居住于猎户臂上的一个碳基生命。">Tsanfer's Blog</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.woai996.com/" title="把烦恼装进口袋，未来的路还很长。">地球反三体组织</a></p>
+								</li>
+								<li>
+									<p><a href="https://hentaimiao.me/" title="绅士喵呜的技术博客。">绅士喵呜的技术博客</a></p>
+								</li>
+
+
+								<li>
+									<p><a class="magic-color" href="https://doc.xugaoyi.com/"
+											title="一个简洁高效的VuePress知识管理和博客主题。">Vdoing主题</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.sofineday.com/" title="全栈直通车。">王世彪的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://xugaoyi.com/" title="Web前端技术博客，积跬步以至千里，致敬每个爱学习的你。。">Evan's
+											blog</a></p>
+								</li>
+
+								<li>
+									<p><a class="magic-color" href="https://antdocs.seeyoz.cn/"
+											title="一款 Ant Design 设计风格的 VuePress 主题。">AntDocs主题</a></p>
+								</li>
+								<li>
+									<p><a href="http://laomengit.com/"
+											title="扫描上方微信，领取《330个控件大全》和 《Flutter 实战》PDF。">Flutter | 老孟</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.629online.com/" title="这里只分享成功的经验, 这里没有高谈阔论。">629博客</a></p>
+								</li>
+								<li>
+									<p><a href="http://blod.wxinxianyun.com/" title="开启旅行笔记。">山水有轻音</a></p>
+								</li>
+
+
+								<li>
+									<p><a class="magic-color" href="https://wiki.cnguu.cn/zh/"
+											title="vuepress-theme-yur主题文档。">vuepress主题yur</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.cnguu.cn/" title="责难无以成事|vuepress-theme-yur主题演示。">月上陌阡</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://803344.netlify.app/"
+											title="三生三世是一个博主自行编写记录的文章存放点（音乐键盘魔改效果）。">三生三世</a></p>
+								</li>
+
+
+								<li>
+									<p><a class="magic-color" href="https://vuepress-theme-hope.github.io/zh/"
+											title="一个具有强大功能的 vuepress 主题✨。">vuepress主题hope</a></p>
+								</li>
+
+
+								<!-- 魔改好看的主题 -->
+								<li>
+									<p><a href="https://artiely.gitee.io/" title="人生除了眼前的苟且，还有未知的 bug 和看不懂的 code。">编程 |
+											Artiely</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.xerrors.fun/" title="对艺术的追求是一种生活方式。">Xerrors</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.zhourui.tech/" title="最大的一穗就是你刚刚摘下的。">最大的麦穗</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.mhynet.cn/" title="前端博客,前端开发,web前端,web开发。">shanks的学习日志</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://nyakku.moe/" title="一个小透明的透明世界。">Notev</a></p>
+								</li>
+								<li>
+									<p><a href="https://chasellhl.github.io/myBlog/" title="怀旧的前端想做全栈。">小城旧事</a></p>
+								</li>
+								<li>
+									<p><a class="magic-color" href="https://iro.tw/"
+											title="一个多彩，轻松上手，体验完善，具有强大自定义功能的WordPress主题。">「iro」主题</a></p>
+								</li>
+
+
+								<!-- 暂未划分区 -->
+								<li>
+									<p><a href="https://blog.remember5.top/" title="为了更美好的明天而战！">My Blog</a></p>
+								</li>
+								<li>
+									<p><a href="https://mulander-j.github.io/fillory/Wiki1001/"
+											title="满足1000本书并将它们合并成1个Wiki">维基1001</a></p>
+								</li>
+								<li>
+									<p><a href="http://dkgee.gitee.io/" title="个人精神知识仓库（文学收藏）">DKGEE</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.moyundong.com/" title="让梦想在指尖上飞舞，让精彩在低调中绽放。">牛魔王的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.bookbook.cc/" title="我是一只小小小小鸟~">PengSir</a></p>
+								</li>
+								<li>
+									<p><a href="https://sundestiny.github.io/myblog/" title="你知道的越多，不知道的也就越多~">飞翔的鱼</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://zq99299.github.io/note-book/"
+											title="用来记录工作和学习过程中的笔记，汇总成册方便查阅，类容涵盖各类技术">MRCODE-BOOK</a></p>
+								</li>
+								<li>
+									<p><a href="http://www.yeahflash.com/" title="菜鸟算法工程师的笔记">清欢小屋</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.yibi.host/" title="对技术、对生活的思考">刘一笔的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.liudongyang.top/" title="就你有嘴，一天天叭叭地">有梦想的咸鱼</a></p>
+								</li>
+								<li>
+									<p><a href="https://time-coding.github.io/laojiu.github.io/"
+											title="老九的程序进阶之路|读书笔记">老九的程序进阶之路</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.cco.vin/" title="魔改vuepress-theme-aurora主题">qsyyke</a></p>
+								</li>
+								<li>
+									<p><a href="https://zhanhongzhu.top/" title="叫我詹躲躲，前端开发者。随心远行，宁静致远。">叫我詹躲躲</a></p>
+								</li>
+							</ul>
+
+							<ul>
+								<h4 class="card-title">Vuepress前端</h4>
+								<li>
+									<p><a href="https://suohb.com/" title="分享前端相关知识技巧、原创html特效！">索洪波的网站</a></p>
+								</li>
+								<li>
+									<p><a href="https://jspang.com/" title="首页 | 技术胖-胜洪宇关注web前端技术-前端免费视频第一博客。">技术胖</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="http://www.godbasin.com/"
+											title="补齐前端基础知识，掌握开发调试技巧。补齐纯前端的缺失知识，更从容地面对面试官。">被删的前端游乐场</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.axihe.com/" title="阿西河前端教程丨一个助你成为全栈开发的网站。">阿西河前端教程</a></p>
+								</li>
+								<li>
+									<p><a href="https://wang.icey.cc/" title="前端杂货铺。">404 NOT FOUND</a></p>
+								</li>
+								<li>
+									<p><a href="https://i7xy.cn/" title="私塾学者。">前端私塾</a></p>
+								</li>
+								<li>
+									<p><a href="http://book.nodeing.com/" title="帮助零基础同学转行，入职前端开发。">螺丝前端</a></p>
+								</li>
+								<li>
+									<p><a href="https://weblearns.com/" title="vitePress生成的博客网站。">前端学习圈</a></p>
+								</li>
+								<li>
+									<p><a href="https://obkoro1.com/web_accumulate/" title="种一棵树最好的时间是十年前，其次就是现在。">前端进阶积累</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.yangtao.site/vuepress/" title="前端知识体系。">大涛子客栈</a></p>
+								</li>
+								<li>
+									<p><a href="https://fe.rualc.com/" title="前端技术学习指南。">前端指南</a></p>
+								</li>
+								<li>
+									<p><a href="https://myhoney.club/" title="爱代码，爱学习，爱鑫鑫。">玉川的Blog</a></p>
+								</li>
+								<li>
+									<p><a href="http://www.honkerzhou.com/" title="做一个优秀的社会主义接班人。">honkerzhou的个人博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://shiguanghai.top/" title="今天也要努力啊。">时光海小屋</a></p>
+								</li>
+								<li>
+									<p><a href="http://www.qdxiao.ltd/" title="一只正在努力的程序猿。">qdxiao的个人空间</a></p>
+								</li>
+								<li>
+									<p><a href="http://bk.xiat123.cn/" title="总有一天，你会变得更好！">w晚风阅览馆</a></p>
+								</li>
+								<li>
+									<p><a href="https://wangtunan.github.io/blog/" title="专注写作前端博客，记录日常所得。">汪图南</a></p>
+								</li>
+								<li>
+									<p><a href="https://biaochenxuying.github.io/blog/"
+											title="主要以 Vue + TypeScript 技术栈为主。">夜尽天明</a></p>
+								</li>
+								<li>
+									<p><a href="https://biaochenxuying.cn/" title="夜尽天明的博客网站。">夜尽天明的博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://chrislin-jiang.github.io/code-girl/"
+											title="新生代农民工，努力搬砖！！！">如风之枫</a></p>
+								</li>
+								<li>
+									<p><a href="https://muyiy.cn/" title="高级前端进阶之路">木易杨前端进阶</a></p>
+								</li>
+								<li>
+									<p><a href="https://interview2.poetries.top/" title="前端系统进阶笔记 & 面试指南">前端进阶之旅</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.dadaqianduan.cn/" title="紧跟业界发展步伐，一个热爱前端的达达程序员">达达前端</a></p>
+								</li>
+							</ul>
+							<ul>
+								<h4 class="card-title">VitePress博客</h4>
+								<li>
+									<p><a href="https://www.mfish.com.cn/" title="摸鱼低代码 mfish-nocode|前后端分离开源项目">摸鱼低代码平台</a></p>
+								</li>
+								<li>
+									<p><a href="https://notes.fe-mm.com/" title="茂茂的成长之路|在线音乐播放器|开发的油猴插件">茂茂物语</a></p>
+								</li>
+								<li>
+									<p><a href="https://note.noxussj.top/" title="博主收藏网站导航">菜园前端</a>
+									</p>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title"><a>Typeche博客</a>
+						</h3>
+						<div class="listdhsl">
+							<ul class="sortable-list">
+								<li class="sortable-item">
+									<p><a href="https://typecho.x09.cn/" title="每个人，都是一本书。(非常棒的极致拟物效果）">你好，夏阳</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://laolion.com/" title="我是一只历经沧桑的老狮。（Typeche付费Joe主题）">老狮的梦</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://78.al/" title="记录与学习前端知识。（Joe主题作者）">Joe的博客</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://9i3.cn/" title="Typecho合集站 - 用爱发电,始于2021">Typecho合集站</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://www.dongfang.name/" title="行吟游子的个人独立博客！">门影塘畔</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://www.cisharp.com/" title="一个分享心得的网站_程序员_个人博客！">一缕清风</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://www.aiyo99.com/" title="罗小黑-（便携小电视）">罗小黑</a></p>
+								</li>
+
+								<li class="sortable-item">
+									<p><a href="https://racns.com/" title="兔子爱上胡萝卜-（可语音浮动看板娘）">萌卜兔's</a></p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://www.gmit.vip/" title="故梦吖 ，记录生活点点滴滴（很好看的看板娘）">故梦吖</a></p>
+								</li>
+								<li class="sortable-item">
+									<p><a href="https://nie.su/" title="软件资源代码分享博客">涅槃博客</a></p>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title"><a>PHP博客</a>
+						</h3>
+						<div class="listdhsl">
+							<ul>
+
+								<li>
+									<p><a href="https://blog.weiyiqi.net/" title="一个web前端工程师分享技术与生活的原创个人网站">魏义齐个人博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://www.nswin.cn/" title="烈阳家园">烈阳家园</a></p>
+								</li>
+								<li>
+									<p><a href="https://meilinkj.cn/" title="Ringo的个人博客|梦聆音乐播放器源码">美林博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://blog.xyweb.cc/" title="忠于原创，乐于分享">咸鱼博客</a></p>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="card-header">
+						<h3 class="card-title"><a>前后端分离博客</a>
+						</h3>
+						<div class="listdhsl">
+							<ul>
+								<li>
+									<p><a href="http://www.mrzym.top/" title="小张的个人博客|Vue3全栈项目">小张的个人博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://liuyuyang.net/" title="宇阳|React全栈项目">宇阳博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://poetize.cn/" title="POETIZE博客|超高颜值的Vue2全栈项目">POETIZE最美博客</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://kuailemao.xyz/" title="不断追求完美的开源博客">Ruyu-快乐猫</a>
+									</p>
+								</li>
+								<li>
+									<p><a href="https://www.moguit.cn/" title="一个专注于技术分享的博客平台">蘑菇社区</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.blog.zjh2002.icu/" title="一个专注于技术分享的博客平台">Monkey-PaPa</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.macw.cc/" title="大、树博客">大、树博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.shiyit.com/" title="一个专注于技术分享的博客平台|主题好看">拾壹博客</a></p>
+								</li>
+								<li>
+									<p><a href="https://www.zhouyi.run/"
+											title="ZHOUYI的一个集成个人主页、技术博客站点(开源项目多)">ZHOUYI</a></p>
+								</li>
+
+							</ul>
+
+						</div>
+					</div>
+
+					<div class="pagebar"><a><span class="page">‹‹</span></a>
+						<a href="https://xyyum.icu/mypages/blogdh/blog.html" target="_self"><span
+								class="page">‹</span></a>
+						<a href="https://xyyum.icu/mypages/blogdh/blog.html" target="_self"><span
+								class="page">1</span></a>
+						<a href="https://xyyum.icu/mypages/blogdh/blog2.html" target="_self"><span
+								class="page">2</span></a>
+						<span class="page now-page">3</span>
+						<a><span class="page">››</span></a>
+					</div>
+				</div><!-- /.right you -->
+			</div><!-- /.announce -->
+
+			<div class="col footer">
+				<div class="footer-wrap">
+					<div class="poweredby">
+						<p> 黔ICP备18014478号</p>
+						<p>Copyright © 2019 Reserved. 云服务器赞助：<a rel="nofollow" href="http://www.azidc.net/" title="爱站云"
+								target="_blank"> 爱站云 </a></p>
+					</div>
+				</div>
+			</div><!-- /.footer-wrap -->
+		</div><!-- /.row -->
+
+	</div>
+	<script type="text/javascript" src="static/js/zdy.js" language="javascript"></script>
+</body>
+
+</html>
