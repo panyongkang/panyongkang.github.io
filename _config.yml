@@ -33,7 +33,6 @@ i18n_dir: :lang
 
 #跳过渲染
 skip_render: 
-  - "mtxx/**"
   - "music/**"
   - "vcard/**"
   - "workshop/**"

@@ -53,7 +53,6 @@ menu:
     - 青春校园 || /live-photo/ || fa fa-photo
     - 生活照片 || /photo-wall/ || fa fa-th
     - 在线视频 || /video-wall/ || fa fa-video-camera
-    - 美图秀秀 || /mtxx/ || fa fa-file-photo-o
     - 时间故事线 || /timeStoryline/ || fa fa-file-video-o
 
 # Favicon
