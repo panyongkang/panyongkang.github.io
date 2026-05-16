@@ -1,0 +1,121 @@
+
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+a{text-decoration: none;outline: none;}
+a:hover{color:#74777b;}
+
+.btn {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 6px 12px;
+    font-size: 14px;
+	border-radius:45px;
+    user-select: none;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #d9534f;
+}
+
+/* 全局添加鼠标样式 */
+*{ cursor:url('https://www.trueme.net/images/yuhou_tree.cur'),auto;}
+a:hover {  cursor: url('https://ihuan.me/wp-content/themes/CKoo/1.cur'), pointer !important;
+}
+
+/* 蒲公英特效 */
+@media screen and (max-width:600px){
+.dandelion{display: none !important;}
+}
+.dandelion .smalldan {
+width: 36px;
+height: 60px;
+right: 88px;
+background-position: 0 -90px;
+}
+.dandelion span {
+-webkit-animation: ball-x 3s linear 2s infinite;
+ -moz-animation: ball-x 3s linear 2s infinite;
+ animation: ball-x 3s linear 2s infinite;
+-webkit-transform-origin: bottom center;
+ -moz-transform-origin: bottom center;
+ transform-origin: bottom center;
+}
+.dandelion span {
+display: block;
+position: fixed;
+z-index:9999999999;
+bottom: 0px;
+background-image: url('../images/pgy.png');
+background-repeat: no-repeat;
+}
+.dandelion .bigdan {
+width: 64px;
+height: 115px;
+right: 41px;
+background-position: -86px -36px;
+}
+@keyframes ball-x {
+ 0% { transform:rotate(0deg);}
+ 25% { transform:rotate(5deg); }
+ 50% { transform:rotate(0deg);}
+ 75% { transform:rotate(-5deg);}
+ 100% { transform:rotate(0deg);}
+}
+@-webkit-keyframes ball-x {
+ 0% { -webkit-transform:rotate(0deg);}
+ 25% { -webkit-transform:rotate(5deg); }
+ 50% { -webkit-transform:rotate(0deg);}
+ 75% { -webkit-transform:rotate(-5deg);}
+ 100% { -webkit-transform:rotate(0deg);}
+}
+@-moz-keyframes ball-x {
+ 0% { -moz-transform:rotate(0deg);}
+ 25% { -moz-transform:rotate(5deg); }
+ 50% { -moz-transform:rotate(0deg);}
+ 75% { -moz-transform:rotate(-5deg);}
+ 100% { -moz-transform:rotate(0deg);}
+}
+
+/* 实现气泡对话框效果 */
+.test{
+    width:145px;
+    padding:50px 40px;
+    background:#beceeb;
+    -webkit-border-top-left-radius:220px 120px;
+    -webkit-border-top-right-radius:220px 120px;
+    -webkit-border-bottom-right-radius:220px 120px;
+    -webkit-border-bottom-left-radius:220px 120px;
+    -moz-border-radius:220px / 120px;
+    border-radius:220px / 120px;
+    position:absolute;
+	top: 60px;
+	left: 110px;
+}
+.test span{width:0; height:0; font-size:0; background:#beceeb; overflow:hidden; position:absolute;}
+.test span.bot{
+    width:30px;
+    height:30px;
+    -moz-border-radius:30px;
+    -webkit-border-radius:30px;
+    border-radius:30px;
+    left:10px;
+    bottom:-20px;
+}
+.test span.top{
+    width:15px;
+    height:15px;
+    -moz-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+    left:5px;
+    bottom:-40px;
+}

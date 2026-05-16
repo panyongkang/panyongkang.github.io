@@ -1,0 +1,154 @@
+// 包含 icon、name 两个字段：
+// - 如果 icon 是 http/https/data 开头 => 用 <img> 显示
+// - 否则 => 用文本/Emoji 显示
+const searchEngines = [
+    {
+        "name": "抖音",
+        "url": "https://www.douyin.com/search/",
+        "icon": "https://www.douyin.com/favicon.ico"
+    },
+    {
+        "name": "快手",
+        "url": "https://www.kuaishou.com/search/video?searchKey=",
+        "icon": "https://www.kuaishou.com/favicon.ico"
+    },
+    {
+        icon: 'https://www.n.cn/favicon.ico',
+        name: '纳米AI搜索',
+        url: 'https://www.n.cn/search?q='
+    },
+    {
+        icon: 'https://www.bing.com/favicon.ico',
+        name: 'Bing',
+        url: 'https://www.bing.com/search?q='
+    },
+    {
+        icon: 'https://static.zhihu.com/heifetz/favicon.ico',
+        name: '知乎',
+        url: 'https://www.zhihu.com/search?q='
+    },
+    {
+        icon: 'https://www.baidu.com/favicon.ico',
+        name: '百度',
+        url: 'https://www.baidu.com/s?wd='
+    },
+    {
+        icon: 'data:image/x-icon;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///zD9/f2W/f392P39/fn9/f35/f391/39/ZT+/v4uAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Cf39/Zn///////////////////////////////////////////39/ZX///8IAAAAAAAAAAAAAAAA/v7+Cf39/cH/////+v35/7TZp/92ul3/WKs6/1iqOv9yuFn/rNWd//j79v///////f39v////wgAAAAAAAAAAP39/Zn/////7PXp/3G3WP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP+Or1j//vDo///////9/f2VAAAAAP///zD/////+vz5/3G3V/9TqDT/WKo6/6LQkf/U6cz/1urO/6rUm/+Zo0r/8IZB//adZ////v7///////7+/i79/f2Y/////4nWzf9Lqkj/Vqo4/9Xqzv///////////////////////ebY//SHRv/0hUL//NjD///////9/f2U/f392v////8sxPH/Ebzt/43RsP/////////////////////////////////4roL/9IVC//i1jf///////f391/39/fr/////Cr37/wW8+/+16/7/////////////////9IVC//SFQv/0hUL/9IVC//SFQv/3pnX///////39/fn9/f36/////wu++/8FvPv/tuz+//////////////////SFQv/0hUL/9IVC//SFQv/0hUL/96p7///////9/f35/f392/////81yfz/CrL5/2uk9v///////////////////////////////////////////////////////f392P39/Zn/////ks/7/zdS7P84Rur/0NT6///////////////////////9/f////////////////////////39/Zb+/v4y//////n5/v9WYu3/NUPq/ztJ6/+VnPT/z9L6/9HU+v+WnfT/Ul7t/+Hj/P////////////////////8wAAAAAP39/Z3/////6Or9/1hj7v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9sdvD////////////9/f2YAAAAAAAAAAD///8K/f39w//////5+f7/paz2/11p7v88Suv/Okfq/1pm7v+iqfX/+fn+///////9/f3B/v7+CQAAAAAAAAAAAAAAAP///wr9/f2d///////////////////////////////////////////9/f2Z/v7+CQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f2Z/f392/39/fr9/f36/f392v39/Zj///8wAAAAAAAAAAAAAAAAAAAAAPAPAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIABAACAAQAAwAMAAPAPAAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/g3+/v5X/f39mf39/cj9/f3q/f39+f39/fn9/f3q/f39yP39/Zn+/v5W////DAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f2c/f399f/////////////////////////////////////////////////////9/f31/f39mv7+/iMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/gn9/f2K/f39+////////////////////////////////////////////////////////////////////////////f39+v39/Yf///8IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4k/f390v////////////////////////////////////////////////////////////////////////////////////////////////39/dD///8iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////MP39/er//////////////////////////+r05v+v16H/gsBs/2WxSf9Wqjj/Vqk3/2OwRv99vWX/pdKV/97u2P////////////////////////////39/ej+/v4vAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/iT9/f3q/////////////////////+v15/+Pxnv/VKk2/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/36+Z//d7tf///////////////////////39/ej///8iAAAAAAAAAAAAAAAAAAAAAAAAAAD///8K/f390//////////////////////E4bn/XKw+/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1apN/+x0pv///////////////////////39/dD///8IAAAAAAAAAAAAAAAAAAAAAP39/Yv/////////////////////sdij/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9TqDT/YKU1/8qOPv/5wZ////////////////////////39/YcAAAAAAAAAAAAAAAD+/v4l/f39+////////////////8Lgt/9TqDT/U6g0/1OoNP9TqDT/U6g0/1OoNP9utlT/n86N/7faqv+426v/pdKV/3u8ZP9UqDX/U6g0/3egN//jiUH/9IVC//SFQv/82MP//////////////////f39+v7+/iMAAAAAAAAAAP39/Z3////////////////q9Ob/W6w+/1OoNP9TqDT/U6g0/1OoNP9nskz/zOXC/////////////////////////////////+Dv2v+osWP/8YVC//SFQv/0hUL/9IVC//WQVP/++fb//////////////////f39mgAAAAD+/v4O/f399v///////////////4LHj/9TqDT/U6g0/1OoNP9TqDT/dblc//L58P/////////////////////////////////////////////8+v/3p3f/9IVC//SFQv/0hUL/9IVC//rIqf/////////////////9/f31////DP7+/ln////////////////f9v7/Cbz2/zOwhv9TqDT/U6g0/2KwRv/v9+z///////////////////////////////////////////////////////738//1kFT/9IVC//SFQv/0hUL/9plg///////////////////////+/v5W/f39nP///////////////4jf/f8FvPv/Bbz7/yG1s/9QqDz/vN2w//////////////////////////////////////////////////////////////////rHqP/0hUL/9IVC//SFQv/0hUL//vDn//////////////////39/Zn9/f3L////////////////R878/wW8+/8FvPv/Bbz7/y7C5P/7/fr//////////////////////////////////////////////////////////////////ere//SFQv/0hUL/9IVC//SFQv/718H//////////////////f39yP39/ez///////////////8cwvv/Bbz7/wW8+/8FvPv/WNL8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//rIqv/////////////////9/f3q/f39+v///////////////we9+/8FvPv/Bbz7/wW8+/993P3///////////////////////////////////////SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/+cGf//////////////////39/fn9/f36////////////////B737/wW8+/8FvPv/Bbz7/33c/f//////////////////////////////////////9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/6xaX//////////////////f39+f39/e3///////////////8cwvv/Bbz7/wW8+/8FvPv/WdP8///////////////////////////////////////0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//SFQv/0hUL/9IVC//vVv//////////////////9/f3q/f39y////////////////0bN/P8FvPv/Bbz7/wW8+/8hrvn/+/v///////////////////////////////////////////////////////////////////////////////////////////////////////////////////39/cj9/f2c////////////////ht/9/wW8+/8FvPv/FZP1/zRJ6/+zuPf//////////////////////////////////////////////////////////////////////////////////////////////////////////////////f39mf7+/lr////////////////d9v7/B7n7/yB38f81Q+r/NUPq/0hV7P/u8P3////////////////////////////////////////////////////////////////////////////////////////////////////////////+/v5X////D/39/ff///////////////9tkPT/NUPq/zVD6v81Q+r/NUPq/2Fs7//y8v7////////////////////////////////////////////09f7//////////////////////////////////////////////////f399f7+/g0AAAAA/f39n////////////////+Tm/P89Suv/NUPq/zVD6v81Q+r/NUPq/1Bc7f/IzPn/////////////////////////////////x8v5/0xY7P+MlPP////////////////////////////////////////////9/f2cAAAAAAAAAAD+/v4n/f39/P///////////////7W69/81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v9ZZe7/k5v0/6609/+vtff/lJv0/1pm7v81Q+r/NUPq/zVD6v+GjvL//v7//////////////////////////////f39+/7+/iQAAAAAAAAAAAAAAAD9/f2N/////////////////////6Cn9f81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v+BivL////////////////////////////9/f2KAAAAAAAAAAAAAAAAAAAAAP7+/gv9/f3V/////////////////////7W69/8+S+v/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/P0zr/7q/+P///////////////////////f390v7+/gkAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3r/////////////////////+Xn/P94gfH/NkTq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NUPq/zVD6v81Q+r/NkTq/3Z/8f/l5/z///////////////////////39/er+/v4kAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/jL9/f3r///////////////////////////k5vz/nqX1/2p08P9IVez/OEbq/zdF6v9GU+z/aHLv/5qh9f/i5Pz////////////////////////////9/f3q////MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7+/ib9/f3V/////////////////////////////////////////////////////////////////////////////////////////////////f390v7+/iQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP///wr9/f2N/f39/P///////////////////////////////////////////////////////////////////////////f39+/39/Yv+/v4JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD+/v4n/f39n/39/ff//////////////////////////////////////////////////////f399v39/Z3+/v4lAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/v7+Dv7+/lr9/f2c/f39y/39/e39/f36/f39+v39/ez9/f3L/f39nP7+/ln+/v4OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/AA///AAD//AAAP/gAAB/wAAAP4AAAB8AAAAPAAAADgAAAAYAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAABgAAAAcAAAAPAAAAD4AAAB/AAAA/4AAAf/AAAP/8AAP//wAP/',
+        name: 'Google',
+        url: 'https://www.google.com/search?q='
+    },
+    {
+        icon: 'data:image/x-icon;base64,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',
+        name: 'DuckDuckGo',
+        url: 'https://duckduckgo.com/?q='
+    },
+    {
+        icon: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNiAwQzcuMTYgMCAwIDcuMTYgMCAxNkMwIDIzLjA4IDQuNTggMjkuMDYgMTAuOTQgMzEuMThDMTEuNzQgMzEuMzIgMTIuMDQgMzAuODQgMTIuMDQgMzAuNDJDMTIuMDQgMzAuMDQgMTIuMDIgMjguNzggMTIuMDIgMjcuNDRDOCAyOC4xOCA2Ljk2IDI2LjQ2IDYuNjQgMjUuNTZDNi40NiAyNS4xIDUuNjggMjMuNjggNSAyMy4zQzQuNDQgMjMgMy42NCAyMi4yNiA0Ljk4IDIyLjI0QzYuMjQgMjIuMjIgNy4xNCAyMy40IDcuNDQgMjMuODhDOC44OCAyNi4zIDExLjE4IDI1LjYyIDEyLjEgMjUuMkMxMi4yNCAyNC4xNiAxMi42NiAyMy40NiAxMy4xMiAyMy4wNkM5LjU2IDIyLjY2IDUuODQgMjEuMjggNS44NCAxNS4xNkM1Ljg0IDEzLjQyIDYuNDYgMTEuOTggNy40OCAxMC44NkM3LjMyIDEwLjQ2IDYuNzYgOC44MiA3LjY0IDYuNjJDNy42NCA2LjYyIDguOTggNi4yIDEyLjA0IDguMjZDMTMuMzIgNy45IDE0LjY4IDcuNzIgMTYuMDQgNy43MkMxNy40IDcuNzIgMTguNzYgNy45IDIwLjA0IDguMjZDMjMuMSA2LjE4IDI0LjQ0IDYuNjIgMjQuNDQgNi42MkMyNS4zMiA4LjgyIDI0Ljc2IDEwLjQ2IDI0LjYgMTAuODZDMjUuNjIgMTEuOTggMjYuMjQgMTMuNCAyNi4yNCAxNS4xNkMyNi4yNCAyMS4zIDIyLjUgMjIuNjYgMTguOTQgMjMuMDZDMTkuNTIgMjMuNTYgMjAuMDIgMjQuNTIgMjAuMDIgMjYuMDJDMjAuMDIgMjguMTYgMjAgMjkuODggMjAgMzAuNDJDMjAgMzAuODQgMjAuMyAzMS4zNCAyMS4xIDMxLjE4QzI3LjQyIDI5LjA2IDMyIDIzLjA2IDMyIDE2QzMyIDcuMTYgMjQuODQgMCAxNiAwVjBaIiBmaWxsPSIjMjQyOTJFIi8+Cjwvc3ZnPgo=',
+        name: 'GitHub',
+        url: 'https://github.com/search?q='
+    },
+    {
+        icon: 'data:image/x-icon;base64,AAABAAIAEBAAAAEAIABoBAAAJgAAACAgAAABACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAKmjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACpo57/AAAAAAAAAAAAAAAAAAAAAAAAAACpo57/AAAAAAlw8v8JcPL/CXDy/wlw8v8JcPL/CXDy/wlw8v8AAAAAqaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1r8hMJcfE2AAAAAKmjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC3L0Lwhw8V0JcPKJCHDytglw8eIJcPLvCXDxvQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlw8sIJb/OlCW/ydwpw8UkJcvYdDWvyEwlx8XELcvQvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIcfI9CW/zpQlw8u8KcPKgC3L0LwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEXfuDwlx8XEKcPLWCHDy0wpw82sRd+4PCHHyPQlw8eIHb/InAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdt8CMKcPKgCW7yOgAAAAAAAAAACW/ydwlw8ugHcfBGCXHyUQpw8YIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANa/ITCHDytglw8sIJcvYdC3X0GAlw8ugJcfE2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJbvI6CXDx4glw8okAVf8DAAAAAAhw8rYIb/N+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACnDyZApw8UkAAAAAAAAAAApw82sJcPLIAFX/AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdv8icJcPLoB23wIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJcPLCCnDyZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACXL2HQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AADABwAA3/cAANAXAADflwAA8B8AAPAPAAD+DwAA8AcAAPGDAAD+AwAA/CcAAPzHAAD/jwAA/58AAP+/AAAoAAAAIAAAAEAAAAABACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACpo57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/6mjnv+po57/qaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKmjnv+po57/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKmjnv+po57/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACpo57/qaOe/wAAAAAAAAAAJID0/ySA9P8kgPT/JID0/ySA9P8kgPT/JID0/ySA9P8kgPT/JID0/ySA9P8kgPT/AAAAAAAAAACpo57/qaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKmjnv+po57/AAAAAAAAAAAkgPT/JID0/ySA9P8kgPT/JID0/ySA9P8kgPT/JID0/ySA9P8kgPT/JID0/ySA9P8AAAAAAAAAAKmjnv+po57/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqaOe/6mjnv8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACpo57/qaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKA9h4jgfJRJIDzgSOA9LQkgPTjKoDxEgAAAACpo57/qaOe/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAID/AiKA8iYjgfNXI4D0iSSA9LojgPTtJID0/ySA9P8kgPT/JID0/ySA9P8igPVKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACSA9LgkgPTxJID0/ySA9P8kgPT/JID0/ySA9P8kgPT/JID0+SSA9M0kgPOaJIDzaiOA8SQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJID0vSSA9P8kgPT/JIDz9CSA88UkgPWUJID1YiSC9TEzmf8FAAAAACKA9TQkgPSjI4D05ieJ6w0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAigPVKJIH0WyWC8ykAqv8DAAAAAAAAAAAAAAAAM5n/BSOA81gkgPPHJID0/ySA9P8kgPT/JID0eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJIXzFSOA9XwkgPTkJID0/ySA9P8kgPT/JID02SN/82wmgfI9I4DzLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJID1MiOA9J8kgPT4JID0/ySA9P8kgPT+JID0tyOB9EkAgP8CJID1YiSA9PckgPTjJH/2HAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJIDzKiOA9MIkgPT/JID0/ySA9P8kgPPyJID1lCKA8iYAAAAAIID/CCOA9J8kgPT/JID0/ySA9Okkf/RGJIPwIwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiiO4PJID07iSA9P8kgPPcJH/0cCKI7g8AAAAAAAAAACOA8SQkgPTPJID0/ySA9P8lgPTDJH/2HCWA864kgPPzI4D1ZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlgPRaJYD1TACA/wIAAAAAAAAAAAAAAAAjgPVQJID07ySA9P8kgPT+JID0jjOZ/wUkf/V+JID0/ySA9P8kgPSOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAgP8EJID0iCSA9P4kgPT/JID08SSA81QAAAAAJIH1TSSA9P4kgPT/I4D0uwCq/wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIID0GCSA9MAkgPT/JID0/ySA9NMigPImAAAAACaA8igkgPTwJID0/ySA894mgPIUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACGE9x8kgPTnJID0/ySA9P8kgPSiGYD/CgAAAAAiiO4PI3/02CSA9P8kgPT1IYD0LgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACSA85YkgPT4JYH1ZwAAAAAAAAAAAID/AiOA9LQkgPT/JID0/iSA81YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKr/AySA8yoAAAAAAAAAAAAAAAAjgPOCJID0/ySA9P8kgPSIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJYHzUySA9P4kgPT/JID0twCq/wMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKI7g8kgPTvJID0/ySA89sggO8QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKA9TQkgPPII4DzLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP////////////////wAAD/8AAA//P//P/z//z/8wAM//MADP/z//z/8/4E//+AB///AAf//wBD//8OA///+AH//+AA//+AQH//gYA//8cAP//8CD//+BB///Ag///4wf//+cP///+D////B////4///////////////////////',
+        name: 'Stack Overflow',
+        url: 'https://stackoverflow.com/search?q='
+    },
+    {
+        icon: '🔗',
+        name: '超链接',
+        url: null // 特殊处理
+    }
+];
+
+const selectionPopup = document.getElementById('selectionPopup');
+
+// 监听鼠标松开事件
+document.addEventListener('mouseup', function () {
+    // 获取选中的文本
+    const selection = window.getSelection();
+    const selectedText = selection.toString().trim();
+
+    // 如果没有选中文本，则隐藏悬浮层
+    if (!selectedText) {
+        selectionPopup.style.display = 'none';
+        return;
+    }
+
+    // 如果有选中内容，则获取选中范围的位置信息
+    if (selection.rangeCount > 0) {
+        const range = selection.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+
+        // 如果无法获取有效的矩形信息，也隐藏弹窗
+        if (!rect || (rect.width === 0 && rect.height === 0)) {
+            selectionPopup.style.display = 'none';
+            return;
+        }
+
+        // 计算弹窗应出现的位置（在所选文本下方，稍作偏移）
+        const offsetY = 8; // 在文本下方 8px 处
+        const left = rect.left + window.scrollX;
+        const top = rect.bottom + window.scrollY + offsetY;
+
+        // 设置弹窗位置
+        selectionPopup.style.left = left + 'px';
+        selectionPopup.style.top = top + 'px';
+        selectionPopup.style.display = 'block';
+
+        // 清空之前的按钮
+        selectionPopup.innerHTML = '';
+
+        // 创建并插入各个搜索按钮
+        searchEngines.forEach(engine => {
+            const btn = document.createElement('a');
+            btn.className = 'search-btn';
+            btn.title = engine.name; // 鼠标悬停时显示的名称
+
+            // 判断 icon 是否是一个 URL 或 Base64（data:），否则就当作文字/Emoji
+            if (
+                engine.icon.startsWith('http://') ||
+                engine.icon.startsWith('https://') ||
+                engine.icon.startsWith('data:')
+            ) {
+                // 创建 <img> 标签
+                const img = document.createElement('img');
+                img.src = engine.icon;
+                img.alt = engine.name;
+                btn.appendChild(img);
+            } else {
+                // 直接把 icon 当作文字/Emoji
+                btn.textContent = engine.icon;
+            }
+
+            // 点击按钮时，打开对应链接
+            btn.onclick = function (e) {
+                e.preventDefault(); // 防止默认点击行为
+                //   console.log('点击了按钮：' + engine.name); // 调试日志
+                if (engine.url) {
+                    // 拼接搜索链接
+                    const finalUrl = engine.url + encodeURIComponent(selectedText);
+                    window.open(finalUrl, '_blank');
+                } else {
+                    // 处理超链接图标的逻辑
+                    let linkUrl = selectedText;
+                    // 如果不包含 http:// 或 https://，则拼接 https://
+                    if (
+                        !selectedText.startsWith('http://') &&
+                        !selectedText.startsWith('https://')
+                    ) {
+                        linkUrl = 'https://' + selectedText;
+                    }
+                    window.open(linkUrl, '_blank');
+                }
+            };
+
+            selectionPopup.appendChild(btn);
+        });
+    }
+});
+
+// 如果点击页面其他地方，且不在悬浮层内部，则隐藏悬浮层
+document.addEventListener('mousedown', function (e) {
+    if (!selectionPopup.contains(e.target)) {
+        selectionPopup.style.display = 'none';
+    }
+});

@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    text-align: center;
+    padding-top:100px;
+}
+
+#main {
+    width: 800px;
+    height: 500px;
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+}
+
+#main .left {
+    width: 600px;
+    height: 100%;
+    float: left;
+    background-color:#26C5CB;
+    position: relative;
+}
+
+#main .right {
+    width: 200px;
+    height: 100%;
+    float: left;
+    /*border: 1px solid red;*/
+    background-color:#666;
+    box-sizing: border-box;
+    text-align: center;
+}
+#main .right h2{
+    margin:20px auto;
+    text-align: center;
+}
+#main .right h2 #fenshu{
+    color: red;
+}
+#main .right button{
+    width: 100px;
+    height: 30px;
+    background-color: #abcdef;
+    border: 0px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 20px;
+    outline: 0px;
+    /*margin-top: 10px;*/
+}
+.food{
+    background-color: red;
+}
+.snake{
+    background-color: green;
+}
+

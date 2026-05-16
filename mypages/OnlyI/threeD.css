@@ -1,0 +1,42 @@
+﻿.box {
+            width: 100px;
+            height: 100px;
+			float: left;
+            margin: 15px 50px;
+            position: relative;
+            transform-style: preserve-3d;  /*可以让骰子看来立体，给后面的旋转元素保留空间*/
+           transition: all 5s;/*设置过度  单我鼠标经过会有一个x轴360度旋转，z轴旋转360def的效果*/
+        }
+		
+        .box:hover {
+            transform: rotateX(360deg) rotateZ(360deg); 
+        }
+       .box> div {
+            width: 100%;
+            height: 100%;
+            position: absolute;/*设置定位 让盒子全都靠在在一起*/
+            left: 0;
+            top: 0;
+            box-shadow:inset 0 0 15px rgba(0, 0, 0, .2);/*盒子内边距阴影  这样立体感效果十足*/
+            background-color: rgba(255, 255, 255, .1);
+            text-align: center;
+            line-height: 100px;
+        }
+        .o {
+            transform: translateZ(50px); 
+        }
+        .t {
+            transform: rotateY(90deg) translateZ(50px);
+        }
+        .th {
+            transform:rotateY(180deg) translateZ(50px) ;
+        }
+        .fo {
+            transform: rotateY(-90deg) translateZ(50px);
+        }
+        .fi {
+            transform:rotateX(-90deg) translateZ(50px) ;
+        }
+        .s {
+            transform: rotateX(90deg) translateZ(50px); 
+        }

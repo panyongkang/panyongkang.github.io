@@ -1,0 +1,93 @@
+/* 弹窗组件样式 */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  color: #fff;
+  font-size: 36px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.lightbox-close:hover {
+  transform: rotate(90deg);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 缩略图样式 */
+.thumbnail {
+  cursor: zoom-in;
+  transition: transform 0.3s;
+  max-height: 200px;
+  object-fit: cover;
+/* 禁止图片选中 */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+/* 禁用长按菜单 */
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.thumbnail:hover {
+  transform: scale(1.02);
+}
+
+/* 全局禁用弹窗区域的文本选择 */
+.lightbox-overlay, .lightbox-content {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* 移除点击时的浏览器默认轮廓线 */
+.thumbnail:focus {
+  outline: none;
+}
+
+
+/* 针对移动端优化 */
+@media (hover: none) {
+  .thumbnail {
+    touch-action: manipulation; /* 禁用双击缩放 */
+  }
+}

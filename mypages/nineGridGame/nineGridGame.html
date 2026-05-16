@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>九宫格抽奖</title>
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+
+<body>
+  <!-- 侧边栏 -->
+  <div id="sidebar">
+    <div class="logo">
+      <h1>九宫格抽奖</h1>
+      <p>多种玩法 · 趣味互动</p>
+    </div>
+    <button class="active" data-module="feizi">翻牌子</button>
+    <button data-module="prize">抽奖品</button>
+    <button data-module="redpacket">抽红包</button>
+    <button id="changeBgBtn">切换背景</button>
+  </div>
+
+  <!-- 背景切换面板 -->
+  <div class="bg-panel" id="bgPanel">
+    <button class="close-panel" id="closePanelBtn">X</button>
+    <h3>选择背景风格</h3>
+    <div class="bg-options">
+      <div class="bg-option"
+        style="background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #8fd3f4, #a1c4fd, #c2e9fb);"
+        data-bg="linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #8fd3f4, #a1c4fd, #c2e9fb)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #ff758c, #ff7eb3, #ff8a65, #ffc65e, #ffec5c);"
+        data-bg="linear-gradient(135deg, #ff758c, #ff7eb3, #ff8a65, #ffc65e, #ffec5c)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #43e97b, #38f9d7, #4facfe, #a18af1, #fd84e3);"
+        data-bg="linear-gradient(135deg, #43e97b, #38f9d7, #4facfe, #a18af1, #fd84e3)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #f6d365, #fda085, #ff9a9e, #fbc2eb, #a6c1ee);"
+        data-bg="linear-gradient(135deg, #f6d365, #fda085, #ff9a9e, #fbc2eb, #a6c1ee)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #a8edea, #fed6e3, #f5f7fe, #c3cfe2, #e0c3fc);"
+        data-bg="linear-gradient(135deg, #a8edea, #fed6e3, #f5f7fe, #c3cfe2, #e0c3fc)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #ff4e50, #f9d423, #ff758c, #ff7eb3, #ff8a65);"
+        data-bg="linear-gradient(135deg, #ff4e50, #f9d423, #ff758c, #ff7eb3, #ff8a65)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #00dbde, #fc00ff, #ff00cc, #ff0066, #ff6600);"
+        data-bg="linear-gradient(135deg, #00dbde, #fc00ff, #ff00cc, #ff0066, #ff6600)"></div>
+      <div class="bg-option" style="background: linear-gradient(135deg, #ffc3a0, #ffafbd, #ffc3a0, #a0e7ff, #b5ead7);"
+        data-bg="linear-gradient(135deg, #ffc3a0, #ffafbd, #ffc3a0, #a0e7ff, #b5ead7)"></div>
+    </div>
+    <div class="custom-bg">
+      <input type="color" id="colorPicker1" value="#ff9a9e">
+      <input type="color" id="colorPicker2" value="#fbc2eb">
+      <button id="applyCustomBg">自定义背景</button>
+    </div>
+  </div>
+
+  <!-- 主游戏区 -->
+  <div id="game">
+    <div class="game-content">
+      <div class="title-container">
+        <h3>请陛下翻牌，今晚宠幸哪位妃子？</h3>
+        <p>点击"随机开始"按钮，系统将为您挑选今晚侍寝的妃子</p>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <div class="button-container">
+      <button id="randomStartBtn">随机开始</button>
+    </div>
+
+    <div class="decoration dragon"></div>
+  </div>
+
+  <!-- 遮罩层 -->
+  <div id="overlay"></div>
+
+  <!-- 结果弹窗 -->
+  <div id="modal">
+    <img id="modalImg" src="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <button id="closeModalBtn">朕知道了</button>
+  </div>
+<script src="static/js/index.js"></script>
+</body>
+
+</html>

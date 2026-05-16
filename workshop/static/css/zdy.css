@@ -1,0 +1,155 @@
+.flame-text {
+    color: #ffcc00;
+    /* 基本文字颜色 */
+    font-size: 48px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s;
+    /* 平滑过渡效果 */
+}
+
+.flame-text:hover {
+    -webkit-animation: flameAnimation 1s infinite alternate;
+    animation: flameAnimation 1s infinite alternate;
+}
+
+.flame-text:hover:before,
+.flame-text:hover:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ff7000;
+    /* 蓝色阴影颜色 */
+    -webkit-text-stroke: 2px #ff7000;
+    /* 描边颜色，增加火焰的立体感 */
+}
+
+.flame-text:hover:before {
+    -webkit-filter: blur(0.1em);
+    filter: blur(0.1em);
+    z-index: -1;
+}
+
+.flame-text:hover:after {
+    -webkit-filter: blur(0.2em);
+    filter: blur(0.2em);
+    z-index: -2;
+}
+
+@-webkit-keyframes flameAnimation {
+    50% {
+        text-shadow:
+            0 0 2px #ff9900,
+            0 -2px 2px #ff8000,
+            1px -5px 3px #ff7000,
+            -1px -10px 6px #ee1f06,
+            1px -15px 10px #ee1f06,
+            0 -20px 15px #ee1f06;
+    }
+}
+
+@keyframes flameAnimation {
+    50% {
+        text-shadow:
+            0 0 2px #ff9900,
+            0 -2px 2px #ff8000,
+            1px -5px 3px #ff7000,
+            -1px -10px 6px #ee1f06,
+            1px -15px 10px #ee1f06,
+            0 -20px 15px #ee1f06;
+    }
+}
+
+.rainbowTexts {
+    text-shadow: -1px 1px 0 #FFD180;
+    -webkit-animation: 1s infinite rainbowText;
+    animation: 1s infinite rainbowText;
+}
+
+@-webkit-keyframes rainbowText {
+    0% {
+      text-shadow: -0.1rem 0.1rem #FFFF8D, -0.2rem 0.2rem #CCFF90, -0.3rem 0.3rem #A7FFEB, -0.4rem 0.4rem #82B1FF, -0.5rem 0.5rem #B388FF, -0.6rem 0.6rem #EA80FC, -0.7rem 0.7rem #FF80AB, -0.8rem 0.8rem #FFD180;
+    }
+    12.5% {
+      text-shadow: -0.1rem 0.1rem #FFD180, -0.2rem 0.2rem #FFFF8D, -0.3rem 0.3rem #CCFF90, -0.4rem 0.4rem #A7FFEB, -0.5rem 0.5rem #82B1FF, -0.6rem 0.6rem #B388FF, -0.7rem 0.7rem #EA80FC, -0.8rem 0.8rem #FF80AB;
+    }
+    25% {
+      text-shadow: -0.1rem 0.1rem #FF80AB, -0.2rem 0.2rem #FFD180, -0.3rem 0.3rem #FFFF8D, -0.4rem 0.4rem #CCFF90, -0.5rem 0.5rem #A7FFEB, -0.6rem 0.6rem #82B1FF, -0.7rem 0.7rem #B388FF, -0.8rem 0.8rem #EA80FC;
+    }
+    37.5% {
+      text-shadow: -0.1rem 0.1rem #EA80FC, -0.2rem 0.2rem #FF80AB, -0.3rem 0.3rem #FFD180, -0.4rem 0.4rem #FFFF8D, -0.5rem 0.5rem #CCFF90, -0.6rem 0.6rem #A7FFEB, -0.7rem 0.7rem #82B1FF, -0.8rem 0.8rem #B388FF;
+    }
+    50% {
+      text-shadow: -0.1rem 0.1rem #B388FF, -0.2rem 0.2rem #EA80FC, -0.3rem 0.3rem #FF80AB, -0.4rem 0.4rem #FFD180, -0.5rem 0.5rem #FFFF8D, -0.6rem 0.6rem #CCFF90, -0.7rem 0.7rem #A7FFEB, -0.8rem 0.8rem #82B1FF;
+    }
+    62.5% {
+      text-shadow: -0.1rem 0.1rem #82B1FF, -0.2rem 0.2rem #B388FF, -0.3rem 0.3rem #EA80FC, -0.4rem 0.4rem #FF80AB, -0.5rem 0.5rem #FFD180, -0.6rem 0.6rem #FFFF8D, -0.7rem 0.7rem #CCFF90, -0.8rem 0.8rem #A7FFEB;
+    }
+    75% {
+      text-shadow: -0.1rem 0.1rem #A7FFEB, -0.2rem 0.2rem #82B1FF, -0.3rem 0.3rem #B388FF, -0.4rem 0.4rem #EA80FC, -0.5rem 0.5rem #FF80AB, -0.6rem 0.6rem #FFD180, -0.7rem 0.7rem #FFFF8D, -0.8rem 0.8rem #CCFF90;
+    }
+    87.5% {
+      text-shadow: -0.1rem 0.1rem #CCFF90, -0.2rem 0.2rem #A7FFEB, -0.3rem 0.3rem #82B1FF, -0.4rem 0.4rem #B388FF, -0.5rem 0.5rem #EA80FC, -0.6rem 0.6rem #FF80AB, -0.7rem 0.7rem #FFD180, -0.8rem 0.8rem #FFFF8D;
+    }
+    100% {
+      text-shadow: -0.1rem 0.1rem #FFFF8D, -0.2rem 0.2rem #CCFF90, -0.3rem 0.3rem #A7FFEB, -0.4rem 0.4rem #82B1FF, -0.5rem 0.5rem #B388FF, -0.6rem 0.6rem #EA80FC, -0.7rem 0.7rem #FF80AB, -0.8rem 0.8rem #FFD180;
+    }
+  }
+
+@keyframes rainbowText {
+    0% {
+      text-shadow: -0.1rem 0.1rem #FFFF8D, -0.2rem 0.2rem #CCFF90, -0.3rem 0.3rem #A7FFEB, -0.4rem 0.4rem #82B1FF, -0.5rem 0.5rem #B388FF, -0.6rem 0.6rem #EA80FC, -0.7rem 0.7rem #FF80AB, -0.8rem 0.8rem #FFD180;
+    }
+    12.5% {
+      text-shadow: -0.1rem 0.1rem #FFD180, -0.2rem 0.2rem #FFFF8D, -0.3rem 0.3rem #CCFF90, -0.4rem 0.4rem #A7FFEB, -0.5rem 0.5rem #82B1FF, -0.6rem 0.6rem #B388FF, -0.7rem 0.7rem #EA80FC, -0.8rem 0.8rem #FF80AB;
+    }
+    25% {
+      text-shadow: -0.1rem 0.1rem #FF80AB, -0.2rem 0.2rem #FFD180, -0.3rem 0.3rem #FFFF8D, -0.4rem 0.4rem #CCFF90, -0.5rem 0.5rem #A7FFEB, -0.6rem 0.6rem #82B1FF, -0.7rem 0.7rem #B388FF, -0.8rem 0.8rem #EA80FC;
+    }
+    37.5% {
+      text-shadow: -0.1rem 0.1rem #EA80FC, -0.2rem 0.2rem #FF80AB, -0.3rem 0.3rem #FFD180, -0.4rem 0.4rem #FFFF8D, -0.5rem 0.5rem #CCFF90, -0.6rem 0.6rem #A7FFEB, -0.7rem 0.7rem #82B1FF, -0.8rem 0.8rem #B388FF;
+    }
+    50% {
+      text-shadow: -0.1rem 0.1rem #B388FF, -0.2rem 0.2rem #EA80FC, -0.3rem 0.3rem #FF80AB, -0.4rem 0.4rem #FFD180, -0.5rem 0.5rem #FFFF8D, -0.6rem 0.6rem #CCFF90, -0.7rem 0.7rem #A7FFEB, -0.8rem 0.8rem #82B1FF;
+    }
+    62.5% {
+      text-shadow: -0.1rem 0.1rem #82B1FF, -0.2rem 0.2rem #B388FF, -0.3rem 0.3rem #EA80FC, -0.4rem 0.4rem #FF80AB, -0.5rem 0.5rem #FFD180, -0.6rem 0.6rem #FFFF8D, -0.7rem 0.7rem #CCFF90, -0.8rem 0.8rem #A7FFEB;
+    }
+    75% {
+      text-shadow: -0.1rem 0.1rem #A7FFEB, -0.2rem 0.2rem #82B1FF, -0.3rem 0.3rem #B388FF, -0.4rem 0.4rem #EA80FC, -0.5rem 0.5rem #FF80AB, -0.6rem 0.6rem #FFD180, -0.7rem 0.7rem #FFFF8D, -0.8rem 0.8rem #CCFF90;
+    }
+    87.5% {
+      text-shadow: -0.1rem 0.1rem #CCFF90, -0.2rem 0.2rem #A7FFEB, -0.3rem 0.3rem #82B1FF, -0.4rem 0.4rem #B388FF, -0.5rem 0.5rem #EA80FC, -0.6rem 0.6rem #FF80AB, -0.7rem 0.7rem #FFD180, -0.8rem 0.8rem #FFFF8D;
+    }
+    100% {
+      text-shadow: -0.1rem 0.1rem #FFFF8D, -0.2rem 0.2rem #CCFF90, -0.3rem 0.3rem #A7FFEB, -0.4rem 0.4rem #82B1FF, -0.5rem 0.5rem #B388FF, -0.6rem 0.6rem #EA80FC, -0.7rem 0.7rem #FF80AB, -0.8rem 0.8rem #FFD180;
+    }
+  }
+
+  /* 调皮的小球人 */
+  #ball {
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-image: url('https://pic.imgdb.cn/item/604821d75aedab222c04f000.png');
+    background-size: cover;
+    cursor: none;
+  }
+  #resetButton {
+    position: fixed;
+    bottom: 110px;
+    right: 5px;
+    padding: 10px 20px;
+    background-color: #09d3bd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: none;
+    display: none;
+  }

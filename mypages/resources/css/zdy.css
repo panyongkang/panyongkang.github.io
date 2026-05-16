@@ -1,0 +1,35 @@
+﻿/* 右下角图片置顶效果 */
+.back-to-top {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  width: 108px;
+  height: 150px;
+  background: url("../picture/back-to-top.png") no-repeat 0 0;
+  background-size: 108px 450px;
+  opacity: 0.6;
+  transition: opacity 0.3s, right 0.8s;
+}
+.back-to-top:hover {
+  background-position: 0 -150px;
+  opacity: 1;
+}
+.back-to-top.load {
+  right: 0;
+}
+
+.back-to-top::after {
+  content: '';
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  bottom: 0;
+  width: 108px;
+  height: 150px;
+  background: url("../picture/back-to-top.png") no-repeat 0 0;
+  background-size: 108px 450px;
+  background-position: 0 -300px;
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
+}

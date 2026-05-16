@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <meta name="renderer" content="webkit">
+    <meta name="author" content="mengkun">
+    <meta name="generator" content="KodCloud">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <title>🎵向阳小康音乐-明月浩空HTML5音乐播放器</title>
+    <meta name="description"
+        content="Emlog，Zblog，Wordpress，Typecho，QQ网易酷狗免费Html5明月浩空网站音乐播放器插件，非绚丽彩虹盗版播放器！明月浩空音乐，明月浩空播放器，免费博客播放器音乐，李明浩的网站，记录生活点滴，这苦涩的根必将会迎来满园芬芳！">
+    <meta name="keywords" content="Emlog音乐播放器插件，Zblog音乐播放器插件，Wordpress音乐播放器插件，Typechos音乐播放器插件，Html5网站音乐播放器，明月浩空器音乐播放器">
+    <!--[if lte IE 8]>
+    <script>window.location.href = "plugns/killie/"</script><![endif]-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <script src="js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/player.css">
+    <link rel="stylesheet" type="text/css" href="css/small.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="plugns/layer/skin/default/layer.css?v=3.0.2302" id="layuicss-skinlayercss">
+</head>
+
+<body>
+    <div id="blur-img"></div>
+    <div class="header">
+        <div class="logo" title="Version 2.4; Based on Meting; Powered by Mengkun">♫ 向阳小康音乐</div>
+    </div>
+    <div class="center">
+        <div class="container">
+            <div class="btn-bar">
+                <div class="btn-box" id="btn-area"><span class="btn" data-action="player" hidden>播放器</span> <span
+                        class="btn" data-action="playing" title="正在播放列表">正在播放</span> <span class="btn"
+                        data-action="sheet" title="音乐播放列表">播放列表</span> <span class="btn" data-action="search"
+                        title="点击搜索音乐">歌曲搜索</span></div>
+            </div>
+            <div class="data-area">
+                <div id="sheet" class="data-box" hidden></div>
+                <div id="main-list" class="music-list data-box"></div>
+            </div>
+            <div class="player" id="player">
+                <div class="cover"><img src="images/player_cover.png" class="music-cover" id="music-cover"></div>
+                <div class="lyric">
+                    <ul id="lyric"></ul>
+                </div>
+                <div id="music-info" title="点击查看歌曲信息"></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="con-btn"><a href="javascript:;" class="player-btn btn-prev" title="上一首"></a> <a
+                    href="javascript:;" class="player-btn btn-play" title="暂停/继续"></a>
+                <a href="javascript:;" class="player-btn btn-next" title="下一首"></a> <a href="javascript:;"
+                    class="player-btn btn-order" title="循环控制"></a>
+            </div>
+            <div class="vol">
+                <div class="quiet"><a href="javascript:;" class="player-btn btn-quiet" title="静音"></a></div>
+                <div class="volume">
+                    <div class="volume-box">
+                        <div id="volume-progress" class="mkpgb-area"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress">
+                <div class="progress-box">
+                    <div id="music-progress" class="mkpgb-area"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="plugns/layer/layer.js"></script>
+
+    <!-- 播放器数据加载模块 -->
+    <script src="js/ajax.js"></script>
+
+    <!-- 播放器歌词解析模块 -->
+    <script src="js/lyric.js"></script>
+
+    <!-- 音乐列表配置 -->
+    <script src="js/musicList.js"></script>
+
+    <!-- 封装函数及ui交互模块 -->
+    <script src="js/functions.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/background-blur.min.js"></script>
+
+    <span style="display:none"></span>
+    <!--公告开始-->
+    <script>
+        if (getCookie('TanHide') != 'ok') {
+            layer.alert('本站仅是站长自己方便在线听歌查歌，不对外维护<br>您若是喜欢本站，不甚荣幸。<br><br>想了解站长请访问：https://xyyum.icu/workshop/', {
+                title: '向阳在线音乐 | 公告',
+                skin: 'layui-layer-molv'
+                , btn: ['朕已阅']
+                , btn1: function (index) {
+                    setCookie('TanHide', 'ok', 1);
+                    layer.close(index)
+                },
+                cancel: function (index) {
+                    setCookie('TanHide', 'ok', 1);
+                    layer.close(index);
+                }
+            });
+        }
+        function setCookie(name, value, tian) {
+            var Days = 1;
+            if (typeof (tian) == 'undefined' || !tian || tian == '' || tian == null || typeof (tian) != 'number' || tian <= 0) {
+
+            } else {
+                Days = tian;
+            }
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+        }
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+    </script>
+    <!--公告结束-->
+
+</body>
+
+</html>

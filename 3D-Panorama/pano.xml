@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tour appversion="5.2.0" apprev="15969" start="node2">
+  <panorama hideabout="1" id="node2">
+    <input tile2url="images/node-0-back.jpg?t=20180801214533" prev2url="images/node-0-_previewback.jpg?t=20180801214533" tile0url="images/node-0-front.jpg?t=20180801214533" prev0url="images/node-0-_previewfront.jpg?t=20180801214533" tile5url="images/node-0-down.jpg?t=20180801214533" prev5url="images/node-0-_previewdown.jpg?t=20180801214533" levelingroll="0" tile3url="images/node-0-left.jpg?t=20180801214533" prev3url="images/node-0-_previewleft.jpg?t=20180801214533" levelingpitch="0" tilesize="1024" tile1url="images/node-0-right.jpg?t=20180801214533" prev1url="images/node-0-_previewright.jpg?t=20180801214533" tilescale="1.009766" tile4url="images/node-0-up.jpg?t=20180801214533" prev4url="images/node-0-_previewup.jpg?t=20180801214533">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start fov="60" pan="-116.076" projection="4" tilt="-4.2056"/>
+      <flyin fov="170" pan="0" projection="9" tilt="-90"/>
+      <min fov="20" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="60" fovstereographic="270" pan="360" scaletofit="1" tilt="90"/>
+    </view>
+    <userdata longitude="" source="" customnodeid="" latitude="" copyright="" comment="" title="客厅中央" datetime="20180726231430" tags="" description="" info="" author="dron"/>
+    <hotspots wordwrap="1" width="60" height="0">
+      <label bordercolor="0x000000" background="1" backgroundcolor="0xffffff" textalpha="1" borderalpha="1" textcolor="0x000000" backgroundalpha="1" wordwrap="1" width="60" border="1" enabled="1" height="0" borderradius="1"/>
+      <polystyle bordercolor="0x0000ff" backgroundcolor="0x0000ff" handcursor="1" borderalpha="1" mode="3" backgroundalpha="0.2509803921568627"/>
+      <hotspot url="{node1}" title="玄关门口" id="Point01" pan="-36.13" target="24.7/-6.4/60.0" description="" skinid="ht_node" tilt="-22.01"/>
+      <hotspot url="{node3}" title="餐厅门口" id="Point02" pan="78.26" target="81.4/-18.2/60.0" description="" skinid="ht_node" tilt="-27.73"/>
+      <hotspot url="{node1}" title="玄关门口" id="Point03" pan="-63.24" target="-84.8/-10.5/60.0" description="" skinid="ht_node" tilt="-19.16"/>
+      <hotspot url="{node4}" title="厨房" id="Point04" pan="15.96" target="-1.8/-37.1/70.0" description="" skinid="ht_node" tilt="-23.96"/>
+    </hotspots>
+    <media/>
+    <transition softedge="0" zoomspeed="2" zoomfov="20" zoomin="2" type="diptocolor" zoomoutpause="1" blendtime="1" blendcolor="0x000000" zoomout="0" enabled="1"/>
+    <flyintransition speed="5.00" enabled="1"/>
+    <animation useinautorotation="0" syncanimationwithvideo="1">
+      <clip animtitle="Animation01" length="100" nextclipnodeid="node2" animtype="0" nextcliptitle="Clip01" transitiontype="0" nodeid="node2" cliptitle="Clip01">
+        <keyframe property="0" transitiontime="0" value="-116.076" type="0" time="0"/>
+        <keyframe property="1" transitiontime="0" value="-4.2056" type="0" time="0"/>
+        <keyframe property="2" transitiontime="0" value="60" type="0" time="0"/>
+        <keyframe property="3" transitiontime="0" value="4" type="0" time="0"/>
+        <keyframe bezierouttime="10100" property="0" bezierintime="70" transitiontime="0" value="238.022" type="2" bezierinvalue="238.022" time="100" bezieroutvalue="238.022"/>
+      </clip>
+    </animation>
+    <control lockedmouse="0" rubberband="0" invertwheel="0" speedwheel="1" hideabout="1" lockedwheel="0" invertcontrol="1" contextfullscreen="0" lockedkeyboardzoom="1" contextprojections="0" dblclickfullscreen="0" sensitivity="6" lockedkeyboard="1" simulatemass="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node1">
+    <input tile2url="images/node-1-back.jpg?t=20180801214533" prev2url="images/node-1-_previewback.jpg?t=20180801214533" tile0url="images/node-1-front.jpg?t=20180801214533" prev0url="images/node-1-_previewfront.jpg?t=20180801214533" tile5url="images/node-1-down.jpg?t=20180801214533" prev5url="images/node-1-_previewdown.jpg?t=20180801214533" levelingroll="0" tile3url="images/node-1-left.jpg?t=20180801214533" prev3url="images/node-1-_previewleft.jpg?t=20180801214533" levelingpitch="0" tilesize="1024" tile1url="images/node-1-right.jpg?t=20180801214533" prev1url="images/node-1-_previewright.jpg?t=20180801214533" tilescale="1.009766" tile4url="images/node-1-up.jpg?t=20180801214533" prev4url="images/node-1-_previewup.jpg?t=20180801214533">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start fov="60" pan="-93.8112" projection="4" tilt="-3.05727"/>
+      <flyin fov="170" pan="0" projection="9" tilt="-90"/>
+      <min fov="20" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="60" fovstereographic="270" pan="360" scaletofit="1" tilt="90"/>
+    </view>
+    <userdata longitude="" source="" customnodeid="" latitude="" copyright="" comment="" title="玄关门口" datetime="20180726231430" tags="" description="" info="" author="dron"/>
+    <hotspots wordwrap="1" width="60" height="0">
+      <label bordercolor="0x000000" background="1" backgroundcolor="0xffffff" textalpha="1" borderalpha="1" textcolor="0x000000" backgroundalpha="1" wordwrap="1" width="60" border="1" enabled="1" height="0" borderradius="1"/>
+      <polystyle bordercolor="0x0000ff" backgroundcolor="0x0000ff" handcursor="1" borderalpha="1" mode="3" backgroundalpha="0.2509803921568627"/>
+      <hotspot url="{node2}" title="客厅中央" id="Point01" pan="128.45" target="122.5/-11.6/60.0" description="客厅中央" skinid="ht_node" tilt="-17.64"/>
+      <hotspot url="{node3}" title="餐厅门口" id="Point02" pan="99.34" target="77.4/-21.8/60.0" description="" skinid="ht_node" tilt="-14.76"/>
+      <hotspot url="{node4}" title="厨房" id="Point03" pan="78.89" target="84.0/-33.4/70.0" description="" skinid="ht_node" tilt="-21.07"/>
+    </hotspots>
+    <media/>
+    <transition softedge="0" zoomspeed="2" zoomfov="20" zoomin="2" type="diptocolor" zoomoutpause="1" blendtime="1" blendcolor="0x000000" zoomout="0" enabled="1"/>
+    <flyintransition speed="5.00" enabled="1"/>
+    <animation useinautorotation="0" syncanimationwithvideo="1"/>
+    <control lockedmouse="0" rubberband="0" invertwheel="0" speedwheel="1" hideabout="1" lockedwheel="0" invertcontrol="1" contextfullscreen="0" lockedkeyboardzoom="1" contextprojections="0" dblclickfullscreen="0" sensitivity="6" lockedkeyboard="1" simulatemass="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node3">
+    <input tile2url="images/node-2-back.jpg?t=20180801214533" prev2url="images/node-2-_previewback.jpg?t=20180801214533" tile0url="images/node-2-front.jpg?t=20180801214533" prev0url="images/node-2-_previewfront.jpg?t=20180801214533" tile5url="images/node-2-down.jpg?t=20180801214533" prev5url="images/node-2-_previewdown.jpg?t=20180801214533" levelingroll="0" tile3url="images/node-2-left.jpg?t=20180801214533" prev3url="images/node-2-_previewleft.jpg?t=20180801214533" levelingpitch="0" tilesize="1024" tile1url="images/node-2-right.jpg?t=20180801214533" prev1url="images/node-2-_previewright.jpg?t=20180801214533" tilescale="1.009766" tile4url="images/node-2-up.jpg?t=20180801214533" prev4url="images/node-2-_previewup.jpg?t=20180801214533">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start fov="70" pan="33.46" projection="4" tilt="-9.12"/>
+      <flyin fov="170" pan="0" projection="9" tilt="-90"/>
+      <min fov="20" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="60" fovstereographic="270" pan="360" scaletofit="1" tilt="90"/>
+    </view>
+    <userdata longitude="" source="" customnodeid="" latitude="" copyright="" comment="" title="餐厅门口" datetime="20180726231430" tags="" description="" info="" author="dron"/>
+    <hotspots wordwrap="1" width="60" height="0">
+      <label bordercolor="0x000000" background="1" backgroundcolor="0xffffff" textalpha="1" borderalpha="1" textcolor="0x000000" backgroundalpha="1" wordwrap="1" width="60" border="1" enabled="1" height="0" borderradius="1"/>
+      <polystyle bordercolor="0x0000ff" backgroundcolor="0x0000ff" handcursor="1" borderalpha="1" mode="3" backgroundalpha="0.2509803921568627"/>
+      <hotspot url="{node2}" title="客厅中央" id="Point01" pan="-113.99" target="-98.7/-4.5/60.0" description="" skinid="ht_node" tilt="-19.59"/>
+      <hotspot url="{node1}" title="玄关门口" id="Point02" pan="-69.42" target="24.9/-10.3/60.0" description="" skinid="ht_node" tilt="-16.87"/>
+      <hotspot url="{node1}" title="玄关门口" id="Point03" pan="-79.89" target="-87.0/-10.1/60.0" description="" skinid="ht_node" tilt="-12.84"/>
+      <hotspot url="{node4}" title="厨房" id="Point04" pan="-44.01" target="-83.7/-25.8/70.0" description="" skinid="ht_node" tilt="-24.27"/>
+    </hotspots>
+    <media/>
+    <transition softedge="0" zoomspeed="2" zoomfov="20" zoomin="2" type="diptocolor" zoomoutpause="1" blendtime="1" blendcolor="0x000000" zoomout="0" enabled="1"/>
+    <flyintransition speed="5.00" enabled="1"/>
+    <animation useinautorotation="0" syncanimationwithvideo="1"/>
+    <control lockedmouse="0" rubberband="0" invertwheel="0" speedwheel="1" hideabout="1" lockedwheel="0" invertcontrol="1" contextfullscreen="0" lockedkeyboardzoom="1" contextprojections="0" dblclickfullscreen="0" sensitivity="6" lockedkeyboard="1" simulatemass="1"/>
+  </panorama>
+  <panorama hideabout="1" id="node4">
+    <input tile2url="images/node-3-back.jpg?t=20180801214533" prev2url="images/node-3-_previewback.jpg?t=20180801214533" tile0url="images/node-3-front.jpg?t=20180801214533" prev0url="images/node-3-_previewfront.jpg?t=20180801214533" tile5url="images/node-3-down.jpg?t=20180801214533" prev5url="images/node-3-_previewdown.jpg?t=20180801214533" levelingroll="0" tile3url="images/node-3-left.jpg?t=20180801214533" prev3url="images/node-3-_previewleft.jpg?t=20180801214533" levelingpitch="0" tilesize="1024" tile1url="images/node-3-right.jpg?t=20180801214533" prev1url="images/node-3-_previewright.jpg?t=20180801214533" tilescale="1.009766" tile4url="images/node-3-up.jpg?t=20180801214533" prev4url="images/node-3-_previewup.jpg?t=20180801214533">
+      <preview color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="0">
+      <start fov="70" pan="0" projection="4" tilt="0"/>
+      <flyin fov="170" pan="0" projection="9" tilt="-90"/>
+      <min fov="5" pan="0" tilt="-90"/>
+      <max fovfisheye="360" fov="120" fovstereographic="270" pan="360" scaletofit="1" tilt="90"/>
+    </view>
+    <userdata longitude="" source="" customnodeid="" latitude="" copyright="" comment="" title="厨房" datetime="20180726231430" tags="" description="" info="" author="dron"/>
+    <hotspots wordwrap="1" width="60" height="0">
+      <label bordercolor="0x000000" background="1" backgroundcolor="0xffffff" textalpha="1" borderalpha="1" textcolor="0x000000" backgroundalpha="1" wordwrap="1" width="60" border="1" enabled="1" height="0" borderradius="1"/>
+      <polystyle bordercolor="0x0000ff" backgroundcolor="0x0000ff" handcursor="1" borderalpha="1" mode="3" backgroundalpha="0.2509803921568627"/>
+      <hotspot url="{node2}" title="客厅中央" id="Point01" pan="-156.08" target="-125.3/-28.3/60.0" description="" skinid="ht_node" tilt="-17.64"/>
+    </hotspots>
+    <media/>
+    <transition softedge="0" zoomspeed="2" zoomfov="20" zoomin="2" type="diptocolor" zoomoutpause="1" blendtime="1" blendcolor="0x000000" zoomout="0" enabled="1"/>
+    <flyintransition speed="5.00" enabled="1"/>
+    <animation useinautorotation="0" syncanimationwithvideo="1"/>
+    <control lockedmouse="0" rubberband="0" invertwheel="0" speedwheel="1" hideabout="1" lockedwheel="0" invertcontrol="1" contextfullscreen="0" lockedkeyboardzoom="1" contextprojections="0" dblclickfullscreen="0" sensitivity="6" lockedkeyboard="1" simulatemass="1"/>
+  </panorama>
+</tour>
