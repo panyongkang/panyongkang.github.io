@@ -322,25 +322,37 @@ PowerShell执行时阻止了该操作，在终端输入Get-ExecutionPolicy指令
 
 [新建Java项目参考](https://blog.csdn.net/AmaniZ/article/details/79250652)
 
+## Windows激活教程
+
+具简介
+CodeKey Run 是一个跨平台的 JetBrains IDE 激活工具，支持 Windows、Linux 和 macOS 系统，可自动激活 JetBrains 系列软件（如 IntelliJ IDEA、PyCharm、WebStorm 等）。
+
+激活步骤
+1.按下 Win + S 键，选择 Windows PowerShell (管理员)
+
+2.复制以下命令到 PowerShell 中执行：
+
+```powershell
+irm ckey.run|iex
+```
+
+工具会自动扫描并激活所有已安装的 JetBrains 软件
+
+等待片刻即可完成激活，无需手动输入激活码
+
 ## 高效能插件
 
 IntelliJ IDEA 本身已经非常强大，但搭配一些插件，确实能让开发工作更加得心应手。
 
-| 插件名称                                 | 主要功能                                                           | 推荐指数   | 获取方式/备注                                                                                |
-| :--------------------------------------- | :----------------------------------------------------------------- | :--------- | :------------------------------------------------------------------------------------------- |
-| **Lombok**                         | 减少样板代码，自动生成getter/setter/toString/equals/hashCode等方法 | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/6317-lombok)                          |
-| **SonarLint**                      | 实时检测代码中的潜在问题、漏洞和代码异味                           | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7973-sonarlint)                       |
-| **Alibaba Java Coding Guidelines** | 依据《阿里巴巴Java开发手册》进行代码规范检查                       | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10046-alibaba-java-coding-guidelines) |
-| **CheckStyle-IDEA**                | 代码风格检查，帮助遵循编码标准                                     | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/1065-checkstyle-idea)                 |
-| **GsonFormat**                     | 一键根据 JSON 文本生成 Java 类                                     | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7654-gsonformat)                      |
-| **Maven Helper**                   | 方便管理 Maven 项目，分析依赖冲突                                  | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7179-maven-helper)                    |
-| **MyBatisX**                       | MyBatis 专属插件，XML 与 Mapper 接口方法双向跳转，SQL 高亮         | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10719-mybatisx)                       |
-| **Rainbow Brackets**               | 彩虹括号，用不同颜色高亮匹配的括号，提高代码可读性                 | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)               |
-| **CodeGlance**                     | 在编辑器右侧生成代码缩略图，方便快速定位和浏览大型文件             | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7275-codeglance)                      |
-| **String Manipulation**            | 提供丰富的字符串操作功能，如大小写转换、命名风格转换等             | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/2162-string-manipulation)             |
-| **Key Promoter X**                 | 帮助学习和记忆 IntelliJ IDEA 快捷键                                | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/9792-key-promoter-x)                  |
-| **VisualVM Launcher**              | 方便在 IDEA 内启动 VisualVM 进行 JVM 性能分析                      | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7115-visualvm-launcher)               |
-| **Translation**                    | 翻译插件，方便阅读源码中的英文注释或错误信息                       | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/8579-translation)                     |
+| 插件名称                                 | 主要功能                                                                                            | 推荐指数   | 获取方式/备注                                                                    |
+| :--------------------------------------- | :-------------------------------------------------------------------------------------------------- | :--------- | :------------------------------------------------------------------------------- |
+| **Devoxx Genie**                   | 强大的 AI 插件，支持 Gemini, OpenAI, Anthropic, DeepSeek, Ollama 等多种模型，支持本地与云端模型切换 | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/24169-devoxx-genie)       |
+| **CC GUI (Claude Code and Codex)** | AI 编码助手，支持配置 DeepSeek 等多模型 API Key，可在 IDEA 中完成代码生成、解释、重构等任务         | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin)                          |
+| **SonarLint**                      | 实时检测代码中的潜在问题、漏洞和代码异味                                                            | ⭐⭐⭐⭐⭐ | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/7973-sonarlint)           |
+| **MyBatisX**                       | MyBatis 专属插件，XML 与 Mapper 接口方法双向跳转，SQL 高亮                                          | ⭐⭐⭐⭐   | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10719-mybatisx)           |
+| **Rainbow Brackets**               | 彩虹括号，用不同颜色高亮匹配的括号，提高代码可读性                                                  | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/10080-rainbow-brackets)   |
+| **String Manipulation**            | 提供丰富的字符串操作功能，如大小写转换、命名风格转换等                                              | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/2162-string-manipulation) |
+| **Translation**                    | 翻译插件，方便阅读源码中的英文注释或错误信息                                                        | ⭐⭐⭐     | [JetBrains 插件市场](https://plugins.jetbrains.com/plugin/8579-translation)         |
 
 🧠 **插件安装方式**：
 在 IntelliJ IDEA 中，通过 `File` -> `Settings` -> `Plugins` 打开插件市场，搜索插件名称即可安装。安装完成后通常需要**重启 IDEA** 生效。

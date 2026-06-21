@@ -287,9 +287,11 @@ SELECT ROWID,ENAME FROM EMP WHERE SAL>2000;
 SELECT ROWNUM,ENAME,JOB,SAL FROM EMP WHERE ROWNUM<=5;
 ```
 
-### 序列的创建
+### 序列（Sequence）
 
 **什么是序列**
+
+**场景** ：需要生成一个 **唯一、递增、不重复的数字** ，通常用作主键的值。
 
 Sequence（序列）是oracle用来生成连续的整数数据的对象。由于oracle中没有设置自增列的方法，所以在oracle数据库中主要用序列来实现主键自增的功能。
 
@@ -331,6 +333,335 @@ CURRVAL
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列','女',23,26,'1001');
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列2','女',23,26,'1005');
 insert into infos(STUID,STUNAME,GENDER,AGE,SEAT,CLASSNO) values(MYSEQ.NEXTVAL, '序列3','女',23,26,'1006');
+```
+
+### 触发器(Trigger)
+
+ **场景** ：在某个事件（如 `INSERT`、`UPDATE`、`DELETE`）发生前或发生后，自动执行一段 PL/SQL 逻辑。
+
+ **其他典型场景** ：
+
+* **审计日志** ：记录某张表的修改历史（`AFTER UPDATE` 时插入旧值到日志表）。
+* **数据校验** ：`BEFORE INSERT` 检查某些字段合法性，不合法则抛出异常。
+* **同步更新** ：例如更新主表时自动更新冗余表或汇总表。
+* **禁止操作** ：在某些条件下阻止删除或更新。
+
+ **注意** ：触发器虽然方便，但滥用会增加复杂度和隐式逻辑，影响性能，建议只在必要场景使用。
+
+### 数据库主键生成方式对比：自增数字 vs `sys_guid()`
+
+在银行、金融等业务系统中，主键（Primary Key）的设计至关重要。主键不仅需要保证唯一性，还可能影响排序、查询性能、数据迁移等。常见的主键生成方式有两种：
+
+1. **序列 + 触发器（自增数字）**
+2. **`sys_guid()` / UUID（全局唯一标识）**
+
+---
+
+#### 两种方式对比
+
+| 特性                       | 序列 + 触发器               | `sys_guid()` / UUID              |
+| -------------------------- | --------------------------- | ---------------------------------- |
+| **值类型**           | 数字（NUMBER）              | 32位十六进制字符串（VARCHAR2(32)） |
+| **唯一性范围**       | 数据库实例内唯一            | 全局唯一（跨数据库、跨主机）       |
+| **是否有序**         | ✅ 单调递增（可保证顺序）   | ❌ 随机、无序                      |
+| **可读性**           | 高（1,2,3...）              | 低（`2BA6C3F4...`）              |
+| **存储空间**         | 小（NUMBER(10) 约 7 字节）  | 大（32 字节）                      |
+| **索引性能**         | 较好（B+树插入顺序）        | 较差（随机插入可能导致索引分裂）   |
+| **是否需要额外对象** | 需要序列 + 触发器           | 只需默认值 `default sys_guid()`  |
+| **并发竞争**         | 可能有锁争用（取 NEXTVAL）  | 无竞争（各自生成）                 |
+| **跨系统合并数据**   | 易冲突（不同库都从 1 开始） | 无需处理，直接合并                 |
+
+---
+
+#### 建表脚本差异对比
+
+##### 使用序列 + 触发器（自增数字）
+
+```sql
+-- 创建表，主键字段为数字类型
+CREATE TABLE T_LOG (
+    ID NUMBER(10) NOT NULL,
+    MSG VARCHAR2(200),
+    ...
+);
+
+-- 创建序列
+CREATE SEQUENCE SEQ_T_LOG
+    MINVALUE 1
+    START WITH 1
+    INCREMENT BY 1
+    CACHE 20;
+
+-- 创建触发器（自动填充主键）
+CREATE OR REPLACE TRIGGER TRG_T_LOG
+    BEFORE INSERT ON T_LOG
+    FOR EACH ROW
+    WHEN (NEW.ID IS NULL)
+BEGIN
+    SELECT SEQ_T_LOG.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/
+
+-- 主键约束
+ALTER TABLE T_LOG ADD CONSTRAINT PK_T_LOG PRIMARY KEY (ID);
+```
+
+##### 使用 `sys_guid()`（全局唯一）
+
+```sql
+-- 创建表，主键字段为 VARCHAR2(32)，默认值使用 sys_guid()
+CREATE TABLE T_LOG (
+    ID VARCHAR2(32) DEFAULT sys_guid() NOT NULL,
+    MSG VARCHAR2(200),
+    ...
+);
+
+-- 主键约束
+ALTER TABLE T_LOG ADD CONSTRAINT PK_T_LOG PRIMARY KEY (ID);
+```
+
+**无需序列，无需触发器，代码更简洁。**
+
+---
+
+#### 适用场景分析
+
+##### 什么时候使用序列 + 触发器（自增数字）
+
+| 场景                                     | 说明                                                         |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| **需要人工可读、顺序可追溯**       | 例如流水号、工单号、批次号，业务人员希望看到连续增长的数字。 |
+| **数据量巨大且需要按主键顺序扫描** | 自增主键在 B+ 树中顺序插入，索引维护代价低，范围查询性能好。 |
+| **单库或数据不会跨实例合并**       | 没有总分汇总需求，不怕主键冲突。                             |
+| **对存储空间敏感**                 | 数字主键占用空间小，索引也小，节省磁盘和内存。               |
+
+##### 什么时候使用 `sys_guid()`
+
+| 场景                       | 说明                                                            |
+| -------------------------- | --------------------------------------------------------------- |
+| **分布式、总分结构** | 各网点（分行）独立插入数据，需要汇总到总行时主键不冲突。        |
+| **高并发写入**       | 避免序列成为锁瓶颈，`sys_guid()` 在应用层或数据库层无锁生成。 |
+| **不希望暴露业务量** | 自增主键会泄露每天或每小时的插入量，`sys_guid()` 无法猜测。   |
+| **简化开发**         | 无需维护序列和触发器，只需 `default sys_guid()`。             |
+
+#### 典型案例分析
+
+| 表名                                         | 主键方式       | 原因                                                                 |
+| -------------------------------------------- | -------------- | -------------------------------------------------------------------- |
+| `IB_LOG_CFCAOPLOG_LOG`（协议日志表）       | 序列 + 触发器  | 日志量大，需要按序号归档、清理；不同库间不合并数据。                 |
+| `IB_AUX_FIELDQUESTIONS_INFO`（答疑问题表） | `sys_guid()` | 多网点可能各自生成问题记录，将来需要汇总到总行知识库，避免主键冲突。 |
+
+#### 正式库执行SQL示例
+
+```sql
+--drop table IB_LOG_CFCAOPLOG_LOG;
+create table IB_LOG_CFCAOPLOG_LOG
+(
+  SEQ_ID            VARCHAR2(10) not null,
+  INITIATESERIALNUM VARCHAR2(32) not null,
+  TRANDATE          VARCHAR2(10) not null,
+  BRANCHNUM         VARCHAR2(10),
+  USERNUM           VARCHAR2(10),
+  MENUNUM           VARCHAR2(20),
+  MENUNAME          VARCHAR2(128),
+  CUSTNUM           VARCHAR2(20),
+  CUSTNAME			VARCHAR2(512),
+  STARTTIME         VARCHAR2(20),
+  ENDTIME           VARCHAR2(20),
+  OPERATIONTYPE     VARCHAR2(10),
+  CONTENT           CLOB,
+  VERSIONNUM		VARCHAR2(20),
+  REMARK            VARCHAR2(200),
+  REMARK1           VARCHAR2(200),
+  REMARK2           VARCHAR2(200),
+  REMARK3           VARCHAR2(200)
+)
+tablespace ITLR_DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 16
+    next 8
+    minextents 1
+    maxextents unlimited
+  )
+;
+
+--注释
+comment on table IB_LOG_CFCAOPLOG_LOG
+  is 'CFCA协议操作日志表';
+-- Add comments to the columns 
+comment on column IB_LOG_CFCAOPLOG_LOG.SEQ_ID
+  is '序号，自动增长';
+comment on column IB_LOG_CFCAOPLOG_LOG.INITIATESERIALNUM
+  is '流水号';
+comment on column IB_LOG_CFCAOPLOG_LOG.TRANDATE
+  is '交易日期';
+comment on column IB_LOG_CFCAOPLOG_LOG.BRANCHNUM
+  is '机构号';
+comment on column IB_LOG_CFCAOPLOG_LOG.USERNUM
+  is '柜员号';
+comment on column IB_LOG_CFCAOPLOG_LOG.MENUNUM
+  is '交易码';
+comment on column IB_LOG_CFCAOPLOG_LOG.MENUNAME
+  is '交易名称';
+comment on column IB_LOG_CFCAOPLOG_LOG.CUSTNUM
+  is '客户号';
+comment on column IB_LOG_CFCAOPLOG_LOG.CUSTNAME
+  is '客户名称';
+comment on column IB_LOG_CFCAOPLOG_LOG.STARTTIME
+  is '推送开始时间';
+comment on column IB_LOG_CFCAOPLOG_LOG.ENDTIME
+  is '推送结束时间';
+comment on column IB_LOG_CFCAOPLOG_LOG.OPERATIONTYPE
+  is '操作1-确定';
+comment on column IB_LOG_CFCAOPLOG_LOG.CONTENT
+  is 'CFCA协议内容';
+comment on column IB_LOG_CFCAOPLOG_LOG.VERSIONNUM
+  is '版本号';
+comment on column IB_LOG_CFCAOPLOG_LOG.REMARK
+  is '备注';
+comment on column IB_LOG_CFCAOPLOG_LOG.REMARK1
+  is '备注1';
+comment on column IB_LOG_CFCAOPLOG_LOG.REMARK2
+  is '备注2';
+comment on column IB_LOG_CFCAOPLOG_LOG.REMARK3
+  is '备注3';
+
+
+--主键约束
+alter table IB_LOG_CFCAOPLOG_LOG
+  add constraint CFCAOPLOG_CONFIG_KEY primary key (SEQ_ID)
+  using index 
+  tablespace ITLR_LOG_IDX
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+--创建联合索引
+create index CFCAOPLOG_CONFIG_TYPE_KEY on IB_LOG_CFCAOPLOG_LOG (INITIATESERIALNUM, BRANCHNUM, USERNUM, TRANDATE)
+  tablespace ITLR_LOG_IDX
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    next 1M
+    minextents 1
+    maxextents unlimited
+  );
+
+
+--创建序列
+--drop sequence LOG_CFCAOPLOG_SEQ_NO;
+create sequence LOG_CFCAOPLOG_SEQ_NO
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 2701
+increment by 1
+cache 20;
+
+--创建触发器
+--drop trigger LOG_CFCAOPLOG_SEQ_TRIGGER;
+create or replace trigger LOG_CFCAOPLOG_SEQ_TRIGGER
+before insert on IB_LOG_CFCAOPLOG_LOG for each row 
+when (new.SEQ_ID is null)
+begin
+select LOG_CFCAOPLOG_SEQ_NO.NEXTVAL into:new.SEQ_ID from dual;
+end;
+/
+
+--vlog查看权限
+grant select on IB_LOG_CFCAOPLOG_LOG to vlog;
+
+--创建bak表
+--drop table IB_LOG_CFCAOPLOG_LOG_BAK;
+create table IB_LOG_CFCAOPLOG_LOG_BAK
+(
+  SEQ_ID            VARCHAR2(10) not null,
+  INITIATESERIALNUM VARCHAR2(32) not null,
+  TRANDATE          VARCHAR2(10) not null,
+  BRANCHNUM         VARCHAR2(10),
+  USERNUM           VARCHAR2(10),
+  MENUNUM           VARCHAR2(20),
+  MENUNAME          VARCHAR2(128),
+  CUSTNUM           VARCHAR2(20),
+  CUSTNAME			VARCHAR2(512),
+  STARTTIME         VARCHAR2(20),
+  ENDTIME           VARCHAR2(20),
+  OPERATIONTYPE     VARCHAR2(10),
+  CONTENT           CLOB,
+  VERSIONNUM		VARCHAR2(20),
+  REMARK            VARCHAR2(200),
+  REMARK1           VARCHAR2(200),
+  REMARK2           VARCHAR2(200),
+  REMARK3           VARCHAR2(200)
+)
+tablespace ITLR_DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 16
+    next 8
+    minextents 1
+    maxextents unlimited
+  )
+;
+
+-- Add comments to the table 注释
+comment on table IB_LOG_CFCAOPLOG_LOG_BAK
+  is 'CFCA协议操作日志表';
+-- Add comments to the columns 
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.SEQ_ID
+  is '序号，自动增长';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.INITIATESERIALNUM
+  is '流水号';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.TRANDATE
+  is '交易日期';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.BRANCHNUM
+  is '机构号';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.USERNUM
+  is '柜员号';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.MENUNUM
+  is '交易码';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.MENUNAME
+  is '交易名称';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.CUSTNUM
+  is '客户号';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.CUSTNAME
+  is '客户名称';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.STARTTIME
+  is '推送开始时间';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.ENDTIME
+  is '推送结束时间';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.OPERATIONTYPE
+  is '操作1-确定';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.CONTENT
+  is 'CFCA协议内容';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.VERSIONNUM
+  is '版本号';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.REMARK
+  is '备注';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.REMARK1
+  is '备注1';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.REMARK2
+  is '备注2';
+comment on column IB_LOG_CFCAOPLOG_LOG_BAK.REMARK3
+  is '备注3';
+
+
 ```
 
 ## PL/SQL数据库工作日常笔记
@@ -717,6 +1048,235 @@ select name,decode(sign(score-90),1,'优秀',0,'优秀',-1,decode(sign(score-80)
     以此类推，用decode()的嵌套配合sign()函数来实现对分数的分段以及相应的输出，
 
     最后60分以下的就default为‘不及格’就可以了。
+
+好的，以下是一份**按操作顺序编排**的 Oracle 数据库 DBA 用户管理笔记，专门针对**开发环境**中常见的用户创建、授权、密码延期、同义词配置等场景。每条 SQL 都附有清晰注释，你可以直接复制、按顺序执行。
+
+---
+
+### DBA 用户管理
+
+> **适用环境**：开发库 / 个人测试库（非生产）
+> **目标**：快速创建新用户、授予合理权限、延长密码有效期、配置跨用户访问同义词
+> **执行用户**：拥有 `DBA` 或 `SYSTEM` 权限的账号（如 `ELEC`、`SYSTEM`）
+
+---
+
+#### 一、查看当前数据库用户及状态
+
+```sql
+-- 1. 查看所有用户的基本信息（用户名、状态、密码过期时间）
+SELECT username, account_status, expiry_date, created 
+FROM dba_users 
+ORDER BY created DESC;
+
+-- 2. 查看当前登录用户的信息（常用于确认身份）
+SELECT user FROM dual;
+
+-- 3. 查看当前用户的系统权限
+SELECT * FROM user_sys_privs ORDER BY privilege;
+
+-- 4. 查看指定用户（如 'ELCC'）被授予的角色和系统权限
+SELECT * FROM dba_role_privs  WHERE grantee = 'ELCC';
+SELECT * FROM dba_sys_privs  WHERE grantee = 'ELCC';
+```
+
+---
+
+#### 二、创建新用户并授予基本权限
+
+```sql
+-- 1. 创建用户（用户名建议大写，Oracle 会自动转大写）
+CREATE USER ELCC IDENTIFIED BY "初始密码123";
+
+-- 2. 授予最基本的连接权限（允许登录）
+GRANT CREATE SESSION TO ELCC;
+
+-- 3. 授予创建表、视图、同义词等常见对象权限（按需）
+GRANT CREATE TABLE, CREATE VIEW, CREATE SYNONYM, CREATE SEQUENCE TO ELCC;
+
+-- 4. 授予表空间使用配额（避免 ORA-01536 错误）
+ALTER USER ELCC QUOTA UNLIMITED ON USERS;   -- 假设默认表空间是 USERS
+-- 或者指定表空间
+ALTER USER ELCC DEFAULT TABLESPACE USERS QUOTA 100M ON USERS;
+```
+
+---
+
+#### 三、授予 DBA 角色（仅开发环境，生产请勿滥用）
+
+```sql
+-- 警告：DBA 角色权限极大，仅在个人开发库或受控测试环境中使用
+GRANT DBA TO ELCC;
+```
+
+---
+
+#### 四、处理密码过期问题（开发环境常用）
+
+##### 4.1 查看当前密码有效期策略
+
+```sql
+-- 查看 DEFAULT Profile 的密码有效期
+SELECT resource_name, limit 
+FROM dba_profiles 
+WHERE profile = 'DEFAULT' 
+  AND resource_name IN ('PASSWORD_LIFE_TIME', 'PASSWORD_REUSE_TIME', 'PASSWORD_REUSE_MAX');
+```
+
+##### 4.2 延长/取消密码有效期（推荐方式）
+
+```sql
+-- 方法一：将 DEFAULT Profile 的密码有效期改为无限制（影响所有使用 DEFAULT Profile 的用户）
+ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;
+
+-- 方法二：仅针对特定用户（如 ELCC）新建一个 Profile，不影响其他用户
+CREATE PROFILE MY_DEV_PROFILE LIMIT 
+  PASSWORD_LIFE_TIME UNLIMITED 
+  PASSWORD_REUSE_TIME UNLIMITED 
+  PASSWORD_REUSE_MAX UNLIMITED;
+ALTER USER ELCC PROFILE MY_DEV_PROFILE;
+```
+
+##### 4.3 让新 Profile 立即生效（重置密码为原密码）
+
+```sql
+-- 如果用户当前密码即将过期，但不想改变密码内容，可以执行以下语句（等效于重置有效期）
+ALTER USER ELCC IDENTIFIED BY 原密码;   -- 原密码替换成当前真实密码
+-- 如果提示 ORA-28007（密码不能重用），请先修改 Profile 中的重用策略或临时放开
+```
+
+---
+
+#### 五、授予跨用户查询权限（访问其他用户的表）
+
+##### 5.1 授予系统级查询权限（强大但需谨慎）
+
+```sql
+-- 允许用户查询任意表（包括其他 Schema 下的表）
+GRANT SELECT ANY TABLE TO ELCC;
+
+-- 允许用户查询所有数据字典视图（如 DBA_*, ALL_*）
+GRANT SELECT ANY DICTIONARY TO ELCC;
+```
+
+##### 5.2 授予对象级权限（更安全，最小权限原则）
+
+```sql
+-- 假设要允许 ELCC 查询 ELEC 用户下的 EMPLOYEES 表
+GRANT SELECT ON ELEC.EMPLOYEES TO ELCC;
+
+-- 如果需要多张表，可以使用 PL/SQL 批量授权（见附录）
+```
+
+---
+
+#### 六、创建同义词（免去加模式名前缀的麻烦）
+
+##### 6.1 创建单个私有同义词
+
+```sql
+-- 语法：CREATE SYNONYM 目标用户.同义词名 FOR 源用户.表名;
+CREATE SYNONYM ELCC.EMPLOYEES FOR ELEC.EMPLOYEES;
+```
+
+##### 6.2 批量创建同义词（为源用户下的所有表生成同义词）
+
+```sql
+-- 生成创建语句（结果复制后执行）
+SELECT 'CREATE OR REPLACE SYNONYM ELCC.' || table_name || ' FOR ELEC.' || table_name || ';'
+FROM dba_tables
+WHERE owner = 'ELEC';
+
+-- 或者在 PL/SQL 块中直接批量创建（无需复制，一次性执行）
+DECLARE
+   v_sql VARCHAR2(1000);
+BEGIN
+   FOR rec IN (SELECT table_name FROM dba_tables WHERE owner = 'ELEC') LOOP
+      v_sql := 'CREATE OR REPLACE SYNONYM ELCC.' || rec.table_name || ' FOR ELEC.' || rec.table_name;
+      EXECUTE IMMEDIATE v_sql;
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('同义词创建完成');
+END;
+/
+```
+
+##### 6.3 查看已创建的同义词
+
+```sql
+-- 查看当前用户（如 ELCC）拥有的私有同义词
+SELECT synonym_name, table_owner, table_name 
+FROM user_synonyms 
+ORDER BY synonym_name;
+
+-- 查看所有能访问的同义词（包括公有和私有）
+SELECT owner, synonym_name, table_owner, table_name 
+FROM all_synonyms 
+WHERE table_owner = 'ELEC';
+```
+
+---
+
+#### 七、常用维护操作（重置密码、解锁用户等）
+
+```sql
+-- 1. 修改用户密码（立即生效）
+ALTER USER ELCC IDENTIFIED BY 新密码;
+
+-- 2. 解锁被锁定的用户
+ALTER USER ELCC ACCOUNT UNLOCK;
+
+-- 3. 删除用户（级联删除该用户下的所有对象）
+DROP USER ELCC CASCADE;
+
+-- 4. 收回权限
+REVOKE DBA FROM ELCC;
+REVOKE SELECT ANY TABLE FROM ELCC;
+```
+
+---
+
+#### 八、附录：PL/SQL 块中批量处理常见场景
+
+##### 场景一：为 ELCC 创建指向 ELEC 所有表的同义词（并输出成功/失败统计）
+
+```sql
+SET SERVEROUTPUT ON;   -- 仅在 SQL*Plus / 命令窗口需要，SQL 窗口不需要
+
+DECLARE
+   v_sql VARCHAR2(1000);
+   v_success NUMBER := 0;
+   v_fail NUMBER := 0;
+BEGIN
+   FOR rec IN (SELECT table_name FROM dba_tables WHERE owner = 'ELEC') LOOP
+      v_sql := 'CREATE OR REPLACE SYNONYM ELCC.' || rec.table_name || ' FOR ELEC.' || rec.table_name;
+      BEGIN
+         EXECUTE IMMEDIATE v_sql;
+         v_success := v_success + 1;
+      EXCEPTION
+         WHEN OTHERS THEN
+            v_fail := v_fail + 1;
+            DBMS_OUTPUT.PUT_LINE('失败: ' || v_sql || ' -> ' || SQLERRM);
+      END;
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('成功创建 ' || v_success || ' 个同义词，失败 ' || v_fail || ' 个。');
+END;
+/
+```
+
+##### 场景二：将 ELEC 用户下所有表的 SELECT 权限授予 ELCC（更细粒度）
+
+```sql
+DECLARE
+   v_sql VARCHAR2(1000);
+BEGIN
+   FOR rec IN (SELECT table_name FROM dba_tables WHERE owner = 'ELEC') LOOP
+      v_sql := 'GRANT SELECT ON ELEC.' || rec.table_name || ' TO ELCC';
+      EXECUTE IMMEDIATE v_sql;
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('授权完成');
+END;
+/
+```
 
 ## 更多入门教程
 
