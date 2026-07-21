@@ -40,8 +40,10 @@
 	<link rel="stylesheet" href="static/css/style.css">
 	<link rel="stylesheet" href="static/css/book-cover.css">
 	<link rel="stylesheet" href="static/css/zdy.css">
-	<!-- 划词搜索 -->
 	<link rel="stylesheet" href="static/css/KeywordSearch.css">
+	<!-- 1. 先引入数据 -->
+	<script src="static/js/config-data.js" defer></script>
+	<!-- 2. 再引入核心逻辑 -->
 	<script src="static/js/KeywordSearch.js" defer></script>
 </head>
 
@@ -49,8 +51,6 @@
 	<!--[if lt IE 9]>
     <div class="browsehappy" role="dialog">当前网页 <strong>不支持</strong> 你正在使用的浏览器. 为了正常的访问, 请 <a href="https://browsehappy.com/">升级你的浏览器</a>.</div>
 <![endif]-->
-	<!-- 悬浮层容器 -->
-	<div id="selectionPopup"></div>
 	<div id="body-bg">
 		<div id="music_rod"></div>
 		<div title="没有唱片" id="music_box">
@@ -276,8 +276,8 @@
 
 								<div class="post-content" itemprop="articleBody">
 									<p>
-										<img src="https://mpimg.cn/view.php/2b783c911e7432b942da4f304eed19b1.jpg" alt="幽默"
-											title="幽默">
+										<img src="https://mpimg.cn/view.php/2b783c911e7432b942da4f304eed19b1.jpg"
+											alt="幽默" title="幽默">
 									</p>
 									<div class="ArticleTitle">说话打太极，讲究中庸之道</div>
 									<p>如果你觉得自己很渺小，那就说明你真的不大。</p>
@@ -2114,10 +2114,10 @@
 						</pre>
 									</div>
 
-						<h2 class="h2_center">《悲观主义》</h2>
-						<div style="margin:10%;">
-							<pre
-								style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
+									<h2 class="h2_center">《悲观主义》</h2>
+									<div style="margin:10%;">
+										<pre
+											style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
 								<div style="font-size:20px;">《悲观主义》</div>
 												向阳小康
 						
@@ -2132,10 +2132,10 @@
 												来世再修好皮囊，
 												今生只做过路人。
 							</pre>
-						</div>
+									</div>
 
 									<h2 class="h2_center">《怀念》</h2>
-						<div style="margin:10%;">
+									<div style="margin:10%;">
 										<pre
 											style="text-align:center;font-size:15px;font-family:STKaiti,KaiTi,PMingLiU,DFKai-SB;writing-mode:horizontal-tb;">
 					   <div style="font-size:20px;">《怀念》</div>
@@ -2496,12 +2496,12 @@
 	<script>
 		const encryptedContent = 'U2FsdGVkX1/s99pjm5zu6+H3c1w0vRlFCSh3Oadvyg1nCZPBbW/4Bl/dChFNvw7N8XpLRclrxakbM8MvgxRe/LQ8bgXhfm9M0DoUjKs6ss6w/LmFmhemJ/sFUC47y25bne8zOV4eBZAiyoKI5wCCKhh59KI/Q4/leLKeb/UTdTIkjtxi7vam8w6py5VLZ4ISwon2QYLH5oTh4gSQ50hNSDcUFtFjgu09BNGhGWEsPflAWannobQCRMbgpLn7IsTW' // 粘贴加密的内容
 		// 监听输入框的回车键事件
-        document.getElementById('password').addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                event.preventDefault(); // 阻止默认的表单提交行为
+		document.getElementById('password').addEventListener('keydown', function (event) {
+			if (event.key === 'Enter') {
+				event.preventDefault(); // 阻止默认的表单提交行为
 				document.getElementById('submit-button').focus(); // 将焦点移至提交按钮
-            }
-        });
+			}
+		});
 
 		function decryptContent() {
 			const password = document.getElementById('password').value;
