@@ -154,14 +154,26 @@
     overflow: hidden;
 }
 
+/* 1. 头部搜索区域容器：改为上下纵向排列 */
 .qs-matrix-search {
-    padding: 24px;
+    padding: 24px 24px 16px 24px;
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;       /* ✨ 核心修改：让【输入框行】和【高频图标栏】上下纵向排列 */
+    align-items: center;          /* ✨ 水平居中 */
+    gap: 16px;                    /* 上下两行之间的间距 */
     border-bottom: 1px solid #f1f5f9;
 }
 
+/* 2. 第一行：输入框 + 按钮（横向并排） */
+.qs-search-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;                    /* 输入框与按钮之间的间距 */
+    width: 100%;
+}
+
+/* 3. 输入框样式（保留你的原样式） */
 .qs-matrix-search input {
     width: 600px;
     height: 48px;
@@ -170,6 +182,44 @@
     padding: 0 24px;
     font-size: 16px;
     outline: none;
+    box-sizing: border-box;       /* 建议加上，防止 padding 撑开宽度 */
+}
+
+/* 4. 第二行：常用/高频图标栏样式 */
+.qs-frequent-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;                    /* 各个图标之间的间距 */
+}
+
+/* 单个常用图标块 */
+.qs-frequent-item {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.qs-frequent-item:hover {
+    background: #f8fafc;
+    border-color: #4e6ef2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(78, 110, 242, 0.15);
+}
+
+.qs-frequent-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 /* 中间整体大容器：减半列与列之间的间距 */
