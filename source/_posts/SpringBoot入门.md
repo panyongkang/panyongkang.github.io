@@ -79,7 +79,7 @@ Database（数据库）
 | **核心分层思想**   | Controller → Service → Mapper                                                                   | **完全一致**                                                                                | 三层架构没有变，这是 Java Web 的基石          |
 | **注解驱动**       | 使用 `@Controller`、`@Service`、`@Autowired` 等                                             | **相同**                                                                                    | 核心注解完全兼容                              |
 | **SpringMVC 本质** | 需要手动配置 `DispatcherServlet`、视图解析器等                                                  | **仍然使用 SpringMVC**，但自动配置                                                          | SpringBoot 只是简化了配置，<br />没有替换 MVC |
-| **依赖管理**       | 手动引入 Spring、SpringMVC、MyBatis <br />等多个包，需保证版本兼容                                | **只需引入 `spring-boot-starter-web`、`mybatis-spring-boot-starter`**，版本由父工程管理 | 极大简化，避免版本冲突                        |
+| **依赖管理**       | 手动引入 Spring、SpringMVC、MyBatis<br />等多个包，需保证版本兼容                                 | **只需引入 `spring-boot-starter-web`、`mybatis-spring-boot-starter`**，版本由父工程管理 | 极大简化，避免版本冲突                        |
 | **配置文件**       | 需要 `web.xml`、`applicationContext.xml`、<br />`spring-mvc.xml`、`mybatis-config.xml` 等 | **只需一个 `application.properties` 或 `application.yml`**                              | 绝大多数配置零配置或一行配置                  |
 | **Web 容器部署**   | 打包成 `.war` 部署到外置 Tomcat / Jetty                                                         | **打包为 `.jar` 直接 `java -jar` 运行**（内置 Tomcat）                                  | 开发测试极其方便                              |
 | **整合 MyBatis**   | 手动配置 SqlSessionFactory、<br />DataSource、事务管理器                                          | **自动配置**，只需在 `application.properties` 写数据库连接信息                            | 大幅减少样板代码                              |
@@ -166,12 +166,9 @@ Database（数据库）
   }
   ```
 * **`@GetMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.GET)`。明确标识该方法只处理 HTTP GET 请求，语义更清晰，常用于查询数据。
-*   **`@PostMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.POST)`。明确处理 HTTP POST 请求，常用于提交数据（如新增记录）。
-
-*   **`@PutMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.PUT)`。明确处理 HTTP PUT 请求，通常用于全量更新操作。
-
-*   **`@DeleteMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.DELETE)`。明确处理 HTTP DELETE 请求，用于删除资源。
-
+* **`@PostMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.POST)`。明确处理 HTTP POST 请求，常用于提交数据（如新增记录）。
+* **`@PutMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.PUT)`。明确处理 HTTP PUT 请求，通常用于全量更新操作。
+* **`@DeleteMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.DELETE)`。明确处理 HTTP DELETE 请求，用于删除资源。
 
  一般来说，POST方法的传参不受限制，可以使用URL传参，也可以使用@RequestBody获取请求体中的json，并解析为响应的java对象。
 
@@ -256,7 +253,7 @@ public  List<Hospital> findAllHospital(){
 
 **@ResponseBody和@RequestBody区别**
 
-1. @RequestBody是将Json格式的数据转换成Java对象
+1. @RequestBody是将前端传来的json字符串映射成Java对象或者数组
 2. @ResponseBody：将Java对象转成json格式的数据
 
 ## 取请求参数值
@@ -469,6 +466,21 @@ public class CrosConfig implements WebMvcConfigurer {
 | http://www.test.com/      | http://blog.test.com/           | 跨域     | 子域名不同（www/blog）         |
 | http://www.test.com:8080/ | http://www.test.com:7001/       | 跨域     | 端口号不同（8080/7001）        |
 
+## common层
+
+放一些项目里到处都要用到的"公共工具"，比如统一返回格式、跨域设置、全局异常处理、工具类等。
+
+企业里的 `common`包一般还会放这些东西：
+
+| 类名                            | 用途                                         |
+| ------------------------------- | -------------------------------------------- |
+| `Result.java`                 | 统一返回格式（就像你截图的code、msg、data）  |
+| `CorsConfig.java`             | 跨域配置，解决前端调接口被浏览器拦截的问题   |
+| `GlobalExceptionHandler.java` | 全局异常处理，统一捕获报错返回格式           |
+| `PageResult.java`             | 分页结果的统一封装                           |
+| `BaseEntity.java`             | 实体类的公共字段（如createTime、updateTime） |
+| `XXXUtils.java`               | 各种工具类（日期、加密、文件等）             |
+
 ## entity层
 
 1. 通过@Entity将实体类和数据库的表book进行映射绑定;
@@ -485,3 +497,66 @@ public class CrosConfig implements WebMvcConfigurer {
    SEQUENCR ：sequence
 
    AUTO：根据数据库的不同使用上面三个
+
+### DAO层与分层概念
+
+#### 1. PO / Entity
+
+- **一句话**：数据库表长什么样，它就长什么样。
+- **理解**：表和实体是一一对应的，表里有什么字段，这个类就有什么字段。它是系统的“内部数据形态”，不应该直接暴露给外部。
+
+#### 2. DAO / Mapper
+
+- **一句话**：专门负责和数据库打交道的人。
+- **理解**：它负责执行 SQL、查询数据、更新数据。Service 层要查什么、改什么，就告诉 DAO 去做。
+
+#### 3. DTO
+
+- **一句话**：前端传什么，它就接什么。
+- **理解**：前端传过来的参数，往往不是完整的数据库字段，可能只传了其中几个字段，DTO 就是用来接收这些参数的。它只关心“前端需要什么”。
+
+#### 4. VO
+
+- **一句话**：前端想看什么，它就返回什么。
+- **理解**：返回给前端的数据，不一定和数据库表结构一致，可能经过组装、转换、隐藏敏感字段后再返回。VO 只关心“前端想看到什么”。
+
+#### 5. 为什么需要分层？
+
+- **一句话**：如果你不想以后改表名时连前端也要改，就提前分层。
+- **理解**：分层的目的就是解耦。表结构变了，只改 PO；前端展示需求变了，只改 VO；中间的业务逻辑变了，只改 Service。互不干扰。
+
+#### 6. MyBatis 的 #{} 和 ${}
+
+- **一句话**：`#{}` 是安全的，`${}` 是不安全的。
+- **理解**：`#{}` 用的是预编译，用户输入的内容只会被当作“数据”处理，不会被当成“SQL指令”执行，所以能防 SQL 注入。`${}` 是直接拼接，用户输入什么就拼什么，容易被注入攻击。
+
+#### 7. JDBC拼接 vs MyBatis XML
+
+- **一句话**：JDBC 是手工拼 SQL，MyBatis 是把 SQL 写在 XML 里统一管理。
+- **理解**：JDBC 拼接像把 SQL 和 Java 代码揉在一起，修改时得翻 Java 文件；MyBatis 把 SQL 单独抽出来放到 XML 里，改 SQL 时不用动 Java 代码，更清晰，也更容易防注入。
+
+#### 8. Service 层
+
+- **一句话**：Service 层是“业务大脑”。
+- **理解**：它不管数据怎么存、也不管前端怎么展示，它只负责处理业务逻辑。它告诉 DAO 去查什么数据，然后把数据组装好，返回给 Controller。
+
+#### 9. Controller 层
+
+- **一句话**：Controller 是“前台接待”。
+- **理解**：它接收前端来的请求，叫 Service 去处理，然后把处理结果返回给前端。它不关心数据怎么查、也不关心业务逻辑怎么算，只负责收和转。
+
+### 📋 一句话速查表
+
+| 概念                                               | 一句话记住                                  |
+| -------------------------------------------------- | ------------------------------------------- |
+| **PO / Entity**                              | 数据库表长什么样，它就长什么样              |
+| **DAO / Mapper**                             | 专门负责和数据库打交道的人                  |
+| **DTO**                                      | 前端传什么，它就接什么                      |
+| **VO**                                       | 前端想看什么，它就返回什么                  |
+| **为什么分层**                               | 不想改表名时连前端也要改，就提前分层        |
+| **#{} vs${}** | `#{}` 是安全的，`${}` 是不安全的 |                                             |
+| **JDBC拼接 vs MyBatis XML**                  | JDBC 手工拼 SQL，MyBatis 把 SQL 写在 XML 里 |
+| **Service 层**                               | 业务大脑，只负责处理逻辑                    |
+| **Controller 层**                            | 前台接待，只负责收和转                      |
+
+这份笔记不涉及任何代码，全是“一句话就能记住”的理解方式。你可以在 Spring Boot 学习笔记里单独开一节“分层概念速记”，以后翻到就能立刻回忆起这些概念之间的关系，不用再重新翻代码。
