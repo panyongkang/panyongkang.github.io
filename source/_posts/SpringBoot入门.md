@@ -122,184 +122,311 @@ Database（数据库）
    @EnableAutoConfiguration可以帮助SpringBoot应用将所有符合条件的@Configuration配置都加载到当前SpringBoot创建并使用的IOC容器。借助于Spring框架原有的一个工具类：SpringFactoriesLoader的支持，@EnableAutoConfiguration可以智能的自动配置功效才得以大功告成
 3. **@ComponentScan：** 主要用于组件扫描和自动装配。个人理解相当于< context:component-scan>，如果扫描到有@Component @Controller @Service等这些注解的类，则把这些类注册为bean。
 
-## Controller层相关注解
+## Controller层注解
 
-* @Controller：标注控制器类，处理http请求；控制器中的方法可以返回一个视图，在Web开发中一般使用的少（主要是用@RestController）。
-* @RestController:复合注解，相当于@ResponseBody ＋ @Controller合在一起的作用。使用的效果是将方法返回的对象直接在浏览器上展示成json格式.
-* @RequestBody:通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象；将json解析为java对象。
+### 类级别注解：声明"我是控制器"
 
-  使用场景：json传参
-* @RequestMapping:最常用的注解之一，这个注解会将 HTTP 请求的URL映射到处理方法上；在实际开发中，在具体的控制器类之前添加该注解即可。
+#### @Controller vs @RestController
 
-  **详细描述**
+|        注解        | 含义                            | 返回内容                                                              | 适用场景                   |
+| :-----------------: | ------------------------------- | --------------------------------------------------------------------- | -------------------------- |
+|   `@Controller`   | 传统MVC控制器                   | 返回**视图名** （jsp/html），配合视图解析器跳转页面             | 老项目、需要返回页面的场景 |
+| `@RestController` | RESTful控制器（Spring 4.0引入） | 返回**JSON/XML数据** ，等同于 `@Controller`+`@ResponseBody` | 前后端分离项目（当前主流） |
 
-  **@RequestMapping** 该注解可以加在方法上，也可以加在类上；如下面例子，加在类上，表示该类所有的方法都加前缀 /user 下面两种方法都是映射到 /user/list
+**一句话记忆：**
 
-  方法一：
+* 老项目（Spring MVC时代）用 `@Controller`，方法上加 `@ResponseBody`才能返回JSON
+* 新项目（SpringBoot）直接用 `@RestController`，类里所有方法默认返回JSON
 
-  ```
-  @RestController
-  public class UserController {
-      @Autowired
-      private UserService userService;
-      @RequestMapping(value = "/user/list",method = RequestMethod.GET)
-      //相当于 @GetMapping("/user/list")
-      public List<User> userList() {
-          return userService.listUsers();
-      }
-  }
-  ```
-
-  方法二：
-
-  ```
-  @RestController
-  @RequestMapping("/user")
-  public class UserController {
-      @Autowired
-      private UserService userService;
-      @RequestMapping(value = "/list",method = RequestMethod.GET)
-      //相当于 @GetMapping("/list")
-      public List<User> userList() {
-          return userService.listUsers();
-      }
-  }
-  ```
-* **`@GetMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.GET)`。明确标识该方法只处理 HTTP GET 请求，语义更清晰，常用于查询数据。
-* **`@PostMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.POST)`。明确处理 HTTP POST 请求，常用于提交数据（如新增记录）。
-* **`@PutMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.PUT)`。明确处理 HTTP PUT 请求，通常用于全量更新操作。
-* **`@DeleteMapping`** ：组合注解，等同于 `@RequestMapping(method = RequestMethod.DELETE)`。明确处理 HTTP DELETE 请求，用于删除资源。
-
- 一般来说，POST方法的传参不受限制，可以使用URL传参，也可以使用@RequestBody获取请求体中的json，并解析为响应的java对象。
-
-  POST方法和GET方法可以共用一个URL，不用担心起冲突。@PutMapping、@DeleteMapping使用方式大同小异，其实从功能上来说，**@PostMapping能替代所有的请求**，但是这么使用会导致代码**语义混乱**。
-
-**简单说明一下各种请求方法的使用场景：**
-
-| 方法   | 场景     |
-| :----- | :------- |
-| GET    | 获取资源 |
-| POST   | 新增资源 |
-| PUT    | 更新资源 |
-| DELETE | 删除资源 |
-
-### @Controller和@RestController的区别
-
-知识点：@RestController注解相当于@ResponseBody ＋ @Controller合在一起的作用。
-
-1) 如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，或者html，配置的视图解析器 InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。
-2) 如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
-
-例如：
-
-1. 使用@Controller 注解，在对应的方法上，视图解析器可以解析return 的jsp,html页面，并且跳转到相应页面
-
-若返回json等内容到页面，则需要加@ResponseBody注解
-
-```
-@CrossOrigin
-@Controller
-public class FileUploadController {
-
-//跳转到上传文件的页面
-@RequestMapping(value="/gouploadimg", method = RequestMethod.GET)
-public String goUploadImg() {
-	//跳转到 templates 目录下的 uploadimg.html
-	return "uploadimg";
-}
-
-//处理文件上传
-@RequestMapping(value="/testuploadimg", method = RequestMethod.POST)
-public @ResponseBody String uploadImg(@RequestParam("file") MultipartFile file,
-	HttpServletRequest request) {
-	System.out.println("调用文件上传方法");
-	String contentType = file.getContentType();
-	String fileName = file.getOriginalFilename();
-```
-
-1. @RestController注解，Spring 4.0引入了 `@RestController`，相当于@Controller+@ResponseBody两个注解的结合，它会告诉Spring 将返回类型序列化为合适的格式，默认情况下为JSON 格式。返回json数据不需要在方法前面加@ResponseBody注解了，但使用@RestController这个注解，就不能返回jsp,html页面，视图解析器无法解析jsp,html页面
-
-```
-@CrossOrigin
-@RestController /* @Controller + @ResponseBody*/
-public class HospitalController {
-//注入Service服务对象
-@Autowired
-private HospitalService hospitalService;
-
-/**
- * 查询所有医院信息（未分页）
- */
-
-@RequestMapping(value = "findAllHospital",method = RequestMethod.GET)
-public  List<Hospital> findAllHospital(){
-    List<Hospital> hospitalList= hospitalService.findAllHospital();
-    return hospitalList;
-}
-```
-
-**总结：**
-
-共同点：都用来表示Spring某个类是否可以接收HTTP请求
-
-异同点：**@RestController无法返回指定页面（jsp或html），而@Controller可以**；前者可以直接返回json数据，后者需要@ResponseBody辅助。
-
-**① 是否可以返回页面**
-
-　　答：@RestController无法返回指定页面，而@Controller可以。
-　　解析：对于Controller， 如果只是使用@RestController注解，则其方法无法返回指定页面，此时配置的视图解析器 InternalResourceViewResolver不起作用，返回的内容就是 return 里的内容。 如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。
-**② 返回内容**
-　　如果需要返回**JSON，XML或自定义mediaType内容**到页面，@RestController自己就可以搞定,这个注解对于返回数据比较方便，因为它会自动将对象实体转换为JSON格式。而@Controller需要在对应的方法加上@ResponseBody注解。
-
-**@ResponseBody和@RequestBody区别**
-
-1. @RequestBody是将前端传来的json字符串映射成Java对象或者数组
-2. @ResponseBody：将Java对象转成json格式的数据
-
-## 取请求参数值
-
-1. @PathVariable:获取url中的变量值的（注意是URL上的，不是参数）
-
-请求示例：http://localhost:8080/User/getUser/123
-
-应用场景：分页查询时获取url路径的页码
-
-代码如下：
+**老写法（SpringBoot 2及以前老项目常见）：**
 
 ```java
 @Controller
-@RequestMapping("/User")
-public class HelloWorldController {
+public class UserController {
+    @RequestMapping("/user/list")
+    @ResponseBody   // 每个方法都要加，很啰嗦
+    public List<User> list() { ... }
+}
+```
 
-    @RequestMapping("/getUser/{uid}")
-    public String getUser(@PathVariable("uid")Integer id, Model model) {
-        System.out.println("id:"+id);
-        return "user";
+**新写法（SpringBoot 2/3 主流）：**
+
+```java
+@RestController
+public class UserController {
+    @GetMapping("/user/list")   // 类上已有@RestController，方法不用加@ResponseBody
+    public List<User> list() { ... }
+}
+```
+
+> **看源码时注意** ：如果看到 `@Controller` + 方法上有 `@ResponseBody`，说明是老写法或需要返回页面的混合写法。
+
+---
+
+### 路径映射注解：把URL绑定到方法
+
+#### @RequestMapping（父注解，所有版本通用）
+
+**核心关系：**
+
+```
+@RequestMapping(method = GET)     ≡  @GetMapping
+@RequestMapping(method = POST)    ≡  @PostMapping
+@RequestMapping(method = PUT)     ≡  @PutMapping
+@RequestMapping(method = PATCH)   ≡  @PatchMapping
+@RequestMapping(method = DELETE)  ≡  @DeleteMapping
+```
+
+**两种使用位置：**
+
+| 位置             | 作用                                 | 示例                              |
+| ---------------- | ------------------------------------ | --------------------------------- |
+| **类上**   | 定义所有方法的**公共路径前缀** | `@RequestMapping("/api/users")` |
+| **方法上** | 定义具体接口的路径（相对路径）       | `@RequestMapping("/list")`      |
+
+**老写法（老项目大量存在）：**
+
+```java
+@RestController
+@RequestMapping("/user")
+public class UserController {
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public List<User> list() { ... }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void add(@RequestBody User user) { ... }
+}
+```
+
+**新写法（SpringBoot 2/3 推荐）：**
+
+```java
+@RestController
+@RequestMapping("/api/users")   // 类级别：公共前缀，这个场景仍用@RequestMapping
+public class UserController {
+
+    @GetMapping("/list")              // 查询
+    public List<User> list() { ... }
+
+    @PostMapping                      // 新增（路径可省略，默认就是 /api/users）
+    public void add(@RequestBody User user) { ... }
+
+    @PutMapping("/{id}")              // 全量更新
+    public void update(@PathVariable Long id, @RequestBody User user) { ... }
+
+    @PatchMapping("/{id}/avatar")     // 局部更新（只改头像）
+    public void updateAvatar(@PathVariable Long id, @RequestParam String url) { ... }
+
+    @DeleteMapping("/{id}")           // 删除
+    public void delete(@PathVariable Long id) { ... }
+}
+```
+
+**选择建议：**
+
+| 项目类型                   | 推荐写法                                                                            |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| 老项目维护（Spring + XML） | 跟着项目现有风格走，`@RequestMapping`打天下也没问题                               |
+| 新项目（SpringBoot 2/3）   | 类上用 `@RequestMapping`定义前缀，方法上用 `@GetMapping/@PostMapping`等语义注解 |
+
+---
+
+### 参数接收注解：从请求中取值
+
+#### @PathVariable — 取URL路径中的变量
+
+```
+请求：GET /users/123
+注解：@GetMapping("/users/{id}")
+取值：@PathVariable Long id  →  id = 123
+```
+
+#### @RequestParam — 取查询参数（?后面的键值对）
+
+```
+请求：GET /users?name=张三&page=1
+注解：@GetMapping("/users")
+取值：@RequestParam String name  →  name = "张三"
+      @RequestParam(defaultValue = "1") int page  →  page = 1
+```
+
+**常用属性：**
+
+| 属性               | 作用                                 | 示例                                  |
+| ------------------ | ------------------------------------ | ------------------------------------- |
+| `required`       | 是否必传，默认 `true`              | `@RequestParam(required = false)`   |
+| `defaultValue`   | 未传时的默认值                       | `@RequestParam(defaultValue = "1")` |
+| `name`/`value` | 指定参数名（参数名和变量名不一致时） | `@RequestParam("uid") Long id`      |
+
+#### @RequestBody — 取请求体中的JSON，反序列化为Java对象
+
+```
+请求：POST /users，Body: {"name":"张三","age":25}
+注解：@PostMapping("/users")
+取值：@RequestBody UserDTO dto  →  dto.getName() = "张三"
+```
+
+> **注意** ：一个方法只能有 **一个** `@RequestBody`，因为请求体只能读一次。
+
+#### @RequestHeader — 取请求头
+
+```java
+@GetMapping("/info")
+public void info(@RequestHeader("Authorization") String token) { ... }
+```
+
+#### @CookieValue — 取Cookie值
+
+```java
+@GetMapping("/info")
+public void info(@CookieValue("JSESSIONID") String sessionId) { ... }
+```
+
+#### 参数注解速查表
+
+| 注解                | 数据来源                            | 典型场景                 |
+| ------------------- | ----------------------------------- | ------------------------ |
+| `@PathVariable`   | URL路径 `/users/{id}`             | 获取资源ID               |
+| `@RequestParam`   | URL查询参数 `?name=xx`            | 分页、搜索条件、简单参数 |
+| `@RequestBody`    | 请求体JSON                          | POST/PUT提交复杂对象     |
+| `@RequestHeader`  | 请求头                              | Token、认证信息          |
+| `@CookieValue`    | Cookie                              | 会话标识                 |
+| `@ModelAttribute` | 表单参数/查询参数 → 自动绑定到对象 | 表单提交（老项目多见）   |
+
+---
+
+### 请求体处理注解
+
+#### @RequestBody vs @ResponseBody
+
+| 注解              | 方向                          | 作用                             |
+| ----------------- | ----------------------------- | -------------------------------- |
+| `@RequestBody`  | **入参** ：请求 → Java | 把请求体JSON反序列化为Java对象   |
+| `@ResponseBody` | **出参** ：Java → 响应 | 把Java对象序列化为JSON写入响应体 |
+
+ **老写法** ：方法上单独加 `@ResponseBody`
+
+```java
+@Controller
+public class UserController {
+    @RequestMapping("/user/list")
+    @ResponseBody   // 每个方法都要加
+    public List<User> list() { ... }
+}
+```
+
+ **新写法** ：类上加 `@RestController`（内含 `@ResponseBody`），方法上不用再加
+
+```java
+@RestController   // 类级别统一处理
+public class UserController {
+    @GetMapping("/list")
+    public List<User> list() { ... }   // 不需要@ResponseBody
+}
+```
+
+---
+
+### 跨域注解
+
+#### @CrossOrigin
+
+```java
+@CrossOrigin                          // 允许所有来源
+@CrossOrigin(origins = "http://localhost:8080")  // 只允许指定来源
+@RestController
+public class UserController { ... }
+```
+
+> 企业级项目通常在**全局配置类**中统一配置CORS，不会每个Controller都加 `@CrossOrigin`。
+
+---
+
+### 全局增强注解
+
+#### @ControllerAdvice / @RestControllerAdvice
+
+用于**全局**统一处理异常或预处理数据，作用于所有Controller。
+
+| 注解                      | 作用                                                   | 适用场景                       |
+| ------------------------- | ------------------------------------------------------ | ------------------------------ |
+| `@ControllerAdvice`     | 全局增强（可配合 `@ResponseBody`返回JSON）           | 老写法                         |
+| `@RestControllerAdvice` | =`@ControllerAdvice`+`@ResponseBody`，直接返回JSON | **SpringBoot 3推荐写法** |
+
+```java
+@RestControllerAdvice   // SpringBoot 3 推荐
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public Result<?> handleException(Exception e) {
+        return Result.error(e.getMessage());
     }
 }
 ```
 
-2. @RequestParam:获取请求参数的值，默认是必须传参，也可设置为非必要：required=false;未传参的默认值：defaultValue = " "
+> **版本差异** ：SpringBoot 2中常见 `@ControllerAdvice` + `@ResponseBody`的写法；SpringBoot 3中推荐直接用 `@RestControllerAdvice`。
 
-请求示例：http://localhost:8080/User/getUser?uid=123
+---
 
-代码如下：
+### 方法级异常处理
+
+#### @ExceptionHandler
 
 ```java
-@Controller
-@RequestMapping("/User")
-public class HelloWorldController {
+@RestController
+public class UserController {
 
-    @RequestMapping("/getUser")
-    public String getUser(@RequestParam("uid")Integer id, Model model) {
-        System.out.println("id:"+id);
-        return "user";
+    // 只处理当前Controller中抛出的异常
+    @ExceptionHandler(IllegalArgumentException.class)
+    public Result<?> handleIllegalArg(IllegalArgumentException e) {
+        return Result.error("参数错误：" + e.getMessage());
     }
 }
 ```
 
-3. @RequestHeader：把Request请求header部分的值绑定到方法的参数上
-4. @CookieValue：把Request header中关于cookie的值绑定到方法的参数上
+> `@ExceptionHandler`定义在Controller内部 = 局部生效；定义在 `@RestControllerAdvice`类中 = 全局生效。
+
+---
+
+### SpringBoot 3 新增：@HttpExchange（声明式HTTP客户端）
+
+这是Spring 6（SpringBoot 3）新增的注解， **不是用来接收请求的** ，而是用来**调用外部接口**的，替代OpenFeign。
+
+```java
+// 定义接口，声明要调用哪个外部服务
+@HttpExchange("http://other-service/api")
+public interface UserClient {
+
+    @GetExchange("/users/{id}")
+    User getUser(@PathVariable Long id);
+
+    @PostExchange("/users")
+    User createUser(@RequestBody User user);
+}
+```
+
+| 老写法（SpringBoot 2）                      | 新写法（SpringBoot 3）             |
+| ------------------------------------------- | ---------------------------------- |
+| `@FeignClient`+`@GetMapping`            | `@HttpExchange`+`@GetExchange` |
+| 需要引入 `spring-cloud-starter-openfeign` | Spring 6内置，无需额外依赖         |
+
+> **看源码时** ：如果项目是SpringBoot 3，看到 `@HttpExchange`、`@GetExchange`、`@PostExchange`，就知道这是在调用外部HTTP接口，不是本服务的Controller。
+
+---
+
+### 版本差异速查对照表
+
+| 注解/特性  | SpringBoot 2（老项目）                      | SpringBoot 3（新项目）                          |
+| ---------- | ------------------------------------------- | ----------------------------------------------- |
+| 类注解     | `@Controller`+ 方法加 `@ResponseBody`   | `@RestController`（主流）                     |
+| 路径映射   | `@RequestMapping(method=GET)`             | `@GetMapping`（推荐）                         |
+| 包名       | `javax.servlet.*`、`javax.validation.*` | `jakarta.servlet.*`、`jakarta.validation.*` |
+| 全局异常   | `@ControllerAdvice`+`@ResponseBody`     | `@RestControllerAdvice`                       |
+| 参数校验   | `javax.validation.Valid`                  | `jakarta.validation.Valid`                    |
+| 接口文档   | Swagger 2（`@Api`、`@ApiOperation`）    | SpringDoc（`@Tag`、`@Operation`）           |
+| HTTP客户端 | `@FeignClient`+`@GetMapping`            | `@HttpExchange`+`@GetExchange`              |
+| JDK要求    | JDK 8+                                      | JDK 17+                                         |
 
 ## 注入bean相关
 
@@ -359,60 +486,76 @@ public class HelloWorldController {
 
 ### @Autowired和@Resources注解区别
 
-一、@Autowired和@Resource都可以用来装配bean，都可以写在字段上，或者方法上。
+### @Autowired 和 @Resource 的区别
 
-二、@Autowired属于Spring的；@Resource属于J2EE的。
+> **两者都是注入依赖，作用一样：不用自己 new，Spring 帮你把对象塞进来。区别在于来源和默认注入策略。**
 
-三、@Autowired默认按类型装配，默认情况下要求依赖对象必须存在，如果要允许null值，可以设置它的required属性为false。
+#### 对比表
 
-**总结：**
+| 对比项                 | `@Autowired`                           | `@Resource`                            |
+| ---------------------- | ---------------------------------------- | ---------------------------------------- |
+| 谁提供的               | Spring                                   | JDK                                      |
+| 默认怎么找对象         | **按类型找**                       | **按名字找**                       |
+| 一个接口只有一个实现类 | 直接注入，不用管                         | 直接注入，不用管                         |
+| 一个接口有多个实现类   | 会报错，需要 `@Qualifier("名字")` 指定 | 直接写 `@Resource(name = "名字")` 指定 |
+| 常用场景               | 一个实现类，用得最多                     | 多个实现类，指定名字时用                 |
 
-当一个接口只有一个实现类，推荐使用@Autowired，默认byType注入，不一定 真的byType，可以修改为byName，@Resource同理；
+#### 写法对比（4种）
 
-当一个接口有多个实现类，推荐使用@Resource，默认byName注入；
-
-**byName和byType有什么区别**
-
-1. byName 通过**参数名**自动装配,如果一个bean的name 和另外一个bean的 property 相同,就自动装配.
-2. byType 通过**参数的数据类型**自动自动装配,如果一个bean的数据类型和另外一个bean的property属性的数据类型兼容,就自动装配
-
-## 详细描述
-
- **@AutoWired 和 @Resource** 这两个注解都是注入依赖的作用 比如在 UserController 里注入 UserService，在 UserService 注入 UserDao 通常用法如下 UserServiceImpl 类
-
-```
-@Service
-//相当于 @Service(value = "userServiceImpl")
-public class UserServiceImpl implements UserService{
-    @Override
-    public String sayHi() {
-        return "Hi!";
-    }
-}
-```
-
-利用@Service注解自动将类 UserServiceImpl 注解为bean，id为 userServiceImpl，即类 UserServiceImpl 第一个字母小写的id。  @Authwired 使用
-
-```
-//方法一、寻找可以扫描到的实现了 UserService 接口的类
+```java
+// 1. 一个接口只有一个实现类：直接用
 @Autowired
 private UserService userService;
-//方法二、如果有多个类实现了 UserService，需要指定时哪个实现类
+
+// 2. 多个实现类：@Autowired + @Qualifier 指定名字
 @Autowired
 @Qualifier("userServiceImpl")
 private UserService userService;
-```
 
- @Resource 使用
-
-```
-//方法三、寻找可以扫描到的实现了 UserService 接口的类
-@Resource
-private UserService userService;
-//方法四、如果有多个类实现了 UserService，需要指定时哪个实现类
+// 3. 多个实现类：@Resource 直接指定名字
 @Resource(name = "userServiceImpl")
 private UserService userService;
+
+// 4. 一个接口只有一个实现类：@Resource 也能用
+@Resource
+private UserService userService;
 ```
+
+#### 什么叫“按类型找”和“按名字找”？
+
+- **按类型找（byType）**：你说你要 `UserService` 类型，Spring 就去容器里找“谁是 UserService 类型”，找到一个就塞给你。
+- **按名字找（byName）**：你说你要 `userService`，Spring 就去容器里找“谁的名字叫 userService”，找到就塞给你。
+
+#### 什么时候会出问题？
+
+一个接口有多个实现类时：
+
+```java
+public interface UserService { ... }
+
+@Service("userServiceImplA")
+public class UserServiceImplA implements UserService { ... }
+
+@Service("userServiceImplB")
+public class UserServiceImplB implements UserService { ... }
+```
+
+用 `@Autowired` 会报错，因为 Spring 找到两个“UserService 类型”，不知道给你哪个。
+
+**解决办法就是上面写法 2 和 3。**
+
+#### 最终记忆
+
+- **一个实现类** → `@Autowired` 够用
+- **多个实现类** → 用 `@Resource(name = "xxx")` 或 `@Autowired + @Qualifier("xxx")` 指定
+- 两者功能一样，企业里 `@Autowired` 更常见
+- 不用记 byType / byName 这两个英文词，记“按类型找”和“按名字找”就够了
+
+#### 面试回复
+
+> "`@Autowired` 和 `@Resource` 都是注入依赖用的。`@Autowired` 是 Spring 的，默认按类型找；`@Resource` 是 JDK 的，默认按名字找。一个接口只有一个实现类时，用哪个都行；有多个实现类时，用 `@Resource(name = "xxx")` 或 `@Autowired + @Qualifier("xxx")` 指定具体实现。"
+
+## 详细描述
 
 **@Component、@Repository、@Service、@Controller** 为了控制反转（将创建对象的控制权交给Spring容器），而不需要去 new，而且创建的对象还是单例的，一举多得。 这几个注解作用是通用的，几乎一样，通常我们根据它的含义来写
 

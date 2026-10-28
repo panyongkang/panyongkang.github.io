@@ -366,3 +366,70 @@ echo "删除日志文件完成："`date`
 删除日志文件完成：2026年 08月 19日 星期三 00:30:30 CST
 执行日志归档任务完成：2026年 08月 19日 星期三 00:30:30 CST
 ```
+
+## 柜面ABS CUPS打印配置
+
+copy_printers_conf.sh：
+
+```shell
+#!/bin/bash
+
+LOCAL_FILE="/home/abcs/abs/upload_files/resourceFolder/HelpDocument/printers.conf"
+REMOTE_DIR="/etc/cups"
+
+#检查文件是否存在
+if [ ! -f "$LOCAL_FILE" ]; then
+	echo "$(date +"%F %T") 错误：本地文件 $LOCAL_FILE 不存在"
+	exit 1
+fi
+
+#复制文件到/etc/cups
+echo "$(date +"%F %T") 正在复制 $LOCAL_FILE 到 $REMOTE_DIR ..."
+cp -f "$LOCAL_FILE" "${REMOTE_DIR}/"
+
+if [ $? -eq 0 ]; then
+	echo "$(date +"%F %T") 文件复制成功"
+else 
+	echo "$(date +"%F %T") 错误：文件复制失败"
+fi
+
+#清空打印队列
+echo "$(date +"%F %T") 正在清除打印队列..."
+cancel.cups -a -
+
+#重启cups服务
+echo "$(date +"%F %T") 正在重启cups服务..."
+systemctl restart cups
+
+if [ $? -eq 0 ]; then
+	echo "$(date +"%F %T") cups服务重启成功"
+else
+	echo "$(date +"%F %T") 错误：cups服务重启失败"
+fi
+
+exit 0
+```
+
+
+### `if [ $? -eq 0 ]` 是什么意思？
+
+这是在 Shell 脚本里最经典的 **“判断命令是否执行成功”** 的写法。
+
+* **`$?`** ：这是一个 **特殊变量（也叫状态码）** 。它代表 **“上一条命令的退出状态（Exit Code）”** 。
+* 如果上一条命令 **执行成功** ，`$?` 就是  **`0`** 。
+* 如果上一条命令 **执行失败** （比如权限不够、文件不存在），`$?` 就是非 0 的数字（常见的有 `1`、`2`、`126`、`127` 等）。
+* **`-eq`** ：是  **`-equal`** （等于）的缩写。注意，`eq` 是用来**比较数字**的。
+* **`0`** ：就是数字零。
+
+**连起来人话翻译：**  **“如果上一条命令的退出状态码 等于 0（也就是执行成功了）”** ，就执行 `then` 里面的内容。
+
+---
+
+### 为什么之前用 `! -d`，现在这里用了 `-f`？
+
+**因为判断的对象类型完全不同！**
+
+* **`-d`** ：是  **`Directory`** （目录）的缩写。用来判断这个东西是不是一个 **目录（文件夹）** 。
+* 之前那句 `if [ ! -d $tarfiledir ]` 的意思是： **“如果 `$tarfiledir` 这个路径 不是 一个目录（即目录不存在）”** 。
+* **`-f`** ：是  **`File`** （文件）的缩写。用来判断这个东西是不是一个 **具体的文件** 。
+* 现在这句 `if [ ! -f "$LOCAL_FILE" ]` 的意思是： **“如果 `$LOCAL_FILE` 这个路径 不是 一个具体的文件（即这个文件不存在）”** 。

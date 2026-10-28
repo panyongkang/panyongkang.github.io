@@ -1,5 +1,5 @@
 title: 制作免费的V2ray和SSR订阅链接分享
-author: PanXiaoKang
+author: PXY
 cover: https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1926508069,3948585021&fm=26&gp=0.jpg
 tags: [SSR,订阅地址,v2ray]
 categories: [黑技能]
@@ -96,3 +96,13 @@ https://onedrive.gimhoy.com/1drv/aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBZ204d3BjSVhDanNnNHR
 * 加密转换后的编码就是订阅源（内容），和右键“批量导出订阅内容至剪贴板”的是一样的编码，后面的步骤与上面的一模一样，将编码存放在OneDrive或Github都行。
 
 以上笔记均为实践后进行整理，不用每个节点挨个输入，既方便分享又能进行备份，有不懂的可以访问[工具大师视频教程](https://www.youtube.com/watch?v=4SpbyqkBRVQ)或评论留言给我哦！
+
+## 清理命令
+
+遇到某些代理工具造成系统代理混乱，网站无法访问时，可使用以下命令清理重置，然后重启电脑生效：
+
+```
+netsh winsock reset
+netsh int ip reset
+ipconfig /flushdns
+```
